@@ -1,40 +1,32 @@
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import HeroSocial from "@/components/HeroSocial";
-import LineRail from "@/components/LineRail";
-import LogoMarquee from "@/components/LogoMarquee";
-import MissionStats from "@/components/MissionStats";
-import FeaturedWork from "@/components/FeaturedWork";
-import Services from "@/components/Services";
-import ProcessSteps from "@/components/ProcessSteps";
-import Testimonials from "@/components/Testimonials";
-import FAQ from "@/components/FAQ";
-import Blog from "@/components/Blog";
-import Footer from "@/components/Footer";
+import type { Metadata } from "next";
+import Navbar from "@/components/home/Navbar";
+import Hero from "@/components/home/Hero";
+import LogoStrip from "@/components/home/LogoStrip";
+import Features from "@/components/home/Features";
+import WorkflowShowcase from "@/components/home/WorkflowShowcase";
+import Integrations from "@/components/home/Integrations";
+import Testimonials from "@/components/home/Testimonials";
+import CTASection from "@/components/home/CTASection";
+import Footer from "@/components/home/Footer";
+
+export const metadata: Metadata = {
+  title: "Ceylexa — Automate busywork with AI agents",
+  description:
+    "Ceylexa is an AI agency for operations teams. We design, build, and operate the workflows and AI agents that take repetitive work off your team's plate.",
+};
 
 export default function Home() {
   return (
-    <div className="page-wrapper">
-      <div className="home-hero-area">
-        <LineRail />
-        <Navbar />
-        <Hero />
-      </div>
-
-      <HeroSocial />
-
-      <div className="main">
-        <LogoMarquee />
-        <MissionStats />
-        <FeaturedWork />
-        <Services />
-        <ProcessSteps />
-        <Testimonials />
-        <FAQ />
-        <Blog />
-      </div>
-
+    <>
+      <Navbar />
+      <Hero />
+      <LogoStrip />
+      <Features />
+      <WorkflowShowcase />
+      <Integrations />
+      <Testimonials />
+      <CTASection />
       <Footer />
-    </div>
+    </>
   );
 }

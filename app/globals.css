@@ -1,8 +1,256 @@
 @import "tailwindcss";
 
-/* app/globals.css intentionally stays minimal: app-wide, pixel-accurate
-   styling comes from the ported /public/css/uxoral.css (Webflow export). */
+:root {
+  --background: #faf8f2;
+  --surface: #fffdf8;
+  --surface-2: #f5f0e6;
+  --foreground: #241a0c;
+  --muted: #6b5b4d;
+  --border: rgba(36, 26, 12, 0.12);
+  --accent: #b45309;
+  --accent-2: #ea580c;
+  --accent-3: #92400e;
+  --font-display: -apple-system, "Segoe UI", "SF Pro Display", "Helvetica Neue",
+    Arial, sans-serif;
+  --font-sans: -apple-system, "Segoe UI", "SF Pro Text", "Helvetica Neue",
+    Arial, sans-serif;
+}
 
-[data-reveal] {
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-accent-3: var(--accent-3);
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display), var(--font-sans), sans-serif;
+}
+
+::selection {
+  background: var(--accent);
+  color: white;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #92400e 0%, #b45309 45%, #ea580c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.card-border {
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.55));
+  backdrop-filter: blur(6px);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.02;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* --- Aura Gradient: "Amber Crystal" ---
+   Blend-mode background used behind the AI-agency Home hero.
+   Per the blend-mode architecture: the base color must live on the
+   ancestor "page wrapper" (here, the Hero <section>, via bg-background —
+   --background is #faf8f2), NOT on .aura-bg itself. .aura-bg stays
+   transparent so the layers below composite against the Hero section's
+   background rather than washing out against their own container. This
+   also keeps the effect scoped to the Home route — /about's background
+   is untouched. */
+.aura-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.aura-layer-1,
+.aura-layer-2,
+.aura-layer-3,
+.aura-layer-4 {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.aura-layer-1 {
+  background: linear-gradient(135deg, rgba(69, 26, 3, 0.92) 0%, rgba(146, 64, 14, 0.62) 48%, rgba(245, 158, 11, 0.32) 100%);
+  mix-blend-mode: normal;
+}
+
+.aura-layer-2 {
+  background: radial-gradient(ellipse 50% 45% at 30% 42%, rgba(251, 191, 36, 0.38) 0%, transparent 68%);
+  mix-blend-mode: multiply;
+  filter: blur(125px);
+}
+
+.aura-layer-3 {
+  background: radial-gradient(ellipse 40% 55% at 70% 60%, rgba(249, 115, 22, 0.3) 0%, transparent 68%);
+  mix-blend-mode: multiply;
+  filter: blur(130px);
+}
+
+.aura-layer-4 {
+  background: linear-gradient(115deg, transparent 28%, rgba(255, 255, 255, 0.16) 48%, transparent 60%);
+  mix-blend-mode: multiply;
+  filter: blur(40px);
+}
+
+@media (min-width: 1024px) {
+  .aura-layer-2 {
+    filter: blur(180px);
+  }
+  .aura-layer-3 {
+    filter: blur(187px);
+  }
+  .aura-layer-4 {
+    filter: blur(58px);
+  }
+}
+
+/* --- Adaptive High-Fidelity Architecture patterns ---
+   Ported from the studio reference pattern (kinetic type, mouse-tracked
+   glass "bento" cards, mercury-glow buttons, scroll reveal) and re-themed
+   for the light Amber Crystal palette used on Home. */
+
+.kinetic-text {
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.75) 20%,
+    #fde68a 40%,
+    #fde68a 60%,
+    rgba(255, 255, 255, 0.75) 80%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: text-shimmer 6s linear infinite;
+}
+
+@keyframes text-shimmer {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.bento-card {
+  --mx: 50%;
+  --my: 50%;
+  position: relative;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6));
+  backdrop-filter: blur(6px);
+  overflow: hidden;
+}
+
+.bento-card::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: 0;
+  background: radial-gradient(480px circle at var(--mx) var(--my), rgba(234, 88, 12, 0.14), transparent 45%);
   opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.bento-card:hover::after {
+  opacity: 1;
+}
+
+.bento-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-mercury {
+  --mx: 50%;
+  --my: 50%;
+}
+
+.btn-mercury::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at var(--mx) var(--my), rgba(255, 255, 255, 0.35), transparent 65%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.btn-mercury:hover::before {
+  opacity: 1;
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  filter: blur(6px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kinetic-text {
+    animation: none;
+    background-position: 0 center;
+  }
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
 }

@@ -3,9 +3,9 @@ import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 
 export const metadata: Metadata = {
-  title: "Uxoral - Webflow HTML Website Template",
+  title: "Ceylexa",
   description:
-    "Welcome to Uxoral, a premium Webflow template designed for creative studios. Showcase your work with impact through a modern, minimal, and conversion-focused layout",
+    "Ceylexa — an AI agency for operations teams.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
