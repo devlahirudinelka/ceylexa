@@ -1,7 +1,7 @@
 import { ShieldCheck, Star, Users, ArrowRight, Compass } from "lucide-react";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
-import LiquidCarbonBackground from "./LiquidCarbonBackground";
+import CreamGradientBackground from "./CreamGradientBackground";
 import { heroStats } from "@/lib/home-content";
 
 const icons: Record<string, React.ReactNode> = {
@@ -13,7 +13,7 @@ const icons: Record<string, React.ReactNode> = {
 export default function Hero() {
   return (
     <section className="relative  overflow-hidden bg-background">
-      <LiquidCarbonBackground />
+      <CreamGradientBackground />
       {/* <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-background" /> */}
       <div className="flex h-screen flex-col items-center justify-center">
         <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-6  text-center">

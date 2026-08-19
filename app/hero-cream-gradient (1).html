@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Studio — Hero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#012028;
+    --paper:#F4F1EA;
+    --ink:#04181C;
+    --muted: rgba(4,24,28,0.65);
+    --line: rgba(4,24,28,0.16);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{
+    background:var(--bg-deep);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    overflow-x:hidden;
+    height:100%;
+  }
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    background: var(--bg-deep);
+  }
+  #canvas-wrap{
+    position:absolute;
+    inset:0;
+    z-index:1;
+  }
+  #canvas-wrap canvas{
+    display:block;
+    width:100% !important;
+    height:100% !important;
+  }
+
+  .nav{
+    position:relative;
+    z-index:3;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding: 1.75rem 3rem;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.75rem;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+  }
+  .nav .mark{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:1rem;
+    text-transform:none;
+    letter-spacing:-0.02em;
+    color:var(--ink);
+  }
+  .nav-links{ display:flex; }
+  .nav a{
+    color: var(--ink);
+    opacity: 0.75;
+    text-decoration:none;
+    margin-left:2.2rem;
+    transition: opacity 0.2s ease;
+  }
+  .nav a:hover{ opacity: 1; }
+  .nav .contact{
+    color: var(--ink);
+    opacity: 1;
+    border:1px solid var(--line);
+    background: rgba(4,24,28,0.06);
+    padding: 0.55rem 1.1rem;
+    border-radius: 999px;
+  }
+
+  .content{
+    position:relative;
+    z-index:3;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding: 2rem 1.5rem 4rem;
+  }
+  .pill{
+    display:inline-flex;
+    align-items:center;
+    gap:0.5rem;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color: var(--ink);
+    border:1px solid var(--line);
+    background: rgba(4,24,28,0.06);
+    padding: 0.5rem 1rem;
+    border-radius:999px;
+    margin-bottom:1.75rem;
+    backdrop-filter: blur(6px);
+  }
+  .pill::before{
+    content:"";
+    width:6px; height:6px;
+    border-radius:50%;
+    background: var(--ink);
+  }
+  h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:clamp(2.4rem, 5.6vw, 4.6rem);
+    line-height:1.05;
+    letter-spacing:-0.03em;
+    max-width: 16ch;
+    color: var(--ink);
+  }
+  .sub{
+    margin-top:1.4rem;
+    max-width:38ch;
+    font-size:1.05rem;
+    line-height:1.6;
+    color: var(--muted);
+  }
+  .actions{
+    margin-top:2.2rem;
+    display:flex;
+    gap:0.9rem;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+  .btn{
+    font-family:'Inter', sans-serif;
+    font-weight:500;
+    font-size:0.9rem;
+    padding: 0.85rem 1.5rem;
+    border-radius: 8px;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:0.5rem;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  .btn:hover{ transform: translateY(-1px); }
+  .btn-primary{
+    background: var(--ink);
+    color: var(--paper);
+    box-shadow: 0 8px 24px -8px rgba(4,24,28,0.5);
+  }
+  .btn-secondary{
+    color: var(--ink);
+    border:1px solid var(--line);
+    background: rgba(4,24,28,0.06);
+  }
+
+  .meta-row{
+    margin-top:3rem;
+    display:flex;
+    align-items:center;
+    gap:1.4rem;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color: var(--muted);
+  }
+  .meta-row .dot{ opacity:0.4; }
+
+  @media (max-width: 700px){
+    .nav{ padding: 1.5rem 1.5rem; }
+    .nav-links a:not(.contact){ display:none; }
+    .meta-row{ flex-direction:column; gap:0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div id="canvas-wrap"></div>
+
+  <nav class="nav">
+    <div class="mark">Fieldwork&nbsp;Studio</div>
+    <div class="nav-links">
+      <a href="#">Work</a>
+      <a href="#">Studio</a>
+      <a href="#" class="contact">Contact now</a>
+    </div>
+  </nav>
+
+  <div class="content">
+    <div class="pill">Creative &amp; Motion Studio</div>
+    <h1>We shape the unbuilt thing.</h1>
+    <p class="sub">An independent studio for brands, products and spaces that don't have a template yet. Nine people, one floor, no account managers.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="#">Start a project</a>
+      <a class="btn btn-secondary" href="#">Book a call</a>
+    </div>
+    <div class="meta-row">
+      <span>SOC 2 n/a — just good taste</span>
+      <span class="dot">•</span>
+      <span>4.9 client rating</span>
+      <span class="dot">•</span>
+      <span>40+ brands shipped</span>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  const wrap = document.getElementById('canvas-wrap');
+  const w = () => wrap.clientWidth;
+  const h = () => wrap.clientHeight;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+
+  const renderer = new THREE.WebGLRenderer({ antialias:true, alpha:true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(w(), h());
+  wrap.appendChild(renderer.domElement);
+
+  const vertexShader = `
+    varying vec2 vUv;
+    void main(){
+      vUv = uv;
+      gl_Position = vec4(position.xy, 0.0, 1.0);
+    }
+  `;
+
+  // Converted from Shadertoy conventions:
+  // fragCoord -> gl_FragCoord.xy, iResolution -> uRes, iTime -> uTime, mainImage -> main
+  const fragmentShader = `
+    precision highp float;
+    uniform vec2 uRes;
+    uniform float uTime;
+    varying vec2 vUv;
+
+    #define PI 3.14159265359
+
+    vec3 backgroundGradient(vec2 uv) {
+        vec3 col1 = vec3(0.984, 0.957, 0.820);
+        vec3 col2 = vec3(0.925, 0.875, 0.686);
+        vec3 col3 = vec3(0.984, 0.957, 0.820);
+        vec3 col4 = vec3(0.925, 0.875, 0.686);
+        vec3 col5 = vec3(0.984, 0.957, 0.820);
+        vec3 col6 = vec3(0.925, 0.875, 0.686);
+        vec3 col7 = vec3(0.984, 0.957, 0.820);
+        vec3 col8 = vec3(0.925, 0.875, 0.686);
+        vec3 col9 = vec3(0.984, 0.957, 0.820);
+        vec3 col10 = vec3(0.925, 0.875, 0.686);
+        vec3 col11 = vec3(0.984, 0.957, 0.820);
+        vec3 col12 = vec3(0.925, 0.875, 0.686);
+
+        float t = uv.x + uv.y;
+
+        if (t < 0.184058) return mix(col1, col2, t / 0.184058);
+        if (t < 0.225) return mix(col2, col3, (t - 0.184058) / (0.225 - 0.184058));
+        if (t < 0.26) return mix(col3, col4, (t - 0.225) / (0.26 - 0.225));
+        if (t < 0.29) return mix(col4, col5, (t - 0.26) / (0.29 - 0.26));
+        if (t < 0.31) return mix(col5, col6, (t - 0.29) / (0.31 - 0.29));
+        if (t < 0.349108) return mix(col6, col7, (t - 0.31) / (0.349108 - 0.31));
+        if (t < 0.494224) return mix(col7, col8, (t - 0.349108) / (0.494224 - 0.349108));
+        if (t < 0.619507) return mix(col8, col9, (t - 0.494224) / (0.619507 - 0.494224));
+        if (t < 0.759898) return mix(col9, col10, (t - 0.619507) / (0.759898 - 0.619507));
+        if (t < 0.911597) return mix(col10, col11, (t - 0.759898) / (0.911597 - 0.759898));
+        return mix(col11, col12, (t - 0.911597) / (0.975 - 0.911597));
+    }
+
+    vec3 rectangleGradient(vec2 uv, float angle) {
+        vec3 col1 = vec3(0.984, 0.957, 0.820);
+        vec3 col2 = vec3(0.925, 0.875, 0.686);
+        vec3 col3 = vec3(0.984, 0.957, 0.820);
+        vec3 col4 = vec3(0.925, 0.875, 0.686);
+        vec3 col5 = vec3(0.984, 0.957, 0.820);
+        vec3 col6 = vec3(0.925, 0.875, 0.686);
+        vec3 col7 = vec3(0.984, 0.957, 0.820);
+        vec3 col8 = vec3(0.925, 0.875, 0.686);
+        vec3 col9 = vec3(0.984, 0.957, 0.820);
+        vec3 col10 = vec3(0.925, 0.875, 0.686);
+        vec3 col11 = vec3(0.984, 0.957, 0.820);
+        vec3 col12 = vec3(0.925, 0.875, 0.686);
+
+        float t = cos(angle) * uv.x + sin(angle) * uv.y;
+
+        if (t < 0.184058) return mix(col1, col2, t / 0.184058);
+        if (t < 0.225) return mix(col2, col3, (t - 0.184058) / (0.225 - 0.184058));
+        if (t < 0.26) return mix(col3, col4, (t - 0.225) / (0.26 - 0.225));
+        if (t < 0.29) return mix(col4, col5, (t - 0.26) / (0.29 - 0.26));
+        if (t < 0.31) return mix(col5, col6, (t - 0.29) / (0.31 - 0.29));
+        if (t < 0.349108) return mix(col6, col7, (t - 0.31) / (0.349108 - 0.31));
+        if (t < 0.494224) return mix(col7, col8, (t - 0.349108) / (0.494224 - 0.349108));
+        if (t < 0.619507) return mix(col8, col9, (t - 0.494224) / (0.619507 - 0.494224));
+        if (t < 0.759898) return mix(col9, col10, (t - 0.619507) / (0.759898 - 0.619507));
+        if (t < 0.911597) return mix(col10, col11, (t - 0.759898) / (0.911597 - 0.759898));
+        return mix(col11, col12, (t - 0.911597) / (0.975 - 0.911597));
+    }
+
+    void main(){
+      vec2 fragCoord = vUv * uRes;
+      vec2 uv = fragCoord / uRes.xy;
+      vec3 bg = backgroundGradient(uv);
+
+      float angle1 = -59.3288 * PI / 180.0 + sin(uTime * 0.05) * 0.2;
+      vec2 uv1 = uv - vec2(sin(uTime * 0.07) * 0.3, cos(uTime * 0.5) * 0.2 + 0.1);
+      vec3 rect1 = rectangleGradient(uv1, angle1);
+
+      float angle2 = -101.773 * PI / 180.0 + cos(uTime * 0.04) * 0.9;
+      vec2 uv2 = uv - vec2(cos(uTime * 0.06) * 0.4 + 0.5, sin(uTime * 0.08) * 0.3 + 1.0);
+      vec3 rect2 = rectangleGradient(uv2, angle2);
+
+      vec3 color = bg;
+      color = mix(color, rect1, 0.5);
+      color = mix(color, rect2, 0.5);
+
+      gl_FragColor = vec4(color, 1.0);
+    }
+  `;
+
+  const material = new THREE.ShaderMaterial({
+    vertexShader, fragmentShader,
+    uniforms: {
+      uRes: { value: new THREE.Vector2(w(), h()) },
+      uTime: { value: 0 }
+    }
+  });
+
+  const geo = new THREE.PlaneGeometry(2, 2);
+  const mesh = new THREE.Mesh(geo, material);
+  scene.add(mesh);
+
+  const clock = new THREE.Clock();
+  function animate(){
+    requestAnimationFrame(animate);
+    material.uniforms.uTime.value = clock.getElapsedTime();
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  function onResize(){
+    const vw = w(), vh = h();
+    renderer.setSize(vw, vh);
+    material.uniforms.uRes.value.set(vw, vh);
+  }
+  window.addEventListener('resize', onResize);
+
+  const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (mq.matches){
+    clock.stop();
+    material.uniforms.uTime.value = 4.0;
+    renderer.render(scene, camera);
+  }
+})();
+</script>
+
+</body>
+</html>
