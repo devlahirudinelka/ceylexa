@@ -22,7 +22,7 @@ export default function Hero() {
               tone="light"
               icon={<span className="h-1.5 w-1.5 rounded-full bg-accent-2" />}
             >
-              AI Agency
+              Digital Marketing Agency
             </Badge>
           </div>
 
@@ -30,19 +30,20 @@ export default function Hero() {
             className="animate-fade-up mt-8 text-4xl font-semibold leading-[1.08] tracking-tight text-foreground sm:text-6xl lg:text-7xl"
             style={{ animationDelay: "0.08s" }}
           >
-            We build the AI agents
-            <br />
-            that run your <span className="text-gradient">busywork.</span>
+            Your Partner in 
+            <br /> 
+            <span className="text-gradient">Digital Excellence.</span>
           </h1>
 
           <p
-            className="animate-fade-up mt-6 max-w-2xl text-balance text-base text-muted sm:text-lg"
+            className="animate-fade-up mt-10 max-w-2xl text-balance text-base text-muted sm:text-lg"
             style={{ animationDelay: "0.16s" }}
           >
-            Ceylexa is an AI agency for operations teams. We design, build, and
-            operate the workflows and AI agents that take repetitive work off
-            your team&apos;s plate — so they can spend it on the work that needs
-            a human.
+            <br />
+            We are helping businesses build powerful brands, 
+            connect with their audiences, and grow in the digital world. 
+            We mix big ideas with bold execution to craft campaigns that 
+            create meaningful digital experiences.
           </p>
 
           <div

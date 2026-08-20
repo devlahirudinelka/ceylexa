@@ -23,7 +23,7 @@ export const trustStrip = {
 };
 
 export const heroStats = [
-  { label: "50+ AI systems shipped", icon: "shield" },
+  { label: "10+ nations served worldwide", icon: "shield" },
   { label: "4.9/5 client rating", icon: "star" },
   { label: "12+ industries served", icon: "users" },
 ];
