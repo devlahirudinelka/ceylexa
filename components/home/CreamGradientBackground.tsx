@@ -9,12 +9,13 @@ import dynamic from "next/dynamic";
  * used by LiquidCarbonBackground.tsx. Kept free of any three.js import
  * so that:
  *
- *  - Users who don't get the shader (reduced-motion, no WebGL, or a
- *    coarse-pointer/mobile device) never download that chunk at all —
- *    next/dynamic below code-splits it into its own lazily-fetched file.
- *    (The shader itself is cheap, but the plain cream page background it
- *    would sit on is already visually near-identical at rest, so there's
- *    little to gain from paying for WebGL init on mobile.)
+ *  - Users who don't get the shader (reduced-motion, or no WebGL support)
+ *    never download that chunk at all — next/dynamic below code-splits it
+ *    into its own lazily-fetched file. Mobile/touch devices are NOT
+ *    excluded here: this is a cheap single-pass shader (no raymarching,
+ *    no offscreen render target — see CreamGradientCanvas.tsx), so it's
+ *    fine on phones, and skipping it made the hero look unfinished on
+ *    mobile, where most visitors land.
  *  - The chunk that IS fetched is deferred to just after first paint
  *    (see the idle-callback effect), so it doesn't compete with the
  *    hero's text for the main thread on first load.
@@ -30,12 +31,9 @@ const CreamGradientCanvas = dynamic(() => import("./CreamGradientCanvas"), {
 // a setState-in-effect render flash.
 function subscribeMediaChanges(callback: () => void) {
   const reduceMql = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const pointerMql = window.matchMedia("(pointer: coarse)");
   reduceMql.addEventListener("change", callback);
-  pointerMql.addEventListener("change", callback);
   return () => {
     reduceMql.removeEventListener("change", callback);
-    pointerMql.removeEventListener("change", callback);
   };
 }
 
@@ -56,8 +54,7 @@ function detectWebGL() {
 
 function getReadySnapshot() {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
-  if (reduceMotion || isCoarsePointer) return false;
+  if (reduceMotion) return false;
   return detectWebGL();
 }
 

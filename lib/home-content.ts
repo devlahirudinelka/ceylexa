@@ -28,6 +28,29 @@ export const heroStats = [
   { label: "12+ industries served", icon: "users" },
 ];
 
+export const about = {
+  badge: "About Ceylexa",
+  heading: "We're operators first, agency second.",
+  body: [
+    "Ceylexa is an AI agency for operations teams who want their time back. We started by building agents to fix our own team's busywork — status updates, data entry, ticket triage, reporting — before we ever pitched a client.",
+    "That's still how we work today: we audit how your team actually operates, design and build the agents worth building first, wire them into the stack you already run, and stay on as the system grows with you.",
+  ],
+  highlights: [
+    {
+      title: "Built to operate, not just launch",
+      description: "Every agent ships with monitoring, logging, and a rollback plan — not a one-off demo.",
+    },
+    {
+      title: "Integrated from day one",
+      description: "We build inside your CRM, data warehouse, and messaging tools instead of asking you to switch.",
+    },
+    {
+      title: "A partner, not a vendor",
+      description: "We stay on after launch, tuning and extending the system as your operations change.",
+    },
+  ],
+};
+
 export const features = [
   {
     title: "Workflow strategy & design",

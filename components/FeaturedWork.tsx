@@ -1,3 +1,8 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import { gsap } from "@/lib/gsap";
+
 const PROJECTS = [
   {
     href: "/project/oster",
@@ -25,6 +30,11 @@ const PROJECTS = [
   },
 ];
 
+// How far from the top of the viewport each stacked card sticks. Kept in
+// one place so the ScrollTrigger math below and the inline `top` on each
+// card agree with each other.
+const STACK_TOP = "8vh";
+
 function ArrowIcon() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 32 32" fill="none" className="aroww-ichon">
@@ -37,6 +47,47 @@ function ArrowIcon() {
 }
 
 export default function FeaturedWork() {
+  // One ref per card wrapper (the `.project-collection-item`), in render
+  // order. `position: sticky` on each wrapper is what makes it "stick" at
+  // STACK_TOP once its own scroll range starts, then get covered by the
+  // next card sticking on top of it — the classic scroll-stack effect,
+  // done with native sticky positioning rather than ScrollTrigger pins so
+  // it stays cheap and plays nicely with the Lenis smooth-scroll already
+  // wrapping the page (see SmoothScroll.tsx).
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const cards = cardRefs.current.filter((el): el is HTMLDivElement => el !== null);
+    if (cards.length < 2) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    // Polish on top of the plain sticky stack: as the next card scrolls up
+    // and starts covering the current one, ease the current card down to a
+    // slightly smaller, dimmer state so the stack reads as depth rather
+    // than a hard cut. Purely scroll-linked (scrub: true), no pinning.
+    const ctx = gsap.context(() => {
+      cards.forEach((card, i) => {
+        const next = cards[i + 1];
+        if (!next) return;
+
+        gsap.set(card, { transformOrigin: "center top" });
+        gsap.to(card, {
+          scale: 0.94,
+          opacity: 0.82,
+          ease: "none",
+          scrollTrigger: {
+            trigger: next,
+            start: "top bottom",
+            end: "top top",
+            scrub: true,
+          },
+        });
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section className="section">
       <div className="space-29xl" />
@@ -54,8 +105,16 @@ export default function FeaturedWork() {
           <div className="featured-card-wrapper">
             <div className="w-dyn-list">
               <div role="list" className="project-collection-list w-dyn-items">
-                {PROJECTS.map((project) => (
-                  <div key={project.href} role="listitem" className="project-collection-item w-dyn-item">
+                {PROJECTS.map((project, i) => (
+                  <div
+                    key={project.href}
+                    ref={(el) => {
+                      cardRefs.current[i] = el;
+                    }}
+                    role="listitem"
+                    className="project-collection-item w-dyn-item"
+                    style={{ position: "sticky", top: STACK_TOP, zIndex: i + 1 }}
+                  >
                     <a
                       href={project.href}
                       style={{ backgroundImage: `url("${project.image}")` }}

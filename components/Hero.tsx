@@ -87,6 +87,21 @@ export default function Hero() {
           { opacity: 1, scale: 1, duration: 0.9, ease: "power3.out" },
           0.15
         );
+
+        // Card _6 (hero-6.webp) starts at opacity 0 (see CARDS above,
+        // `startOpacity: 0`) so it can fade in on its own beat instead of
+        // popping in with the rest of the stack. Nothing was ever
+        // animating it back to visible, so it stayed invisible for good —
+        // bring it in explicitly, just after the container reveal.
+        const lastCard = imageContainerRef.current.querySelector<HTMLElement>(".card._6");
+        if (lastCard) {
+          tl.fromTo(
+            lastCard,
+            { opacity: 0 },
+            { opacity: 1, duration: 0.6, ease: "power2.out" },
+            0.55
+          );
+        }
       }
 
       if (heroTextRef.current) {

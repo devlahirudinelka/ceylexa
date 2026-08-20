@@ -11,9 +11,6 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en">
-      <head>
-        <link href="/css/uxoral.css" rel="stylesheet" />
-      </head>
       <body>
         <SmoothScroll>{children}</SmoothScroll>
       </body>

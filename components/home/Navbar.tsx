@@ -17,11 +17,10 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // The hero directly below is a dark amber gradient, so the bar starts in
-  // "dark" mode (light text, no background) and flips to the light theme
-  // once the user scrolls past it.
-  const dark = !scrolled && !open;
-
+  // The hero directly below sits on the light "Amber Crystal" cream
+  // background (--background, #faf8f2), not a dark section, so the bar
+  // uses the same light/foreground text at all scroll positions —
+  // it only gains a background + border once the user scrolls.
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
@@ -35,9 +34,7 @@ export default function Navbar() {
           <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#b45309] to-[#ea580c] text-white">
             <Sparkles size={16} />
           </span>
-          <span
-            className={`font-display text-lg font-semibold tracking-tight ${dark ? "text-white" : "text-foreground"}`}
-          >
+          <span className="font-display text-lg font-semibold tracking-tight text-foreground">
             Ceylexa
           </span>
         </Link>
@@ -47,9 +44,7 @@ export default function Navbar() {
             <Link
               key={item.href}
               href={item.href}
-              className={`text-sm transition-colors ${
-                dark ? "text-white/75 hover:text-white" : "text-muted hover:text-foreground"
-              }`}
+              className="text-sm text-muted transition-colors hover:text-foreground"
             >
               {item.label}
             </Link>
@@ -64,7 +59,7 @@ export default function Navbar() {
 
         <button
           aria-label="Toggle menu"
-          className={`cursor-pointer md:hidden ${dark ? "text-white" : "text-foreground"}`}
+          className="cursor-pointer text-foreground md:hidden"
           onClick={() => setOpen((v) => !v)}
         >
           {open ? <X size={22} /> : <Menu size={22} />}
