@@ -36,11 +36,11 @@ export default function Home() {
         {/* <HeroSocial /> */}
 
         <div className="main">
-          <LogoMarquee />
           <MissionStats />
           <FeaturedWork />
           <Services />
           <ProcessSteps />
+          <LogoMarquee />
           <Testimonials />
           <FAQ />
           <Blog />

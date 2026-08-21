@@ -34,8 +34,8 @@ export default function AboutPage() {
         <MissionStats />
         <FeaturedWork />
         <Services />
-        <LogoMarquee />
         <ProcessSteps />
+        <LogoMarquee />
         <Testimonials />
         <FAQ />
         <Blog />
@@ -45,4 +45,3 @@ export default function AboutPage() {
     </div>
   );
 }
-// git commit -m 'Changes on the home up to the clients'
