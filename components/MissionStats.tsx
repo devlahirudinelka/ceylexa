@@ -35,7 +35,7 @@ export default function MissionStats() {
                 <div className="spacing-md hide-mobile" />
                 <p className="font-size-sm">
                   Ceylexa is a dynamic 
-                  <span className="text-span-2"> Digital Marketing Agency.</span> 
+                  <span className="text-span-2"> Digital Marketing Agency. </span> 
                   We are dedicated to helping businesses build stronger brands, connect with the right audiences.
                 </p>
               </div>
