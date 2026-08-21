@@ -96,9 +96,9 @@ export default function FeaturedWork() {
           <div className="featured-work-title">
             <div className="testimonial-header-left">
               <div className="font-size-xsm">
-                <span className="highlight-text orrenge">{"// "}</span>Featured Work
+                <span className="highlight-text orrenge">{"// "}</span>Recent Work
               </div>
-              <h2 className="heading-style-h2">Every Type of Creative Work</h2>
+              <h2 className="heading-style-h2">Growth looks different for every brand</h2>
             </div>
           </div>
           <div className="spacing-20xl" />

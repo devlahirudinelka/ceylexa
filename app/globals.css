@@ -3759,6 +3759,7 @@ li {
   color: var(--_color---white);
   line-height: var(--_typography---line-height--line-height-1-2);
   font-weight: var(--fonts-weight--medium);
+  text-shadow: 2px 2px 4px rgb(0, 0, 0);
 }
 
 .font-size-5-5-xl.white.text-aling-cener {
