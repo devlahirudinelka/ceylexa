@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Ceylexa",
   description:
     "Ceylexa — an AI agency for operations teams.",
+  icons: {
+    icon: "/images/favicon.png",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

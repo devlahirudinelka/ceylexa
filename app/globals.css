@@ -3776,6 +3776,7 @@ li {
   width: var(--_container-item---full);
   height: var(--_container-item---full);
   object-fit: cover;
+  border-radius: 15px;
 }
 
 .counter-main {
@@ -5981,6 +5982,7 @@ li {
     width: var(--_container-item---full);
     object-fit: contain;
     object-position: 50% 0%;
+    border-radius: 15px;
   }
 
   .project-card {

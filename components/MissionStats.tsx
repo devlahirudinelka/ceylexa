@@ -77,7 +77,7 @@ export default function MissionStats() {
                   Our results speak louder than words. 
                 </div>
               </div>
-              <div className="satisfication-percentise">
+              <div className="mission-top-card">
                 <div className="counter-item">
                   <div className="counter-text">
                     <CountUp to={98} suffix="%" className="counter-value" />
@@ -91,7 +91,7 @@ export default function MissionStats() {
               <div className="robot-image-wrapper">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/images/robot.webp"
+                  src="/images/featured.webp"
                   loading="lazy"
                   alt="Close-up of a person wearing a white helmet with large orange visor and a high-collared white jacket."
                   className="robot-image"
