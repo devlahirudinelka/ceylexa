@@ -6481,9 +6481,9 @@ li {
     grid-row-gap: 8rem;
   }
 
-  .robot-image {
+  /* .robot-image {
     max-height: 25rem;
-  }
+  } */
 
   .card-icon-wrap {
     width: 2.7rem;
@@ -7007,9 +7007,9 @@ li {
     height: 1.7rem;
   }
 
-  .robot-image {
+  /* .robot-image {
     max-height: 18rem;
-  }
+  } */
 
   .card-icon-wrap {
     width: 2.5rem;

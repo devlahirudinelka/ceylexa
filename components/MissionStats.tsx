@@ -77,7 +77,7 @@ export default function MissionStats() {
                   Our results speak louder than words. 
                 </div>
               </div>
-              <div className="mission-top-card">
+              <div className="mission-top-card satisfication-percentise">
                 <div className="counter-item">
                   <div className="counter-text">
                     <CountUp to={98} suffix="%" className="counter-value" />
