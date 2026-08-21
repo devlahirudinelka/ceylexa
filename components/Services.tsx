@@ -7,37 +7,41 @@ const SERVICES = [
   {
     number: "01",
     title: "Web Design",
-    pills: ["Landing", "Brochure Site", "Corporate Website", "E-Commerce", "Web 3.0", "UI/UX Design"],
+    pills: ["Website Maintenance & Updates", "Website Development", "UI/UX Design", "E-Commerce", "Responsive Design"],
     description:
-      "We create world-class websites using modern design practices. Mobile-first websites and web experiences are essential to the success of your web project. While maintaining bespoke originality, our team will focus on responsive design and optimize your website for any device and interface. Your new website will attract desirable target audiences, boost engagement, drive sales, and increase the brand value of your business.",
-  },
+      "Your website is the digital home of your brand. At Ceylexa, we design and develop modern, responsive, high-performing websites that combine strong visual identity, functionality, seamless user experience, and performance. From initial concepts and UI/UX design to development, testing, and launch, we create websites that are easy to navigate, search-engine friendly, and built around your business goals. Our digital experiences are designed not only to establish credibility and showcase your brand but also to engage visitors, drive conversions, and support long-term business growth.",},
   {
     number: "02",
-    title: "Branding",
-    pills: ["Corporate", "Beauty", "F&B", "Web 3.0", "Hospitality", "Re-Branding"],
+    title: "Digital Marketing",
+    pills: ["Social Media Marketing", "Social Media Management", "Performance Marketing", "SEO & SEM", "Email Marketing", "Digital Campaigns"],
     description:
-      "Our branding team will excel at presenting your business in its best light. Whether you're looking to attract a new set of eyes, rekindle an old client base, or simply refine your business's identity - our creatives will formulate the optimal corporate identity, collateral designs, and brand guidelines unique to your company's needs. Armed with your new bespoke brand - you will now be able to captivate engaged new audiences and capitalize on your company's full potential.",
-  },
+      "At Ceylexa, we turn digital opportunities into meaningful brand growth. Our digital marketing services combine creative thinking, strategic planning, data-driven insights, and targeted campaigns to help businesses reach the right audiences and achieve measurable results. From building a strong online presence to driving traffic, engagement, leads, and conversions, we create tailored digital strategies that move your brand forward.",},
   {
     number: "03",
-    title: "Graphic Design",
-    pills: ["Print Graphics", "Conference Event Branding", "Deck Designs", "Digital Brand Collateral", "Social Media Designs"],
+    title: "Content Creation",
+    pills: ["Graphic Design & Visual Content", "Videography", "Photography", "Copywriting & Caption Writing", "Motion Graphics"],
     description:
-      "From decks to social media assets, our graphic design team crafts clean, consistent visuals that carry your brand across every touchpoint. We balance bold creative direction with practical, print-ready and pixel-perfect execution.",
+      "At Ceylexa, we create engaging, purposeful content that captures attention and gives your brand a distinctive voice in the digital space. From creative concepts and compelling visuals to scroll-stopping social media content, we combine strategy, storytelling, and creativity to produce content that connects with your audience and supports your marketing goals.",
   },
   {
     number: "04",
-    title: "Packaging Design",
-    pills: ["Consumer Good Packaging", "Merchandise Packaging", "Beverage Packaging", "Startup Product Packaging"],
+    title: "Paid Media Marketing",
+    pills: ["Meta Ads Management", "Google Ads Management", "TikTok Advertising", "LinkedIn Advertising", "E-Commerce & Shopping Ads"],
     description:
-      "Experienced with top-grade packaging design for a wide range of products from consumer goods to startup ideas. Your packaging design will exceed all expectations with fresh yet pragmatic design ideas realistic to produce by the creatives at DD.NYC®. Packaging design is what makes us fall in love with some of our favorite products. Make yours a favorite.",
-  },
+      "At Ceylexa, we plan and manage targeted paid media campaigns designed to put your brand in front of the right people at the right time. By combining audience insights, creative strategy, precise targeting, and continuous optimisation, we help businesses increase visibility, generate quality leads, drive website traffic, and achieve measurable returns from their advertising investment.",  },
   {
     number: "05",
-    title: "Video Production",
-    pills: ["Corporate Video Production", "Event Video Production", "Promotional Videos", "Post-Production & Editing"],
+    title: "Branding",
+    pills: ["Brand Strategy & Positioning", "Logo Design", "Brand Guidelines", "Tagline & Slogan Development", "Brand Storytelling"],
     description:
-      "Uxora specializes in video production since 2015 in Manhattan, our talented team leverages over 30 years of combined experience working with advertising agencies and brands to create exceptional visual narratives. We are dedicated to video excellence, crafting impactful content that authentically engages audiences and elevates brands.",
+      "At Ceylexa, we build brands that are more than just visually appealing — we create identities that communicate who you are, what you stand for, and why your audience should choose you. From defining your brand strategy to creating a consistent visual identity, we combine creativity and strategy to build memorable brands that stand out, connect with audiences, and grow with your business.",
+  },
+  {
+    number: "06",
+    title: "Influencer Marketing Campaigns",
+    pills: ["Influencer Marketing Strategy", "Influencer Selection & Vetting", "Influencer Campaign Planning", "Content Brief Development", "Collaborations & Partnerships"],
+    description:
+      "At Ceylexa, we harness the power of influencer marketing to amplify your brand's reach and engagement. Our strategic approach involves identifying the right influencers, crafting compelling campaigns, and measuring results to ensure maximum impact and return on investment.",
   },
 ];
 
@@ -136,7 +140,7 @@ export default function Services() {
           <div className="services-header">
             <div className="services-header-left">
               <div className="font-size-xsm">
-                <span className="highlight-text orrenge">{"// "}</span>Featured Work
+                <span className="highlight-text orrenge">{"// "}</span>Solutions
               </div>
               <div className="spacing-2xl" />
               <h2 className="heading-style-h2">Creative Services</h2>
@@ -144,12 +148,12 @@ export default function Services() {
             <div className="services-header-right">
               <div className="services-p-block">
                 <div className="max-width-29">
-                  <p className="font-size-sm">
+                  {/* <p className="font-size-sm">
                     We build the next in commerce on Shopify. From strategy to design,
                     development to retention, we&rsquo;ve got you covered. 9+ years of
                     experience, 200+ stores launched, 60+ experts and we&rsquo;re your partner
                     from discovery to launch and beyond.
-                  </p>
+                  </p> */}
                 </div>
               </div>
             </div>

@@ -3865,18 +3865,49 @@ li {
 }
 
 .project-card {
-  padding: var(--_spacing---spacer--spacing-13xl);
   border: 1px solid var(--_color---light-transparent-black);
   border-radius: var(--_spacing---border-radious--border-raduous-2xl);
-  background-image: url("https://d3e54v103j8qbb.cloudfront.net/img/background-image.svg");
+  background-color: #f4f5f9;
+  flex-flow: column;
+  height: auto;
+  display: flex;
+  overflow: hidden;
+}
+
+.project-card-image {
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;
-  flex-flow: column;
-  justify-content: space-between;
-  height: 90vh;
+  min-height: 40rem;
+  position: relative;
+}
+
+.project-card-content {
+  padding: var(--_spacing---spacer--spacing-13xl);
   display: flex;
-  overflow: hidden;
+  flex-flow: column;
+  gap: var(--_spacing---spacer--spacing-6xl);
+  align-items: center;
+  text-align: center;
+}
+
+.project-card-content .project-card-top {
+  color: var(--_color---dim-gray);
+  width: 100%;
+  justify-content: center;
+  gap: var(--_spacing---spacer--spacing-6xl);
+}
+
+.project-card-content .middle-top-contain {
+  align-items: center;
+}
+
+.project-card-content .font-size-5-5-xl {
+  color: var(--_color---deep-black);
+}
+
+.project-card-content .font-size-sm {
+  color: var(--_color---dim-gray);
 }
 
 .project-card.v2 {
@@ -3898,14 +3929,17 @@ li {
 }
 
 .arrow {
-  width: var(--_container-item---full);
+  width: 3.75rem;
   border: 1px solid var(--_color---white);
   border-radius: var(--_spacing---border-radious--border-raduous-full);
+  background-color: #00000040;
   justify-content: center;
   align-items: center;
-  max-width: 3.75rem;
   height: 3.75rem;
   display: flex;
+  position: absolute;
+  right: var(--_spacing---spacer--spacing-13xl);
+  bottom: var(--_spacing---spacer--spacing-13xl);
 }
 
 .aroww-ichon {
@@ -5987,7 +6021,11 @@ li {
   }
 
   .project-card {
-    height: 55vh;
+    height: auto;
+  }
+
+  .project-card-image {
+    min-height: 32rem;
   }
 
   .project-card.v2 {
@@ -6497,8 +6535,11 @@ li {
   }
 
   .project-card {
-    padding: var(--_spacing---spacer--spacing-11xl);
-    height: 50vh;
+    height: auto;
+  }
+
+  .project-card-image {
+    min-height: 26rem;
   }
 
   .arrow {
@@ -7028,7 +7069,11 @@ li {
   }
 
   .project-card {
-    height: 40vh;
+    height: auto;
+  }
+
+  .project-card-image {
+    min-height: 22rem;
   }
 
   .project-card.v2 {

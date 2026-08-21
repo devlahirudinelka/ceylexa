@@ -31,10 +31,10 @@ export default function AboutPage() {
       <HeroSocial />
 
       <div className="main">
-        <LogoMarquee />
         <MissionStats />
         <FeaturedWork />
         <Services />
+        <LogoMarquee />
         <ProcessSteps />
         <Testimonials />
         <FAQ />
@@ -45,3 +45,4 @@ export default function AboutPage() {
     </div>
   );
 }
+// git commit -m 'Changes on the home up to the clients'

@@ -1,13 +1,34 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap";
 
-// The source template's marquee logos are large inline decorative SVGs
-// specific to its demo brand set; those weren't part of the assets we
-// downloaded, so each slot below is a text wordmark placeholder styled
-// with the exact .marque-content / .marque-logo classes from the ported CSS.
-const LOGOS = ["Acme", "Lumen", "Northwind", "Vertex", "Solace", "Orbit", "Halcyon"];
+const LOGOS = [
+  "2nd Chance Flowers.webp",
+  "BurgerTime.webp",
+  "Centro Cafe.webp",
+  "Ceylon Wedding Planners.webp",
+  "Ceylora.webp",
+  "Ceyora Jewelry.webp",
+  "Ceyzler.webp",
+  "Cinnarooo.webp",
+  "Country Bunches.webp",
+  "Cyclone Swimminng.webp",
+  "DB Ceylon.webp",
+  "Dhananjaya Bandara.webp",
+  "Doctor Band.webp",
+  "Grand Ceylon.webp",
+  "Hot Chocolate.webp",
+  "Lakdiv.webp",
+  "Looks Salon.webp",
+  "Lovi.webp",
+  "Manjula Handapangoda.webp",
+  "Nuwan Wijethunga.webp",
+  "Queen of the World.webp",
+  "Tandoori Grill.webp",
+  "Team T.webp",
+];
 
 function MarqueeRow({ reverse = false }: { reverse?: boolean }) {
   const trackRef = useRef<HTMLDivElement>(null);
@@ -21,7 +42,7 @@ function MarqueeRow({ reverse = false }: { reverse?: boolean }) {
         { xPercent: reverse ? -50 : 0 },
         {
           xPercent: reverse ? 0 : -50,
-          duration: 28,
+          duration: 78,
           ease: "none",
           repeat: -1,
         }
@@ -37,9 +58,14 @@ function MarqueeRow({ reverse = false }: { reverse?: boolean }) {
           <div key={rep} style={{ display: "flex" }}>
             {LOGOS.map((logo) => (
               <div key={`${rep}-${logo}`} className="marque-content">
-                <span className="marque-logo" style={{ textAlign: "center", fontWeight: 600 }}>
-                  {logo}
-                </span>
+                <Image
+                  src={`/images/Clients/${logo}`}
+                  alt={logo.replace(/\.webp$/, "")}
+                  width={154}
+                  height={80}
+                  className="marque-logo"
+                  style={{ objectFit: "contain" }}
+                />
               </div>
             ))}
           </div>

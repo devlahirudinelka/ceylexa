@@ -30,9 +30,6 @@ const PROJECTS = [
   },
 ];
 
-// How far from the top of the viewport each stacked card sticks. Kept in
-// one place so the ScrollTrigger math below and the inline `top` on each
-// card agree with each other.
 const STACK_TOP = "8vh";
 
 function ArrowIcon() {
@@ -47,13 +44,6 @@ function ArrowIcon() {
 }
 
 export default function FeaturedWork() {
-  // One ref per card wrapper (the `.project-collection-item`), in render
-  // order. `position: sticky` on each wrapper is what makes it "stick" at
-  // STACK_TOP once its own scroll range starts, then get covered by the
-  // next card sticking on top of it — the classic scroll-stack effect,
-  // done with native sticky positioning rather than ScrollTrigger pins so
-  // it stays cheap and plays nicely with the Lenis smooth-scroll already
-  // wrapping the page (see SmoothScroll.tsx).
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
@@ -61,10 +51,6 @@ export default function FeaturedWork() {
     if (cards.length < 2) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    // Polish on top of the plain sticky stack: as the next card scrolls up
-    // and starts covering the current one, ease the current card down to a
-    // slightly smaller, dimmer state so the stack reads as depth rather
-    // than a hard cut. Purely scroll-linked (scrub: true), no pinning.
     const ctx = gsap.context(() => {
       cards.forEach((card, i) => {
         const next = cards[i + 1];
@@ -117,25 +103,26 @@ export default function FeaturedWork() {
                   >
                     <a
                       href={project.href}
-                      style={{ backgroundImage: `url("${project.image}")` }}
                       className="project-card w-inline-block"
                     >
-                      <div className="project-card-top">
-                        <div className="font-size-sm white">{project.date}</div>
-                        <div className="font-size-sm white">{project.category}</div>
-                      </div>
-                      <div className="card-contain-wrapper">
-                        <div className="middle-item-block">
-                          <div className="middle-top-contain">
-                            <div className="font-size-5-5-xl white">{project.title}</div>
-                            <div className="font-size-sm white text-align-center">{project.tags}</div>
-                          </div>
-                          <div className="arrow">
-                            <ArrowIcon />
-                          </div>
+                      <div
+                        className="project-card-image"
+                        style={{ backgroundImage: `url("${project.image}")` }}
+                      >
+                        <div className="arrow">
+                          <ArrowIcon />
                         </div>
                       </div>
-                      <div className="blank" />
+                      <div className="project-card-content">
+                        <div className="project-card-top">
+                          <div className="font-size-sm">{project.date}</div>
+                          <div className="font-size-sm">{project.category}</div>
+                        </div>
+                        <div className="middle-top-contain">
+                          <div className="font-size-5-5-xl">{project.title}</div>
+                          <div className="font-size-sm">{project.tags}</div>
+                        </div>
+                      </div>
                     </a>
                   </div>
                 ))}
