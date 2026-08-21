@@ -1,9 +1,9 @@
 import CountUp from "./CountUp";
 
 const REVIEWER_ICONS = [
-  "/images/reviewer-1.webp",
-  "/images/reviewer-2.webp",
-  "/images/reviewer-3.webp",
+  "/images/Work-1.webp",
+  "/images/Work-2.webp",
+  "/images/Work-3.webp",
 ];
 
 function ArrowIcon({ className = "button-arrow-main" }: { className?: string }) {
@@ -29,14 +29,14 @@ export default function MissionStats() {
                 <span className="highlight-text orrenge">{"// "}</span>Featured Work
               </div>
               <div className="spacing-2xl" />
-              <h2 className="heading-style-h2">We Strive to Innovate</h2>
+              <h2 className="heading-style-h2">We Strive for Success</h2>
               <div className="spacing-6xl" />
               <div className="max-width-29">
                 <div className="spacing-md hide-mobile" />
                 <p className="font-size-sm">
-                  <span className="text-span-2">Solid Strategy</span> aligned with business
-                  needs and robust data analysis are fundamental ingredients to extract
-                  actionable insights
+                  Ceylexa is a dynamic 
+                  <span className="text-span-2"> Digital Marketing Agency.</span> 
+                  We are dedicated to helping businesses build stronger brands, connect with the right audiences.
                 </p>
               </div>
             </div>
@@ -67,14 +67,14 @@ export default function MissionStats() {
                     ))}
                   </div>
                   <div className="top-content">
-                    <div className="font-size-xsm pure-black">200+ Brands Worldwide</div>
+                    <div className="font-size-xsm pure-black">100+ Brands Worldwide</div>
                   </div>
                 </div>
               </div>
               <div className="contain-bottom-card">
                 <div className="font-size-base">
-                  Our platform feels faster, smoother, and just works better and intuitively.
-                  The engagement metrics don&rsquo;t lie.
+                  Our services feels faster, smoother, and just works better and Strategically.
+                  Our results speak louder than words. 
                 </div>
               </div>
               <div className="satisfication-percentise">
@@ -101,10 +101,10 @@ export default function MissionStats() {
                 <div className="counter-wrapper-main">
                   <div className="counter-item">
                     <div className="counter-text">
-                      <CountUp to={20} suffix="+" className="counter-value is-white" />
+                      <CountUp to={10} suffix="+" className="counter-value is-white" />
                     </div>
                   </div>
-                  <div className="font-size-xsm white">Global Awards &amp; Features</div>
+                  <div className="font-size-xsm white">Awards &amp; Features</div>
                 </div>
               </div>
             </div>
@@ -113,17 +113,16 @@ export default function MissionStats() {
               <div className="contain-bottom-card">
                 <div className="bottom-top-contant">
                   <div className="font-size-base">
-                    <span className="highlight-text">250+</span> testimonial with trusted by
-                    YC-backed, VC-funded, a16z, Sequoia
+                    <span className="highlight-text">100+</span> testimonial from a Global Client Network Across 10 Countries.
                   </div>
                 </div>
                 <div className="satisfication-percentise">
                   <div className="counter-item">
                     <div className="counter-text">
-                      <CountUp to={5} suffix="K+" className="counter-value" />
+                      <CountUp to={2} suffix="K+" className="counter-value" />
                     </div>
                   </div>
-                  <div className="font-size-sm lemon-grass">Global Project</div>
+                  <div className="font-size-sm lemon-grass">Global Projects</div>
                 </div>
               </div>
               <a href="/contact" className="mission-top-card aroww-button-stye w-inline-block">

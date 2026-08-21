@@ -3576,7 +3576,7 @@ li {
   grid-column-gap: var(--_spacing---spacer--spacing-md);
   grid-row-gap: var(--_spacing---spacer--spacing-md);
   border-radius: var(--_spacing---border-radious--border-raduous-5xl);
-  background-color: var(--_color---vermilion);
+  background-color: #d7ba5e;
   color: var(--_color---white);
   justify-content: center;
   align-items: center;
@@ -3783,7 +3783,7 @@ li {
   padding: var(--_spacing---spacer--spacing-6xl) var(--_spacing---spacer--spacing-4xl);
   border: 1px solid var(--_color---light-transparent-black);
   border-radius: var(--_spacing---border-radious--border-raduous-md);
-  background-color: var(--_color---vermilion);
+  background-color: #d7ba5e;
   justify-content: space-between;
   align-items: center;
   display: flex;
@@ -3800,7 +3800,7 @@ li {
 }
 
 .card-icon {
-  color: var(--_color---vermilion);
+  color: #d7ba5e;
   width: 1.5rem;
   height: 1.5rem;
 }
@@ -3812,7 +3812,7 @@ li {
 }
 
 .svg-3 {
-  color: var(--_color---vermilion);
+  color: #d7ba5e;
   width: 1.8rem;
   height: 1.8rem;
 }
