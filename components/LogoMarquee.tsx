@@ -79,7 +79,7 @@ export default function LogoMarquee() {
   return (
     <section className="section">
       <div className="space-29xl" />
-      <div className="logo-marque-main pb-20">
+      <div className="logo-marque-main">
         <MarqueeRow />
         <MarqueeRow reverse />
       </div>

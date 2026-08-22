@@ -4081,6 +4081,7 @@ li {
 
 .testiomoniul-card-info-block {
   padding: var(--_spacing---spacer--spacing-16xl);
+  flex: 1;
   grid-column-gap: var(--_spacing---spacer--spacing-6xl);
   grid-row-gap: var(--_spacing---spacer--spacing-6xl);
   flex-flow: column;
