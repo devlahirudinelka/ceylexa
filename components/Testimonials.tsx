@@ -67,7 +67,9 @@ function TestimonialCard({ t }: { t: (typeof TESTIMONIALS)[number] }) {
     <div className="testiomonial-card">
       <div className="testiomoniul-card-info-block">
         <div className="max-width-25-2">
-          <p className="font-size-base normal">&ldquo;{t.quote}&rdquo;</p>
+          <p className="font-size-base normal line-clamp-8 sm:line-clamp-10">
+            &ldquo;{t.quote}&rdquo;
+          </p>
         </div>
         <div className="testiomoniul-bottm-title">
           <div className="font-size-lg">{t.name}</div>
@@ -143,10 +145,7 @@ export default function Testimonials() {
 
       <div className="spacing-17xl" />
 
-      <div className="flex flex-col gap-6">
-        <MarqueeRow />
-        <MarqueeRow reverse />
-      </div>
+      <MarqueeRow />
 
       <div className="space-xxxl" />
     </section>

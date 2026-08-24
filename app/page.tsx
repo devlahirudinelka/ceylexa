@@ -6,7 +6,7 @@ import LogoStrip from "@/components/home/LogoStrip";
 import Features from "@/components/home/Features";
 import WorkflowShowcase from "@/components/home/WorkflowShowcase";
 import Integrations from "@/components/home/Integrations";
-import Testimonials from "@/components/home/Testimonials";
+import Testimonials from "@/components/Testimonials";
 import CTASection from "@/components/home/CTASection";
 import Footer from "@/components/home/Footer";
 import Blog from "@/components/Blog";
@@ -31,8 +31,6 @@ export default function Home() {
       <Navbar />
       <Hero />
       <div className="page-wrapper">
-   
-
         {/* <HeroSocial /> */}
 
         <div className="main">

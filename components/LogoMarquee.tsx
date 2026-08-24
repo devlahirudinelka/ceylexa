@@ -79,8 +79,13 @@ export default function LogoMarquee() {
   return (
     <section className="section">
       <div className="space-29xl" />
+      {/* `.logo-marque-main` lays its children out in a row, not stacked
+         (no flex-direction: column) — with a second full-width track
+         appended, that row previously started 22,632px+ off to the right
+         of the (overflow: hidden) viewport and was never actually visible.
+         One row, reversed to scroll right-to-left's opposite (i.e. to the
+         right) per request, instead of animating a row nobody could see. */}
       <div className="logo-marque-main">
-        <MarqueeRow />
         <MarqueeRow reverse />
       </div>
     </section>

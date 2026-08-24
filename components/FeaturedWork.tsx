@@ -2,33 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap";
-
-const PROJECTS = [
-  {
-    href: "/project/oster",
-    date: "May 4, 2025",
-    category: "Advertising",
-    title: "Oster",
-    tags: "Illustration Design, eBook & Digital Reports",
-    image: "/images/project-3.webp",
-  },
-  {
-    href: "/project/roland-88tdv",
-    date: "February 15, 2023",
-    category: "Marketing",
-    title: "Roland",
-    tags: "Ad Creative, Social Media Creative",
-    image: "/images/project-2.webp",
-  },
-  {
-    href: "/project/reddit",
-    date: "March 30, 2023",
-    category: "Advertising",
-    title: "Reddit",
-    tags: "Motion Designer, Social Media Creative",
-    image: "/images/project-1.webp",
-  },
-];
+import { PROJECTS } from "@/lib/projects";
 
 const STACK_TOP = "8vh";
 
@@ -109,11 +83,12 @@ export default function FeaturedWork() {
                         className="project-card-image"
                         style={{ backgroundImage: `url("${project.image}")` }}
                       >
+                        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-linear-to-t from-black/85 via-black/25 to-transparent" />
                         <div className="arrow">
                           <ArrowIcon />
                         </div>
                       </div>
-                      <div className="project-card-content">
+                      <div className="project-card-content absolute bottom-0 left-0 right-0 w-full">
                         <div className="project-card-top">
                           <div className="font-size-sm">{project.date}</div>
                           <div className="font-size-sm">{project.category}</div>

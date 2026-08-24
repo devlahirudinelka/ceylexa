@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowUp, Sparkles } from "lucide-react";
 import { footerLinks } from "@/lib/home-content";
+import CreamGradientBackground from "./CreamGradientBackground";
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -12,16 +13,14 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative overflow-hidden border-t border-border bg-surface">
-      {/* A hairline of the site's signature gold, plus a very soft warm
-          glow behind the top of the footer — ties it back to the Amber
-          Crystal hero without competing with the content on top of it. */}
+    <footer className="relative overflow-hidden border-t border-border bg-background">
+      {/* Same "Cream Ribbons" shader as the homepage hero (see
+          CreamGradientBackground.tsx) instead of a one-off glow, so the
+          footer reads as a continuation of the hero rather than a
+          different surface — plus the same gold hairline as before along
+          the top edge. */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#c79d00]/50 to-transparent" />
-      <div
-        className="pointer-events-none absolute -top-48 left-1/2 h-96 w-[70rem] -translate-x-1/2 rounded-full opacity-[0.07] blur-3xl"
-        style={{ background: "radial-gradient(closest-side, #ea580c, transparent)" }}
-        aria-hidden="true"
-      />
+      <CreamGradientBackground />
 
       <div className="relative mx-auto max-w-7xl px-6 py-16 lg:px-8">
         <div className="grid grid-cols-2 gap-10 md:grid-cols-4">

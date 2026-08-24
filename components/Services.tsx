@@ -69,6 +69,7 @@ export default function Services() {
   const windowRef = useRef<HTMLDivElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const mobileContentRef = useRef<HTMLDivElement>(null);
 
   // `.sticky-wrapper` is already 300vh tall with `.services-grid` pinned
   // via `position: sticky` (see uxoral.css) — that part of the ported
@@ -130,6 +131,27 @@ export default function Services() {
       duration: reduceMotion ? 0 : 0.7,
       ease: "power3.out",
     });
+  }, [active]);
+
+  // `.services-tab` is the mobile/tablet stand-in for the desktop split
+  // layout above (CSS flips them at the 992px breakpoint — see
+  // `.services-grid` / `.services-tab` in uxoral.css). The Webflow source
+  // paired that tab menu with a `.services-tab-content` pane, but this
+  // port only ever rendered the menu — tapping a service updated `active`
+  // correctly, but nothing on screen reflected it, which read as "the
+  // animation doesn't work" on mobile. This animates the now-rendered
+  // content pane (below) in on every change, mirroring the desktop
+  // slide's easing so both breakpoints feel like the same interaction.
+  useEffect(() => {
+    const panel = mobileContentRef.current;
+    if (!panel) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    gsap.fromTo(
+      panel,
+      { opacity: 0, y: 16 },
+      { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }
+    );
   }, [active]);
 
   return (
@@ -250,6 +272,7 @@ export default function Services() {
                       e.preventDefault();
                       setActive(i);
                     }}
+                    aria-current={active === i ? "true" : undefined}
                     className={`services-tab-link w-inline-block w-tab-link${active === i ? " w--current" : ""}`}
                   >
                     <div className={`services-left-item _0${i + 1}`}>
@@ -258,6 +281,29 @@ export default function Services() {
                     </div>
                   </a>
                 ))}
+              </div>
+
+              <div className="services-tab-content" ref={mobileContentRef}>
+                <div className="services-pill-wrap">
+                  {SERVICES[active].pills.map((pill) => (
+                    <div key={pill} className="services-pill">
+                      <div className="font-size-sm pure-black">{pill}</div>
+                    </div>
+                  ))}
+                </div>
+                <p>{SERVICES[active].description}</p>
+                <div className="services-btn-wrap">
+                  <a href="/contact" className="services-button w-inline-block">
+                    <div className="btn-text-pil">
+                      <div className="font-size-sm brand-color">Learn More</div>
+                      <div className="font-size-sm brand-color">Learn More</div>
+                    </div>
+                    <div className="btn-arrow-pill">
+                      <CaretIcon />
+                      <CaretIcon />
+                    </div>
+                  </a>
+                </div>
               </div>
             </div>
           </div>

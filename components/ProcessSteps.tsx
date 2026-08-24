@@ -67,8 +67,16 @@ export default function ProcessSteps() {
 
   return (
     <section className="section bg-image">
+      <div className="bg-blobs" aria-hidden="true">
+        <div className="blob blob-1" />
+        <div className="blob blob-2" />
+        <div className="blob blob-3" />
+      </div>
       <div className="space-xxxl" />
-      <div className="w-layout-blockcontainer container regular w-container">
+      <div
+        className="w-layout-blockcontainer container regular w-container"
+        style={{ position: "relative", zIndex: 1 }}
+      >
         <div className="inner-wrappar">
           <div className="featured-work-title process">
             <div className="testimonial-header-left">
