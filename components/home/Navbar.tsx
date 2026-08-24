@@ -17,6 +17,32 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Lock page scroll behind the open drop-down and let Escape close it,
+  // matching the expected behavior of a mobile/tablet nav overlay.
+  useEffect(() => {
+    if (!open) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  // Close the drop-down if the viewport grows past the mobile/tablet
+  // breakpoint (1024px - phones and tablets get the hamburger, only laptop-and-up gets the full nav) so it never gets
+  // stuck open behind the desktop nav.
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const onChange = () => setOpen(false);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+
   // The hero directly below sits on the light "Amber Crystal" cream
   // background (--background, #faf8f2), not a dark section, so the bar
   // uses the same light/foreground text at all scroll positions —
@@ -39,7 +65,7 @@ export default function Navbar() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-10 lg:flex">
           {nav.map((item) => (
             <Link
               key={item.href}
@@ -51,7 +77,7 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <Button href="mailto:hello@ceylexa.com" size="md">
             Contact now
           </Button>
@@ -59,32 +85,65 @@ export default function Navbar() {
 
         <button
           aria-label="Toggle menu"
-          className="cursor-pointer text-foreground md:hidden"
+          aria-expanded={open}
+          className="relative flex h-9 w-9 cursor-pointer items-center justify-center text-foreground lg:hidden"
           onClick={() => setOpen((v) => !v)}
         >
-          {open ? <X size={22} /> : <Menu size={22} />}
+          <Menu
+            size={22}
+            className={`absolute transition-all duration-300 ease-out ${
+              open ? "rotate-90 scale-50 opacity-0" : "rotate-0 scale-100 opacity-100"
+            }`}
+          />
+          <X
+            size={22}
+            className={`absolute transition-all duration-300 ease-out ${
+              open ? "rotate-0 scale-100 opacity-100" : "-rotate-90 scale-50 opacity-0"
+            }`}
+          />
         </button>
       </div>
 
-      {open && (
-        <div className="border-t border-border bg-background px-6 py-4 md:hidden">
-          <nav className="flex flex-col gap-4">
-            {nav.map((item) => (
+      {/* Animated drop-down for mobile + tablet. The grid-rows trick
+          animates height from 0 to auto (no fixed max-height guess),
+          while the links themselves fade/slide in with a short stagger. */}
+      <div
+        className={`grid transition-[grid-template-rows] duration-300 ease-in-out lg:hidden ${
+          open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+        }`}
+      >
+        <div className="min-h-0 overflow-hidden">
+          <nav
+            className={`flex flex-col gap-1 border-t border-border bg-background px-6 py-4 transition-opacity duration-300 ${
+              open ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            {nav.map((item, i) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm text-muted hover:text-foreground"
+                className={`rounded-lg px-2 py-2.5 text-sm text-muted transition-all duration-300 ease-out hover:bg-black/5 hover:text-foreground ${
+                  open ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0"
+                }`}
+                style={{ transitionDelay: open ? `${80 + i * 40}ms` : "0ms" }}
                 onClick={() => setOpen(false)}
               >
                 {item.label}
               </Link>
             ))}
-            <Button href="mailto:hello@ceylexa.com" size="md" className="mt-2 w-fit">
-              Contact now
-            </Button>
+            <div
+              className={`mt-2 w-fit transition-all duration-300 ease-out ${
+                open ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0"
+              }`}
+              style={{ transitionDelay: open ? `${80 + nav.length * 40}ms` : "0ms" }}
+            >
+              <Button href="mailto:hello@ceylexa.com" size="md" onClick={() => setOpen(false)}>
+                Contact now
+              </Button>
+            </div>
           </nav>
         </div>
-      )}
+      </div>
     </header>
   );
 }

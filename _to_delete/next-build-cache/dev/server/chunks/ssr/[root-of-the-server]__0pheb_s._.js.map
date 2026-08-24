@@ -1,0 +1,8 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 10, "column": 0}, "map": {"version":3,"sources":["file:///Users/macmini/Projects/WebProjects/ceylexa/app/about/page.tsx"],"sourcesContent":["import { redirect } from \"next/navigation\";\n\n// The old About page (a leftover, differently-themed template) has been\n// retired — its real content (mission + FAQ) now lives on the home page\n// via components/home/Mission.tsx and components/home/FAQSection.tsx.\n// This route stays live so existing links to /about keep working; it just\n// forwards visitors to the section on the home page.\nexport default function AboutPage() {\n  redirect(\"/#about\");\n}\n"],"names":["AboutPage"],"mappings":";;;;AAAA;AAAA;;AAOe,SAASA;IACtB,IAAA,sYAAQ,EAAC;AACX"}},
+    {"offset": {"line": 31, "column": 0}, "map": {"version":3,"sources":["file:///Users/macmini/Projects/WebProjects/ceylexa/app/favicon.ico.mjs%20(structured%20image%20object)"],"sourcesContent":["import src from \"IMAGE\";\nexport default { src, width: 256, height: 256 }\n"],"names":["src","width","height"],"mappings":";;;;AAAA;;uCACe;IAAEA,KAAAA,mIAAG;IAAEC,OAAO;IAAKC,QAAQ;AAAI"}},
+    {"offset": {"line": 49, "column": 0}, "map": {"version":3,"sources":["file:///Users/macmini/Projects/WebProjects/ceylexa/app/icon.png.mjs%20(structured%20image%20object)"],"sourcesContent":["import src from \"IMAGE\";\nexport default { src, width: 32, height: 32 }\n"],"names":["src","width","height"],"mappings":";;;;AAAA;;uCACe;IAAEA,KAAAA,gIAAG;IAAEC,OAAO;IAAIC,QAAQ;AAAG"}}]
+}

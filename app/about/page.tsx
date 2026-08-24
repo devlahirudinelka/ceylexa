@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/home/Navbar";
 import Hero from "@/components/Hero";
 import HeroSocial from "@/components/HeroSocial";
 import LineRail from "@/components/LineRail";
@@ -10,7 +10,7 @@ import ProcessSteps from "@/components/ProcessSteps";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import Blog from "@/components/Blog";
-import Footer from "@/components/Footer";
+import Footer from "@/components/home/Footer";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
