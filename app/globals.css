@@ -3330,6 +3330,7 @@ li {
 .marque-content {
   padding: var(--_spacing---spacer--spacing-16xl) var(--_spacing---spacer--spacing-28xl);
   border: 1px solid #0000001a;
+  border-radius: var(--_spacing---border-radious--border-raduous-base);
   flex-flow: column;
   flex: none;
   justify-content: center;
@@ -6888,7 +6889,7 @@ li {
   .marque-content {
     padding-right: var(--_spacing---spacer--spacing-13xl);
     padding-left: var(--_spacing---spacer--spacing-13xl);
-    height: 5.2rem;
+    height: 5rem;
   }
 
   .marque-logo {

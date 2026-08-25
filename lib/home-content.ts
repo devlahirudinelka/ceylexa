@@ -3,6 +3,7 @@ export const nav = [
   { label: "Services", href: "/#services" },
   { label: "Process", href: "/#process" },
   { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const footerLinks = {

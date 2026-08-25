@@ -1,29 +1,12 @@
-// uxoral.css (the ported Webflow template's stylesheet) is only needed by
-// the /about page's component tree (components/*.tsx at the repo root —
-// see app/about/page.tsx). It used to be linked in the ROOT layout
-// (app/layout.tsx), which loaded it globally on every route, including the
-// Tailwind-only home page.
-//
-// That was more than just extra bytes: uxoral.css is a plain <link>
-// stylesheet, so its rules sit outside any CSS @layer, while Tailwind v4's
-// own utilities are generated inside `@layer utilities`. Per the CSS
-// cascade-layers spec, ANY unlayered rule beats a layered one on a
-// matching selector, regardless of source order or specificity. uxoral.css
-// ships a normalize reset with a bare `nav { display: block; }` rule —
-// with the stylesheet global, that silently beat every `md:flex` /
-// `flex` utility on every `<nav>` on every page (e.g. the home page's
-// Navbar), turning flex containers back into block boxes and making
-// `gap-*` utilities on them do nothing, since gap only applies inside a
-// flex/grid container.
-//
-// Scoping the stylesheet to this nested layout means it's only present in
-// <head> while a route under /about is being rendered, so the home page
-// (and any other Tailwind-only route) gets Tailwind's cascade back intact.
+// This nested layout used to link a standalone `/css/uxoral.css` stylesheet
+// so the ported Webflow component tree (components/*.tsx at the repo root)
+// had its styles without loading them globally on every route — see the
+// git history for the original cascade-layers rationale. That file was
+// never actually added to /public, so the <link> 404'd on every /about
+// request and did nothing; the ported styles it was meant to scope now live
+// directly in app/globals.css (loaded once, globally, via the root layout),
+// so nothing needs scoping here anymore. Kept as a plain passthrough in
+// case /about grows route-specific chrome later.
 export default function AboutLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <>
-      <link rel="stylesheet" href="/css/uxoral.css" />
-      {children}
-    </>
-  );
+  return <>{children}</>;
 }

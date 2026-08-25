@@ -53,9 +53,12 @@ function MarqueeRow({ reverse = false }: { reverse?: boolean }) {
 
   return (
     <div className="logo-marque-list" style={{ overflow: "hidden" }}>
-      <div ref={trackRef} style={{ display: "flex", width: "max-content" }}>
+      <div
+        ref={trackRef}
+        style={{ display: "flex", width: "max-content", gap: "var(--_spacing---spacer--spacing-lg)" }}
+      >
         {[0, 1].map((rep) => (
-          <div key={rep} style={{ display: "flex" }}>
+          <div key={rep} style={{ display: "flex", gap: "var(--_spacing---spacer--spacing-lg)" }}>
             {LOGOS.map((logo) => (
               <div key={`${rep}-${logo}`} className="marque-content">
                 <Image
