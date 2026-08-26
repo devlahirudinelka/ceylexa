@@ -6,6 +6,8 @@ import Team from "@/components/Team";
 import Awards from "@/components/Awards";
 import Footer from "@/components/home/Footer";
 import type { Metadata } from "next";
+import Hero from "@/components/Hero";
+import LineRail from "@/components/LineRail";
 
 export const metadata: Metadata = {
   title: "About — Ceylexa",
@@ -19,6 +21,11 @@ export default function AboutPage() {
       <Navbar />
 
       <div className="main">
+        <div className="home-hero-area">
+          <LineRail />
+          <Navbar />
+          <Hero />
+        </div>
         <AboutHero />
         <MissionStats />
         <ProcessSteps />
