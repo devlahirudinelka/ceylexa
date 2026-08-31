@@ -72,10 +72,10 @@ export default function ClientsCardGrid() {
   // Every card is wrapped in a dedicated `.client-card-tilt` element (see
   // the JSX below) that GSAP owns exclusively for the entrance animation
   // and the mouse-tilt below. The inner `.client-card` keeps its own
-  // existing CSS-only hover lift + focus-reveal (translateY, the
-  // front/back crossfade) completely untouched — GSAP never writes an
-  // inline transform onto `.client-card` itself, so the two effects
-  // never fight over the same `transform` property.
+  // existing CSS-only hover lift (translateY, border/shadow) completely
+  // untouched — GSAP never writes an inline transform onto `.client-card`
+  // itself, so the two effects never fight over the same `transform`
+  // property.
   useEffect(() => {
     const grid = gridRef.current;
     if (!grid) return;
@@ -136,8 +136,13 @@ export default function ClientsCardGrid() {
     <div ref={gridRef} className="clients-grid">
       {CLIENTS.map((client) => (
         <div key={client.file} className="client-card-tilt">
-          <div className="client-card" tabIndex={0}>
-            <div className="client-card-front">
+          {/* Static split layout — logo on one side, name/title/
+              description/socials on the other, always visible (no
+              hover-to-reveal). Real <a href> social links stay in the
+              tab order on their own; the card itself no longer needs to
+              be a tab stop since there's nothing hidden left to reveal. */}
+          <div className="client-card py-10 px-8 md:py-12 md:px-10">
+            <div className="client-card-logo-col">
               <div className="client-logo-wrap">
                 <Image
                   src={`/images/Clients/${client.file}`}
@@ -146,13 +151,16 @@ export default function ClientsCardGrid() {
                   height={70}
                 />
               </div>
-              <div className="client-name">{client.name}</div>
             </div>
 
-            <div className="client-card-back">
-              <div className="client-card-title">{client.title}</div>
+            <div className="client-card-content-col">
+              <div className="client-card-title">{client.name}</div>
+              {/* <div className="client-name">{client.name}</div> */}
               <p className="client-card-desc">{client.description}</p>
-              <ClientSocialRow socials={client.socials ?? {}} name={client.name} />
+              <ClientSocialRow
+                socials={client.socials ?? {}}
+                name={client.name}
+              />
             </div>
           </div>
         </div>

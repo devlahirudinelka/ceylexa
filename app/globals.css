@@ -7401,17 +7401,17 @@ li {
 
 .clients-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--_spacing---spacer--spacing-lg);
 }
 
+/* Static split card — logo on one side, name/title/description/socials
+   on the other, always visible (no hover-to-reveal). */
 .client-card {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: var(--_spacing---spacer--spacing-md);
-  padding: var(--_spacing---spacer--spacing-2xl) var(--_spacing---spacer--spacing-lg);
+  gap: var(--_spacing---spacer--spacing-lg);
+  /* padding: var(--_spacing---spacer--spacing-2xl) var(--_spacing---spacer--spacing-lg); */
   border: 1px solid var(--_color---light-transparent-black);
   border-radius: var(--_spacing---border-radious--border-raduous-lg);
   background-color: var(--_color---white);
@@ -7425,11 +7425,22 @@ li {
   box-shadow: 0 20px 40px -24px rgba(36, 26, 12, 0.35);
 }
 
+.client-card-logo-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  flex: 0 0 auto;
+  width: 50%;
+}
+
 .client-logo-wrap {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 4.25rem;
+  /* height: 3.5rem; */
+  aspect-ratio: 2/1;
   width: 100%;
 }
 
@@ -7437,15 +7448,8 @@ li {
   max-height: 100%;
   max-width: 100%;
   object-fit: contain;
-  filter: grayscale(1);
-  opacity: 0.7;
-  transition: filter 0.3s ease, opacity 0.3s ease;
-}
-
-.client-card:hover .client-logo-wrap img,
-.client-card:focus-within .client-logo-wrap img {
-  filter: grayscale(0);
-  opacity: 1;
+  scale: 170%;
+  /* aspect-ratio: 1/1; */
 }
 
 .client-name {
@@ -7456,16 +7460,15 @@ li {
   line-height: var(--_typography---line-height--line-height-1-4);
 }
 
-@media screen and (max-width: 991px) {
-  .clients-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
 @media screen and (max-width: 767px) {
   .clients-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: var(--_spacing---spacer--spacing-md);
+  }
+
+  .client-card {
+    flex-direction: column;
+    text-align: center;
   }
 }
 
@@ -7482,10 +7485,31 @@ li {
 /* Interactive world map */
 
 .world-map-wrap {
+  /* Full screen width, breaking out of the .container above (see
+     components/ClientsMap.tsx) — the classic centered-parent full-bleed
+     formula: the 50% and 50vw terms cancel against the container's own
+     centering margin regardless of the container's width, so this
+     always ends up flush with the true viewport edges. .page-wrapper
+     uses `overflow: clip`, which is what keeps this 100vw breakout from
+     ever producing a horizontal scrollbar even on the rare screen where
+     100vw over/undershoots the visible width (e.g. a visible
+     scrollbar). */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
+}
+
+.world-map-frame {
+  /* The actual positioning context for .world-map-svg + .map-pin below
+     (see ClientsMap.tsx) — sized to .world-map-wrap's padded content
+     box, so the map and every pin's percentage position stay inset
+     from the screen edges by that padding instead of running edge to
+     edge underneath it. */
   position: relative;
   width: 100%;
-  max-width: 64rem;
-  margin: 0 auto;
   aspect-ratio: 2000 / 857;
 }
 
@@ -7600,6 +7624,11 @@ li {
 }
 
 @media screen and (max-width: 767px) {
+  .world-map-wrap {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
   .map-pin-label {
     font-size: 0.6rem;
   }
@@ -7643,55 +7672,18 @@ li {
   fill: #c79d00;
 }
 
-/* Client card hover/focus reveal — title, description, socials
-   (components/Clients.tsx) */
+/* Client card content column — name/title/description/socials, always
+   visible beside the logo column above (components/ClientsCardGrid.tsx) */
 
-.client-card {
-  position: relative;
-  overflow: hidden;
-  min-height: 11.5rem;
-}
-
-.client-card-front {
+.client-card-content-col {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--_spacing---spacer--spacing-md);
-  width: 100%;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.client-card-back {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  padding: var(--_spacing---spacer--spacing-lg);
-  background: linear-gradient(135deg, #c79d00, #e5d38e);
-  text-align: center;
-  opacity: 0;
-  transform: translateY(10px);
-  pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.client-card:hover .client-card-front,
-.client-card:focus-within .client-card-front,
-.client-card:focus .client-card-front {
-  opacity: 0;
-  transform: scale(0.96);
-}
-
-.client-card:hover .client-card-back,
-.client-card:focus-within .client-card-back,
-.client-card:focus .client-card-back {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
+  gap: 0.4rem;
+  flex: 1 1 auto;
+  min-width: 0;
+  border-left: 1px solid var(--_color---light-transparent-black);
+  padding-left: var(--_spacing---spacer--spacing-lg);
+  text-align: left;
 }
 
 .client-card-title {
@@ -7700,19 +7692,19 @@ li {
   font-weight: var(--fonts-weight--medium);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #fff;
+  color: #b45309;
 }
 
 .client-card-desc {
   font-family: var(--fonts-family--inter-display);
   font-size: var(--_typography---font-size--font-size-xsm);
   line-height: var(--_typography---line-height--line-height-1-4);
-  color: rgba(255, 255, 255, 0.92);
+  color: var(--_color---dim-gray);
 }
 
 .client-social-row {
   display: flex;
-  gap: 0.6rem;
+  gap: 0.5rem;
   margin-top: 0.2rem;
 }
 
@@ -7723,13 +7715,14 @@ li {
   width: 1.9rem;
   height: 1.9rem;
   border-radius: 999px;
-  background-color: rgba(255, 255, 255, 0.2);
-  color: #fff;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  background-color: rgba(36, 26, 12, 0.06);
+  color: var(--_color---deep-black);
+  transition: background-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
 }
 
 .client-social-row a:hover {
-  background-color: rgba(255, 255, 255, 0.36);
+  background-color: rgba(199, 157, 0, 0.18);
+  color: #b45309;
   transform: translateY(-2px);
 }
 
@@ -7739,21 +7732,26 @@ li {
    hover lift above is reset so they don't read as clickable. */
 .client-social-row a.is-placeholder {
   cursor: default;
-  opacity: 0.5;
+  opacity: 0.45;
 }
 
 .client-social-row a.is-placeholder:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(36, 26, 12, 0.06);
+  color: var(--_color---deep-black);
   transform: none;
 }
 
-@media screen and (max-width: 479px) {
-  .client-card {
-    min-height: 10rem;
+@media screen and (max-width: 767px) {
+  .client-card-content-col {
+    border-left: none;
+    border-top: 1px solid var(--_color---light-transparent-black);
+    padding-left: 0;
+    padding-top: var(--_spacing---spacer--spacing-md);
+    text-align: center;
   }
 
-  .client-card-desc {
-    font-size: 0.65rem;
+  .client-social-row {
+    justify-content: center;
   }
 }
 
