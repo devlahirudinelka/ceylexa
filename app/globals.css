@@ -7401,15 +7401,17 @@ li {
 
 .clients-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--_spacing---spacer--spacing-lg);
 }
 
-/* Static split card — logo on one side, name/title/description/socials
-   on the other, always visible (no hover-to-reveal). */
+/* Static stacked card — logo on top, name/title/description/socials
+   below, always visible (no hover-to-reveal). */
 .client-card {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
   gap: var(--_spacing---spacer--spacing-lg);
   /* padding: var(--_spacing---spacer--spacing-2xl) var(--_spacing---spacer--spacing-lg); */
   border: 1px solid var(--_color---light-transparent-black);
@@ -7432,7 +7434,7 @@ li {
   justify-content: center;
   gap: 0.6rem;
   flex: 0 0 auto;
-  width: 50%;
+  width: 100%;
 }
 
 .client-logo-wrap {
@@ -7460,54 +7462,40 @@ li {
   line-height: var(--_typography---line-height--line-height-1-4);
 }
 
+@media screen and (max-width: 991px) {
+  .clients-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media screen and (max-width: 767px) {
   .clients-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--_spacing---spacer--spacing-md);
-  }
-
-  .client-card {
-    flex-direction: column;
-    text-align: center;
   }
 }
 
 @media screen and (max-width: 479px) {
   .clients-grid {
+    grid-template-columns: 1fr;
     gap: var(--_spacing---spacer--spacing-sm);
-  }
-
-  .client-card {
-    padding: var(--_spacing---spacer--spacing-lg) var(--_spacing---spacer--spacing-md);
   }
 }
 
 /* Interactive world map */
 
 .world-map-wrap {
-  /* Full screen width, breaking out of the .container above (see
-     components/ClientsMap.tsx) — the classic centered-parent full-bleed
-     formula: the 50% and 50vw terms cancel against the container's own
-     centering margin regardless of the container's width, so this
-     always ends up flush with the true viewport edges. .page-wrapper
-     uses `overflow: clip`, which is what keeps this 100vw breakout from
-     ever producing a horizontal scrollbar even on the rare screen where
-     100vw over/undershoots the visible width (e.g. a visible
-     scrollbar). */
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-  padding-left: 20px;
-  padding-right: 20px;
-  box-sizing: border-box;
+  /* Fills the .container above (see components/ClientsMap.tsx) at its
+     normal 100% width — no viewport breakout, no extra side padding;
+     the container's own padding already insets it from the screen
+     edges. */
+  position: relative;
+  width: 100%;
 }
 
 .world-map-frame {
   /* The actual positioning context for .world-map-svg + .map-pin below
-     (see ClientsMap.tsx) — sized to .world-map-wrap's padded content
-     box, so the map and every pin's percentage position stay inset
-     from the screen edges by that padding instead of running edge to
-     edge underneath it. */
+     (see ClientsMap.tsx) — matches .world-map-wrap's full width. */
   position: relative;
   width: 100%;
   aspect-ratio: 2000 / 857;
@@ -7624,11 +7612,6 @@ li {
 }
 
 @media screen and (max-width: 767px) {
-  .world-map-wrap {
-    padding-left: 14px;
-    padding-right: 14px;
-  }
-
   .map-pin-label {
     font-size: 0.6rem;
   }
@@ -7678,12 +7661,13 @@ li {
 .client-card-content-col {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 0.4rem;
-  flex: 1 1 auto;
+  width: 100%;
   min-width: 0;
-  border-left: 1px solid var(--_color---light-transparent-black);
-  padding-left: var(--_spacing---spacer--spacing-lg);
-  text-align: left;
+  /* border-top: 1px solid var(--_color---light-transparent-black); */
+  padding-top: var(--_spacing---spacer--spacing-lg);
+  text-align: center;
 }
 
 .client-card-title {
@@ -7704,6 +7688,7 @@ li {
 
 .client-social-row {
   display: flex;
+  justify-content: center;
   gap: 0.5rem;
   margin-top: 0.2rem;
 }
@@ -7741,19 +7726,6 @@ li {
   transform: none;
 }
 
-@media screen and (max-width: 767px) {
-  .client-card-content-col {
-    border-left: none;
-    border-top: 1px solid var(--_color---light-transparent-black);
-    padding-left: 0;
-    padding-top: var(--_spacing---spacer--spacing-md);
-    text-align: center;
-  }
-
-  .client-social-row {
-    justify-content: center;
-  }
-}
 
 /* Clients card GSAP wrapper (components/ClientsCardGrid.tsx).
    .client-card itself (padding/hover-lift/flip CSS above) is untouched —
