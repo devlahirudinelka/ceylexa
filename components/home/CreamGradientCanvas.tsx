@@ -1,28 +1,8 @@
 "use client";
 
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
-
-/**
- * "Cream Ribbons" — a lightweight, single-pass gradient shader: two soft,
- * slowly-rotating banded-gradient rectangles drifting over a cream base.
- * Ported from a Shadertoy-style vanilla three.js sketch (see the
- * reference in app/hero-cream-gradient (1).html) into this project's
- * react-three-fiber conventions.
- *
- * Colors are pulled from the site palette (app/globals.css) instead of
- * the reference's literal values, so the canvas blends into the page
- * background (--background) at rest and only warms toward gold where the
- * bands cross.
- *
- * Much cheaper than LiquidCarbonCanvas.tsx (no raymarching, no offscreen
- * render-target pass) — a handful of mix()/branch ops per pixel — so it
- * renders at the Canvas's default framerate/dpr without that shader's
- * frame-capping or portal-scene machinery. See CreamGradientBackground.tsx
- * for the lightweight wrapper that decides whether to load this chunk at
- * all (reduced-motion / WebGL / coarse-pointer gating, idle-time mount).
- */
 
 const vertexShader = /* glsl */ `
   varying vec2 vUv;
@@ -32,10 +12,6 @@ const vertexShader = /* glsl */ `
   }
 `;
 
-// Note: the reference sketch computed `uv = (vUv * iResolution) / iResolution`
-// before using it — a no-op round trip through the canvas resolution that
-// cancels out. The gradient math below is resolution-independent, so we
-// use vUv directly and skip carrying an iResolution uniform at all.
 const fragmentShader = /* glsl */ `
   precision highp float;
   uniform float iTime;
@@ -43,49 +19,56 @@ const fragmentShader = /* glsl */ `
 
   #define PI 3.14159265359
 
-  // Site palette (app/globals.css): --background (#faf8f2) <-> a soft
-  // warm gold in the --accent family, so the effect reads as an ambient
-  // extension of the page rather than a separate "canvas".
-  const vec3 cCream = vec3(0.9804, 0.9725, 0.9490); // --background #faf8f2
-  const vec3 cGold   = vec3(0.9255, 0.8745, 0.6863); // warm gold
+  // Pure light cream/alabaster palette (no dark tones)
+  const vec3 cCream     = vec3(0.988, 0.984, 0.968); // #FCFAF7 - Pure alabaster base
+  const vec3 cIvory     = vec3(0.976, 0.958, 0.920); // #F9F4EB - Soft warm ivory
+  const vec3 cSoftLinen = vec3(0.955, 0.925, 0.865); // #F3EBDD - Gentle champagne/linen
+  const vec3 cHighlight = vec3(1.000, 0.996, 0.990); // #FFFEFC - Pearlescent white
 
-  // 12-stop piecewise gradient alternating cream/gold, at the reference
-  // sketch's hand-tuned stop positions (denser near the middle so the
-  // bands read as soft ribbons rather than a hard-edged stripe).
-  vec3 bandedGradient(float t) {
-    if (t < 0.184058) return mix(cCream, cGold, t / 0.184058);
-    if (t < 0.225)    return mix(cGold, cCream, (t - 0.184058) / (0.225 - 0.184058));
-    if (t < 0.26)     return mix(cCream, cGold, (t - 0.225) / (0.26 - 0.225));
-    if (t < 0.29)     return mix(cGold, cCream, (t - 0.26) / (0.29 - 0.26));
-    if (t < 0.31)     return mix(cCream, cGold, (t - 0.29) / (0.31 - 0.29));
-    if (t < 0.349108) return mix(cGold, cCream, (t - 0.31) / (0.349108 - 0.31));
-    if (t < 0.494224) return mix(cCream, cGold, (t - 0.349108) / (0.494224 - 0.349108));
-    if (t < 0.619507) return mix(cGold, cCream, (t - 0.494224) / (0.619507 - 0.494224));
-    if (t < 0.759898) return mix(cCream, cGold, (t - 0.619507) / (0.759898 - 0.619507));
-    if (t < 0.911597) return mix(cGold, cCream, (t - 0.759898) / (0.911597 - 0.759898));
-    return mix(cCream, cGold, (t - 0.911597) / (0.975 - 0.911597));
+  vec3 bandedGradient(float val) {
+    float t = clamp(val, 0.0, 1.0);
+
+    if (t < 0.184) return mix(cCream, cIvory, t / 0.184);
+    if (t < 0.225) return mix(cIvory, cHighlight, (t - 0.184) / (0.225 - 0.184));
+    if (t < 0.260) return mix(cHighlight, cSoftLinen, (t - 0.225) / (0.260 - 0.225));
+    if (t < 0.290) return mix(cSoftLinen, cIvory, (t - 0.260) / (0.290 - 0.260));
+    if (t < 0.310) return mix(cIvory, cCream, (t - 0.290) / (0.310 - 0.290));
+    if (t < 0.349) return mix(cCream, cHighlight, (t - 0.310) / (0.349 - 0.310));
+    if (t < 0.494) return mix(cHighlight, cSoftLinen, (t - 0.349) / (0.494 - 0.349));
+    if (t < 0.619) return mix(cSoftLinen, cIvory, (t - 0.494) / (0.619 - 0.494));
+    if (t < 0.760) return mix(cIvory, cCream, (t - 0.619) / (0.760 - 0.619));
+    if (t < 0.912) return mix(cCream, cHighlight, (t - 0.760) / (0.912 - 0.760));
+    return mix(cHighlight, cCream, (t - 0.912) / (1.0 - 0.912));
   }
 
   vec3 rectangleGradient(vec2 uv, float angle) {
-    float t = cos(angle) * uv.x + sin(angle) * uv.y;
+    float t = fract(cos(angle) * uv.x + sin(angle) * uv.y);
     return bandedGradient(t);
   }
 
   void main() {
     vec2 uv = vUv;
-    vec3 bg = bandedGradient(uv.x + uv.y);
+    
+    // Dynamic background wave
+    float bgTime = iTime * 0.15;
+    vec3 bg = bandedGradient(fract((uv.x + uv.y) * 0.5 + sin(bgTime) * 0.1));
 
-    float angle1 = -59.3288 * PI / 180.0 + sin(iTime * 0.05) * 0.2;
-    vec2 uv1 = uv - vec2(sin(iTime * 0.07) * 0.3, cos(iTime * 0.5) * 0.2 + 0.1);
+    // Noticeable, graceful ribbon 1 motion
+    float t1 = iTime * 0.22;
+    float angle1 = -59.3288 * PI / 180.0 + sin(t1 * 0.6) * 0.25;
+    vec2 uv1 = uv - vec2(sin(t1 * 0.8) * 0.3, cos(t1 * 0.5) * 0.25 + 0.1);
     vec3 rect1 = rectangleGradient(uv1, angle1);
 
-    float angle2 = -101.773 * PI / 180.0 + cos(iTime * 0.04) * 0.9;
-    vec2 uv2 = uv - vec2(cos(iTime * 0.06) * 0.4 + 0.5, sin(iTime * 0.08) * 0.3 + 1.0);
+    // Noticeable, graceful ribbon 2 motion
+    float t2 = iTime * 0.18;
+    float angle2 = -101.773 * PI / 180.0 + cos(t2 * 0.5) * 0.3;
+    vec2 uv2 = uv - vec2(cos(t2 * 0.7) * 0.35 + 0.4, sin(t2 * 0.6) * 0.3 + 0.8);
     vec3 rect2 = rectangleGradient(uv2, angle2);
 
+    // Layer and blend
     vec3 color = bg;
-    color = mix(color, rect1, 0.5);
-    color = mix(color, rect2, 0.5);
+    color = mix(color, rect1, 0.42);
+    color = mix(color, rect2, 0.42);
 
     gl_FragColor = vec4(color, 1.0);
   }
@@ -94,9 +77,18 @@ const fragmentShader = /* glsl */ `
 function CreamGradientPlane() {
   const materialRef = useRef<THREE.ShaderMaterial>(null);
 
+  // Keep uniforms stable between renders
+  const uniforms = useMemo(
+    () => ({
+      iTime: { value: 0 },
+    }),
+    [],
+  );
+
+  // Continuously ticks the animation
   useFrame((state) => {
     if (materialRef.current) {
-      materialRef.current.uniforms.iTime.value = state.clock.elapsedTime;
+      materialRef.current.uniforms.iTime.value = state.clock.getElapsedTime();
     }
   });
 
@@ -107,7 +99,7 @@ function CreamGradientPlane() {
         ref={materialRef}
         vertexShader={vertexShader}
         fragmentShader={fragmentShader}
-        uniforms={{ iTime: { value: 0 } }}
+        uniforms={uniforms}
       />
     </mesh>
   );
@@ -115,21 +107,20 @@ function CreamGradientPlane() {
 
 export default function CreamGradientCanvas({ inView }: { inView: boolean }) {
   return (
-    <Canvas
-      gl={{ antialias: false, powerPreference: "low-power", alpha: false }}
-      dpr={[1, 1.5]}
-      frameloop={inView ? "always" : "never"}
-      orthographic
-      camera={{ position: [0, 0, 1] }}
-      // Safety net: paint cream the instant the context exists, before the
-      // first real shader frame runs, so a slow first draw never flashes
-      // opaque black (alpha is false above).
-      onCreated={({ gl }) => {
-        gl.setClearColor(0xfaf8f2, 1);
-        gl.clear();
-      }}
-    >
-      <CreamGradientPlane />
-    </Canvas>
+    <div className="w-full h-full relative">
+      <Canvas
+        gl={{ antialias: false, powerPreference: "low-power", alpha: false }}
+        dpr={[1, 1.5]}
+        frameloop={inView ? "always" : "never"}
+        orthographic
+        camera={{ position: [0, 0, 1] }}
+        onCreated={({ gl }) => {
+          gl.setClearColor(0xfcfaf7, 1);
+          gl.clear();
+        }}
+      >
+        <CreamGradientPlane />
+      </Canvas>
+    </div>
   );
 }

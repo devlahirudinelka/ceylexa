@@ -4,31 +4,13 @@ import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import dynamic from "next/dynamic";
 
 /**
- * Lightweight gate in front of CreamGradientCanvas.tsx (the actual
- * three.js / @react-three/fiber shader), mirroring the wrapper pattern
- * used by LiquidCarbonBackground.tsx. Kept free of any three.js import
- * so that:
- *
- *  - Users who don't get the shader (reduced-motion, or no WebGL support)
- *    never download that chunk at all — next/dynamic below code-splits it
- *    into its own lazily-fetched file. Mobile/touch devices are NOT
- *    excluded here: this is a cheap single-pass shader (no raymarching,
- *    no offscreen render target — see CreamGradientCanvas.tsx), so it's
- *    fine on phones, and skipping it made the hero look unfinished on
- *    mobile, where most visitors land.
- *  - The chunk that IS fetched is deferred to just after first paint
- *    (see the idle-callback effect), so it doesn't compete with the
- *    hero's text for the main thread on first load.
+ * Lightweight gate in front of CreamGradientCanvas.tsx (Three.js / Shader).
+ * Code-split lazily and deferred to prevent render blocking.
  */
-
 const CreamGradientCanvas = dynamic(() => import("./CreamGradientCanvas"), {
   ssr: false,
 });
 
-// Read via useSyncExternalStore so the SSR/hydration pass always agrees
-// with the server (false), then syncs to the real client value right
-// after — the React-recommended way to read a browser-only API without
-// a setState-in-effect render flash.
 function subscribeMediaChanges(callback: () => void) {
   const reduceMql = window.matchMedia("(prefers-reduced-motion: reduce)");
   reduceMql.addEventListener("change", callback);
@@ -37,15 +19,14 @@ function subscribeMediaChanges(callback: () => void) {
   };
 }
 
-// WebGL support never changes over a page's lifetime, so detect it once
-// and cache it rather than creating a throwaway canvas/context on every
-// snapshot read (useSyncExternalStore re-invokes the snapshot on renders).
 let cachedHasWebGL: boolean | null = null;
 function detectWebGL() {
   if (cachedHasWebGL !== null) return cachedHasWebGL;
   try {
     const canvas = document.createElement("canvas");
-    cachedHasWebGL = !!(canvas.getContext("webgl2") || canvas.getContext("webgl"));
+    cachedHasWebGL = !!(
+      canvas.getContext("webgl2") || canvas.getContext("webgl")
+    );
   } catch {
     cachedHasWebGL = false;
   }
@@ -53,7 +34,9 @@ function detectWebGL() {
 }
 
 function getReadySnapshot() {
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
   if (reduceMotion) return false;
   return detectWebGL();
 }
@@ -63,7 +46,10 @@ function getReadyServerSnapshot() {
 }
 
 type IdleWindow = Window & {
-  requestIdleCallback?: (callback: () => void, opts?: { timeout: number }) => number;
+  requestIdleCallback?: (
+    callback: () => void,
+    opts?: { timeout: number },
+  ) => number;
   cancelIdleCallback?: (handle: number) => void;
 };
 
@@ -73,13 +59,15 @@ export default function CreamGradientBackground({
   className?: string;
 }) {
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const ready = useSyncExternalStore(subscribeMediaChanges, getReadySnapshot, getReadyServerSnapshot);
+  const ready = useSyncExternalStore(
+    subscribeMediaChanges,
+    getReadySnapshot,
+    getReadyServerSnapshot,
+  );
   const [mount, setMount] = useState(false);
   const [inView, setInView] = useState(true);
 
-  // Defer fetching/mounting the heavy chunk until the browser is idle
-  // (or a short timeout on browsers without requestIdleCallback, e.g.
-  // Safari) so it doesn't compete with the hero's initial paint.
+  // Defer mounting until the main thread is idle
   useEffect(() => {
     if (!ready) return;
     let cancelled = false;
@@ -90,7 +78,7 @@ export default function CreamGradientBackground({
         () => {
           if (!cancelled) setMount(true);
         },
-        { timeout: 500 }
+        { timeout: 500 },
       );
       return () => {
         cancelled = true;
@@ -107,22 +95,27 @@ export default function CreamGradientBackground({
     };
   }, [ready]);
 
-  // Pause the render loop while the hero is scrolled out of view. The
-  // wrapper div is always rendered (even before the shader is ready) so
-  // this observer attaches on mount regardless of load timing.
+  // Pause render loop when scrolled out of view
   useEffect(() => {
     const el = wrapperRef.current;
     if (!el) return;
     const observer = new IntersectionObserver(
       ([entry]) => setInView(entry.isIntersecting),
-      { threshold: 0.01 }
+      { threshold: 0.01 },
     );
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
 
   return (
-    <div ref={wrapperRef} className={`pointer-events-none absolute inset-0 ${className}`}>
+    <div
+      ref={wrapperRef}
+      className={`pointer-events-none absolute inset-0 bg-[#FAF8F5] overflow-hidden ${className}`}
+      style={{
+        background:
+          "linear-gradient(135deg, #FAF8F5 0%, #F5EFE6 50%, #ECE3D4 100%)",
+      }}
+    >
       {ready && mount && <CreamGradientCanvas inView={inView} />}
     </div>
   );

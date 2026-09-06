@@ -2,49 +2,43 @@
 
 import { useEffect, useRef, useState } from "react";
 
-// Percentage positions over public/images/world.svg's 2000x857 viewBox
-// Approximate centroids for each labelled region.
 const REGIONS = [
   {
-    name: "North America",
-    left: 19,
-    top: 34,
-    blurb: "Reaching brands and audiences across the US and Canada.",
-    ids: ["GL", "MX", "BM"],
-    classes: ["Canada", "United States"],
+    name: "United States of America",
+    blurb: "Reaching brands and audiences across the United States.",
+    ids: ["US", "USA"],
+    classes: ["United States", "United States of America"],
   },
   {
-    name: "Central America",
-    left: 23,
-    top: 53,
-    blurb: "Campaigns that travel from Colombo to Central America.",
-    ids: ["BZ", "CR", "GT", "HN", "NI", "PA", "SV"],
-    classes: [],
-  },
-  {
-    name: "Caribbean",
-    left: 28,
-    top: 48,
-    blurb: "A growing footprint across the Caribbean islands.",
+    name: "West Indies",
+    // blurb: "Growing creative footprint across the West Indies.",
     ids: [
       "AI",
       "AW",
       "BB",
       "BL",
+      "BS",
       "CU",
       "CW",
       "DM",
       "DO",
       "GD",
+      "GP",
       "HT",
       "JM",
+      "KN",
+      "KY",
       "LC",
       "MF",
       "MQ",
       "MS",
+      "PR",
       "SX",
+      "TC",
+      "TT",
       "VC",
       "VG",
+      "VI",
       "BQBO",
       "BQSA",
       "BQSE",
@@ -52,227 +46,80 @@ const REGIONS = [
     classes: [
       "Antigua and Barbuda",
       "Bahamas",
+      "Barbados",
       "Cayman Islands",
+      "Cuba",
+      "Dominica",
+      "Dominican Republic",
+      "Grenada",
       "Guadeloupe",
+      "Haiti",
+      "Jamaica",
+      "Martinique",
       "Puerto Rico",
       "Saint Kitts and Nevis",
+      "Saint Lucia",
+      "Saint Vincent and the Grenadines",
       "Trinidad and Tobago",
       "Turks and Caicos Islands",
+      "Virgin Islands, British",
+      "Virgin Islands, U.S.",
       "United States Virgin Islands",
     ],
   },
   {
-    name: "South America",
-    left: 31,
-    top: 70,
-    blurb: "Building brand presence for partners across South America.",
-    ids: ["BO", "BR", "CO", "EC", "GF", "GY", "PE", "PY", "SR", "UY", "VE"],
-    classes: ["Argentina", "Chile", "Falkland Islands"],
+    name: "UAE",
+    blurb: "Supporting brands expanding across the United Arab Emirates.",
+    ids: ["AE", "ARE"],
+    classes: ["United Arab Emirates", "UAE"],
   },
   {
-    name: "Europe",
-    left: 49,
-    top: 27,
-    blurb: "Design and digital campaigns for clients across Europe.",
-    ids: [
-      "AL",
-      "AT",
-      "BA",
-      "BE",
-      "BG",
-      "BY",
-      "CH",
-      "CZ",
-      "DE",
-      "EE",
-      "ES",
-      "FI",
-      "HR",
-      "HU",
-      "IE",
-      "IS",
-      "LT",
-      "LU",
-      "LV",
-      "MD",
-      "ME",
-      "MK",
-      "NL",
-      "PL",
-      "PT",
-      "RO",
-      "RS",
-      "SI",
-      "SK",
-      "UA",
-      "XK",
-    ],
-    classes: [
-      "Cyprus",
-      "Denmark",
-      "Faeroe Islands",
-      "France",
-      "Greece",
-      "Italy",
-      "Malta",
-      "Norway",
-      "Russian Federation",
-      "United Kingdom",
-      "Canary Islands (Spain)",
-    ],
+    name: "India",
+    blurb: "Delivering campaigns and design across India.",
+    ids: ["IN", "IND"],
+    classes: ["India"],
   },
   {
-    name: "Middle East",
-    left: 58,
-    top: 43,
-    blurb: "Supporting brands expanding across the Middle East.",
-    ids: [
-      "AE",
-      "BH",
-      "IL",
-      "IQ",
-      "IR",
-      "JO",
-      "KW",
-      "LB",
-      "PS",
-      "QA",
-      "SA",
-      "SY",
-      "YE",
-    ],
-    classes: ["Oman", "Turkey"],
+    name: "Maldives",
+    blurb: "Serving brands across the Maldives.",
+    ids: ["MV", "MDV"],
+    classes: ["Maldives"],
   },
   {
-    name: "Africa",
-    left: 53,
-    top: 60,
-    blurb: "Partnering with growing brands across Africa.",
-    ids: [
-      "BF",
-      "BI",
-      "BJ",
-      "BW",
-      "CD",
-      "CF",
-      "CG",
-      "CI",
-      "CM",
-      "DJ",
-      "DZ",
-      "EG",
-      "EH",
-      "ER",
-      "ET",
-      "GA",
-      "GH",
-      "GM",
-      "GN",
-      "GQ",
-      "GW",
-      "KE",
-      "LR",
-      "LS",
-      "LY",
-      "MA",
-      "MG",
-      "ML",
-      "MR",
-      "MW",
-      "MZ",
-      "NA",
-      "NE",
-      "NG",
-      "RE",
-      "RW",
-      "SD",
-      "SL",
-      "SN",
-      "SO",
-      "SS",
-      "SZ",
-      "TD",
-      "TG",
-      "TN",
-      "TZ",
-      "UG",
-      "YT",
-      "ZA",
-      "ZM",
-      "ZW",
-    ],
-    classes: [
-      "Angola",
-      "Cape Verde",
-      "Comoros",
-      "Mauritius",
-      "São Tomé and Principe",
-      "Seychelles",
-    ],
+    name: "Sri Lanka",
+    blurb: "Our home base — proudly rooted in Sri Lanka.",
+    ids: ["LK", "LKA"],
+    classes: ["Sri Lanka"],
   },
   {
-    name: "Asia",
-    left: 71,
-    top: 38,
-    blurb: "Sri Lanka is home base — with reach across Asia.",
-    ids: [
-      "AF",
-      "AM",
-      "BD",
-      "BT",
-      "GE",
-      "IN",
-      "KG",
-      "KH",
-      "KP",
-      "KR",
-      "KZ",
-      "LA",
-      "BN",
-      "LK",
-      "MM",
-      "MN",
-      "MV",
-      "NP",
-      "PK",
-      "TH",
-      "TJ",
-      "TL",
-      "TM",
-      "TW",
-      "UZ",
-      "VN",
-    ],
-    classes: [
-      "Azerbaijan",
-      "China",
-      "Indonesia",
-      "Japan",
-      "Malaysia",
-      "Philippines",
-    ],
+    name: "Malaysia",
+    blurb: "Designing digital solutions for Malaysia.",
+    ids: ["MY", "MYS"],
+    classes: ["Malaysia"],
   },
   {
-    name: "Pacific",
-    left: 86,
-    top: 63,
-    blurb: "Extending campaigns out across the Pacific.",
-    ids: ["GU", "MH", "NR", "PW", "TV"],
-    classes: [
-      "American Samoa",
-      "Australia",
-      "Federated States of Micronesia",
-      "Fiji",
-      "French Polynesia",
-      "New Caledonia",
-      "New Zealand",
-      "Northern Mariana Islands",
-      "Papua New Guinea",
-      "Samoa",
-      "Solomon Islands",
-      "Tonga",
-      "Vanuatu",
-    ],
+    name: "Singapore",
+    blurb: "Serving brands across Singapore.",
+    ids: ["SG", "SGP"],
+    classes: ["Singapore"],
+  },
+  {
+    name: "Japan",
+    blurb: "Fostering strategic partnerships across Japan.",
+    ids: ["JP", "JPN"],
+    classes: ["Japan"],
+  },
+  {
+    name: "Australia",
+    blurb: "Extending impactful campaigns across Australia.",
+    ids: ["AU", "AUS"],
+    classes: ["Australia"],
+  },
+  {
+    name: "New Zealand",
+    blurb: "Partnering with brands in New Zealand.",
+    ids: ["NZ", "NZL"],
+    classes: ["New Zealand"],
   },
 ];
 
@@ -307,14 +154,21 @@ function LocationIcon({
   );
 }
 
+type PinPosition = {
+  left: number;
+  top: number;
+};
+
 export default function ClientsMap() {
   const [active, setActive] = useState<string | null>(null);
   const [mapSvg, setMapSvg] = useState("");
+  const [pinPositions, setPinPositions] = useState<Record<string, PinPosition>>(
+    {},
+  );
 
   const svgWrapRef = useRef<HTMLDivElement>(null);
 
-  // Load and inline the SVG so individual country paths
-  // can be selected and recolored.
+  // Load SVG
   useEffect(() => {
     let cancelled = false;
 
@@ -340,13 +194,125 @@ export default function ClientsMap() {
     };
   }, []);
 
-  // Highlight countries belonging to the selected region.
+  /**
+   * Find the top-center position of each country.
+   *
+   * The pin is positioned slightly ABOVE the country's top edge.
+   */
+  useEffect(() => {
+    if (!mapSvg || !svgWrapRef.current) return;
+
+    const calculatePositions = () => {
+      const root = svgWrapRef.current;
+
+      if (!root) return;
+
+      const svg = root.querySelector("svg");
+
+      if (!svg) return;
+
+      const positions: Record<string, PinPosition> = {};
+
+      const svgRect = svg.getBoundingClientRect();
+
+      if (!svgRect.width || !svgRect.height) return;
+
+      REGIONS.forEach((region) => {
+        const selectors: string[] = [];
+
+        // IDs
+        region.ids.forEach((id) => {
+          selectors.push(`#${CSS.escape(id)}`);
+        });
+
+        // Classes
+        region.classes.forEach((name) => {
+          selectors.push(`[class~="${CSS.escape(name)}"]`);
+        });
+
+        if (!selectors.length) return;
+
+        const elements = Array.from(
+          svg.querySelectorAll<SVGGraphicsElement>(selectors.join(",")),
+        );
+
+        if (!elements.length) return;
+
+        /**
+         * For regions containing multiple islands/countries
+         * such as West Indies, combine all bounding boxes.
+         */
+        let minX = Infinity;
+        let minY = Infinity;
+        let maxX = -Infinity;
+        let maxY = -Infinity;
+
+        elements.forEach((element) => {
+          try {
+            const rect = element.getBoundingClientRect();
+
+            minX = Math.min(minX, rect.left);
+            minY = Math.min(minY, rect.top);
+            maxX = Math.max(maxX, rect.right);
+            maxY = Math.max(maxY, rect.bottom);
+          } catch {
+            // Ignore elements that cannot provide a bounding box.
+          }
+        });
+
+        if (
+          !Number.isFinite(minX) ||
+          !Number.isFinite(minY) ||
+          !Number.isFinite(maxX) ||
+          !Number.isFinite(maxY)
+        ) {
+          return;
+        }
+
+        /**
+         * TOP CENTER
+         *
+         * X = center of country
+         * Y = top edge of country
+         */
+        const centerX = (minX + maxX) / 2;
+
+        /**
+         * Move the pin slightly above the country.
+         *
+         * Change 8 to increase/decrease the gap.
+         */
+        const pinY = minY - 8;
+
+        const left = ((centerX - svgRect.left) / svgRect.width) * 100;
+
+        const top = ((pinY - svgRect.top) / svgRect.height) * 100;
+
+        positions[region.name] = {
+          left,
+          top,
+        };
+      });
+
+      setPinPositions(positions);
+    };
+
+    // Wait for SVG to render
+    requestAnimationFrame(calculatePositions);
+
+    window.addEventListener("resize", calculatePositions);
+
+    return () => {
+      window.removeEventListener("resize", calculatePositions);
+    };
+  }, [mapSvg]);
+
+  // Highlight selected country
   useEffect(() => {
     const root = svgWrapRef.current;
 
     if (!root) return;
 
-    // Remove previous selection.
     root.querySelectorAll(".is-selected-country").forEach((element) => {
       element.classList.remove("is-selected-country");
     });
@@ -359,21 +325,17 @@ export default function ClientsMap() {
 
     const selectors: string[] = [];
 
-    // Country IDs.
     region.ids.forEach((id) => {
       selectors.push(`#${CSS.escape(id)}`);
     });
 
-    // Country classes.
     region.classes.forEach((name) => {
       selectors.push(`[class~="${CSS.escape(name)}"]`);
     });
 
-    if (selectors.length === 0) return;
+    if (!selectors.length) return;
 
-    const selector = selectors.join(",");
-
-    root.querySelectorAll(selector).forEach((element) => {
+    root.querySelectorAll(selectors.join(",")).forEach((element) => {
       element.classList.add("is-selected-country");
     });
   }, [active, mapSvg]);
@@ -408,7 +370,7 @@ export default function ClientsMap() {
               ref={svgWrapRef}
               className="world-map-svg"
               role="img"
-              aria-label="World map highlighting the regions Ceylexa's client work reaches."
+              aria-label="World map highlighting the countries Ceylexa's client work reaches."
               dangerouslySetInnerHTML={{
                 __html: mapSvg,
               }}
@@ -418,14 +380,19 @@ export default function ClientsMap() {
             {REGIONS.map((region) => {
               const isActive = active === region.name;
 
+              const position = pinPositions[region.name];
+
+              // Don't render until position has been calculated
+              if (!position) return null;
+
               return (
                 <button
                   key={region.name}
                   type="button"
                   className={`map-pin${isActive ? " is-active" : ""}`}
                   style={{
-                    left: `${region.left}%`,
-                    top: `${region.top}%`,
+                    left: `${position.left}%`,
+                    top: `${position.top}%`,
                   }}
                   onMouseEnter={() => setActive(region.name)}
                   onFocus={() => setActive(region.name)}
@@ -434,14 +401,14 @@ export default function ClientsMap() {
                   aria-label={`View ${region.name} client reach`}
                 >
                   <span className="map-pin-dot" aria-hidden="true">
-                    <LocationIcon size={24} color="currentColor" />
+                    {/* <LocationIcon size={24} color="currentColor" /> */}
                   </span>
 
                   <span className="map-pin-label">{region.name}</span>
 
-                  <span className="map-pin-tooltip" role="tooltip">
+                  {/* <span className="map-pin-tooltip" role="tooltip">
                     {region.blurb}
-                  </span>
+                  </span> */}
                 </button>
               );
             })}

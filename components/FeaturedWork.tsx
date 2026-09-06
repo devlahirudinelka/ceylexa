@@ -84,9 +84,9 @@ export default function FeaturedWork() {
                         style={{ backgroundImage: `url("${project.image}")` }}
                       >
                         <div className="absolute inset-x-0 bottom-0 h-2/3 bg-linear-to-t from-black/85 via-black/25 to-transparent" />
-                        <div className="arrow">
+                        {/* <div className="arrow">
                           <ArrowIcon />
-                        </div>
+                        </div> */}
                       </div>
                       <div className="project-card-content absolute bottom-0 left-0 right-0 w-full">
                         <div className="project-card-top">

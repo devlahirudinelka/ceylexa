@@ -17,7 +17,7 @@ export default function ContactPage() {
 
       <div className="main">
         <Contact />
-        <LogoMarquee />
+        {/* <LogoMarquee /> */}
       </div>
 
       <Footer />
