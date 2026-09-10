@@ -28,6 +28,7 @@ export default function AboutPage() {
         </div>
         <AboutHero />
         <MissionStats />
+        <div className="space-29xl" />
         <ProcessSteps />
         <Team />
         <Awards />

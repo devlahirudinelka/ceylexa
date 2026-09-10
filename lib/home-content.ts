@@ -1,6 +1,6 @@
 export const nav = [
   { label: "Home", href: "/" },
-  { label: "Services", href: "/#services" },
+  { label: "Services", href: "/services" },
   { label: "Process", href: "/#process" },
   { label: "About", href: "/about" },
   { label: "Clients", href: "/clients" },
@@ -9,7 +9,7 @@ export const nav = [
 
 export const footerLinks = {
   product: [
-    { label: "Services", href: "/#services" },
+    { label: "Services", href: "/services" },
     { label: "Our stack", href: "/#stack" },
     { label: "Process", href: "/#process" },
   ],

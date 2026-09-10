@@ -50,10 +50,12 @@ export default function Contact() {
 
         <div className="space-29xl" />
 
-        <div className="w-layout-grid contact-grid">
+        <div className="w-layout-grid contact-grid ">
           <div className="contact-left">
             <div className="contact-left-top">
-              <div className="font-size-xsm pure-black all-caps">our contacts</div>
+              <div className="font-size-xsm pure-black all-caps">
+                our contacts
+              </div>
               <h2 className="contact-heading">
                 Let&rsquo;s Start Working Together. Get in Touch with Us!
               </h2>
@@ -83,7 +85,9 @@ export default function Contact() {
                     rel="noopener noreferrer"
                     className="contact-social-link w-inline-block"
                   >
-                    <div className="font-size-xsm pure-black">{social.label}</div>
+                    <div className="font-size-xsm pure-black">
+                      {social.label}
+                    </div>
                   </a>
                 ))}
               </div>
@@ -135,7 +139,11 @@ export default function Contact() {
                     required
                   />
                 </div>
-                <input type="submit" className="submit-button w-button" value="Send" />
+                <input
+                  type="submit"
+                  className="submit-button w-button"
+                  value="Send"
+                />
                 <p className="font-size-xsm" style={{ marginTop: "0.75rem" }}>
                   {status === "sent"
                     ? "Opening your email app with your message pre-filled…"
@@ -145,6 +153,7 @@ export default function Contact() {
             </div>
           </div>
         </div>
+        <div className="space-29xl" />
       </div>
     </section>
   );

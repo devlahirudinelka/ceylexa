@@ -7781,3 +7781,7 @@ li {
 .client-card-tilt .client-card {
   height: 100%;
 }
+
+ul {
+  padding-left: 0px;
+}

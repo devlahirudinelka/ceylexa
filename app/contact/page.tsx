@@ -3,6 +3,7 @@ import Contact from "@/components/Contact";
 import LogoMarquee from "@/components/LogoMarquee";
 import Footer from "@/components/home/Footer";
 import type { Metadata } from "next";
+import FAQ from "@/components/FAQ";
 
 export const metadata: Metadata = {
   title: "Contact — Ceylexa",
@@ -18,6 +19,7 @@ export default function ContactPage() {
       <div className="main">
         <Contact />
         {/* <LogoMarquee /> */}
+        <FAQ />
       </div>
 
       <Footer />
