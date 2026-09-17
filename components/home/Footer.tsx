@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUp, Sparkles } from "lucide-react";
+import Image from "next/image";
+import { ArrowUp } from "lucide-react";
 import { footerLinks } from "@/lib/home-content";
 import CreamGradientBackground from "./CreamGradientBackground";
 
@@ -25,13 +26,14 @@ export default function Footer() {
       <div className="relative mx-auto max-w-7xl px-6 py-16 lg:px-8">
         <div className="grid grid-cols-2 gap-10 md:grid-cols-4">
           <div className="col-span-2">
-            <Link href="/" className="flex items-center gap-2">
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#b45309] to-[#ea580c] text-white">
-                <Sparkles size={16} />
-              </span>
-              <span className="font-display text-lg font-semibold tracking-tight text-foreground">
-                Ceylexa
-              </span>
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/images/logo/text_with_logo.png"
+                alt="Ceylexa"
+                width={2702}
+                height={856}
+                className="h-9 w-auto"
+              />
             </Link>
             <p className="mt-4 max-w-xs text-sm text-muted">
               An AI agency for operations teams who want their time back.

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
-import { Sparkles } from "lucide-react";
+import Image from "next/image";
 import { gsap } from "@/lib/gsap";
 
 /**
@@ -147,9 +147,14 @@ export default function PageLoader({ children }: { children: ReactNode }) {
           aria-live="polite"
           aria-label="Loading"
         >
-          <div className="flex h-14 w-14 animate-pulse items-center justify-center rounded-2xl bg-gradient-to-br from-[#b45309] to-[#ea580c] text-white shadow-lg shadow-[#b45309]/20">
-            <Sparkles size={26} />
-          </div>
+          <Image
+            src="/images/logo/logo_mark_only.png"
+            alt="Ceylexa"
+            width={2138}
+            height={2140}
+            priority
+            className="h-16 w-16 animate-pulse"
+          />
           <div className="mt-7 h-px w-40 overflow-hidden rounded-full bg-border">
             <div
               ref={barRef}

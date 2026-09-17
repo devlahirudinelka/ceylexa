@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
-import { Menu, X, Sparkles, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { nav } from "@/lib/home-content";
 import { SERVICES } from "@/lib/services-data";
 import Button from "@/components/ui/Button";
@@ -64,13 +65,15 @@ export default function Navbar() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#b45309] to-[#ea580c] text-white">
-            <Sparkles size={16} />
-          </span>
-          <span className="font-display text-lg font-semibold tracking-tight text-foreground">
-            Ceylexa
-          </span>
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/images/logo/text_with_logo.png"
+            alt="Ceylexa"
+            width={2702}
+            height={856}
+            priority
+            className="h-9 w-auto"
+          />
         </Link>
 
         <nav className="hidden items-center gap-10 lg:flex">
