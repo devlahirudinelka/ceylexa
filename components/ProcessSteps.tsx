@@ -172,7 +172,7 @@ export default function ProcessSteps() {
                   <div className="font-size-lg">Optimize &amp; Scale</div>
                   <div className="max-width-16">
                     <p className="font-size-sm">
-                      We measure performance, refine continuously, and help your product grow
+                      We measure performance, refine continuously, and help your brand grow
                       with confidence.
                     </p>
                   </div>

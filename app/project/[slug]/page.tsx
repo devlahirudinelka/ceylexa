@@ -11,6 +11,7 @@ import CreamGradientBackground from "@/components/home/CreamGradientBackground";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
+import { CONTACT_EMAIL } from "@/lib/site";
 import { PROJECTS, getOtherProjects, getProjectBySlug } from "@/lib/projects";
 
 type ProjectPageProps = {
@@ -51,11 +52,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
             <Reveal>
               <Link
-                href="/about"
+                href="/project"
                 className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-foreground"
               >
                 <ArrowLeft size={15} />
-                Back to work
+                Back to projects
               </Link>
             </Reveal>
 
@@ -80,9 +81,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <Reveal delay={260}>
               <div className="mt-10 flex flex-wrap gap-x-10 gap-y-4 border-t border-border pt-8">
                 <MetaItem label="Client" value={project.client} />
-                <MetaItem label="Industry" value={project.industry} />
-                <MetaItem label="Date" value={project.date} />
-                <MetaItem label="Location" value={project.location} />
+                <MetaItem label="Campaign" value={project.date} />
+                <MetaItem label="Platforms" value={project.platforms} />
               </div>
             </Reveal>
           </div>
@@ -93,7 +93,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl border border-border shadow-[0_30px_80px_-40px_rgba(36,26,12,0.35)]">
             <Image
               src={project.image}
-              alt={`${project.title} — ${project.category} project by Ceylexa`}
+              alt={`${project.title} — ${project.category} by Ceylexa`}
               fill
               priority
               sizes="(min-width: 1280px) 1152px, 100vw"
@@ -102,7 +102,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </div>
         </Reveal>
 
-        {/* Overview + quick facts */}
+        {/* Overview + challenge + quick facts */}
         <section className="mx-auto max-w-6xl px-6 py-20 lg:px-8 sm:py-28">
           <div className="grid gap-12 lg:grid-cols-3 lg:gap-16">
             <div className="lg:col-span-2">
@@ -112,14 +112,28 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 <h2 className="mt-3 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
                   Project overview
                 </h2>
-                <p className="mt-4 leading-relaxed text-muted">{project.overview}</p>
+                <div className="mt-4 space-y-4 leading-relaxed text-muted">
+                  {project.overview.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </div>
               </Reveal>
 
-              <Reveal delay={100} className="mt-10">
+              <Reveal delay={100} className="mt-12">
                 <h3 className="text-xl font-semibold tracking-tight text-foreground">
                   The challenge
                 </h3>
-                <p className="mt-4 leading-relaxed text-muted">{project.challenge}</p>
+                {project.challengeIntro && (
+                  <p className="mt-4 leading-relaxed text-muted">{project.challengeIntro}</p>
+                )}
+                <ul className="mt-4 space-y-2 leading-relaxed text-muted">
+                  {project.challenges.map((item) => (
+                    <li key={item} className="flex gap-3">
+                      <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-2" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </Reveal>
             </div>
 
@@ -130,9 +144,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 </h3>
                 <dl className="mt-5 space-y-4 text-sm">
                   <FactRow label="Client" value={project.client} />
-                  <FactRow label="Industry" value={project.industry} />
                   <FactRow label="Category" value={project.category} />
-                  <FactRow label="Location" value={project.location} />
+                  <FactRow label="Platforms" value={project.platforms} />
                 </dl>
 
                 <div className="mt-6 flex flex-wrap gap-2 border-t border-border pt-6">
@@ -147,7 +160,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 </div>
 
                 <Button
-                  href="mailto:hello@ceylexa.com"
+                  href={`mailto:${CONTACT_EMAIL}`}
                   size="md"
                   className="mt-6 w-full justify-center"
                 >
@@ -158,22 +171,25 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </div>
         </section>
 
-        {/* Approach */}
+        {/* Solution */}
         <section className="border-t border-border bg-surface-2/60 py-20 sm:py-28">
           <div className="mx-auto max-w-6xl px-6 lg:px-8">
             <Reveal>
               <span className="font-mono text-sm text-accent-2">{"// "}</span>
-              <span className="text-sm font-medium text-muted">Our approach</span>
+              <span className="text-sm font-medium text-muted">Team Ceylexa&rsquo;s solution</span>
               <h2 className="mt-3 max-w-xl text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
                 How we got there
               </h2>
+              <p className="mt-4 max-w-3xl leading-relaxed text-muted">{project.solutionIntro}</p>
             </Reveal>
 
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {project.approach.map((step, i) => (
-                <Reveal key={step.step} delay={i * 80}>
+                <Reveal key={step.title} delay={(i % 3) * 80}>
                   <div className="card-border h-full rounded-2xl p-6">
-                    <span className="font-mono text-sm text-accent-2">{step.step}</span>
+                    <span className="font-mono text-sm text-accent-2">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
                     <h3 className="mt-4 font-semibold text-foreground">{step.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-muted">{step.description}</p>
                   </div>
@@ -183,25 +199,48 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </div>
         </section>
 
-        {/* What we delivered */}
+        {/* Results */}
         <section className="mx-auto max-w-6xl px-6 py-20 lg:px-8 sm:py-28">
           <Reveal>
             <span className="font-mono text-sm text-accent-2">{"// "}</span>
-            <span className="text-sm font-medium text-muted">Scope</span>
+            <span className="text-sm font-medium text-muted">Results</span>
             <h2 className="mt-3 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-              What we delivered
+              The numbers
             </h2>
+            <p className="mt-4 max-w-3xl leading-relaxed text-muted">{project.resultsIntro}</p>
           </Reveal>
 
-          <div className="mt-12 grid grid-cols-2 gap-8 border-t border-border pt-10 sm:grid-cols-4">
-            {project.deliverables.map((item, i) => (
-              <Reveal key={item.label} delay={i * 80}>
+          <div className="mt-12 grid gap-8 border-t border-border pt-10 sm:grid-cols-2 lg:grid-cols-3">
+            {project.results.map((item, i) => (
+              <Reveal key={item.label} delay={(i % 3) * 80}>
                 <div className="text-gradient text-3xl font-semibold tracking-tight sm:text-4xl">
                   {item.value}
                 </div>
-                <div className="mt-1.5 text-sm text-muted">{item.label}</div>
+                <div className="mt-1.5 text-sm font-medium text-foreground">{item.label}</div>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{item.description}</p>
               </Reveal>
             ))}
+          </div>
+        </section>
+
+        {/* Impact */}
+        <section className="border-t border-border bg-surface-2/60 py-20 sm:py-28">
+          <div className="mx-auto max-w-4xl px-6 lg:px-8">
+            <Reveal>
+              <span className="font-mono text-sm text-accent-2">{"// "}</span>
+              <span className="text-sm font-medium text-muted">Impact</span>
+              <h2 className="mt-3 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+                The bigger picture
+              </h2>
+              <div className="mt-4 space-y-4 leading-relaxed text-muted">
+                {project.impact.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </div>
+              <p className="mt-8 text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
+                {project.tagline}
+              </p>
+            </Reveal>
           </div>
         </section>
 
@@ -214,14 +253,14 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   <span className="font-mono text-sm text-accent-2">{"// "}</span>
                   <span className="text-sm font-medium text-muted">More work</span>
                   <h2 className="mt-3 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-                    Other recent projects
+                    Other campaigns
                   </h2>
                 </div>
                 <Link
-                  href="/about"
+                  href="/project"
                   className="hidden shrink-0 items-center gap-1.5 text-sm font-medium text-muted transition-colors hover:text-foreground sm:inline-flex"
                 >
-                  View all work
+                  View all projects
                   <ArrowRight size={15} />
                 </Link>
               </Reveal>
@@ -229,30 +268,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <div className="mt-10 grid gap-6 sm:grid-cols-2">
                 {otherProjects.map((item, i) => (
                   <Reveal key={item.slug} delay={i * 100}>
-                    <Link
-                      href={item.href}
-                      className="group card-border relative block overflow-hidden rounded-2xl"
-                    >
-                      <div className="relative aspect-[4/3] w-full overflow-hidden">
-                        <Image
-                          src={item.image}
-                          alt={`${item.title} — ${item.category} project by Ceylexa`}
-                          fill
-                          sizes="(min-width: 640px) 50vw, 100vw"
-                          className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-                        <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-6">
-                          <div>
-                            <div className="text-xs font-medium text-white/70">{item.category}</div>
-                            <div className="mt-1 text-xl font-semibold text-white">{item.title}</div>
-                          </div>
-                          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/30 bg-black/25 text-white transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
-                            <ArrowUpRight size={18} />
-                          </span>
-                        </div>
-                      </div>
-                    </Link>
+                    <ProjectTile project={item} />
                   </Reveal>
                 ))}
               </div>
@@ -265,6 +281,32 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
       <Footer />
     </div>
+  );
+}
+
+function ProjectTile({ project }: { project: (typeof PROJECTS)[number] }) {
+  return (
+    <Link href={project.href} className="group card-border relative block overflow-hidden rounded-2xl">
+      <div className="relative aspect-[4/3] w-full overflow-hidden">
+        <Image
+          src={project.image}
+          alt={`${project.title} — ${project.category} by Ceylexa`}
+          fill
+          sizes="(min-width: 640px) 50vw, 100vw"
+          className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-6">
+          <div>
+            <div className="text-xs font-medium text-white/70">{project.category}</div>
+            <div className="mt-1 text-xl font-semibold text-white">{project.title}</div>
+          </div>
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/30 bg-black/25 text-white transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
+            <ArrowUpRight size={18} />
+          </span>
+        </div>
+      </div>
+    </Link>
   );
 }
 

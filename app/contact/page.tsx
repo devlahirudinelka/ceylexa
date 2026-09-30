@@ -8,7 +8,7 @@ import FAQ from "@/components/FAQ";
 export const metadata: Metadata = {
   title: "Contact — Ceylexa",
   description:
-    "Get in touch with Ceylexa. Tell us what's eating your team's time and we'll show you what we'd automate first.",
+    "Get in touch with Ceylexa Digital — offices in Wellington, New Zealand and Pannipitiya, Sri Lanka.",
 };
 
 export default function ContactPage() {

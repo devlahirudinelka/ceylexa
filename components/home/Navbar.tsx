@@ -2,16 +2,56 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import {
+  Menu,
+  X,
+  ChevronDown,
+  ArrowRight,
+  ArrowUpRight,
+  Layout,
+  Megaphone,
+  Camera,
+  Target,
+  Fingerprint,
+  Users,
+} from "lucide-react";
 import { nav } from "@/lib/home-content";
 import { SERVICES } from "@/lib/services-data";
 import Button from "@/components/ui/Button";
+
+const SERVICE_ICONS = {
+  layout: Layout,
+  megaphone: Megaphone,
+  camera: Camera,
+  target: Target,
+  fingerprint: Fingerprint,
+  users: Users,
+} as const;
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const openServices = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setServicesOpen(true);
+  };
+  const closeServices = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setServicesOpen(false), 120);
+  };
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setServicesOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -59,7 +99,7 @@ export default function Navbar() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled || open
+        scrolled || open || servicesOpen
           ? "border-b border-border bg-background/85 backdrop-blur-xl"
           : "border-b border-transparent bg-transparent"
       }`}
@@ -79,45 +119,91 @@ export default function Navbar() {
         <nav className="hidden items-center gap-10 lg:flex">
           {nav.map((item) =>
             item.label === "Services" ? (
-              <div key={item.href} className="group relative">
+              <div
+                key={item.href}
+                onMouseEnter={openServices}
+                onMouseLeave={closeServices}
+                onFocus={openServices}
+                onBlur={(e) => {
+                  if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setServicesOpen(false);
+                }}
+              >
                 <Link
                   href={item.href}
                   className="flex items-center gap-1 text-sm text-muted transition-colors hover:text-foreground"
+                  aria-expanded={servicesOpen}
                 >
                   {item.label}
                   <ChevronDown
                     size={14}
-                    className="transition-transform duration-200 group-hover:rotate-180"
+                    className={`transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""}`}
                   />
                 </Link>
 
-                {/* Invisible bridge so the pointer can travel from the
-                    trigger down to the panel without the hover group
-                    losing state on the gap between them. */}
-                <div className="absolute left-1/2 top-full h-3 w-full -translate-x-1/2" />
-
-                <div className="invisible absolute left-1/2 top-full w-72 -translate-x-1/2 translate-y-2 rounded-2xl border border-border bg-background/95 p-2 opacity-0 shadow-[0_20px_60px_-20px_rgba(36,26,12,0.25)] backdrop-blur-xl transition-all duration-200 group-hover:visible group-hover:translate-y-3 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-3 group-focus-within:opacity-100">
-                  {SERVICES.map((service) => (
-                    <Link
-                      key={service.slug}
-                      href={`/services/${service.slug}`}
-                      className="block rounded-xl px-3 py-2.5 transition-colors hover:bg-black/5"
-                    >
-                      <span className="block text-sm font-medium text-foreground">
-                        {service.title}
-                      </span>
-                      <span className="mt-0.5 block text-xs text-muted">
-                        {service.summary}
-                      </span>
-                    </Link>
-                  ))}
-                  <div className="mt-1 border-t border-border pt-1">
-                    <Link
-                      href="/services"
-                      className="block rounded-xl px-3 py-2.5 text-sm font-medium text-accent-2 transition-colors hover:bg-black/5"
-                    >
-                      View all services & packages
-                    </Link>
+                {/* Full-width mega menu, anchored to the header. The wrapper's
+                    top padding is an invisible hover bridge from the trigger. */}
+                <div
+                  className={`absolute inset-x-0 top-full px-4 pt-3 transition-all duration-200 lg:px-8 ${
+                    servicesOpen
+                      ? "visible translate-y-0 opacity-100"
+                      : "invisible -translate-y-2 opacity-0"
+                  }`}
+                >
+                  <div className="mx-auto max-w-7xl rounded-3xl border border-border bg-background p-3 shadow-[0_30px_80px_-30px_rgba(36,26,12,0.3)]">
+                    <div className="grid gap-3 lg:grid-cols-3">
+                      {SERVICES.map((service) => {
+                        const Icon = SERVICE_ICONS[service.icon];
+                        return (
+                          <Link
+                            key={service.slug}
+                            href={`/services/${service.slug}`}
+                            onClick={() => setServicesOpen(false)}
+                            className="group/card flex min-h-[170px] flex-col justify-between rounded-2xl bg-surface-2/70 p-5 transition-colors hover:bg-surface-2"
+                          >
+                            <div className="flex items-start justify-between gap-4">
+                              <div className="flex items-start gap-4">
+                                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-foreground shadow-sm">
+                                  <Icon size={18} />
+                                </span>
+                                <div>
+                                  <span className="block text-base font-semibold text-foreground">
+                                    {service.title}
+                                  </span>
+                                  <span className="mt-1 block text-sm leading-snug text-muted">
+                                    {service.summary.length > 78
+                                      ? `${service.summary.slice(0, 78).trimEnd()}…`
+                                      : service.summary}
+                                  </span>
+                                </div>
+                              </div>
+                              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-border bg-white text-foreground transition-transform duration-200 group-hover/card:-translate-y-0.5 group-hover/card:translate-x-0.5">
+                                <ArrowUpRight size={14} />
+                              </span>
+                            </div>
+                            <div className="mt-5 flex flex-wrap gap-1.5">
+                              {service.pills.slice(0, 4).map((pill) => (
+                                <span
+                                  key={pill}
+                                  className="rounded-full bg-white px-3 py-1 text-xs text-foreground/80"
+                                >
+                                  {pill}
+                                </span>
+                              ))}
+                            </div>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                    <div className="mt-3 flex items-center justify-between rounded-2xl px-4 py-3 text-sm">
+                      <span className="text-muted">Strategy, creativity and technology in one team.</span>
+                      <Link
+                        href="/services"
+                        onClick={() => setServicesOpen(false)}
+                        className="inline-flex items-center gap-1.5 font-medium text-foreground hover:text-accent-2"
+                      >
+                        View all services &amp; packages <ArrowRight size={14} />
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -134,7 +220,7 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden lg:block">
-          <Button href="mailto:hello@ceylexa.com" size="md">
+          <Button href="/contact" size="md">
             Contact now
           </Button>
         </div>
@@ -262,7 +348,7 @@ export default function Navbar() {
               }`}
               style={{ transitionDelay: open ? `${80 + nav.length * 40}ms` : "0ms" }}
             >
-              <Button href="mailto:hello@ceylexa.com" size="md" onClick={() => {
+              <Button href="/contact" size="md" onClick={() => {
                         setOpen(false);
                         setMobileServicesOpen(false);
                       }}>

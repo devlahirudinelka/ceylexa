@@ -2,13 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 
-const SOCIALS = [
-  { label: "Twitter", href: "https://x.com/" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/" },
-  { label: "Instagram", href: "https://www.instagram.com/" },
-];
-
-const CONTACT_EMAIL = "hello@ceylexa.com";
+import { CEYLEXA_SOCIALS, CONTACT_EMAIL, OFFICES } from "@/lib/site";
 
 export default function Contact() {
   const [status, setStatus] = useState<"idle" | "sent">("idle");
@@ -54,30 +48,60 @@ export default function Contact() {
           <div className="contact-left">
             <div className="contact-left-top">
               <div className="font-size-xsm pure-black all-caps">
-                our contacts
+                Let&rsquo;s Start a Conversation
               </div>
               <h2 className="contact-heading">
-                Let&rsquo;s Start Working Together. Get in Touch with Us!
+                Do You Have A Project And Want To Discuss? We&rsquo;d Love to Hear From You
               </h2>
+              <div className="spacing-2xl" />
+              <p className="font-size-sm">
+                Have a project in mind, a new idea, or simply looking for the right digital
+                partner? We&rsquo;d love to hear from you. Tell us a little about your
+                business, your goals, and what you&rsquo;re looking to achieve, and our team
+                will be happy to explore how we can help.
+              </p>
+              <div className="spacing-2xl" />
+              <p className="font-size-sm">
+                Whether you need support with digital marketing, branding, social media,
+                content creation, web development, paid advertising, or a complete digital
+                strategy, let&rsquo;s start with a conversation and take the next step
+                together.
+              </p>
             </div>
 
             <div className="contact-left-bottom">
-              <div className="contact-link-block">
-                <a href={`mailto:${CONTACT_EMAIL}`} className="contact-link">
-                  {CONTACT_EMAIL}
-                </a>
-              </div>
+              {OFFICES.map((office) => (
+                <div key={office.name} style={{ marginBottom: "2rem" }}>
+                  <div className="font-size-xsm pure-black all-caps">{office.name}</div>
+                  <div className="spacing-md" />
+                  <div className="font-size-md">{office.city}</div>
+                  <div className="font-size-md">
+                    <a href={office.phoneHref} className="contact-link">
+                      {office.phone}
+                    </a>
+                  </div>
+                  <div className="contact-link-block">
+                    <a href={`mailto:${office.email}`} className="contact-link">
+                      {office.email}
+                    </a>
+                  </div>
+                  <div className="font-size-md">
+                    <a
+                      href={office.websiteHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="contact-link"
+                    >
+                      {office.website}
+                    </a>
+                  </div>
+                </div>
+              ))}
 
-              <div className="spacing-4xl" />
-
-              <div className="max-width-13">
-                <div className="font-size-md">Colombo, Sri Lanka</div>
-              </div>
-
-              <div className="spacing-6xl" />
+              <div className="spacing-2xl" />
 
               <div className="social-link-wrap">
-                {SOCIALS.map((social) => (
+                {CEYLEXA_SOCIALS.map((social) => (
                   <a
                     key={social.label}
                     href={social.href}
@@ -85,9 +109,7 @@ export default function Contact() {
                     rel="noopener noreferrer"
                     className="contact-social-link w-inline-block"
                   >
-                    <div className="font-size-xsm pure-black">
-                      {social.label}
-                    </div>
+                    <div className="font-size-xsm pure-black">{social.label}</div>
                   </a>
                 ))}
               </div>

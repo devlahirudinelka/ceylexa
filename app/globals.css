@@ -10,10 +10,8 @@
   --accent: #b45309;
   --accent-2: #ea580c;
   --accent-3: #92400e;
-  --font-display: -apple-system, "Segoe UI", "SF Pro Display", "Helvetica Neue",
-    Arial, sans-serif;
-  --font-sans: -apple-system, "Segoe UI", "SF Pro Text", "Helvetica Neue",
-    Arial, sans-serif;
+  --font-display: var(--font-questrial), "Questrial", sans-serif;
+  --font-sans: var(--font-questrial), "Questrial", sans-serif;
 }
 
 @theme inline {
@@ -2510,7 +2508,7 @@ textarea.w-select {
 
 :root {
   --_color---white: white;
-  --fonts-family--inter-display: Interdisplay, Arial, sans-serif;
+  --fonts-family--inter-display: var(--font-questrial), "Questrial", sans-serif;
   --_color---black: #000;
   --_typography---font-size--font-size-sm: 1rem;
   --_typography---line-height--line-height-1-2: 1.2em;
@@ -7729,6 +7727,7 @@ li {
 .client-social-row {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: 0.2rem;
 }
@@ -7784,4 +7783,29 @@ li {
 
 ul {
   padding-left: 0px;
+}
+
+/* Global typography: Questrial + smooth glyph rendering */
+html,
+body {
+  font-family: var(--font-questrial), "Questrial", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Footer service marquee — GPU-only transform, paused for reduced motion */
+@keyframes footer-marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+.footer-marquee-track {
+  animation: footer-marquee 40s linear infinite;
+}
+.footer-marquee:hover .footer-marquee-track {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .footer-marquee-track {
+    animation: none;
+  }
 }

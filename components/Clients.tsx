@@ -7,7 +7,7 @@ export default function Clients() {
       <div className="space-29xl" />
       <div className="w-layout-blockcontainer container w-container">
         <h1 className="hero-heading">
-          Brands We&rsquo;re Proud to <span className="highlight-text">Partner</span> With
+          Brands That <span className="highlight-text">Trust</span> Ceylexa
         </h1>
       </div>
 
@@ -21,14 +21,22 @@ export default function Clients() {
               <div className="font-size-xsm">Our Clients</div>
             </div>
             <h2 className="heading-style-h2 center-mobile">
-              {CLIENTS.length}+ Brands Across Sri Lanka &amp; Beyond
+              250+ Brands Across Sri Lanka &amp; Beyond
             </h2>
             <div className="spacing-6xl" />
             <div className="clients-intro">
               <p className="font-size-sm">
-                From neighbourhood cafés to island-wide names, we&rsquo;ve partnered with brands
-                across food &amp; beverage, beauty, events, retail and more — building the
-                strategy, design, and campaigns behind their growth. Hover a card for more.
+                At Ceylexa Digital, we are proud to work with 250+ brands across Sri Lanka
+                and international markets, helping businesses from different industries build
+                stronger brands, connect with their audiences, and grow in the digital world.
+              </p>
+              <div className="spacing-2xl" />
+              <p className="font-size-sm">
+                Our client portfolio spans a diverse range of industries, allowing us to bring
+                fresh perspectives, creative strategies, and tailored digital solutions to
+                every project. From emerging businesses and established brands to personal
+                brands and international clients, we work closely with each client to
+                understand their goals and deliver strategies that create meaningful impact.
               </p>
             </div>
           </div>

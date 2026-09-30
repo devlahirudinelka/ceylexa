@@ -4,7 +4,7 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import type { ReactNode } from "react";
-import { Facebook, Instagram, Linkedin } from "lucide-react";
+import { Facebook, Globe, Instagram, Linkedin, Youtube } from "lucide-react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { CLIENTS, type ClientSocials } from "@/lib/clients-data";
 
@@ -23,7 +23,34 @@ function TikTokIcon({ size = 16 }: { size?: number }) {
   );
 }
 
-// Social platforms displayed on every card.
+function XIcon({ size = 16 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117Z" />
+    </svg>
+  );
+}
+
+function ThreadsIcon({ size = 16 }: { size?: number }) {
+  return (
+    <span
+      aria-hidden="true"
+      style={{ fontSize: size, fontWeight: 700, lineHeight: 1 }}
+    >
+      @
+    </span>
+  );
+}
+
+// Social platforms a card can show — only the ones a client actually has
+// a link for are rendered (see ClientSocialRow).
 const SOCIAL_PLATFORMS: {
   key: keyof ClientSocials;
   label: string;
@@ -49,6 +76,26 @@ const SOCIAL_PLATFORMS: {
     label: "TikTok",
     icon: (size) => <TikTokIcon size={size} />,
   },
+  {
+    key: "youtube",
+    label: "YouTube",
+    icon: (size) => <Youtube size={size} />,
+  },
+  {
+    key: "threads",
+    label: "Threads",
+    icon: (size) => <ThreadsIcon size={size} />,
+  },
+  {
+    key: "x",
+    label: "X",
+    icon: (size) => <XIcon size={size} />,
+  },
+  {
+    key: "website",
+    label: "Website",
+    icon: (size) => <Globe size={size} />,
+  },
 ];
 
 function ClientSocialRow({
@@ -60,32 +107,22 @@ function ClientSocialRow({
 }) {
   return (
     <div className="client-social-row">
-      {SOCIAL_PLATFORMS.map(
-        ({ key, label, icon }) => {
-          const href = socials[key];
+      {SOCIAL_PLATFORMS.map(({ key, label, icon }) => {
+        const href = socials[key];
+        if (!href) return null;
 
-          return href ? (
-            <a
-              key={key}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`${name} on ${label}`}
-            >
-              {icon(15)}
-            </a>
-          ) : (
-            <a
-              key={key}
-              className="is-placeholder"
-              aria-hidden="true"
-              tabIndex={-1}
-            >
-              {icon(15)}
-            </a>
-          );
-        }
-      )}
+        return (
+          <a
+            key={key}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${name} on ${label}`}
+          >
+            {icon(15)}
+          </a>
+        );
+      })}
     </div>
   );
 }

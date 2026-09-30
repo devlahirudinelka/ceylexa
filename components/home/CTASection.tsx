@@ -10,16 +10,17 @@ export default function CTASection() {
       <Reveal className="mx-auto max-w-4xl">
         <div className="card-border relative rounded-3xl px-8 py-16 text-center">
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-            Let&apos;s put your busywork
-            <span className="text-gradient"> on autopilot.</span>
+            Your competition is already investing in digital.
+            <span className="text-gradient"> Are you?</span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-muted">
-            Tell us what you&apos;re automating and we&apos;ll show you how an
-            AI agent can take it off your team&apos;s plate.
+            Book your consultation today. We&apos;ll show you exactly what&apos;s missing
+            &mdash; and what it would take to close the gap. No obligation. No credit card.
+            No sales pressure. Just strategy.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button href="mailto:hello@ceylexa.com" size="lg">
-              Start a Project
+            <Button href="/contact" size="lg">
+              Book a Consultation
               <ArrowRight size={16} />
             </Button>
             <Button href="/about" variant="secondary" size="lg">

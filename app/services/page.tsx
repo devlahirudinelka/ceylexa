@@ -4,6 +4,7 @@ import Footer from "@/components/home/Footer";
 import CTASection from "@/components/home/CTASection";
 import ServicePackages from "@/components/ServicePackages";
 import ServicesGrid from "@/components/ServicesGrid";
+import { PLATFORM_PARTNERS, SERVICES_INTRO } from "@/lib/services-data";
 import Badge from "@/components/ui/Badge";
 import Reveal from "@/components/ui/Reveal";
 
@@ -25,19 +26,42 @@ export default function ServicesPage() {
             <Reveal>
               <Badge>Services</Badge>
               <h1 className="mt-6 text-4xl font-semibold tracking-tight sm:text-5xl">
-                Everything your brand needs
-                <span className="text-gradient"> to grow.</span>
+                {SERVICES_INTRO.heading}
+                <span className="text-gradient"> {SERVICES_INTRO.headingAccent}</span>
               </h1>
-              <p className="mx-auto mt-5 max-w-xl text-muted">
-                Explore what we do, then pick the social media management package
-                that matches where your brand is right now.
-              </p>
+              {SERVICES_INTRO.paragraphs.map((paragraph) => (
+                <p key={paragraph} className="mx-auto mt-5 max-w-2xl text-muted">
+                  {paragraph}
+                </p>
+              ))}
             </Reveal>
           </div>
         </section>
 
         <ServicesGrid />
         <ServicePackages />
+
+        <section className="relative bg-background py-24">
+          <div className="mx-auto max-w-6xl px-6 text-center lg:px-8">
+            <Reveal>
+              <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+                {PLATFORM_PARTNERS.heading}
+              </h2>
+              <p className="mx-auto mt-5 max-w-3xl text-muted">{PLATFORM_PARTNERS.body}</p>
+              <ul className="mt-8 flex flex-wrap items-center justify-center gap-3">
+                {PLATFORM_PARTNERS.partners.map((partner) => (
+                  <li
+                    key={partner}
+                    className="bento-card rounded-full px-5 py-2 text-sm font-medium text-foreground/80"
+                  >
+                    {partner}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
+        </section>
+
         <CTASection />
       </div>
 

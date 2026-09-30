@@ -4,24 +4,24 @@ import { useState } from "react";
 
 const FAQS = [
   {
-    q: "1.  What is your typical project timeline?",
-    a: "Timelines vary by scope, but most projects run 4–8 weeks from kickoff to launch, with clear milestones along the way.",
+    q: "1.  Which services does Ceylexa offer?",
+    a: "Web design and development, digital marketing, content creation, paid media marketing, branding, and influencer marketing campaigns — planned together or as individual services.",
   },
   {
-    q: "2.  How much do your projects cost?",
-    a: "Pricing depends on project requirements. We offer custom quotes after a discovery call.",
+    q: "2.  Do you work with brands outside Sri Lanka?",
+    a: "Yes. We have offices in Wellington, New Zealand and Pannipitiya, Sri Lanka, and have worked with brands across 11+ international markets.",
   },
   {
-    q: "3.  How involved will I be during the project?",
-    a: "As much or as little as you'd like. We keep you looped in with regular check-ins and async updates throughout.",
+    q: "3.  How much do your services cost?",
+    a: "Pricing depends on the scope and goals of each project. Get in touch for a consultation and a tailored proposal.",
   },
   {
-    q: "4.  Who owns the final design and code?",
-    a: "You do. Once the project is complete and paid in full, all final designs, code, and assets are yours.",
+    q: "4.  How do you measure results?",
+    a: "We track meaningful metrics such as reach, engagement, leads, conversions, and return on ad spend, and report on what is actually moving your business objective.",
   },
   {
-    q: "5.  After Launch & Support",
-    a: "We offer a support window after launch to handle fixes and questions, plus ongoing retainer options if you need us longer term.",
+    q: "5.  How do I get started?",
+    a: "Book a consultation through our contact page or email hello@ceylexa.com. We will learn about your brand and recommend the right next step.",
   },
 ];
 
@@ -66,8 +66,8 @@ export default function FAQ() {
                 <div className="faq-bottom-wrapper">
                   <div className="max-width-26">
                     <p className="font-size-sm">
-                      Welcome to my corner of thoughts, ideas, and insights. This space is where
-                      I share everything from design.
+                      Answers to the questions brands ask us most. Can&rsquo;t find yours? Get in touch and
+                      our team will help.
                     </p>
                   </div>
                   <a href="/about" className="primary-button w-inline-block">

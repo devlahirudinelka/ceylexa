@@ -116,6 +116,12 @@ const REGIONS = [
     classes: ["Australia"],
   },
   {
+    name: "United Kingdom",
+    blurb: "Partnering with brands in the United Kingdom.",
+    ids: ["GB", "GBR"],
+    classes: ["United Kingdom"],
+  },
+  {
     name: "New Zealand",
     blurb: "Partnering with brands in New Zealand.",
     ids: ["NZ", "NZL"],
@@ -358,6 +364,20 @@ export default function ClientsMap() {
             <h2 className="heading-style-h2 center-mobile">
               Sri Lanka at Our Core, Clients Worldwide
             </h2>
+            <div className="spacing-6xl" />
+            <div className="clients-intro">
+              <p className="font-size-sm">
+                Our clients and projects extend across Sri Lanka and 11+ international
+                markets, including Sri Lanka, Australia, New Zealand, Singapore, Malaysia,
+                United States of America, Japan, Maldives, UAE, India, West Indies, and the
+                United Kingdom.
+              </p>
+              <div className="spacing-2xl" />
+              <p className="font-size-sm">
+                Different industries. Different markets. One commitment to helping brands
+                grow.
+              </p>
+            </div>
           </div>
 
           <div className="spaching-20-xl" />
