@@ -35,7 +35,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "The New Digital Marketing Playbook: How Brands Can Grow in an AI-Driven World",
     excerpt:
       "Successful digital marketing is increasingly about creating a connected brand experience rather than relying on a single channel.",
-    image: "/images/blog-1.webp",
+    image: "/images/blog-1.jpeg",
     readingTime: "6 min read",
     blocks: [
       p("Digital marketing is no longer simply about posting on social media, ranking on Google, or running advertisements. The digital landscape has evolved into a connected ecosystem where customers discover brands through search engines, social media, influencers, websites, online reviews, video platforms, and increasingly, AI-powered tools."),
@@ -94,7 +94,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "From Scrolling to Selling: How Short-Form Video Can Transform Your Brand",
     excerpt:
       "Your brand may have only a few seconds to capture attention. Here is how to make short-form video stop the scroll and drive real results.",
-    image: "/images/blog-2.webp",
+    image: "/images/blog-2.jpeg",
     readingTime: "5 min read",
     blocks: [
       p("People scroll quickly."),
@@ -161,7 +161,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "Your Website Is More Than a Website: Building a Digital Experience That Converts",
     excerpt:
       "Effective website design and development is not simply about making a site look good. It is about creating a digital experience that works for your customers and your business.",
-    image: "/images/blog-3.webp",
+    image: "/images/blog-3.jpeg",
     readingTime: "8 min read",
     blocks: [
       p("In today's digital world, your website is more than just an online presence. It is often the first place potential customers go to learn about your business, explore your services, understand your brand, and decide whether they want to work with you. Before making a purchase, booking a service, sending an enquiry, or contacting your team, customers are likely to interact with your digital presence in some way. Your website plays a central role in that journey."),
