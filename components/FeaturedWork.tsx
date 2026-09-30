@@ -1,8 +1,11 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import { gsap } from "@/lib/gsap";
 import { PROJECTS } from "@/lib/projects";
+
+const FEATURED = PROJECTS.slice(0, 6);
 
 const STACK_TOP = "8vh";
 
@@ -65,7 +68,7 @@ export default function FeaturedWork() {
           <div className="featured-card-wrapper">
             <div className="w-dyn-list">
               <div role="list" className="project-collection-list w-dyn-items">
-                {PROJECTS.map((project, i) => (
+                {FEATURED.map((project, i) => (
                   <div
                     key={project.href}
                     ref={(el) => {
@@ -103,6 +106,12 @@ export default function FeaturedWork() {
                 ))}
               </div>
             </div>
+          </div>
+          <div className="spacing-20xl" />
+          <div className="flex justify-center">
+            <Link href="/project" className="font-size-sm underline underline-offset-4">
+              View all projects
+            </Link>
           </div>
         </div>
       </div>

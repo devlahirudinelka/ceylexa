@@ -5,6 +5,12 @@ import ProcessSteps from "@/components/ProcessSteps";
 import Team from "@/components/Team";
 import Awards from "@/components/Awards";
 import Footer from "@/components/home/Footer";
+import CTASection from "@/components/home/CTASection";
+import AboutStory from "@/components/about/AboutStory";
+import WhyChoose from "@/components/about/WhyChoose";
+import CoreValues from "@/components/about/CoreValues";
+import Careers from "@/components/about/Careers";
+import NewsEvents from "@/components/about/NewsEvents";
 import type { Metadata } from "next";
 import Hero from "@/components/Hero";
 import LineRail from "@/components/LineRail";
@@ -12,7 +18,7 @@ import LineRail from "@/components/LineRail";
 export const metadata: Metadata = {
   title: "About — Ceylexa",
   description:
-    "Meet Ceylexa — our story, how we work, and the team building the AI agents that take busywork off operations teams.",
+    "About Ceylexa Digital — our story, values, team, awards, careers, and latest news.",
 };
 
 export default function AboutPage() {
@@ -27,11 +33,17 @@ export default function AboutPage() {
           <Hero />
         </div>
         <AboutHero />
+        <AboutStory />
         <MissionStats />
         <div className="space-29xl" />
+        <WhyChoose />
         <ProcessSteps />
         <Team />
         <Awards />
+        <CoreValues />
+        <Careers />
+        <NewsEvents />
+        <CTASection />
       </div>
 
       <Footer />

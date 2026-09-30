@@ -50,7 +50,7 @@ export default function Hero() {
             className="animate-fade-up mt-10 flex flex-col items-center gap-4 sm:flex-row"
             style={{ animationDelay: "0.24s" }}
           >
-            <Button href="mailto:hello@ceylexa.com" size="lg">
+            <Button href="/contact" size="lg">
               Start a Project
               <ArrowRight size={16} />
             </Button>

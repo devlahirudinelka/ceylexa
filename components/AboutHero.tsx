@@ -37,12 +37,7 @@ function ArrowIcon({ className = "button-arrow-main" }: { className?: string }) 
   );
 }
 
-const SOCIALS = [
-  { label: "Facebook", href: "https://www.facebook.com/" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/" },
-  { label: "Twitter", href: "https://x.com/" },
-  { label: "Instagram", href: "https://www.instagram.com/" },
-];
+import { CEYLEXA_SOCIALS } from "@/lib/site";
 
 export default function AboutHero() {
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -84,7 +79,7 @@ export default function AboutHero() {
           <div className="about-header">
             <div className="hero-heading-wrap">
               <h1 className="hero-heading" ref={headingRef}>
-                About Ceylexa
+                About Us
               </h1>
             </div>
           </div>
@@ -94,8 +89,8 @@ export default function AboutHero() {
               <SparkleIcon />
               <div className="max-width-16">
                 <p className="font-size-sm align-center-mobile">
-                  We design, build, and operate the AI agents and automations that take
-                  repetitive work off operations teams&rsquo; plates.
+                  A forward-thinking digital marketing company built on creativity, technology,
+                  strategy, and measurable results.
                 </p>
               </div>
             </div>
@@ -115,8 +110,8 @@ export default function AboutHero() {
 
               <Link href="/contact" className="btn-primary bg-normal-white w-inline-block">
                 <div className="btn-text-pill bg-normal-white-2">
-                  <div className="button-text">Contact Me</div>
-                  <div className="button-text bg-normal-white-4">Contact Me</div>
+                  <div className="button-text">Get in Touch</div>
+                  <div className="button-text bg-normal-white-4">Get in Touch</div>
                 </div>
                 <div className="btn-arrow-pill bg-normal-white-5">
                   <ArrowIcon className="button-arrow-main black" />
@@ -126,7 +121,7 @@ export default function AboutHero() {
             </div>
 
             <div className="about-social-wrap">
-              {SOCIALS.map((social) => (
+              {CEYLEXA_SOCIALS.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}

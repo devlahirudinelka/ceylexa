@@ -1,21 +1,24 @@
 export const nav = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
-  { label: "Process", href: "/#process" },
+  { label: "Projects", href: "/project" },
   { label: "About", href: "/about" },
   { label: "Clients", href: "/clients" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
 
 export const footerLinks = {
   product: [
     { label: "Services", href: "/services" },
-    { label: "Our stack", href: "/#stack" },
-    { label: "Process", href: "/#process" },
+    { label: "Projects", href: "/project" },
+    { label: "Clients", href: "/clients" },
+    { label: "Blog", href: "/blog" },
   ],
   company: [
     { label: "About", href: "/about" },
-    { label: "Contact", href: "mailto:hello@ceylexa.com" },
+    { label: "Careers", href: "/about#careers" },
+    { label: "Contact", href: "/contact" },
   ],
 };
 
@@ -25,9 +28,9 @@ export const trustStrip = {
 };
 
 export const heroStats = [
-  { label: "10+ nations served worldwide", icon: "shield" },
+  { label: "11+ international markets", icon: "shield" },
   { label: "4.9/5 client rating", icon: "star" },
-  { label: "12+ industries served", icon: "users" },
+  { label: "250+ brands served", icon: "users" },
 ];
 
 export const about = {

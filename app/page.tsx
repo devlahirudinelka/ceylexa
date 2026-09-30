@@ -20,9 +20,9 @@ import ProcessSteps from "@/components/ProcessSteps";
 import Services from "@/components/Services";
 
 export const metadata: Metadata = {
-  title: "Ceylexa — Automate busywork with AI agents",
+  title: "Ceylexa Digital — Your Partner in Digital Excellence",
   description:
-    "Ceylexa is an AI agency for operations teams. We design, build, and operate the workflows and AI agents that take repetitive work off your team's plate.",
+    "Ceylexa Digital helps businesses build powerful brands, connect with their audiences, and grow online through digital marketing, branding, content, paid media, and web design.",
 };
 
 export default function Home() {

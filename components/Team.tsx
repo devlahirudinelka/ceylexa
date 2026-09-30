@@ -1,61 +1,46 @@
-// Team photos are the source template's stock portraits, hotlinked from
-// Webflow's asset CDN (same approach already used for the .about-image-wrap
-// background in globals.css) — this environment has no network access to
-// fetch and re-host them locally. Swap `src` for real team photos in
-// /public/images before launch, same as the placeholder names/roles below.
-const TEAM = [
-  {
-    name: "Ella Johnson",
-    role: "Creative Director",
-    src: "https://cdn.prod.website-files.com/696b260b2c87366dbac9f403/696f739e84eb02409fd76e2a_Frame%2094.webp",
-    alt: "Portrait of a fair-skinned woman with short platinum blonde hair wearing a light gray coat and beige turtleneck.",
-  },
-  {
-    name: "Carter Davis",
-    role: "Operations Head",
-    src: "https://cdn.prod.website-files.com/696b260b2c87366dbac9f403/696f73c272e0d78b35e7a434_Frame%2095.webp",
-    alt: "Young man with styled brown hair wearing a light gray button-up shirt against a plain background.",
-  },
-  {
-    name: "Marcus Lane",
-    role: "Creative Director",
-    src: "https://cdn.prod.website-files.com/696b260b2c87366dbac9f403/696f73d9603cb9b8bfa3fbfe_Frame%2097.webp",
-    alt: "Young man with platinum blonde hair wearing a light gray turtleneck sweater against a neutral background.",
-  },
-  {
-    name: "Brian Lee",
-    role: "Procurement Director",
-    src: "https://cdn.prod.website-files.com/696b260b2c87366dbac9f403/696f74176585e3bfacdca691_Frame%2096.webp",
-    alt: "Portrait of a woman with long, wavy blonde hair wearing a white coat against a gray background.",
-  },
-];
-
+// The source document ("About Us" → Team) only contains copy — no team
+// member names, roles, or photos — so this section is text-only. Add a
+// portrait grid back here once real team details are supplied.
 export default function Team() {
   return (
     <section className="section">
       <div className="space-xxxl" />
-      <div className="w-layout-blockcontainer container w-container">
-        <div className="team-header">
-          <div className="font-size-xsm process">
-            <span className="highlight-text orrenge">{"//"}</span>
-            <span> OUR TEAM</span>
-          </div>
-          <h2 className="team-heading center-tablet">Team of Engineers &amp; Innovators</h2>
-        </div>
-
-        <div className="spacing-20xl" />
-
-        <div className="w-layout-grid team-grid">
-          {TEAM.map((member) => (
-            <div key={member.name} className="team-card">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={member.src} loading="lazy" alt={member.alt} className="team-img" />
-              <div className="team-info-block">
-                <div className="font-size-base semi-bold">{member.name}</div>
-                <div className="font-size-xsm">{member.role}</div>
-              </div>
+      <div className="w-layout-blockcontainer container regular w-container">
+        <div className="inner-wrappar" style={{ maxWidth: "56rem", margin: "0 auto" }}>
+          <div className="team-header">
+            <div className="font-size-xsm process">
+              <span className="highlight-text orrenge">{"//"}</span>
+              <span> TEAM</span>
             </div>
-          ))}
+            <h2 className="team-heading center-tablet">
+              Get to know the masterminds that make the magic happen.
+            </h2>
+          </div>
+
+          <div className="spacing-6xl" />
+
+          <div className="flex flex-col gap-5">
+            <p className="font-size-sm">
+              We are a team of passionate innovators dedicated to building modern solutions
+              for businesses that want to grow, adapt, and thrive. Our mission is to combine
+              creativity, technology, and strategy to deliver meaningful results for our
+              clients. With a focus on collaboration and transparency, we bring fresh ideas
+              and practical expertise to every project. From concept to execution, we are
+              committed to excellence, ensuring that each solution is tailored to meet the
+              unique needs of those we serve. Together, we transform challenges into
+              opportunities and visions into reality.
+            </p>
+            <p className="font-size-sm">
+              Our team of specialists is passionate about transforming ideas into compelling
+              digital experiences. From sophisticated website designs and engaging social
+              media campaigns to impactful branding and performance-driven advertising, we
+              focus on delivering quality and consistency across every touchpoint. We believe
+              successful digital marketing is built on strong partnerships. By working
+              closely with our Team and clients, we become an extension of their team
+              understanding their vision, solving their challenges, and continuously looking
+              for opportunities to help them move forward.
+            </p>
+          </div>
         </div>
       </div>
       <div className="space-xxxl" />

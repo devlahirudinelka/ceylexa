@@ -141,7 +141,7 @@ export default function Hero() {
         <div className="w-layout-blockcontainer container large w-container">
           <div className="home-hero-header">
             <h1 className="hero-heading" ref={headingRef}>
-              We build the next
+              Your partner in digital
             </h1>
           </div>
           <div className="hero-middle">
@@ -171,14 +171,14 @@ export default function Hero() {
             </div>
             <div className="hero-title-block">
               <div className="hero-text" ref={heroTextRef}>
-                UXORA
+                CEYLEXA
               </div>
             </div>
           </div>
           <div className="hero-bottom-item">
             <div ref={subtitleWrapRef} className="max-width-35">
               <div className="hero-subtitle">
-                The European Creative Agency developing the future of commerce
+                A digital marketing agency helping brands build, connect, and grow — from Sri Lanka and New Zealand
               </div>
             </div>
             <div className="spacing-6xl" />
@@ -193,7 +193,7 @@ export default function Hero() {
                   )}
                 </div>
                 <div className="max-width-7">
-                  <div className="font-size-xsm pure-black">Loved by 500+ Founders</div>
+                  <div className="font-size-xsm pure-black">Trusted by 250+ Brands</div>
                 </div>
               </div>
               <div className="reviewer-right">

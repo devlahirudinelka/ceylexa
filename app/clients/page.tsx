@@ -7,7 +7,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Clients — Ceylexa",
   description:
-    "Brands Ceylexa has partnered with — from Sri Lankan food, beauty, and events businesses to clients further afield.",
+    "250+ brands across Sri Lanka and 11+ international markets trust Ceylexa Digital.",
 };
 
 export default function ClientsPage() {
