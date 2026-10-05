@@ -42,7 +42,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const otherProjects = getOtherProjects(slug).slice(0, 2);
 
   return (
-    <div className="page-wrapper">
+    <div className="overflow-clip">
       <Navbar />
 
       <main className="bg-background">
@@ -67,13 +67,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </Reveal>
 
             <Reveal delay={140}>
-              <h1 className="mt-6 text-4xl font-semibold leading-[1.08] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
+              <h1 className="tracking-tight text-foreground">
                 {project.title}
               </h1>
             </Reveal>
 
             <Reveal delay={200}>
-              <p className="mt-6 max-w-2xl text-balance text-base text-muted sm:text-lg">
+              <p className="max-w-2xl text-balance text-[1rem] sm:text-[1.125rem]">
                 {project.summary}
               </p>
             </Reveal>
@@ -109,10 +109,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <Reveal>
                 <span className="font-mono text-sm text-accent-2">{"// "}</span>
                 <span className="text-sm font-medium text-muted">Overview</span>
-                <h2 className="mt-3 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+                <h2 className="tracking-tight text-foreground">
                   Project overview
                 </h2>
-                <div className="mt-4 space-y-4 leading-relaxed text-muted">
+                <div className="mt-4 leading-relaxed text-muted">
                   {project.overview.map((paragraph) => (
                     <p key={paragraph}>{paragraph}</p>
                   ))}
@@ -120,13 +120,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </Reveal>
 
               <Reveal delay={100} className="mt-12">
-                <h3 className="text-xl font-semibold tracking-tight text-foreground">
+                <h3 className="tracking-tight text-foreground">
                   The challenge
                 </h3>
                 {project.challengeIntro && (
-                  <p className="mt-4 leading-relaxed text-muted">{project.challengeIntro}</p>
+                  <p className="">{project.challengeIntro}</p>
                 )}
-                <ul className="mt-4 space-y-2 leading-relaxed text-muted">
+                <ul className="space-y-2 leading-relaxed text-muted">
                   {project.challenges.map((item) => (
                     <li key={item} className="flex gap-3">
                       <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-2" />
@@ -138,8 +138,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </div>
 
             <Reveal delay={120}>
-              <div className="card-border h-fit rounded-2xl p-6 sm:p-8">
-                <h3 className="text-xs font-semibold tracking-wider text-muted uppercase">
+              <div className="bg-[linear-gradient(180deg,rgba(255,255,255,0.75),rgba(255,255,255,0.55))] border border-border backdrop-blur-[6px] h-fit rounded-2xl p-6 sm:p-8">
+                <h3 className="tracking-wider text-muted uppercase">
                   Quick facts
                 </h3>
                 <dl className="mt-5 space-y-4 text-sm">
@@ -177,21 +177,21 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <Reveal>
               <span className="font-mono text-sm text-accent-2">{"// "}</span>
               <span className="text-sm font-medium text-muted">Team Ceylexa&rsquo;s solution</span>
-              <h2 className="mt-3 max-w-xl text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+              <h2 className="max-w-xl tracking-tight text-foreground">
                 How we got there
               </h2>
-              <p className="mt-4 max-w-3xl leading-relaxed text-muted">{project.solutionIntro}</p>
+              <p className="max-w-3xl">{project.solutionIntro}</p>
             </Reveal>
 
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {project.approach.map((step, i) => (
                 <Reveal key={step.title} delay={(i % 3) * 80}>
-                  <div className="card-border h-full rounded-2xl p-6">
+                  <div className="bg-[linear-gradient(180deg,rgba(255,255,255,0.75),rgba(255,255,255,0.55))] border border-border backdrop-blur-[6px] h-full rounded-2xl p-6">
                     <span className="font-mono text-sm text-accent-2">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <h3 className="mt-4 font-semibold text-foreground">{step.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted">{step.description}</p>
+                    <h3 className="text-foreground">{step.title}</h3>
+                    <p className="text-[0.875rem]">{step.description}</p>
                   </div>
                 </Reveal>
               ))}
@@ -204,20 +204,20 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <Reveal>
             <span className="font-mono text-sm text-accent-2">{"// "}</span>
             <span className="text-sm font-medium text-muted">Results</span>
-            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+            <h2 className="tracking-tight text-foreground">
               The numbers
             </h2>
-            <p className="mt-4 max-w-3xl leading-relaxed text-muted">{project.resultsIntro}</p>
+            <p className="max-w-3xl">{project.resultsIntro}</p>
           </Reveal>
 
           <div className="mt-12 grid gap-8 border-t border-border pt-10 sm:grid-cols-2 lg:grid-cols-3">
             {project.results.map((item, i) => (
               <Reveal key={item.label} delay={(i % 3) * 80}>
-                <div className="text-gradient text-3xl font-semibold tracking-tight sm:text-4xl">
+                <div className="text-transparent bg-[linear-gradient(90deg,#92400e_0%,#b45309_45%,#ea580c_100%)] bg-clip-text text-3xl font-semibold tracking-tight sm:text-4xl">
                   {item.value}
                 </div>
                 <div className="mt-1.5 text-sm font-medium text-foreground">{item.label}</div>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{item.description}</p>
+                <p className="text-[0.875rem]">{item.description}</p>
               </Reveal>
             ))}
           </div>
@@ -229,15 +229,15 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <Reveal>
               <span className="font-mono text-sm text-accent-2">{"// "}</span>
               <span className="text-sm font-medium text-muted">Impact</span>
-              <h2 className="mt-3 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+              <h2 className="tracking-tight text-foreground">
                 The bigger picture
               </h2>
-              <div className="mt-4 space-y-4 leading-relaxed text-muted">
+              <div className="mt-4 leading-relaxed text-muted">
                 {project.impact.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
               </div>
-              <p className="mt-8 text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
+              <p className="text-[1.25rem] font-semibold tracking-tight sm:text-[1.5rem]">
                 {project.tagline}
               </p>
             </Reveal>
@@ -252,7 +252,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 <div>
                   <span className="font-mono text-sm text-accent-2">{"// "}</span>
                   <span className="text-sm font-medium text-muted">More work</span>
-                  <h2 className="mt-3 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+                  <h2 className="tracking-tight text-foreground">
                     Other campaigns
                   </h2>
                 </div>
@@ -286,7 +286,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
 function ProjectTile({ project }: { project: (typeof PROJECTS)[number] }) {
   return (
-    <Link href={project.href} className="group card-border relative block overflow-hidden rounded-2xl">
+    <Link href={project.href} className="flex gap-2 flex-col bg-[linear-gradient(180deg,rgba(255,255,255,0.75),rgba(255,255,255,0.55))] border border-border backdrop-blur-[6px] max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-[0.3rem] group relative overflow-hidden rounded-2xl">
       <div className="relative aspect-[4/3] w-full overflow-hidden">
         <Image
           src={project.image}

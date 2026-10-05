@@ -4,7 +4,7 @@ import type { BlogPost } from "@/lib/blog";
 
 export default function BlogCard({ post }: { post: BlogPost }) {
   return (
-    <Link href={post.href} className="group block">
+    <Link href={post.href} className="flex gap-2 flex-col max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-[0.3rem] group">
       <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-border bg-surface-2">
         <Image
           src={post.image}
@@ -19,10 +19,10 @@ export default function BlogCard({ post }: { post: BlogPost }) {
         <span className="h-1 w-1 rounded-full bg-muted/60" />
         <span>{post.readingTime.replace(" read", "")}</span>
       </div>
-      <h3 className="mt-3 line-clamp-2 text-lg font-semibold leading-snug text-foreground transition-colors group-hover:text-accent-2 sm:text-xl">
+      <h3 className="line-clamp-2 text-foreground transition-colors group-hover:text-accent-2">
         {post.title}
       </h3>
-      <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-muted">{post.excerpt}</p>
+      <p className="line-clamp-2 text-[0.875rem]">{post.excerpt}</p>
     </Link>
   );
 }

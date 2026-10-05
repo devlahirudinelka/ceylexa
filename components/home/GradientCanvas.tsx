@@ -145,7 +145,7 @@ export default function GradientCanvas({
       >
         <GradientPlane />
       </Canvas>
-      <div className="noise-overlay" />
+      <div className="absolute inset-0 bg-[url(data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%27120%27%20height=%27120%27%3E%3Cfilter%20id=%27n%27%3E%3CfeTurbulence%20type=%27fractalNoise%27%20baseFrequency=%270.9%27%20numOctaves=%272%27%20stitchTiles=%27stitch%27/%3E%3C/filter%3E%3Crect%20width=%27100%25%27%20height=%27100%25%27%20filter=%27url%28%23n%29%27/%3E%3C/svg%3E)] opacity-2 mix-blend-overlay pointer-events-none" />
     </div>
   );
 }

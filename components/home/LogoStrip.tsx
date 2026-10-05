@@ -5,7 +5,7 @@ export default function LogoStrip() {
   return (
     <section className="relative border-t border-border bg-background py-14">
       <Reveal className="mx-auto max-w-6xl px-6 text-center lg:px-8">
-        <p className="text-xs uppercase tracking-[0.2em] text-muted">
+        <p className="text-[0.75rem] uppercase tracking-[0.2em]">
           {trustStrip.eyebrow}
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-6 opacity-80">

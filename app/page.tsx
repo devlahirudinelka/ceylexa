@@ -30,7 +30,7 @@ export default function Home() {
     <>
       <Navbar />
       <Hero />
-      <div className="page-wrapper">
+      <div className="overflow-clip">
         {/* <HeroSocial /> */}
 
         <div className="main">

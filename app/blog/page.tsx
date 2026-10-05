@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
   return (
-    <div className="page-wrapper">
+    <div className="overflow-clip">
       <Navbar />
 
       <main className="bg-background">
@@ -28,8 +28,8 @@ export default function BlogPage() {
               <span className="text-sm font-medium text-muted">Blog &amp; articles</span>
             </Reveal>
             <Reveal delay={80}>
-              <h1 className="mt-6 text-4xl font-semibold leading-[1.08] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
-                Ideas, Stories &amp; <span className="text-gradient">Creative Insight</span>
+              <h1 className="tracking-tight text-foreground">
+                Ideas, Stories &amp; <span className="text-transparent bg-[linear-gradient(90deg,#92400e_0%,#b45309_45%,#ea580c_100%)] bg-clip-text">Creative Insight</span>
               </h1>
             </Reveal>
           </div>

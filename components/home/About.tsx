@@ -11,10 +11,10 @@ export default function About() {
         <div className="grid gap-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <Reveal>
             <Badge>{about.badge}</Badge>
-            <h2 className="mt-6 text-3xl font-semibold tracking-tight sm:text-4xl">
+            <h2 className="tracking-tight">
               {about.heading}
             </h2>
-            <div className="mt-4 space-y-4 text-muted">
+            <div className="mt-4 text-muted">
               {about.body.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
@@ -28,7 +28,7 @@ export default function About() {
           </Reveal>
 
           <Reveal delay={100}>
-            <div className="card-border relative rounded-3xl p-6 sm:p-8">
+            <div className="bg-[linear-gradient(180deg,rgba(255,255,255,0.75),rgba(255,255,255,0.55))] border border-border backdrop-blur-[6px] relative rounded-3xl p-6 sm:p-8">
               <ul className="space-y-6">
                 {about.highlights.map((item) => (
                   <li key={item.title} className="flex gap-4">
@@ -36,10 +36,10 @@ export default function About() {
                       <CheckCircle2 size={16} />
                     </span>
                     <div>
-                      <h3 className="text-sm font-semibold text-foreground">
+                      <h3 className="text-foreground">
                         {item.title}
                       </h3>
-                      <p className="mt-1 text-sm leading-relaxed text-muted">
+                      <p className="text-[0.875rem]">
                         {item.description}
                       </p>
                     </div>

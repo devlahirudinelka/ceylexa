@@ -23,30 +23,30 @@ const VALUES = [
 
 export default function CoreValues() {
   return (
-    <section className="section">
-      <div className="w-layout-blockcontainer container regular w-container">
+    <section className="relative">
+      <div className="block mx-auto px-6 max-w-[84rem] w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
         <div className="inner-wrappar">
-          <div className="title-wrapar">
-            <div className="font-size-xsm brand">{"//"}</div>
-            <div className="font-size-xsm">Our Core Values</div>
+          <div className="flex gap-0.5 justify-start items-center">
+            <div className="z-999 font-sans text-[#d7ba5e] text-[0.875rem] leading-[1.5em]">{"//"}</div>
+            <div className="font-sans text-dim-gray text-[0.875rem] leading-[1.5em]">Our Core Values</div>
           </div>
-          <div className="spacing-2xl" />
-          <h2 className="heading-style-h2">
-            Our Core <span className="highlight-text">Values</span>
+          <div className="pt-4 w-full max-tablet:pt-[0.8rem] max-md:pt-[0.7rem] max-mobile:pt-[0.6rem]" />
+          <h2 className="font-sans text-[3.75rem] leading-[1.2em] font-medium text-left max-tablet:text-[3rem] max-md:text-[2.5rem] max-mobile:text-[2.25rem]">
+            Our Core <span className="text-[#d7ba5e]">Values</span>
           </h2>
-          <div className="spacing-2xl" />
-          <div className="max-width-29">
-            <p className="font-size-sm">
+          <div className="pt-4 w-full max-tablet:pt-[0.8rem] max-md:pt-[0.7rem] max-mobile:pt-[0.6rem]" />
+          <div className="max-w-[30rem] max-tablet:max-w-none">
+            <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
               We&rsquo;re with you every step of the way, pushing you ever closer towards the
               summit of your success.
             </p>
           </div>
-          <div className="spacing-20xl" />
+          <div className="pt-15 w-full max-tablet:pt-12 max-md:pt-10.5 max-mobile:pt-9" />
           <div className="grid gap-5 md:grid-cols-2">
             {VALUES.map((value) => (
-              <div key={value.title} className="bento-card rounded-2xl p-8">
-                <h3 className="text-xl font-semibold text-foreground">{value.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted">
+              <div key={value.title} className="relative overflow-hidden bg-[linear-gradient(180deg,rgba(255,255,255,0.8),rgba(255,255,255,0.6))] border border-border backdrop-blur-[6px] [--mx:50%] [--my:50%] [&>*]:relative [&>*]:z-1 after:absolute after:-inset-0.25 after:z-0 after:content-[''] after:bg-[radial-gradient(480px_circle_at_var(--mx)_var(--my),rgba(234,88,12,0.14),transparent_45%)] after:rounded-[inherit] after:opacity-0 after:[transition:opacity_0.4s_ease] after:pointer-events-none hover:after:opacity-100 bento-card rounded-2xl p-8">
+                <h3 className="text-foreground">{value.title}</h3>
+                <p className="text-[0.875rem]">
                   {value.description}
                 </p>
               </div>
@@ -54,7 +54,7 @@ export default function CoreValues() {
           </div>
         </div>
       </div>
-      <div className="space-xxxl" />
+      <div className="pt-30 w-full max-tablet:pt-20 max-md:pt-18 max-mobile:pt-16" />
     </section>
   );
 }

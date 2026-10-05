@@ -52,21 +52,21 @@ function MarqueeRow({ reverse = false }: { reverse?: boolean }) {
   }, [reverse]);
 
   return (
-    <div className="logo-marque-list" style={{ overflow: "hidden" }}>
+    <div className="flex flex-none justify-center items-start" style={{ overflow: "hidden" }}>
       <div
         ref={trackRef}
-        style={{ display: "flex", width: "max-content", gap: "var(--_spacing---spacer--spacing-lg)" }}
+        className="flex w-max gap-3 max-tablet:gap-[0.6rem] max-md:gap-[0.5249rem] max-mobile:gap-[0.449rem]"
       >
         {[0, 1].map((rep) => (
-          <div key={rep} style={{ display: "flex", gap: "var(--_spacing---spacer--spacing-lg)" }}>
+          <div key={rep} className="flex gap-3 max-tablet:gap-[0.6rem] max-md:gap-[0.5249rem] max-mobile:gap-[0.449rem]">
             {LOGOS.map((logo) => (
-              <div key={`${rep}-${logo}`} className="marque-content">
+              <div key={`${rep}-${logo}`} className="flex flex-col flex-none justify-center items-center py-12 px-20 h-50.5 border border-[#0000001a] rounded-xl max-tablet:py-8 max-tablet:px-12 max-tablet:h-40 max-md:py-7 max-md:px-[2.44rem] max-md:h-28 max-mobile:p-6 max-mobile:h-20">
                 <Image
                   src={`/images/Clients/${logo}`}
                   alt={logo.replace(/\.webp$/, "")}
                   width={154}
                   height={80}
-                  className="marque-logo"
+                  className="w-82.5 max-tablet:w-34 max-md:w-32 max-mobile:w-28"
                   style={{ objectFit: "contain" }}
                 />
               </div>
@@ -80,15 +80,15 @@ function MarqueeRow({ reverse = false }: { reverse?: boolean }) {
 
 export default function LogoMarquee() {
   return (
-    <section className="section">
-      <div className="space-29xl" />
+    <section className="relative">
+      <div className="pt-27 w-full max-tablet:pt-24 max-md:pt-18 max-mobile:pt-[3.6rem]" />
       {/* `.logo-marque-main` lays its children out in a row, not stacked
          (no flex-direction: column) — with a second full-width track
          appended, that row previously started 22,632px+ off to the right
          of the (overflow: hidden) viewport and was never actually visible.
          One row, reversed to scroll right-to-left's opposite (i.e. to the
          right) per request, instead of animating a row nobody could see. */}
-      <div className="logo-marque-main">
+      <div className="flex overflow-hidden justify-start items-center">
         <MarqueeRow reverse />
       </div>
     </section>
