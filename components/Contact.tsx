@@ -14,7 +14,7 @@ function ArrowIcon() {
     </svg>
   );
 }
-
+// updated
 export default function Contact() {
   const [status, setStatus] = useState<"idle" | "sent">("idle");
 
