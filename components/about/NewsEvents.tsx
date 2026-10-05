@@ -1,74 +1,45 @@
-import { Eyebrow, GoldWord, H2_CLASS, Sparkle } from "@/components/ui/brand";
+import Link from "next/link";
+import NewsCard from "@/components/NewsCard";
+import { NEWS } from "@/lib/news";
 
-const NEWS = [
-  {
-    title: "Ceylexa Digital Expands to Wellington, New Zealand",
-    paragraphs: [
-      "We’re excited to announce the opening of our new Ceylexa branch in Wellington, New Zealand! This marks an exciting new chapter in our journey as we expand our presence and bring our digital marketing, creative, branding, and technology solutions to more businesses across New Zealand.",
-      "Our Wellington branch will allow us to work more closely with local businesses, connect with new talent, and build stronger relationships within the New Zealand business community.",
-    ],
-    tagline:
-      "A new city. A new chapter. The same Ceylexa vision, creating digital solutions that help brands grow.",
-  },
-  {
-    title: "Ceylexa Digital Wins Most Popular Social Media Agency Award 2024",
-    paragraphs: [
-      "We’re proud to share a special milestone from our journey. Ceylexa was recognized as the Most Popular Social Media Agency at the Popular Awards 2024. This achievement reflects the trust, support, and partnerships we’ve built with our clients and audiences over the years. It’s a proud moment for our entire team and an encouragement to keep creating meaningful, creative, and impactful digital work.",
-      "We’re grateful to everyone who has been part of our journey and helped make this recognition possible.",
-    ],
-    tagline:
-      "Thank you for believing in Ceylexa. Here’s to creating more, achieving more, and growing together.",
-  },
-  {
-    title: "Ceylexa Digital Launches Its First Project in Dubai",
-    paragraphs: [
-      "We’re excited to announce another important milestone in the Ceylexa journey — the launch of our first project in Dubai, UAE.",
-      "Expanding into the Dubai market marks an exciting step forward for our growing international presence. This project gives us the opportunity to bring our creativity, digital expertise, and strategic approach to a new market while working with businesses and audiences beyond our home markets.",
-      "We’re proud of how far we’ve come and excited about what lies ahead as Ceylexa continues to expand across international markets.",
-    ],
-    tagline: "New market. New opportunity. New chapter for Ceylexa.",
-  },
-  {
-    title: "Proud Digital Marketing Partner of Mrs. Sri Lanka 2020",
-    paragraphs: [
-      "We are proud to have been the Digital Marketing Partner for Mrs. Sri Lanka 2020.",
-      "Being part of this prestigious platform was a memorable experience for the Ceylexa Digital team. We had the opportunity to support the event through our digital marketing expertise, helping strengthen its online presence and connect the event with audiences across digital platforms. We’re grateful for the opportunity to be part of such a significant event and proud of the work, creativity, and dedication our team brought to the partnership.",
-    ],
-    tagline:
-      "A proud partnership. A memorable journey. Another milestone in the Ceylexa story.",
-  },
-  {
-    title: "A Proud Partnership with Mrs. Sri Lanka 2021",
-    paragraphs: [
-      "Ceylexa Digital was honoured to be the Digital Marketing Partner for Mrs. Sri Lanka 2021, supporting one of Sri Lanka’s celebrated beauty and lifestyle platforms through the power of digital. From creating greater online visibility to connecting audiences with the event, this partnership gave our team the opportunity to bring creativity, strategy, and digital expertise to a truly memorable occasion.",
-      "We’re proud of the role we played and grateful to everyone who made this experience part of the Ceylexa journey.",
-    ],
-    tagline: "Celebrating talent. Creating impact. Connecting through digital.",
-  },
-  {
-    title: "Proud Digital Marketing Partner of DB Ceylon Bridal Show",
-    paragraphs: [
-      "We’re proud to have been the Digital Marketing Partner of the DB Ceylon Bridal Show, one of Sri Lanka’s biggest and most celebrated bridal events. It was an exciting opportunity for Ceylexa Digital to bring our digital expertise, creativity, and strategic approach to a major platform within Sri Lanka’s bridal and wedding industry.",
-      "From building online visibility to engaging audiences across digital platforms, we were delighted to play a part in bringing this spectacular bridal experience to life online.",
-    ],
-    tagline:
-      "Proud to partner. Proud to create. Proud to be part of Sri Lanka’s bridal industry.",
-  },
-];
+function ArrowIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="100%"
+      viewBox="0 0 20 20"
+      fill="none"
+      className="relative z-2 flex-none w-5 text-white"
+    >
+      <path
+        d="M17.3172 10.4425L11.6922 16.0675C11.5749 16.1848 11.4159 16.2507 11.25 16.2507C11.0841 16.2507 10.9251 16.1848 10.8078 16.0675C10.6905 15.9503 10.6247 15.7912 10.6247 15.6253C10.6247 15.4595 10.6905 15.3004 10.8078 15.1832L15.3664 10.6253H3.125C2.95924 10.6253 2.80027 10.5595 2.68306 10.4423C2.56585 10.3251 2.5 10.1661 2.5 10.0003C2.5 9.83459 2.56585 9.67562 2.68306 9.55841C2.80027 9.4412 2.95924 9.37535 3.125 9.37535H15.3664L10.8078 4.81753C10.6905 4.70026 10.6247 4.5412 10.6247 4.37535C10.6247 4.2095 10.6905 4.05044 10.8078 3.93316C10.9251 3.81588 11.0841 3.75 11.25 3.75C11.4159 3.75 11.5749 3.81588 11.6922 3.93316L17.3172 9.55816C17.3753 9.61621 17.4214 9.68514 17.4529 9.76101C17.4843 9.83688 17.5005 9.91821 17.5005 10.0003C17.5005 10.0825 17.4843 10.1638 17.4529 10.2397C17.4214 10.3156 17.3753 10.3845 17.3172 10.4425Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
 
 export default function NewsEvents() {
   return (
     <section className="relative">
-      <div className="mx-auto container px-6 py-30 max-tablet:py-20 max-md:py-18 max-mobile:py-16 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-5 lg:sticky lg:top-28 lg:self-start">
-            <Eyebrow>Latest News &amp; Events</Eyebrow>
-            <h2 className={`mt-4 ${H2_CLASS}`}>
-              Latest News &amp; <GoldWord>Events</GoldWord>
-            </h2>
-            <div className="mt-6 flex flex-col gap-5">
-              <p className="mb-0 font-sans text-[1.25rem] font-medium leading-[1.4em] text-black">Stay connected with Ceylexa journey.</p>
-              <p className="mb-0 font-sans text-[1rem] leading-[1.6em] text-black">
+      <div className="block mx-auto px-6 mx-auto container w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
+        <div className="inner-wrappar">
+          <div className="flex gap-0.5 justify-start items-center">
+            <div className="z-999 font-sans text-[#d7ba5e] text-[0.875rem] leading-[1.5em]">
+              {"//"}
+            </div>
+            <div className="font-sans text-dim-gray text-[0.875rem] leading-[1.5em]">
+              Latest News &amp; Events
+            </div>
+          </div>
+          <div className="pt-4 w-full max-tablet:pt-[0.8rem] max-md:pt-[0.7rem] max-mobile:pt-[0.6rem]" />
+          <h2 className="text-left">Latest News &amp; Events</h2>
+          <div className="pt-4 w-full max-tablet:pt-[0.8rem] max-md:pt-[0.7rem] max-mobile:pt-[0.6rem]" />
+          <div className="flex  container flex-col gap-5">
+            <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
+              <strong>Stay connected with Ceylexa journey.</strong>
+            </p>
+            <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
               At Ceylexa, we take pride in our journey of excellence, having
               participated in and won multiple industry awards while
               representing Sri Lanka on prestigious international stages. Our
@@ -76,38 +47,46 @@ export default function NewsEvents() {
               measurable impact earning us accolades across Digital Marketing,
               Web Design and Technology Innovation.
             </p>
-<p className="mb-0 font-sans text-[1rem] leading-[1.6em] text-black">
+            <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
               Beyond awards, our projects have been showcased in global forums,
               positioning Ceylexa as a trusted name in delivering world-class
               digital solutions. These achievements reflect our commitment to
               pushing boundaries, setting benchmarks, and making Sri Lanka proud
               in the international digital arena.
             </p>
-            </div>
           </div>
-          <div className="border-t border-light-transparent-black lg:col-span-7">
-            {NEWS.map((item, i) => (
-              <details key={item.title} className="group relative border-b border-light-transparent-black" open={i === 0}>
-                <span className="absolute inset-x-0 bottom-[-1px] h-px origin-left scale-x-0 bg-[#d7ba5e] transition-transform duration-500 group-hover:scale-x-100 group-open:scale-x-100" />
-                <summary className="grid cursor-pointer list-none grid-cols-[auto_1fr_auto] items-start gap-x-6 py-7 max-md:gap-x-4 max-md:py-5 [&::-webkit-details-marker]:hidden">
-                  <span className="pt-1.5 text-[0.8125rem] font-medium tabular-nums text-dim-gray group-open:text-[#d7ba5e]">{String(i + 1).padStart(2, "0")}</span>
-                  <h3 className="font-sans text-[1.375rem] font-medium leading-[1.3em] text-black max-md:text-[1.0625rem]">{item.title}</h3>
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full border border-light-transparent-black text-[1.25rem] leading-none text-black transition-all duration-300 group-open:rotate-45 group-open:border-[#d7ba5e] group-open:bg-[#d7ba5e] group-open:text-white">+</span>
-                </summary>
-                <div className="flex flex-col gap-4 pb-7 pl-[2.6rem] max-md:pl-[2.1rem]">
-                  {item.paragraphs.map((paragraph) => (
-                    <p key={paragraph} className="mb-0 max-w-xl font-sans text-[1rem] leading-[1.6em] text-dim-gray">{paragraph}</p>
-                  ))}
-                  <p className="mb-0 flex max-w-xl items-start gap-2 font-sans text-[1rem] font-medium leading-[1.5em] text-black">
-                    <Sparkle className="mt-1.5 w-3.5 shrink-0 text-[#d7ba5e]" />
-                    {item.tagline}
-                  </p>
-                </div>
-              </details>
+
+          <div className="pt-15 w-full max-tablet:pt-12 max-md:pt-10.5 max-mobile:pt-9" />
+
+          <div className="grid gap-5 md:grid-cols-2">
+            {NEWS.slice(0, 4).map((item) => (
+              <NewsCard key={item.slug} item={item} />
             ))}
           </div>
+
+          {/* <div className="pt-10">
+            <Link
+              href="/news"
+              className="inline-flex relative overflow-hidden gap-2 justify-center items-center py-3 px-6 max-w-full text-white bg-[#d7ba5e] rounded-[6.25rem] max-tablet:gap-[0.4rem] max-tablet:py-[0.8rem] max-tablet:px-[1.2rem] max-md:gap-[0.35rem] max-md:py-[0.7875rem] max-md:px-[1.0499rem] max-mobile:gap-[0.3rem] max-mobile:py-[0.825rem] max-mobile:px-[0.899rem]"
+            >
+              <div className="overflow-hidden h-6">
+                <div className="relative z-2 leading-[1.5em] font-semibold">
+                  View all news
+                </div>
+                <div className="relative z-2 leading-[1.5em] font-semibold">
+                  View all news
+                </div>
+              </div>
+              <div className="flex overflow-hidden justify-start items-center max-w-[1.2rem]">
+                <ArrowIcon />
+                <ArrowIcon />
+              </div>
+              <div className="absolute top-auto -bottom-4 right-auto left-[0%] w-4 h-4 bg-black rounded-full" />
+            </Link>
+          </div> */}
         </div>
       </div>
+      <div className="pt-30 w-full max-tablet:pt-20 max-md:pt-18 max-mobile:pt-16" />
     </section>
   );
 }

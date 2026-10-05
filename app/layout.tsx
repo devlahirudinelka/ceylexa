@@ -1,16 +1,8 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Questrial } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import PageLoader from "@/components/PageLoader";
-
-const questrial = Questrial({
-  subsets: ["latin"],
-  weight: "400",
-  display: "swap",
-  variable: "--font-questrial",
-});
 
 export const metadata: Metadata = {
   title: "Ceylexa",
@@ -23,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${questrial.variable} h-full`} suppressHydrationWarning>
+    <html lang="en" className="h-full" suppressHydrationWarning>
       <body id="top" className="min-h-full bg-white font-sans text-[1rem] leading-[1.2em] font-normal text-black antialiased selection:bg-accent selection:text-white">
         {/* Runs before hydration so first-time visitors never see a flash
             of the fully-built page before the loading screen takes over.

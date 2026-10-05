@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { Eyebrow, GoldWord, H2_CLASS } from "@/components/ui/brand";
 import { gsap } from "@/lib/gsap";
 
 const TESTIMONIALS = [
@@ -157,9 +156,16 @@ export default function Testimonials() {
           <div className="testiomonial-header">
             <div className="flex grid-rows-[auto] grid-cols-[1.5fr_1fr] auto-cols-[1fr] justify-between items-center max-tablet:gap-4 max-tablet:justify-start max-tablet:items-start max-tablet:flex-col max-md:gap-[0.7875rem] max-mobile:gap-[0.674rem]">
               <div className="inline-flex gap-4 flex-col flex-1 justify-center items-start text-left max-tablet:gap-[0.8rem] max-md:gap-[0.7rem] max-mobile:gap-[0.6rem]">
-                <Eyebrow>Testimonials</Eyebrow>
-                <h2 className={H2_CLASS}>
-                  Trusted Brands <GoldWord>Worldwide</GoldWord>
+                <div className="flex gap-0.5 justify-start items-center">
+                  <div className="z-999 font-sans text-[#d7ba5e] text-[0.875rem] leading-[1.5em]">
+                    {"//"}
+                  </div>
+                  <div className="font-sans text-dim-gray text-[0.875rem] leading-[1.5em]">
+                    TESTIMONIALS
+                  </div>
+                </div>
+                <h2 className="font-sans text-[3.75rem] leading-[1.2em] font-medium text-left max-tablet:text-[3rem] max-md:text-[2.5rem] max-mobile:text-[2.25rem]">
+                  Trusted Brands Worldwide
                 </h2>
               </div>
               <div className="self-center max-tablet:self-auto max-tablet:justify-start max-tablet:items-center max-tablet:mr-auto">

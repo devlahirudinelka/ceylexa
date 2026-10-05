@@ -7,11 +7,13 @@
   --foreground: #241a0c;
   --muted: #6b5b4d;
   --border: rgba(36, 26, 12, 0.12);
-  --accent: #b45309;
-  --accent-2: #ea580c;
-  --accent-3: #92400e;
-  --font-display: var(--font-questrial), "Questrial", sans-serif;
-  --font-sans: var(--font-questrial), "Questrial", sans-serif;
+  --accent: #d7ba5e;
+  --accent-2: #e6cf85;
+  --accent-3: #b8993f;
+  --font-display: -apple-system, "Segoe UI", "SF Pro Display", "Helvetica Neue",
+    Arial, sans-serif;
+  --font-sans: -apple-system, "Segoe UI", "SF Pro Text", "Helvetica Neue",
+    Arial, sans-serif;
 }
 
 @theme inline {

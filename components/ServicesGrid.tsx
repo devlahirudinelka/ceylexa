@@ -7,10 +7,11 @@ import {
   Target,
   Fingerprint,
   Users,
-  ArrowUpRight,
+  ArrowRight,
 } from "lucide-react";
-import { Eyebrow, GoldWord, H2_CLASS } from "@/components/ui/brand";
+import Badge from "@/components/ui/Badge";
 import Reveal from "@/components/ui/Reveal";
+import { useMercuryGlow } from "@/lib/useMercuryGlow";
 import { SERVICES, type ServiceItem } from "@/lib/services-data";
 
 const ICONS: Record<ServiceItem["icon"], typeof Layout> = {
@@ -23,62 +24,60 @@ const ICONS: Record<ServiceItem["icon"], typeof Layout> = {
 };
 
 function ServiceCard({ service }: { service: ServiceItem }) {
+  const onMouseMove = useMercuryGlow<HTMLAnchorElement>();
   const Icon = ICONS[service.icon];
 
   return (
     <a
       href={`/services/${service.slug}`}
-      className="group relative grid grid-cols-[auto_1fr_auto] items-start gap-x-8 border-b border-light-transparent-black py-9 max-md:gap-x-4 max-md:py-6"
+      onMouseMove={onMouseMove}
+      className="relative flex overflow-hidden gap-2 flex-col bg-[linear-gradient(180deg,rgba(255,255,255,0.8),rgba(255,255,255,0.6))] border border-border backdrop-blur-[6px] [--mx:50%] [--my:50%] [&>*]:relative [&>*]:z-1 after:absolute after:-inset-0.25 after:z-0 after:content-[''] after:bg-[radial-gradient(480px_circle_at_var(--mx)_var(--my),rgba(215,186,94,0.14),transparent_45%)] after:rounded-[inherit] after:opacity-0 after:[transition:opacity_0.4s_ease] after:pointer-events-none hover:after:opacity-100 max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-[0.3rem] bento-card group h-full rounded-2xl p-7 transition-colors hover:border-accent/40"
     >
-      <span className="absolute inset-x-0 bottom-[-1px] h-px origin-left scale-x-0 bg-[#d7ba5e] transition-transform duration-500 group-hover:scale-x-100" />
-      <span className="pt-2 text-[0.8125rem] font-medium tabular-nums text-dim-gray transition-colors duration-300 group-hover:text-[#d7ba5e]">
-        {service.number}
-      </span>
-      <div className="grid gap-x-10 gap-y-3 lg:grid-cols-[1fr_1.2fr] lg:items-start">
-        <h3 className="flex items-center gap-4 font-sans text-[2.25rem] font-medium leading-[1.1em] tracking-tight text-black transition-transform duration-500 group-hover:translate-x-2 max-tablet:text-[1.75rem] max-md:text-[1.375rem]">
-          <Icon size={26} className="shrink-0 text-[#d7ba5e] max-md:hidden" />
-          {service.title}
-        </h3>
-        <div>
-          <p className="mb-0 font-sans text-[1rem] leading-[1.6em] text-dim-gray">{service.summary}</p>
-          <div className="mt-4 flex flex-wrap gap-2 max-md:hidden">
-            {service.pills.slice(0, 4).map((pill) => (
-              <span key={pill} className="rounded-full border border-light-transparent-black px-3 py-1 text-[0.75rem] leading-[1.5em] text-dim-gray">
-                {pill}
-              </span>
-            ))}
-          </div>
+      <div className="flex items-center justify-between">
+        <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-accent/15 to-accent-2/15 text-accent-2">
+          <Icon size={20} />
         </div>
+        <span className="text-xs font-medium tracking-wider text-muted">
+          {service.number}
+        </span>
       </div>
-      <span className="mt-1 flex h-11 w-11 items-center justify-center rounded-full border border-light-transparent-black text-black transition-all duration-500 group-hover:rotate-45 group-hover:border-[#d7ba5e] group-hover:bg-[#d7ba5e] group-hover:text-white max-md:h-9 max-md:w-9">
-        <ArrowUpRight size={17} />
-      </span>
+
+      <h3 className="text-foreground">{service.title}</h3>
+      <p className="text-[0.875rem]">{service.summary}</p>
+
+      <div className="mt-auto flex items-center gap-1.5 pt-6 text-sm font-medium text-accent-2">
+        Learn more
+        <ArrowRight
+          size={15}
+          className="transition-transform duration-300 group-hover:translate-x-1"
+        />
+      </div>
     </a>
   );
 }
 
 export default function ServicesGrid() {
   return (
-    <section id="all-services" className="relative scroll-mt-24">
-      <div className="mx-auto container px-6 lg:px-8 py-28 max-md:py-18">
-        <Reveal>
-          <div className="flex items-end justify-between gap-8 max-md:flex-col max-md:items-start">
-            <div>
-              <Eyebrow>What we do</Eyebrow>
-              <h2 className={`mt-4 ${H2_CLASS}`}>
-                Every service, under <GoldWord>one roof.</GoldWord>
-              </h2>
-            </div>
-            <p className="mb-0 max-w-[26rem] font-sans text-[1rem] leading-[1.6em] text-black">
-              From the first pixel of your website to the last influencer
-              partnership, here&apos;s everything Ceylexa can take off your plate.
-            </p>
-          </div>
+    <section id="all-services" className="relative bg-background py-28">
+      <div className="mx-auto  container px-6 lg:px-8">
+        <Reveal className="mx-auto text-left">
+          {/* <Badge>What we do</Badge> */}
+          <h2 className="tracking-tight">
+            Every service, under
+            
+              {" "}
+              one roof.
+            
+          </h2>
+          <p className="">
+            From the first pixel of your website to the last influencer
+            partnership, here&apos;s everything Ceylexa can take off your plate.
+          </p>
         </Reveal>
 
-        <div className="mt-14 border-t border-light-transparent-black max-md:mt-10">
+        <div className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((service, i) => (
-            <Reveal key={service.slug} delay={(i % 3) * 60}>
+            <Reveal key={service.slug} delay={(i % 3) * 90} className="h-full">
               <ServiceCard service={service} />
             </Reveal>
           ))}

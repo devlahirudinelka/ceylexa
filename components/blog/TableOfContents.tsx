@@ -28,10 +28,10 @@ export default function TableOfContents({ items }: { items: Item[] }) {
 
   return (
     <nav aria-label="Table of contents" className="text-sm">
-      <div className="mb-4 text-xs font-semibold tracking-wider text-dim-gray uppercase">
+      <div className="mb-4 text-xs font-semibold tracking-wider text-muted uppercase">
         Table of contents
       </div>
-      <ol className="max-h-[70vh] space-y-1 overflow-y-auto border-l border-light-transparent-black pr-2">
+      <ol className="max-h-[70vh] space-y-1 overflow-y-auto border-l border-border pr-2">
         {items.map((item) => {
           const isActive = active === item.id;
           return (
@@ -40,8 +40,8 @@ export default function TableOfContents({ items }: { items: Item[] }) {
                 href={`#${item.id}`}
                 className={`-ml-px block border-l-2 py-1.5 pl-4 leading-snug transition-colors ${
                   isActive
-                    ? "border-[#d7ba5e] font-medium text-black"
-                    : "border-transparent text-dim-gray hover:text-black"
+                    ? "border-accent-2 font-medium text-foreground"
+                    : "border-transparent text-muted hover:text-foreground"
                 }`}
               >
                 {item.label}

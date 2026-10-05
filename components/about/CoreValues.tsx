@@ -1,5 +1,3 @@
-import { Eyebrow, GoldWord, H2_CLASS } from "@/components/ui/brand";
-
 const VALUES = [
   {
     title: "Finding Balance",
@@ -25,38 +23,43 @@ const VALUES = [
 
 export default function CoreValues() {
   return (
-    <section className="relative bg-ghost-white">
-      <div className="mx-auto container px-6 py-30 max-tablet:py-20 max-md:py-18 max-mobile:py-16 lg:px-8">
-        <div className="flex items-end justify-between gap-8 max-md:flex-col max-md:items-start">
-          <div>
-            <Eyebrow>Our Core Values</Eyebrow>
-            <h2 className={`mt-4 ${H2_CLASS}`}>
-              Our Core <GoldWord>Values</GoldWord>
-            </h2>
+    <section className="relative">
+      <div className="block mx-auto px-6 mx-auto container w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
+        <div className="inner-wrappar">
+          <div className="flex gap-0.5 justify-start items-center">
+            <div className="z-999 font-sans text-[#d7ba5e] text-[0.875rem] leading-[1.5em]">
+              {"//"}
+            </div>
+            <div className="font-sans text-dim-gray text-[0.875rem] leading-[1.5em]">
+              Our Core Values
+            </div>
           </div>
-          <p className="mb-0 font-sans text-[1rem] leading-[1.6em] text-black max-w-[26rem]">
+          <div className="pt-4 w-full max-tablet:pt-[0.8rem] max-md:pt-[0.7rem] max-mobile:pt-[0.6rem]" />
+          <h2 className="text-left">
+            Our Core Values
+          </h2>
+          <div className="pt-4 w-full max-tablet:pt-[0.8rem] max-md:pt-[0.7rem] max-mobile:pt-[0.6rem]" />
+          <div className="max-w-[30rem] max-tablet:max-w-none">
+            <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
               We&rsquo;re with you every step of the way, pushing you ever
               closer towards the summit of your success.
             </p>
-        </div>
-        <div className="mt-14 grid gap-4 md:grid-cols-2 max-md:mt-10">
-          {VALUES.map((value, i) => (
-            <div
-              key={value.title}
-              className="group relative overflow-hidden rounded-[1.875rem] border border-light-transparent-black bg-white p-8 transition-[border-color,box-shadow] duration-300 hover:border-[#d7ba5e] hover:shadow-[0_30px_60px_-35px_rgba(0,0,0,0.35)] max-md:p-6 max-mobile:rounded-2xl"
-            >
-              <span aria-hidden className="absolute -right-2 -top-5 select-none text-[8rem] font-medium leading-none tracking-tighter text-black/[0.05] transition-colors duration-300 group-hover:text-[#d7ba5e]/20">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <div className="relative">
-                <span className="text-[0.8125rem] font-medium tabular-nums text-[#d7ba5e]">{String(i + 1).padStart(2, "0")}</span>
-                <h3 className="mt-4 font-sans text-[1.75rem] font-medium leading-[1.2em] text-black max-md:text-[1.375rem]">{value.title}</h3>
-                <p className="mb-0 mt-3 font-sans text-[0.9375rem] leading-[1.6em] text-dim-gray">{value.description}</p>
+          </div>
+          <div className="pt-15 w-full max-tablet:pt-12 max-md:pt-10.5 max-mobile:pt-9" />
+          <div className="grid gap-5 md:grid-cols-2">
+            {VALUES.map((value) => (
+              <div
+                key={value.title}
+                className="relative overflow-hidden bg-[linear-gradient(180deg,rgba(255,255,255,0.8),rgba(255,255,255,0.6))] border border-border backdrop-blur-[6px] [--mx:50%] [--my:50%] [&>*]:relative [&>*]:z-1 after:absolute after:-inset-0.25 after:z-0 after:content-[''] after:bg-[radial-gradient(480px_circle_at_var(--mx)_var(--my),rgba(215,186,94,0.14),transparent_45%)] after:rounded-[inherit] after:opacity-0 after:[transition:opacity_0.4s_ease] after:pointer-events-none hover:after:opacity-100 bento-card rounded-2xl p-8"
+              >
+                <h3 className="text-foreground">{value.title}</h3>
+                <p className="text-[0.875rem]">{value.description}</p>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
+      <div className="pt-30 w-full max-tablet:pt-20 max-md:pt-18 max-mobile:pt-16" />
     </section>
   );
 }

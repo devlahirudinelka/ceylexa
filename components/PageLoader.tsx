@@ -158,7 +158,7 @@ export default function PageLoader({ children }: { children: ReactNode }) {
           <div className="mt-7 h-px w-40 overflow-hidden rounded-full bg-border">
             <div
               ref={barRef}
-              className="h-full w-full origin-left scale-x-0 bg-gradient-to-r from-[#b45309] to-[#ea580c]"
+              className="h-full w-full origin-left scale-x-0 bg-gradient-to-r from-[#d7ba5e] to-[#e6cf85]"
             />
           </div>
         </div>

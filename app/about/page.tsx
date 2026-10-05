@@ -11,6 +11,7 @@ import WhyChoose from "@/components/about/WhyChoose";
 import CoreValues from "@/components/about/CoreValues";
 import NewsEvents from "@/components/about/NewsEvents";
 import type { Metadata } from "next";
+import Hero from "@/components/Hero";
 
 export const metadata: Metadata = {
   title: "About — Ceylexa",
@@ -24,14 +25,18 @@ export default function AboutPage() {
       <Navbar />
 
       <div className="main">
+        <div className="flex relative flex-col justify-center items-center">
+          <Hero />
+        </div>
         <AboutHero />
         <AboutStory />
+        {/* <MissionStats /> */}
+        {/* <div className="pt-27 w-full max-tablet:pt-24 max-md:pt-18 max-mobile:pt-[3.6rem]" /> */}
         <WhyChoose />
-        <CoreValues />
-        <MissionStats />
         <ProcessSteps />
         <Team />
         <Awards />
+        <CoreValues />
         <NewsEvents />
         <CTASection />
       </div>

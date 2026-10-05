@@ -1,7 +1,6 @@
 import Navbar from "@/components/home/Navbar";
 import Clients from "@/components/Clients";
 import ClientsMap from "@/components/ClientsMap";
-import CTASection from "@/components/home/CTASection";
 import Footer from "@/components/home/Footer";
 import type { Metadata } from "next";
 
@@ -19,7 +18,6 @@ export default function ClientsPage() {
       <div className="main">
         <Clients />
         <ClientsMap />
-        <CTASection />
       </div>
 
       <Footer />

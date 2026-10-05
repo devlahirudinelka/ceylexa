@@ -1,20 +1,23 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-
-import { ArrowUpRight } from "lucide-react";
+import { SocialIcon } from "@/components/ui/SocialIcons";
 import { CEYLEXA_SOCIALS, CONTACT_EMAIL, OFFICES } from "@/lib/site";
-import { Eyebrow, GoldWord, PillarStrip } from "@/components/ui/brand";
+
+function ArrowIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 20" fill="none" className="relative z-2 w-5 flex-none text-white">
+      <path
+        d="M17.3172 10.4425L11.6922 16.0675C11.5749 16.1848 11.4159 16.2507 11.25 16.2507C11.0841 16.2507 10.9251 16.1848 10.8078 16.0675C10.6905 15.9503 10.6247 15.7912 10.6247 15.6253C10.6247 15.4595 10.6905 15.3004 10.8078 15.1832L15.3664 10.6253H3.125C2.95924 10.6253 2.80027 10.5595 2.68306 10.4423C2.56585 10.3251 2.5 10.1661 2.5 10.0003C2.5 9.83459 2.56585 9.67562 2.68306 9.55841C2.80027 9.4412 2.95924 9.37535 3.125 9.37535H15.3664L10.8078 4.81753C10.6905 4.70026 10.6247 4.5412 10.6247 4.37535C10.6247 4.2095 10.6905 4.05044 10.8078 3.93316C10.9251 3.81588 11.0841 3.75 11.25 3.75C11.4159 3.75 11.5749 3.81588 11.6922 3.93316L17.3172 9.55816C17.3753 9.61621 17.4214 9.68514 17.4529 9.76101C17.4843 9.83688 17.5005 9.91821 17.5005 10.0003C17.5005 10.0825 17.4843 10.1638 17.4529 10.2397C17.4214 10.3156 17.3753 10.3845 17.3172 10.4425Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
 
 export default function Contact() {
   const [status, setStatus] = useState<"idle" | "sent">("idle");
 
-  // There's no form backend (email API / route handler) wired up in this
-  // project yet, so submitting hands the message off to the visitor's own
-  // email client via a mailto: link instead of faking a "message received"
-  // state. Swap this for a real endpoint (a Next.js route handler calling
-  // Resend/Postmark, or a service like Formspree) once one exists — at
-  // that point this can go back to a normal fetch() POST.
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
@@ -34,129 +37,193 @@ export default function Contact() {
     form.reset();
   }
 
+  const field =
+    "w-full rounded-[0.875rem] border border-border bg-white px-4 text-[0.9375rem] text-black placeholder:text-dim-gray/70 transition focus:border-[#d7ba5e] focus:outline-none focus:ring-1 focus:ring-[#d7ba5e]";
+
   return (
-    <section className="relative overflow-hidden">
-      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-24 -z-1 select-none text-center text-[20rem] font-bold leading-[0.9em] text-cultured max-tablet:text-[10rem] max-md:text-[7rem] max-mobile:text-[4.5rem]">
-        HELLO
-      </div>
+    <section className="relative w-full">
+      <div className="w-full h-27 max-tablet:h-24 max-md:h-18 max-mobile:h-[3.6rem]" />
 
-      <div className="mx-auto container px-6 lg:px-8 pt-40 max-md:pt-32">
-        <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
-          <div className="lg:col-span-7">
-            <Eyebrow>Let&rsquo;s Start a Conversation</Eyebrow>
-            <h1 className="mt-5 font-sans text-[5.5rem] font-semibold leading-[1.02em] tracking-tight max-tablet:text-[4.25rem] max-md:text-[3.25rem] max-mobile:text-[2.5rem]">
-              Get in <GoldWord>Touch</GoldWord>
-            </h1>
-          </div>
-          <h2 className="font-sans text-[1.75rem] font-medium leading-[1.25em] tracking-tight text-black lg:col-span-5 max-md:text-[1.375rem]">
-            Do You Have A Project And Want To Discuss? We&rsquo;d Love to Hear
-            From You
-          </h2>
-        </div>
-      </div>
+      <div className="mx-auto container px-6 max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
+        <h1 className="text-left">Get in Touch</h1>
+        <h3 className="text-left">
+          Do You Have A Project And Want To Discuss? We&rsquo;d Love to Hear
+          From You
+        </h3>
+        <div className="w-full h-16 max-md:h-10" />
 
-      <div className="mt-14">
-        <PillarStrip items={OFFICES.map((office) => office.city)} />
-      </div>
+        <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-16">
+          {/* Left: intro + offices */}
+          <div className="flex flex-col gap-10 lg:col-span-7">
+            <div className="flex flex-col items-start gap-4">
+              {/* <div className="flex items-center gap-0.5 text-[0.875rem] leading-[1.5em]">
+                <span className="text-[#d7ba5e]">{"//"}</span>
+                <span className="text-dim-gray">
+                  Let&rsquo;s Start a Conversation
+                </span>
+              </div> */}
 
-      <div className="mx-auto container px-6 lg:px-8 py-28 max-md:py-18">
-        <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-6">
-            <div className="flex flex-col gap-5">
-              <p className="mb-0 font-sans text-[1.375rem] font-medium leading-[1.4em] text-black max-md:text-[1.125rem]">
-                Have a project in mind, a new idea, or simply looking for the
-                right digital partner? We&rsquo;d love to hear from you. Tell us
-                a little about your business, your goals, and what you&rsquo;re
-                looking to achieve, and our team will be happy to explore how we
-                can help.
-              </p>
-              <p className="mb-0 font-sans text-[1rem] leading-[1.6em] text-black">
-                Whether you need support with digital marketing, branding,
-                social media, content creation, web development, paid
-                advertising, or a complete digital strategy, let&rsquo;s start
-                with a conversation and take the next step together.
-              </p>
+              <div className=" ">
+                <p className="mb-0 font-sans text-[1rem] leading-[1.5em] text-black">
+                  Have a project in mind, a new idea, or simply looking for the
+                  right digital partner? We&rsquo;d love to hear from you. Tell
+                  us a little about your business, your goals, and what
+                  you&rsquo;re looking to achieve, and our team will be happy to
+                  explore how we can help.
+                </p>
+                <p className="mb-0 font-sans text-[1rem] leading-[1.5em] text-black mt-6">
+                  Whether you need support with digital marketing, branding,
+                  social media, content creation, web development, paid
+                  advertising, or a complete digital strategy, let&rsquo;s start
+                  with a conversation and take the next step together.
+                </p>
+              </div>
             </div>
 
-            <div className="mt-12 border-t border-light-transparent-black">
-              {OFFICES.map((office, i) => (
-                <div key={office.name} className="grid grid-cols-[auto_1fr] gap-x-6 border-b border-light-transparent-black py-8 max-md:gap-x-4 max-md:py-6">
-                  <span className="pt-1 text-[0.8125rem] font-medium tabular-nums text-[#d7ba5e]">{String(i + 1).padStart(2, "0")}</span>
-                  <div>
-                    <div className="font-sans text-[0.8125rem] font-medium uppercase tracking-wider text-dim-gray">{office.name}</div>
-                    <div className="mt-1 font-sans text-[1.5rem] font-medium leading-[1.2em] text-black max-md:text-[1.25rem]">{office.city}</div>
-                    <div className="mt-4 flex flex-col items-start gap-1.5 font-sans text-[1.125rem] leading-[1.4em] max-md:text-[1rem]">
-                      <a href={office.phoneHref} className="text-black transition-colors duration-300 hover:text-[#d7ba5e]">{office.phone}</a>
-                      <a href={`mailto:${office.email}`} className="text-black transition-colors duration-300 hover:text-[#d7ba5e]">{office.email}</a>
-                      <a href={office.websiteHref} target="_blank" rel="noopener noreferrer" className="text-black transition-colors duration-300 hover:text-[#d7ba5e]">{office.website}</a>
-                    </div>
+            <div className="grid gap-5 sm:grid-cols-2">
+              {OFFICES.map((office) => (
+                <div
+                  key={office.name}
+                  className="flex flex-col gap-1 rounded-2xl border border-border bg-[linear-gradient(180deg,rgba(255,255,255,0.8),rgba(255,255,255,0.6))] p-6"
+                >
+                  <span className="text-[0.75rem] font-semibold uppercase tracking-wider text-[#d7ba5e]">
+                    {office.name}
+                  </span>
+                  <span className="text-[0.875rem] text-dim-gray">
+                    {office.city}
+                  </span>
+                  <div className="mt-3 flex flex-col gap-1.5 text-[1rem] font-medium text-black">
+                    <a
+                      href={office.phoneHref}
+                      className="transition-colors duration-200 hover:text-[#d7ba5e]"
+                    >
+                      {office.phone}
+                    </a>
+                    <a
+                      href={`mailto:${office.email}`}
+                      className="break-all transition-colors duration-200 hover:text-[#d7ba5e]"
+                    >
+                      {office.email}
+                    </a>
+                    <a
+                      href={office.websiteHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="transition-colors duration-200 hover:text-[#d7ba5e]"
+                    >
+                      {office.website}
+                    </a>
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="mt-8 flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1">
               {CEYLEXA_SOCIALS.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full border border-light-transparent-black px-4 py-1.5 font-sans text-[0.75rem] leading-[1.5em] text-dim-gray transition-colors duration-300 hover:border-[#d7ba5e] hover:text-[#d7ba5e]"
+                  aria-label={social.label}
+                  title={social.label}
+                  className="inline-flex h-9 w-9 items-center justify-center text-[#a8915a] transition-all duration-300 hover:-translate-y-0.5 hover:text-black"
                 >
-                  {social.label}
+                  <SocialIcon name={social.label} size={16} />
                 </a>
               ))}
             </div>
           </div>
 
-          <div className="lg:col-span-6">
-            <div className="rounded-[1.875rem] bg-ghost-white p-10 lg:sticky lg:top-28 max-md:p-6 max-mobile:rounded-2xl">
-              <Eyebrow>Message</Eyebrow>
-              <div className="mt-3 font-sans text-[2.25rem] font-medium leading-[1.15em] tracking-tight text-black max-md:text-[1.75rem]">
-                Send a message
-              </div>
-              <form className="mt-8 flex flex-col gap-7" onSubmit={handleSubmit}>
-                <div>
-                  <label htmlFor="name" className="flex items-center gap-3 font-sans text-[0.8125rem] font-medium uppercase tracking-wider text-dim-gray">
-                    <span className="tabular-nums text-[#d7ba5e]">01</span>
-                    Name
-                  </label>
-                  <input className="block w-full border-0 border-b border-light-transparent-black bg-transparent px-0 py-3 font-sans text-[1.125rem] leading-[1.5em] text-black outline-none transition-colors duration-300 placeholder:text-dim-gray/60 focus:border-[#d7ba5e]" maxLength={256} name="name" placeholder="Your name" type="text" id="name" required />
-                </div>
-                <div>
-                  <label htmlFor="email" className="flex items-center gap-3 font-sans text-[0.8125rem] font-medium uppercase tracking-wider text-dim-gray">
-                    <span className="tabular-nums text-[#d7ba5e]">02</span>
-                    Email Address
-                  </label>
-                  <input className="block w-full border-0 border-b border-light-transparent-black bg-transparent px-0 py-3 font-sans text-[1.125rem] leading-[1.5em] text-black outline-none transition-colors duration-300 placeholder:text-dim-gray/60 focus:border-[#d7ba5e]" maxLength={256} name="email" placeholder="you@company.com" type="email" id="email" required />
-                </div>
-                <div>
-                  <label htmlFor="message" className="flex items-center gap-3 font-sans text-[0.8125rem] font-medium uppercase tracking-wider text-dim-gray">
-                    <span className="tabular-nums text-[#d7ba5e]">03</span>
-                    Message
-                  </label>
-                  <textarea placeholder="Tell us a bit about what you need." maxLength={5000} id="message" name="message" className="block w-full border-0 border-b border-light-transparent-black bg-transparent px-0 py-3 font-sans text-[1.125rem] leading-[1.5em] text-black outline-none transition-colors duration-300 placeholder:text-dim-gray/60 focus:border-[#d7ba5e] h-32 resize-none" required />
-                </div>
-                <button
-                  type="submit"
-                  className="group inline-flex cursor-pointer items-center justify-between rounded-full bg-[#d7ba5e] py-2.5 pl-7 pr-2.5 font-sans text-[1rem] font-semibold leading-[1.5em] text-white transition-transform duration-300 hover:-translate-y-0.5"
+          {/* Right: form */}
+          <div className="rounded-3xl border border-border bg-[linear-gradient(180deg,rgba(255,255,255,0.8),rgba(255,255,255,0.6))] p-8 max-md:p-6 lg:col-span-5 lg:p-10">
+            <h3 className="text-foreground">Send a message</h3>
+
+            <form className="mt-6 flex flex-col gap-5" onSubmit={handleSubmit}>
+              <div className="flex flex-col gap-2">
+                <label
+                  htmlFor="name"
+                  className="text-[0.875rem] font-medium text-black"
                 >
-                  Send
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-black text-white transition-transform duration-500 group-hover:rotate-45">
-                    <ArrowUpRight size={17} />
+                  Name
+                </label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  maxLength={256}
+                  placeholder="Your Name"
+                  required
+                  className={`${field} h-12`}
+                />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label
+                  htmlFor="email"
+                  className="text-[0.875rem] font-medium text-black"
+                >
+                  Email Address
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  maxLength={256}
+                  placeholder="you@example.com"
+                  required
+                  className={`${field} h-12`}
+                />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label
+                  htmlFor="message"
+                  className="text-[0.875rem] font-medium text-black"
+                >
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={4}
+                  maxLength={5000}
+                  placeholder="Tell us a bit about what you need."
+                  required
+                  className={`${field} min-h-[120px] resize-y py-3`}
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="relative mt-2 inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-[6.25rem] bg-[#d7ba5e] px-6 py-3 font-semibold text-white"
+              >
+                <span className="overflow-hidden h-6">
+                  <span className="relative z-2 block leading-[1.5em]">
+                    Send Message
                   </span>
-                </button>
-                <p className="mb-0 font-sans text-[0.875rem] leading-[1.5em] text-dim-gray">
-                  {status === "sent"
-                    ? "Opening your email app with your message pre-filled…"
-                    : "Opens your email app with your message pre-filled."}
-                </p>
-              </form>
-            </div>
+                  <span className="relative z-2 block leading-[1.5em]">
+                    Send Message
+                  </span>
+                </span>
+                <span className="flex max-w-[1.2rem] items-center justify-start overflow-hidden">
+                  <ArrowIcon />
+                  <ArrowIcon />
+                </span>
+                <span className="absolute -bottom-4 left-0 h-4 w-4 rounded-full bg-black" />
+              </button>
+
+              <p className="mb-0 text-center text-[0.75rem] text-dim-gray">
+                {status === "sent"
+                  ? "Opening your email app with your message pre-filled…"
+                  : "Opens your email app with your message pre-filled."}
+              </p>
+            </form>
           </div>
         </div>
       </div>
+
+      <div className="w-full h-30 max-tablet:h-20 max-md:h-18 max-mobile:h-16" />
     </section>
   );
 }

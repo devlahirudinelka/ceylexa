@@ -11,7 +11,7 @@ export default function WorkflowShowcase() {
             <Badge>How we work</Badge>
             <h2 className="tracking-tight">
               One engagement. A full
-              <span className="text-transparent bg-[linear-gradient(90deg,#92400e_0%,#b45309_45%,#ea580c_100%)] bg-clip-text">
+              <span className="text-transparent bg-[linear-gradient(90deg,#b8993f_0%,#d7ba5e_45%,#e6cf85_100%)] bg-clip-text">
                 {" "}
                 operational system.
               </span>

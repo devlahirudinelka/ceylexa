@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 
 import Navbar from "@/components/home/Navbar";
 import Footer from "@/components/home/Footer";
 import CTASection from "@/components/home/CTASection";
-import { ArrowButton, Eyebrow, GoldWord, H2_CLASS, Sparkle } from "@/components/ui/brand";
+import CreamGradientBackground from "@/components/home/CreamGradientBackground";
+import Badge from "@/components/ui/Badge";
+import Button from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
 import { CONTACT_EMAIL } from "@/lib/site";
 import { PROJECTS, getOtherProjects, getProjectBySlug } from "@/lib/projects";
@@ -41,23 +43,19 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const services = project.tags.split(",").map((tag) => tag.trim());
   const otherProjects = getOtherProjects(slug).slice(0, 2);
 
-  const index = PROJECTS.findIndex((item) => item.slug === project.slug);
-
   return (
     <div className="overflow-clip">
       <Navbar />
 
-      <main>
+      <main className="bg-background">
         {/* Hero */}
-        <section className="relative overflow-hidden">
-          <div aria-hidden className="pointer-events-none absolute -right-4 top-20 -z-1 select-none text-[24rem] font-bold leading-[0.9em] text-cultured max-tablet:text-[14rem] max-md:text-[9rem]">
-            {String(index + 1).padStart(2, "0")}
-          </div>
-          <div className="mx-auto container px-6 lg:px-8 pb-14 pt-40 max-md:pt-32">
+        <section className="relative overflow-hidden bg-background pt-32 pb-16 sm:pt-40 sm:pb-20">
+          <CreamGradientBackground />
+          <div className="relative mx-auto  container px-6 lg:px-8">
             <Reveal>
               <Link
                 href="/project"
-                className="inline-flex items-center gap-2 font-sans text-[0.875rem] text-dim-gray transition-colors hover:text-[#d7ba5e]"
+                className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-foreground"
               >
                 <ArrowLeft size={15} />
                 Back to projects
@@ -65,28 +63,39 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </Reveal>
 
             <Reveal delay={80} className="mt-8">
-              <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
-                <div className="lg:col-span-8">
-                  <Eyebrow>{project.category}</Eyebrow>
-                  <h1 className="mt-5 font-sans text-[5.5rem] font-semibold leading-[1.02em] tracking-tight max-tablet:text-[4.25rem] max-md:text-[3.25rem] max-mobile:text-[2.5rem]">{project.title}</h1>
-                </div>
-                <p className="mb-0 font-sans text-[1.125rem] leading-[1.6em] text-black lg:col-span-4">{project.summary}</p>
-              </div>
+              <Badge
+                tone="light"
+                icon={<span className="h-1.5 w-1.5 rounded-full bg-accent-2" />}
+              >
+                {project.category}
+              </Badge>
             </Reveal>
 
-            <Reveal delay={160}>
-              <div className="mt-12 grid grid-cols-3 border-t border-light-transparent-black max-mobile:grid-cols-1">
+            <Reveal delay={140}>
+              <h1 className="tracking-tight text-foreground">
+                {project.title}
+              </h1>
+            </Reveal>
+
+            <Reveal delay={200}>
+              <p className="max-w-2xl text-balance text-[1rem] sm:text-[1.125rem]">
+                {project.summary}
+              </p>
+            </Reveal>
+
+            <Reveal delay={260}>
+              <div className="mt-10 flex flex-wrap gap-x-10 gap-y-4 border-t border-border pt-8">
                 <MetaItem label="Client" value={project.client} />
-                <MetaItem label="Campaign" value={project.date} divided />
-                <MetaItem label="Platforms" value={project.platforms} divided />
+                <MetaItem label="Campaign" value={project.date} />
+                <MetaItem label="Platforms" value={project.platforms} />
               </div>
             </Reveal>
           </div>
         </section>
 
         {/* Hero image */}
-        <Reveal className="mx-auto container px-6 lg:px-8">
-          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[1.875rem] bg-ghost-white max-mobile:rounded-2xl">
+        <Reveal className="mx-auto  container px-6 lg:px-8">
+          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl border border-border shadow-[0_30px_80px_-40px_rgba(36,26,12,0.35)]">
             <Image
               src={project.image}
               alt={`${project.title} — ${project.category} by Ceylexa`}
@@ -99,30 +108,33 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </Reveal>
 
         {/* Overview + challenge + quick facts */}
-        <section className="mx-auto container px-6 lg:px-8 py-28 max-md:py-18">
-          <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-            <div className="lg:col-span-7">
+        <section className="mx-auto  container px-6 py-20 lg:px-8 sm:py-28">
+          <div className="grid gap-12 lg:grid-cols-3 lg:gap-16">
+            <div className="lg:col-span-2">
               <Reveal>
-                <Eyebrow>Overview</Eyebrow>
-                <h2 className={`mt-4 ${H2_CLASS}`}>Project <GoldWord>overview</GoldWord></h2>
-                <div className="mt-6 flex flex-col gap-5">
+                <span className="font-mono text-sm text-accent-2">{"// "}</span>
+                <span className="text-sm font-medium text-muted">Overview</span>
+                <h2 className="tracking-tight text-foreground">
+                  Project overview
+                </h2>
+                <div className="mt-4 leading-relaxed text-muted">
                   {project.overview.map((paragraph) => (
-                    <p key={paragraph} className="mb-0 font-sans text-[1rem] leading-[1.6em] text-black">{paragraph}</p>
+                    <p key={paragraph}>{paragraph}</p>
                   ))}
                 </div>
               </Reveal>
 
-              <Reveal delay={100} className="mt-14 border-t border-light-transparent-black pt-10">
-                <h3 className="font-sans text-[2.25rem] font-medium leading-[1.15em] tracking-tight max-md:text-[1.75rem]">
+              <Reveal delay={100} className="mt-12">
+                <h3 className="tracking-tight text-foreground">
                   The challenge
                 </h3>
                 {project.challengeIntro && (
-                  <p className="mb-0 font-sans text-[1rem] leading-[1.6em] text-black mt-4">{project.challengeIntro}</p>
+                  <p className="">{project.challengeIntro}</p>
                 )}
-                <ul className="mt-6 flex flex-col gap-3">
+                <ul className="space-y-2 leading-relaxed text-muted">
                   {project.challenges.map((item) => (
-                    <li key={item} className="flex items-start gap-3 font-sans text-[1rem] leading-[1.6em] text-dim-gray">
-                      <Sparkle className="mt-1.5 w-3.5 shrink-0 text-[#d7ba5e]" />
+                    <li key={item} className="flex gap-3">
+                      <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-2" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -130,57 +142,63 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </Reveal>
             </div>
 
-            <Reveal delay={120} className="lg:col-span-5 lg:sticky lg:top-28 lg:self-start">
-              <div className="rounded-[1.875rem] bg-black p-8 text-white max-md:p-6 max-mobile:rounded-2xl">
-                <div className="flex items-center gap-1 font-sans text-[0.875rem] uppercase leading-[1.5em]">
-                  <span className="text-[#d7ba5e]">{"//"}</span>
-                  <span className="text-white/70">Quick facts</span>
-                </div>
-                <dl className="mt-6">
+            <Reveal delay={120}>
+              <div className="bg-[linear-gradient(180deg,rgba(255,255,255,0.75),rgba(255,255,255,0.55))] border border-border backdrop-blur-[6px] h-fit rounded-2xl p-6 sm:p-8">
+                <h3 className="tracking-wider text-muted uppercase">
+                  Quick facts
+                </h3>
+                <dl className="mt-5 space-y-4 text-sm">
                   <FactRow label="Client" value={project.client} />
                   <FactRow label="Category" value={project.category} />
                   <FactRow label="Platforms" value={project.platforms} />
                 </dl>
 
-                <div className="mt-6 flex flex-wrap gap-2">
+                <div className="mt-6 flex flex-wrap gap-2 border-t border-border pt-6">
                   {services.map((service) => (
-                    <span key={service} className="rounded-full border border-white/20 px-3 py-1 text-[0.75rem] leading-[1.5em] text-white/80">
+                    <span
+                      key={service}
+                      className="rounded-full border border-border bg-white/60 px-3 py-1 text-xs font-medium text-foreground/80"
+                    >
                       {service}
                     </span>
                   ))}
                 </div>
 
-                <ArrowButton href={`mailto:${CONTACT_EMAIL}`} className="mt-8">
+                <Button
+                  href={`mailto:${CONTACT_EMAIL}`}
+                  size="md"
+                  className="mt-6 w-full justify-center"
+                >
                   Start a similar project
-                </ArrowButton>
+                </Button>
               </div>
             </Reveal>
           </div>
         </section>
 
         {/* Solution */}
-        <section className="bg-ghost-white">
-          <div className="mx-auto container px-6 lg:px-8 py-28 max-md:py-18">
+        <section className="border-t border-border bg-surface-2/60 py-20 sm:py-28">
+          <div className="mx-auto  container px-6 lg:px-8">
             <Reveal>
-              <div className="flex items-end justify-between gap-8 max-md:flex-col max-md:items-start">
-                <div>
-                  <Eyebrow>Team Ceylexa&rsquo;s solution</Eyebrow>
-                  <h2 className={`mt-4 ${H2_CLASS}`}>How we <GoldWord>got there</GoldWord></h2>
-                </div>
-                <p className="mb-0 font-sans text-[1rem] leading-[1.6em] text-black max-w-[30rem]">{project.solutionIntro}</p>
-              </div>
+              <span className="font-mono text-sm text-accent-2">{"// "}</span>
+              <span className="text-sm font-medium text-muted">
+                Team Ceylexa&rsquo;s solution
+              </span>
+              <h2 className="max-w-xl tracking-tight text-foreground">
+                How we got there
+              </h2>
+              <p className="max-w-3xl">{project.solutionIntro}</p>
             </Reveal>
 
-            <div className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-3 max-md:mt-10">
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {project.approach.map((step, i) => (
-                <Reveal key={step.title} delay={(i % 3) * 80} className="h-full">
-                  <div className="group relative h-full overflow-hidden rounded-[1.875rem] border border-light-transparent-black bg-white p-8 transition-[border-color,box-shadow] duration-300 hover:border-[#d7ba5e] hover:shadow-[0_30px_60px_-35px_rgba(0,0,0,0.35)] max-md:p-6 max-mobile:rounded-2xl">
-                    <span aria-hidden className="absolute -right-2 -top-5 select-none text-[8rem] font-medium leading-none tracking-tighter text-black/[0.05] transition-colors duration-300 group-hover:text-[#d7ba5e]/20">
+                <Reveal key={step.title} delay={(i % 3) * 80}>
+                  <div className="bg-[linear-gradient(180deg,rgba(255,255,255,0.75),rgba(255,255,255,0.55))] border border-border backdrop-blur-[6px] h-full rounded-2xl p-6">
+                    <span className="font-mono text-sm text-accent-2">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <span className="relative text-[0.8125rem] font-medium tabular-nums text-[#d7ba5e]">{String(i + 1).padStart(2, "0")}</span>
-                    <h3 className="relative mt-4 font-sans text-[1.5rem] font-medium leading-[1.2em] text-black max-md:text-[1.25rem]">{step.title}</h3>
-                    <p className="relative mb-0 mt-3 font-sans text-[0.9375rem] leading-[1.6em] text-dim-gray">{step.description}</p>
+                    <h3 className="text-foreground">{step.title}</h3>
+                    <p className="text-[0.875rem]">{step.description}</p>
                   </div>
                 </Reveal>
               ))}
@@ -189,79 +207,82 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </section>
 
         {/* Results */}
-        <section className="mx-auto container px-6 lg:px-8 py-28 max-md:py-18">
+        <section className="mx-auto  container px-6 py-20 lg:px-8 sm:py-28">
           <Reveal>
-            <div className="flex items-end justify-between gap-8 max-md:flex-col max-md:items-start">
-              <div>
-                <Eyebrow>Results</Eyebrow>
-                <h2 className={`mt-4 ${H2_CLASS}`}>The <GoldWord>numbers</GoldWord></h2>
-              </div>
-              <p className="mb-0 font-sans text-[1rem] leading-[1.6em] text-black max-w-[30rem]">{project.resultsIntro}</p>
-            </div>
+            <span className="font-mono text-sm text-accent-2">{"// "}</span>
+            <span className="text-sm font-medium text-muted">Results</span>
+            <h2 className="tracking-tight text-foreground">The numbers</h2>
+            <p className="max-w-3xl">{project.resultsIntro}</p>
           </Reveal>
 
-          <div className="mt-14 grid border-t border-light-transparent-black sm:grid-cols-2 lg:grid-cols-3 max-md:mt-10">
+          <div className="mt-12 grid gap-8 border-t border-border pt-10 sm:grid-cols-2 lg:grid-cols-3">
             {project.results.map((item, i) => (
-              <Reveal key={item.label} delay={(i % 3) * 80} className="border-b border-light-transparent-black py-8 sm:px-8 sm:[&:nth-child(2n+1)]:pl-0 lg:[&:nth-child(2n+1)]:pl-8 lg:[&:nth-child(3n+1)]:pl-0 sm:border-l sm:[&:nth-child(2n+1)]:border-l-0 lg:[&:nth-child(2n+1)]:border-l lg:[&:nth-child(3n+1)]:border-l-0">
-                <div className="font-sans text-[3.75rem] font-medium leading-none tracking-tight text-black max-tablet:text-[3rem] max-md:text-[2.5rem]">
+              <Reveal key={item.label} delay={(i % 3) * 80}>
+                <div className="text-transparent bg-[linear-gradient(90deg,#b8993f_0%,#d7ba5e_45%,#e6cf85_100%)] bg-clip-text text-3xl font-semibold tracking-tight sm:text-4xl">
                   {item.value}
                 </div>
-                <div className="mt-3 font-sans text-[1rem] font-medium leading-[1.4em] text-[#d7ba5e]">{item.label}</div>
-                <p className="mb-0 mt-2 font-sans text-[0.9375rem] leading-[1.6em] text-dim-gray">{item.description}</p>
+                <div className="mt-1.5 text-sm font-medium text-foreground">
+                  {item.label}
+                </div>
+                <p className="text-[0.875rem]">{item.description}</p>
               </Reveal>
             ))}
           </div>
         </section>
 
         {/* Impact */}
-        <section className="mx-auto container px-6 lg:px-8 pb-28 max-md:pb-18">
-          <Reveal>
-            <div className="relative overflow-hidden rounded-[1.875rem] bg-black p-14 text-white max-md:p-7 max-mobile:rounded-2xl">
-              <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
-                <div className="lg:col-span-5">
-                  <div className="flex items-center gap-1 font-sans text-[0.875rem] uppercase leading-[1.5em]">
-                    <span className="text-[#d7ba5e]">{"//"}</span>
-                    <span className="text-white/70">Impact</span>
-                  </div>
-                  <h2 className={`mt-4 text-white ${H2_CLASS}`}>
-                    The bigger <GoldWord>picture</GoldWord>
-                  </h2>
-                </div>
-                <div className="flex flex-col gap-5 lg:col-span-7">
-                  {project.impact.map((paragraph) => (
-                    <p key={paragraph} className="mb-0 font-sans text-[1rem] leading-[1.6em] text-white/70">{paragraph}</p>
-                  ))}
-                  <p className="mb-0 mt-4 flex items-start gap-3 border-t border-white/15 pt-6 font-sans text-[1.5rem] font-medium leading-[1.3em] text-white max-md:text-[1.25rem]">
-                    <Sparkle className="mt-2 w-5 shrink-0 text-[#d7ba5e]" />
-                    {project.tagline}
-                  </p>
-                </div>
+        <section className="border-t border-border bg-surface-2/60 py-20 sm:py-28">
+          <div className="mx-auto  container px-6 lg:px-8">
+            <Reveal>
+              <span className="font-mono text-sm text-accent-2">{"// "}</span>
+              <span className="text-sm font-medium text-muted">Impact</span>
+              <h2 className="tracking-tight text-foreground">
+                The bigger picture
+              </h2>
+              <div className="mt-4 leading-relaxed text-muted">
+                {project.impact.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
               </div>
-            </div>
-          </Reveal>
+              <p className="text-[1.25rem] font-semibold tracking-tight sm:text-[1.5rem]">
+                {project.tagline}
+              </p>
+            </Reveal>
+          </div>
         </section>
 
         {/* More work */}
         {otherProjects.length > 0 && (
-          <section className="mx-auto container px-6 lg:px-8 pb-28 max-md:pb-18">
-            <Reveal>
-              <div className="flex items-end justify-between gap-6 border-t border-light-transparent-black pt-14 max-md:flex-col max-md:items-start">
+          <section className="border-t border-border py-20 sm:py-28">
+            <div className="mx-auto  container px-6 lg:px-8">
+              <Reveal className="flex items-end justify-between gap-6">
                 <div>
-                  <Eyebrow>More work</Eyebrow>
-                  <h2 className={`mt-4 ${H2_CLASS}`}>Other <GoldWord>campaigns</GoldWord></h2>
+                  <span className="font-mono text-sm text-accent-2">
+                    {"// "}
+                  </span>
+                  <span className="text-sm font-medium text-muted">
+                    More work
+                  </span>
+                  <h2 className="tracking-tight text-foreground">
+                    Other campaigns
+                  </h2>
                 </div>
-                <ArrowButton href="/project" variant="outline">
+                <Link
+                  href="/project"
+                  className="hidden shrink-0 items-center gap-1.5 text-sm font-medium text-muted transition-colors hover:text-foreground sm:inline-flex"
+                >
                   View all projects
-                </ArrowButton>
-              </div>
-            </Reveal>
+                  <ArrowRight size={15} />
+                </Link>
+              </Reveal>
 
-            <div className="mt-12 grid gap-6 md:grid-cols-2">
-              {otherProjects.map((item, i) => (
-                <Reveal key={item.slug} delay={i * 100}>
-                  <ProjectTile project={item} index={PROJECTS.findIndex((entry) => entry.slug === item.slug)} />
-                </Reveal>
-              ))}
+              <div className="mt-10 grid gap-6 sm:grid-cols-2">
+                {otherProjects.map((item, i) => (
+                  <Reveal key={item.slug} delay={i * 100}>
+                    <ProjectTile project={item} />
+                  </Reveal>
+                ))}
+              </div>
             </div>
           </section>
         )}
@@ -274,54 +295,55 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   );
 }
 
-function ProjectTile({ project, index }: { project: (typeof PROJECTS)[number]; index: number }) {
+function ProjectTile({ project }: { project: (typeof PROJECTS)[number] }) {
   return (
-    <Link href={project.href} className="group block">
-      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.875rem] bg-ghost-white max-mobile:rounded-2xl">
+    <Link
+      href={project.href}
+      className="flex gap-2 flex-col bg-[linear-gradient(180deg,rgba(255,255,255,0.75),rgba(255,255,255,0.55))] border border-border backdrop-blur-[6px] max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-[0.3rem] group relative overflow-hidden rounded-2xl"
+    >
+      <div className="relative aspect-[4/3] w-full overflow-hidden">
         <Image
           src={project.image}
           alt={`${project.title} — ${project.category} by Ceylexa`}
           fill
-          sizes="(min-width: 768px) 50vw, 100vw"
-          className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          sizes="(min-width: 640px) 50vw, 100vw"
+          className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/15 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-7 max-md:p-5">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-6">
           <div>
-            <div className="flex flex-wrap items-center gap-x-3 font-sans text-[0.8125rem] uppercase leading-[1.5em] text-white/80">
-              <span className="text-[#d7ba5e]">{String(index + 1).padStart(2, "0")}</span>
-              <span>{project.category}</span>
-              <span className="opacity-50">/</span>
-              <span>{project.date}</span>
+            <div className="text-xs font-medium text-white/70">
+              {project.category}
             </div>
-            <div className="mt-2 font-sans text-[2rem] font-medium leading-[1.1em] tracking-tight text-white max-md:text-[1.375rem]">
+            <div className="mt-1 text-xl font-semibold text-white">
               {project.title}
             </div>
           </div>
-          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#d7ba5e] text-black transition-transform duration-500 group-hover:rotate-45 max-md:h-10 max-md:w-10">
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/30 bg-black/25 text-white transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
             <ArrowUpRight size={18} />
           </span>
         </div>
       </div>
-      <p className="mb-0 mt-4 font-sans text-[0.9375rem] leading-[1.6em] text-dim-gray">{project.summary}</p>
     </Link>
   );
 }
 
-function MetaItem({ label, value, divided = false }: { label: string; value: string; divided?: boolean }) {
+function MetaItem({ label, value }: { label: string; value: string }) {
   return (
-    <div className={`py-6 ${divided ? "border-l border-light-transparent-black pl-8 max-md:pl-5 max-mobile:border-l-0 max-mobile:border-t max-mobile:pl-0" : ""}`}>
-      <div className="font-sans text-[0.75rem] font-medium uppercase tracking-wider text-dim-gray">{label}</div>
-      <div className="mt-2 font-sans text-[1.25rem] font-medium leading-[1.3em] text-black max-md:text-[1rem]">{value}</div>
+    <div>
+      <div className="text-xs font-semibold tracking-wider text-muted uppercase">
+        {label}
+      </div>
+      <div className="mt-1 text-sm font-medium text-foreground">{value}</div>
     </div>
   );
 }
 
 function FactRow({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex items-start justify-between gap-6 border-b border-white/15 py-4 font-sans text-[0.9375rem]">
-      <dt className="text-white/60">{label}</dt>
-      <dd className="text-right font-medium text-white">{value}</dd>
+    <div className="flex items-center justify-between gap-4">
+      <dt className="text-muted">{label}</dt>
+      <dd className="text-right font-medium text-foreground">{value}</dd>
     </div>
   );
 }

@@ -11,7 +11,7 @@ export default function Integrations() {
           <Badge>Our stack</Badge>
           <h2 className="mx-auto max-w-2xl tracking-tight">
             We build straight into the stack
-            <span className="text-transparent bg-[linear-gradient(90deg,#92400e_0%,#b45309_45%,#ea580c_100%)] bg-clip-text">
+            <span className="text-transparent bg-[linear-gradient(90deg,#b8993f_0%,#d7ba5e_45%,#e6cf85_100%)] bg-clip-text">
               {" "}
               you already run.
             </span>

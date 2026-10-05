@@ -57,9 +57,9 @@ const bufferAFragmentShader = /* glsl */ `
   #define res iResolution
 
   // Site palette (app/globals.css) — the shader's foreground "ink" colors.
-  const vec3 cAccent  = vec3(0.7059, 0.3255, 0.0353); // --accent  #b45309
-  const vec3 cAccent2 = vec3(0.9176, 0.3451, 0.0471); // --accent-2 #ea580c
-  const vec3 cAccent3 = vec3(0.5725, 0.2510, 0.0549); // --accent-3 #92400e
+  const vec3 cAccent  = vec3(0.7059, 0.3255, 0.0353); // --accent  #d7ba5e
+  const vec3 cAccent2 = vec3(0.9176, 0.3451, 0.0471); // --accent-2 #e6cf85
+  const vec3 cAccent3 = vec3(0.5725, 0.2510, 0.0549); // --accent-3 #b8993f
   const vec3 cMuted   = vec3(0.4196, 0.3569, 0.3020); // --muted   #6b5b4d
   const vec3 cBorder  = vec3(0.1412, 0.1020, 0.0471); // --border  rgb(36,26,12)
 
