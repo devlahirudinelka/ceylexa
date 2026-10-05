@@ -27,7 +27,9 @@ export default function ProcessSteps() {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    const cards = cardRefs.current.filter((el): el is HTMLDivElement => el !== null);
+    const cards = cardRefs.current.filter(
+      (el): el is HTMLDivElement => el !== null,
+    );
     if (cards.length === 0) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
@@ -57,7 +59,7 @@ export default function ProcessSteps() {
               end: "center center",
               scrub: 0.8,
             },
-          }
+          },
         );
       });
     });
@@ -67,14 +69,17 @@ export default function ProcessSteps() {
 
   return (
     <section className="relative overflow-hidden bg-surface-2">
-      <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none" aria-hidden="true">
+      <div
+        className="absolute inset-0 overflow-hidden z-0 pointer-events-none"
+        aria-hidden="true"
+      >
         <div className="absolute -top-[10%] -left-[8%] w-[34vmin] h-[34vmin] bg-accent rounded-[50%] blur-[min(8vw,90px)] opacity-40 will-change-[transform,border-radius] animate-blob-float-1 motion-reduce:animate-none" />
         <div className="absolute -bottom-[12%] -right-[8%] w-[30vmin] h-[30vmin] bg-accent-2 rounded-[50%] blur-[min(8vw,90px)] opacity-40 will-change-[transform,border-radius] animate-blob-float-2 motion-reduce:animate-none" />
         <div className="absolute top-[38%] left-[55%] w-[22vmin] h-[22vmin] bg-accent-3 rounded-[50%] blur-[min(8vw,90px)] opacity-40 will-change-[transform,border-radius] animate-blob-float-3 motion-reduce:animate-none" />
       </div>
       <div className="pt-30 w-full max-tablet:pt-20 max-md:pt-18 max-mobile:pt-16" />
       <div
-        className="block mx-auto px-6 max-w-[84rem] w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]"
+        className="block mx-auto px-6 mx-auto container w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]"
         style={{ position: "relative", zIndex: 1 }}
       >
         <div className="inner-wrappar">
@@ -84,7 +89,9 @@ export default function ProcessSteps() {
                 <span className="text-[#d7ba5e] orrenge">{"//"}</span>
                 <span> WORKING PROCESS</span>
               </div>
-              <h2 className="font-sans text-[3.75rem] leading-[1.2em] font-medium text-left max-tablet:text-[3rem] max-md:text-[2.5rem] max-mobile:text-[2.25rem]">Let&rsquo;s See Our Work Process</h2>
+              <h2 className="font-sans text-[3.75rem] leading-[1.2em] font-medium text-left max-tablet:text-[3rem] max-md:text-[2.5rem] max-mobile:text-[2.25rem]">
+                Let&rsquo;s See Our Work Process
+              </h2>
             </div>
           </div>
           <div className="pt-15 max-tablet:pt-12 max-md:pt-10.5 max-mobile:pt-9" />
@@ -99,14 +106,18 @@ export default function ProcessSteps() {
                 }}
               >
                 <div className="flex justify-center items-center">
-                  <div className="font-sans text-[15.625rem] leading-[1em] max-tablet:text-[12rem] max-md:text-[10rem] max-mobile:text-[9rem]">1</div>
+                  <div className="font-sans text-[15.625rem] leading-[1em] max-tablet:text-[12rem] max-md:text-[10rem] max-mobile:text-[9rem]">
+                    1
+                  </div>
                 </div>
                 <div className="flex gap-2 flex-col justify-start items-start max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-[0.3rem]">
-                  <div className="font-sans text-[1.5rem] leading-[1.2em] font-medium max-tablet:text-[1.4rem] max-md:text-[1.3rem]">Discovery</div>
+                  <div className="font-sans text-[1.5rem] leading-[1.2em] font-medium max-tablet:text-[1.4rem] max-md:text-[1.3rem]">
+                    Discovery
+                  </div>
                   <div className="max-w-64 max-mobile:max-w-none">
                     <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
-                      We dive deep into your brand, audience, and goals to uncover the real
-                      opportunity.
+                      We dive deep into your brand, audience, and goals to
+                      uncover the real opportunity.
                     </p>
                   </div>
                 </div>
@@ -121,14 +132,18 @@ export default function ProcessSteps() {
                 }}
               >
                 <div className="flex justify-center items-center step-2">
-                  <div className="font-sans text-[15.625rem] leading-[1em] max-tablet:text-[12rem] max-md:text-[10rem] max-mobile:text-[9rem]">2</div>
+                  <div className="font-sans text-[15.625rem] leading-[1em] max-tablet:text-[12rem] max-md:text-[10rem] max-mobile:text-[9rem]">
+                    2
+                  </div>
                 </div>
                 <div className="flex gap-2 flex-col justify-start items-start max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-[0.3rem] step-2">
-                  <div className="font-sans text-[1.5rem] leading-[1.2em] font-medium text-[#d7ba5e] max-tablet:text-[1.4rem] max-md:text-[1.3rem]">Strategy &amp; Design</div>
+                  <div className="font-sans text-[1.5rem] leading-[1.2em] font-medium text-[#d7ba5e] max-tablet:text-[1.4rem] max-md:text-[1.3rem]">
+                    Strategy &amp; Design
+                  </div>
                   <div className="max-w-64 max-mobile:max-w-none">
                     <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
-                      We craft a clear direction and design experiences that align creativity
-                      with business goals.
+                      We craft a clear direction and design experiences that
+                      align creativity with business goals.
                     </p>
                   </div>
                 </div>
@@ -145,13 +160,18 @@ export default function ProcessSteps() {
                 }}
               >
                 <div className="flex justify-center items-center step-3">
-                  <div className="font-sans text-[15.625rem] leading-[1em] max-tablet:text-[12rem] max-md:text-[10rem] max-mobile:text-[9rem]">3</div>
+                  <div className="font-sans text-[15.625rem] leading-[1em] max-tablet:text-[12rem] max-md:text-[10rem] max-mobile:text-[9rem]">
+                    3
+                  </div>
                 </div>
                 <div className="flex gap-2 flex-col justify-start items-start max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-[0.3rem]">
-                  <div className="font-sans text-[1.5rem] leading-[1.2em] font-medium max-tablet:text-[1.4rem] max-md:text-[1.3rem]">Build &amp; Launch</div>
+                  <div className="font-sans text-[1.5rem] leading-[1.2em] font-medium max-tablet:text-[1.4rem] max-md:text-[1.3rem]">
+                    Build &amp; Launch
+                  </div>
                   <div className="max-w-64 max-mobile:max-w-none">
                     <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
-                      Our team brings the vision to life with precision, testing every detail.
+                      Our team brings the vision to life with precision, testing
+                      every detail.
                     </p>
                   </div>
                 </div>
@@ -166,14 +186,18 @@ export default function ProcessSteps() {
                 }}
               >
                 <div className="flex justify-center items-center">
-                  <div className="font-sans text-[15.625rem] leading-[1em] max-tablet:text-[12rem] max-md:text-[10rem] max-mobile:text-[9rem]">4</div>
+                  <div className="font-sans text-[15.625rem] leading-[1em] max-tablet:text-[12rem] max-md:text-[10rem] max-mobile:text-[9rem]">
+                    4
+                  </div>
                 </div>
                 <div className="flex gap-2 flex-col justify-start items-start max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-[0.3rem]">
-                  <div className="font-sans text-[1.5rem] leading-[1.2em] font-medium max-tablet:text-[1.4rem] max-md:text-[1.3rem]">Optimize &amp; Scale</div>
+                  <div className="font-sans text-[1.5rem] leading-[1.2em] font-medium max-tablet:text-[1.4rem] max-md:text-[1.3rem]">
+                    Optimize &amp; Scale
+                  </div>
                   <div className="max-w-64 max-mobile:max-w-none">
                     <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
-                      We measure performance, refine continuously, and help your brand grow
-                      with confidence.
+                      We measure performance, refine continuously, and help your
+                      brand grow with confidence.
                     </p>
                   </div>
                 </div>

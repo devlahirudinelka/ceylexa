@@ -104,7 +104,7 @@ export default function Navbar() {
           : "border-b border-transparent bg-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
+      <div className=" flex mx-auto container items-center justify-between px-6 py-4 lg:px-8">
         <Link href="/" className="flex items-center">
           <Image
             src="/images/logo/text_with_logo.png"
@@ -125,7 +125,8 @@ export default function Navbar() {
                 onMouseLeave={closeServices}
                 onFocus={openServices}
                 onBlur={(e) => {
-                  if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setServicesOpen(false);
+                  if (!e.currentTarget.contains(e.relatedTarget as Node | null))
+                    setServicesOpen(false);
                 }}
               >
                 <Link
@@ -149,7 +150,7 @@ export default function Navbar() {
                       : "invisible -translate-y-2 opacity-0"
                   }`}
                 >
-                  <div className="mx-auto max-w-7xl rounded-3xl border border-border bg-background p-3 shadow-[0_30px_80px_-30px_rgba(36,26,12,0.3)]">
+                  <div className="mx-auto container rounded-3xl border border-border bg-background p-3 shadow-[0_30px_80px_-30px_rgba(36,26,12,0.3)]">
                     <div className="grid gap-3 lg:grid-cols-3">
                       {SERVICES.map((service) => {
                         const Icon = SERVICE_ICONS[service.icon];
@@ -195,13 +196,16 @@ export default function Navbar() {
                       })}
                     </div>
                     <div className="mt-3 flex items-center justify-between rounded-2xl px-4 py-3 text-sm">
-                      <span className="text-muted">Strategy, creativity and technology in one team.</span>
+                      <span className="text-muted">
+                        Strategy, creativity and technology in one team.
+                      </span>
                       <Link
                         href="/services"
                         onClick={() => setServicesOpen(false)}
                         className="inline-flex items-center gap-1.5 font-medium text-foreground hover:text-accent-2"
                       >
-                        View all services &amp; packages <ArrowRight size={14} />
+                        View all services &amp; packages{" "}
+                        <ArrowRight size={14} />
                       </Link>
                     </div>
                   </div>
@@ -215,7 +219,7 @@ export default function Navbar() {
               >
                 {item.label}
               </Link>
-            )
+            ),
           )}
         </nav>
 
@@ -240,13 +244,17 @@ export default function Navbar() {
           <Menu
             size={22}
             className={`absolute transition-all duration-300 ease-out ${
-              open ? "rotate-90 scale-50 opacity-0" : "rotate-0 scale-100 opacity-100"
+              open
+                ? "rotate-90 scale-50 opacity-0"
+                : "rotate-0 scale-100 opacity-100"
             }`}
           />
           <X
             size={22}
             className={`absolute transition-all duration-300 ease-out ${
-              open ? "rotate-0 scale-100 opacity-100" : "-rotate-90 scale-50 opacity-0"
+              open
+                ? "rotate-0 scale-100 opacity-100"
+                : "-rotate-90 scale-50 opacity-0"
             }`}
           />
         </button>
@@ -271,9 +279,13 @@ export default function Navbar() {
                 <div key={item.href}>
                   <div
                     className={`flex items-center justify-between rounded-lg transition-all duration-300 ease-out ${
-                      open ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0"
+                      open
+                        ? "translate-y-0 opacity-100"
+                        : "-translate-y-2 opacity-0"
                     }`}
-                    style={{ transitionDelay: open ? `${80 + i * 40}ms` : "0ms" }}
+                    style={{
+                      transitionDelay: open ? `${80 + i * 40}ms` : "0ms",
+                    }}
                   >
                     <Link
                       href={item.href}
@@ -314,9 +326,9 @@ export default function Navbar() {
                             href={`/services/${service.slug}`}
                             className="rounded-lg px-2 py-2 text-sm text-muted transition-colors hover:text-foreground"
                             onClick={() => {
-                        setOpen(false);
-                        setMobileServicesOpen(false);
-                      }}
+                              setOpen(false);
+                              setMobileServicesOpen(false);
+                            }}
                           >
                             {service.title}
                           </Link>
@@ -330,28 +342,36 @@ export default function Navbar() {
                   key={item.href}
                   href={item.href}
                   className={`rounded-lg px-2 py-2.5 text-sm text-muted transition-all duration-300 ease-out hover:bg-black/5 hover:text-foreground ${
-                    open ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0"
+                    open
+                      ? "translate-y-0 opacity-100"
+                      : "-translate-y-2 opacity-0"
                   }`}
                   style={{ transitionDelay: open ? `${80 + i * 40}ms` : "0ms" }}
                   onClick={() => {
-                        setOpen(false);
-                        setMobileServicesOpen(false);
-                      }}
+                    setOpen(false);
+                    setMobileServicesOpen(false);
+                  }}
                 >
                   {item.label}
                 </Link>
-              )
+              ),
             )}
             <div
               className={`mt-2 w-fit transition-all duration-300 ease-out ${
                 open ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0"
               }`}
-              style={{ transitionDelay: open ? `${80 + nav.length * 40}ms` : "0ms" }}
+              style={{
+                transitionDelay: open ? `${80 + nav.length * 40}ms` : "0ms",
+              }}
             >
-              <Button href="/contact" size="md" onClick={() => {
-                        setOpen(false);
-                        setMobileServicesOpen(false);
-                      }}>
+              <Button
+                href="/contact"
+                size="md"
+                onClick={() => {
+                  setOpen(false);
+                  setMobileServicesOpen(false);
+                }}
+              >
                 Contact now
               </Button>
             </div>

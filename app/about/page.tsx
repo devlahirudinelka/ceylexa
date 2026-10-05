@@ -28,7 +28,7 @@ export default function AboutPage() {
 
       <div className="main">
         <div className="flex relative flex-col justify-center items-center">
-          <LineRail />
+    
           <Navbar />
           <Hero />
         </div>

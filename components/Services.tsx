@@ -17,8 +17,20 @@ const CARD_WINDOW_HEIGHT = "25.625rem";
 
 function CaretIcon() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 20" fill="none" className="w-4 text-[#d7ba5e]">
-      <path d="M7 4l6 6-6 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="100%"
+      viewBox="0 0 20 20"
+      fill="none"
+      className="w-4 text-[#d7ba5e]"
+    >
+      <path
+        d="M7 4l6 6-6 6"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
@@ -54,7 +66,10 @@ export default function Services() {
         end: "bottom bottom",
         scrub: true,
         onUpdate: (self) => {
-          const index = Math.min(SERVICES.length - 1, Math.floor(self.progress * SERVICES.length));
+          const index = Math.min(
+            SERVICES.length - 1,
+            Math.floor(self.progress * SERVICES.length),
+          );
           setActive((prev) => (prev === index ? prev : index));
         },
       });
@@ -84,7 +99,9 @@ export default function Services() {
     const target = cardRefs.current[active];
     if (!list || !target) return;
 
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
 
     gsap.to(list, {
       y: -target.offsetTop,
@@ -110,14 +127,14 @@ export default function Services() {
     gsap.fromTo(
       panel,
       { opacity: 0, y: 16 },
-      { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }
+      { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" },
     );
   }, [active]);
 
   return (
     <section className="relative">
       <div className="pt-43 w-full max-tablet:pt-24 max-mobile:pt-18" />
-      <div className="block mx-auto px-6 max-w-[84rem] w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
+      <div className="block mx-auto px-6 mx-auto container w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
         <div className="inner-wrappar">
           <div className="grid gap-4 grid-rows-[auto] grid-cols-[1fr_0.75fr] auto-cols-[1fr] justify-between items-start max-tablet:gap-6 max-tablet:grid-cols-[repeat(1,1fr)] max-md:gap-5.25 max-md:justify-end max-md:flex-col max-mobile:gap-4.5">
             <div className="gap-4 justify-start items-start max-tablet:gap-[0.8rem] max-md:gap-[0.7rem] max-mobile:flex max-mobile:gap-[0.224rem] max-mobile:flex-col">
@@ -125,7 +142,9 @@ export default function Services() {
                 <span className="text-[#d7ba5e] orrenge">{"// "}</span>Solutions
               </div>
               <div className="pt-4 w-full max-tablet:pt-[0.8rem] max-md:pt-[0.7rem] max-mobile:pt-[0.6rem]" />
-              <h2 className="font-sans text-[3.75rem] leading-[1.2em] font-medium text-left max-tablet:text-[3rem] max-md:text-[2.5rem] max-mobile:text-[2.25rem]">Creative Services</h2>
+              <h2 className="font-sans text-[3.75rem] leading-[1.2em] font-medium text-left max-tablet:text-[3rem] max-md:text-[2.5rem] max-mobile:text-[2.25rem]">
+                Creative Services
+              </h2>
             </div>
             <div className="flex justify-end items-center w-full h-full max-tablet:justify-start">
               <div className="services-p-block">
@@ -152,7 +171,11 @@ export default function Services() {
                     return (
                       <div
                         key={s.number}
-                        className={i === 0 ? "flex gap-6 flex-row justify-start items-start max-tablet:gap-[1.2rem] max-md:gap-[1.0499rem] max-mobile:gap-[0.899rem]" : "flex gap-6 flex-row justify-start items-start opacity-30 max-tablet:gap-[1.2rem] max-md:gap-[1.0499rem] max-mobile:gap-[0.899rem]"}
+                        className={
+                          i === 0
+                            ? "flex gap-6 flex-row justify-start items-start max-tablet:gap-[1.2rem] max-md:gap-[1.0499rem] max-mobile:gap-[0.899rem]"
+                            : "flex gap-6 flex-row justify-start items-start opacity-30 max-tablet:gap-[1.2rem] max-md:gap-[1.0499rem] max-mobile:gap-[0.899rem]"
+                        }
                         style={{
                           opacity: isActive ? 1 : 0.3,
                           cursor: "pointer",
@@ -162,15 +185,26 @@ export default function Services() {
                         role="button"
                         tabIndex={0}
                       >
-                        <div className="font-sans text-dim-gray text-[0.875rem] leading-[1.5em]">{s.number}</div>
-                        <div className="text-[2.5rem] leading-[1.2em] font-medium max-tablet:text-[2.25rem] max-md:text-[2rem] max-mobile:text-[1.75rem]">{s.title}</div>
+                        <div className="font-sans text-dim-gray text-[0.875rem] leading-[1.5em]">
+                          {s.number}
+                        </div>
+                        <div className="text-[2.5rem] leading-[1.2em] font-medium max-tablet:text-[2.25rem] max-md:text-[2rem] max-mobile:text-[1.75rem]">
+                          {s.title}
+                        </div>
                       </div>
                     );
                   })}
                 </div>
               </div>
-              <div className="flex relative overflow-hidden flex-col max-h-[25.625rem]" ref={windowRef} style={{ height: CARD_WINDOW_HEIGHT }}>
-                <div className="flex gap-6 flex-col flex-none max-tablet:gap-[1.2rem] max-md:gap-[1.0499rem] max-mobile:gap-[0.899rem]" ref={listRef}>
+              <div
+                className="flex relative overflow-hidden flex-col max-h-[25.625rem]"
+                ref={windowRef}
+                style={{ height: CARD_WINDOW_HEIGHT }}
+              >
+                <div
+                  className="flex gap-6 flex-col flex-none max-tablet:gap-[1.2rem] max-md:gap-[1.0499rem] max-mobile:gap-[0.899rem]"
+                  ref={listRef}
+                >
                   {SERVICES.map((s, i) => {
                     const isActive = active === i;
                     return (
@@ -180,7 +214,11 @@ export default function Services() {
                           cardRefs.current[i] = el;
                         }}
                         className="flex flex-col flex-none justify-between h-full max-h-[25.625rem] max-tablet:gap-[1.2rem] max-md:gap-[1.0499rem] max-mobile:gap-[0.899rem]"
-                        style={{ height: CARD_WINDOW_HEIGHT, flexShrink: 0, overflow: "hidden" }}
+                        style={{
+                          height: CARD_WINDOW_HEIGHT,
+                          flexShrink: 0,
+                          overflow: "hidden",
+                        }}
                         // The slide only moves the whole column into place —
                         // it doesn't remove the other four cards from the
                         // page. Without this, a screen reader or Tab key
@@ -194,8 +232,13 @@ export default function Services() {
                       >
                         <div className="flex gap-2 flex-wrap max-w-[31.3rem] max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-[0.3rem]">
                           {s.pills.map((pill) => (
-                            <div key={pill} className="py-2 px-4 bg-white-smoke rounded-full max-tablet:py-[0.4rem] max-tablet:px-[0.8rem] max-md:py-[0.35rem] max-md:px-[0.7rem] max-mobile:py-[0.3rem] max-mobile:px-[0.6rem]">
-                              <div className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">{pill}</div>
+                            <div
+                              key={pill}
+                              className="py-2 px-4 bg-white-smoke rounded-full max-tablet:py-[0.4rem] max-tablet:px-[0.8rem] max-md:py-[0.35rem] max-md:px-[0.7rem] max-mobile:py-[0.3rem] max-mobile:px-[0.6rem]"
+                            >
+                              <div className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
+                                {pill}
+                              </div>
                             </div>
                           ))}
                         </div>
@@ -207,8 +250,12 @@ export default function Services() {
                             tabIndex={isActive ? 0 : -1}
                           >
                             <div className="overflow-hidden h-[1.4rem]">
-                              <div className="mb-0 font-sans text-[#d7ba5e] text-[1rem] leading-[1.5em] font-normal">Learn More</div>
-                              <div className="mb-0 font-sans text-[#d7ba5e] text-[1rem] leading-[1.5em] font-normal">Learn More</div>
+                              <div className="mb-0 font-sans text-[#d7ba5e] text-[1rem] leading-[1.5em] font-normal">
+                                Learn More
+                              </div>
+                              <div className="mb-0 font-sans text-[#d7ba5e] text-[1rem] leading-[1.5em] font-normal">
+                                Learn More
+                              </div>
                             </div>
                             <div className="flex overflow-hidden justify-start items-center max-w-[1.2rem]">
                               <CaretIcon />
@@ -235,28 +282,53 @@ export default function Services() {
                     aria-current={active === i ? "true" : undefined}
                     className="inline-block relative py-2.25 px-7.5 max-w-full align-top text-left text-[#222] no-underline bg-[#ddd] cursor-pointer focus:outline-0 max-tablet:p-0 max-tablet:bg-[#ddd0] max-tablet:opacity-35 max-tablet:[transition:opacity_0.3s_ease] max-tablet:aria-[current=true]:bg-[#ddd0] max-tablet:aria-[current=true]:opacity-100 max-mobile:block"
                   >
-                    <div className={i === 0 ? "flex gap-6 flex-row justify-start items-start max-tablet:gap-[1.2rem] max-md:gap-[1.0499rem] max-mobile:gap-[0.899rem]" : "flex gap-6 flex-row justify-start items-start opacity-30 max-tablet:gap-[1.2rem] max-md:gap-[1.0499rem] max-mobile:gap-[0.899rem]"}>
-                      <div className="font-sans text-dim-gray text-[0.875rem] leading-[1.5em]">{s.number}</div>
-                      <div className="text-[2.5rem] leading-[1.2em] font-medium max-tablet:text-[2.25rem] max-md:text-[2rem] max-mobile:text-[1.75rem]">{s.title}</div>
+                    <div
+                      className={
+                        i === 0
+                          ? "flex gap-6 flex-row justify-start items-start max-tablet:gap-[1.2rem] max-md:gap-[1.0499rem] max-mobile:gap-[0.899rem]"
+                          : "flex gap-6 flex-row justify-start items-start opacity-30 max-tablet:gap-[1.2rem] max-md:gap-[1.0499rem] max-mobile:gap-[0.899rem]"
+                      }
+                    >
+                      <div className="font-sans text-dim-gray text-[0.875rem] leading-[1.5em]">
+                        {s.number}
+                      </div>
+                      <div className="text-[2.5rem] leading-[1.2em] font-medium max-tablet:text-[2.25rem] max-md:text-[2rem] max-mobile:text-[1.75rem]">
+                        {s.title}
+                      </div>
                     </div>
                   </a>
                 ))}
               </div>
 
-              <div className="max-tablet:mt-10 max-md:mt-8.75 max-mobile:mt-7.5" ref={mobileContentRef}>
+              <div
+                className="max-tablet:mt-10 max-md:mt-8.75 max-mobile:mt-7.5"
+                ref={mobileContentRef}
+              >
                 <div className="flex gap-2 flex-wrap max-w-[31.3rem] max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-[0.3rem]">
                   {SERVICES[active].pills.map((pill) => (
-                    <div key={pill} className="py-2 px-4 bg-white-smoke rounded-full max-tablet:py-[0.4rem] max-tablet:px-[0.8rem] max-md:py-[0.35rem] max-md:px-[0.7rem] max-mobile:py-[0.3rem] max-mobile:px-[0.6rem]">
-                      <div className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">{pill}</div>
+                    <div
+                      key={pill}
+                      className="py-2 px-4 bg-white-smoke rounded-full max-tablet:py-[0.4rem] max-tablet:px-[0.8rem] max-md:py-[0.35rem] max-md:px-[0.7rem] max-mobile:py-[0.3rem] max-mobile:px-[0.6rem]"
+                    >
+                      <div className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
+                        {pill}
+                      </div>
                     </div>
                   ))}
                 </div>
                 <p>{SERVICES[active].description}</p>
                 <div className="flex flex-col justify-start items-start pb-6 border-b border-b-[#0000001a] max-tablet:pb-[1.2rem] max-md:pb-[1.0499rem] max-mobile:pb-[0.899rem]">
-                  <a href={`/services/${SERVICES[active].slug}`} className="flex gap-2 justify-start items-center max-w-full max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-[0.3rem]">
+                  <a
+                    href={`/services/${SERVICES[active].slug}`}
+                    className="flex gap-2 justify-start items-center max-w-full max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-[0.3rem]"
+                  >
                     <div className="overflow-hidden h-[1.4rem]">
-                      <div className="mb-0 font-sans text-[#d7ba5e] text-[1rem] leading-[1.5em] font-normal">Learn More</div>
-                      <div className="mb-0 font-sans text-[#d7ba5e] text-[1rem] leading-[1.5em] font-normal">Learn More</div>
+                      <div className="mb-0 font-sans text-[#d7ba5e] text-[1rem] leading-[1.5em] font-normal">
+                        Learn More
+                      </div>
+                      <div className="mb-0 font-sans text-[#d7ba5e] text-[1rem] leading-[1.5em] font-normal">
+                        Learn More
+                      </div>
                     </div>
                     <div className="flex overflow-hidden justify-start items-center max-w-[1.2rem]">
                       <CaretIcon />

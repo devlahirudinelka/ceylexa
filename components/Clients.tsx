@@ -5,7 +5,7 @@ export default function Clients() {
   return (
     <section className="relative">
       <div className="pt-27 w-full max-tablet:pt-24 max-md:pt-18 max-mobile:pt-[3.6rem]" />
-      <div className="block mx-auto px-6 max-w-[84rem] w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
+      <div className="block mx-auto px-6 mx-auto container w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
         <h1 className="text-[11.4rem] leading-[1em] font-semibold text-center max-tablet:text-[8rem] max-md:text-[5.8rem] max-mobile:text-[3.6rem]">
           Brands That <span className="text-[#d7ba5e]">Trust</span> Ceylexa
         </h1>
@@ -13,12 +13,16 @@ export default function Clients() {
 
       <div className="pt-30 w-full max-tablet:pt-20 max-md:pt-18 max-mobile:pt-16" />
 
-      <div className="block mx-auto px-6 max-w-[84rem] w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
+      <div className="block mx-auto px-6 mx-auto container w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
         <div className="inner-wrappar">
           <div className="flex gap-4 flex-col justify-center items-center max-tablet:gap-[0.8rem] max-md:gap-[0.7rem] max-mobile:gap-[0.6rem]">
             <div className="flex gap-0.5 justify-start items-center">
-              <div className="z-999 font-sans text-[#d7ba5e] text-[0.875rem] leading-[1.5em]">{"//"}</div>
-              <div className="font-sans text-dim-gray text-[0.875rem] leading-[1.5em]">Our Clients</div>
+              <div className="z-999 font-sans text-[#d7ba5e] text-[0.875rem] leading-[1.5em]">
+                {"//"}
+              </div>
+              <div className="font-sans text-dim-gray text-[0.875rem] leading-[1.5em]">
+                Our Clients
+              </div>
             </div>
             <h2 className="font-sans text-[3.75rem] leading-[1.2em] font-medium text-left max-tablet:text-[3rem] max-md:text-[2.5rem] max-md:text-center max-mobile:text-[2.25rem]">
               250+ Brands Across Sri Lanka &amp; Beyond
@@ -26,17 +30,20 @@ export default function Clients() {
             <div className="pt-6 w-full max-tablet:pt-[1.2rem] max-md:pt-[1.0499rem] max-mobile:pt-[0.899rem]" />
             <div className="max-w-[34rem]">
               <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
-                At Ceylexa Digital, we are proud to work with 250+ brands across Sri Lanka
-                and international markets, helping businesses from different industries build
-                stronger brands, connect with their audiences, and grow in the digital world.
+                At Ceylexa Digital, we are proud to work with 250+ brands across
+                Sri Lanka and international markets, helping businesses from
+                different industries build stronger brands, connect with their
+                audiences, and grow in the digital world.
               </p>
               <div className="pt-4 w-full max-tablet:pt-[0.8rem] max-md:pt-[0.7rem] max-mobile:pt-[0.6rem]" />
               <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
-                Our client portfolio spans a diverse range of industries, allowing us to bring
-                fresh perspectives, creative strategies, and tailored digital solutions to
-                every project. From emerging businesses and established brands to personal
-                brands and international clients, we work closely with each client to
-                understand their goals and deliver strategies that create meaningful impact.
+                Our client portfolio spans a diverse range of industries,
+                allowing us to bring fresh perspectives, creative strategies,
+                and tailored digital solutions to every project. From emerging
+                businesses and established brands to personal brands and
+                international clients, we work closely with each client to
+                understand their goals and deliver strategies that create
+                meaningful impact.
               </p>
             </div>
           </div>

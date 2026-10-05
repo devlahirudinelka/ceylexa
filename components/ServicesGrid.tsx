@@ -1,6 +1,14 @@
 "use client";
 
-import { Layout, Megaphone, Camera, Target, Fingerprint, Users, ArrowRight } from "lucide-react";
+import {
+  Layout,
+  Megaphone,
+  Camera,
+  Target,
+  Fingerprint,
+  Users,
+  ArrowRight,
+} from "lucide-react";
 import Badge from "@/components/ui/Badge";
 import Reveal from "@/components/ui/Reveal";
 import { useMercuryGlow } from "@/lib/useMercuryGlow";
@@ -34,12 +42,8 @@ function ServiceCard({ service }: { service: ServiceItem }) {
         </span>
       </div>
 
-      <h3 className="text-foreground">
-        {service.title}
-      </h3>
-      <p className="text-[0.875rem]">
-        {service.summary}
-      </p>
+      <h3 className="text-foreground">{service.title}</h3>
+      <p className="text-[0.875rem]">{service.summary}</p>
 
       <div className="mt-auto flex items-center gap-1.5 pt-6 text-sm font-medium text-accent-2">
         Learn more
@@ -55,16 +59,19 @@ function ServiceCard({ service }: { service: ServiceItem }) {
 export default function ServicesGrid() {
   return (
     <section id="all-services" className="relative bg-background py-28">
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+      <div className="mx-auto  container px-6 lg:px-8">
         <Reveal className="mx-auto max-w-2xl text-center">
           <Badge>What we do</Badge>
           <h2 className="tracking-tight">
             Every service, under
-            <span className="text-transparent bg-[linear-gradient(90deg,#92400e_0%,#b45309_45%,#ea580c_100%)] bg-clip-text"> one roof.</span>
+            <span className="text-transparent bg-[linear-gradient(90deg,#92400e_0%,#b45309_45%,#ea580c_100%)] bg-clip-text">
+              {" "}
+              one roof.
+            </span>
           </h2>
           <p className="">
-            From the first pixel of your website to the last influencer partnership,
-            here&apos;s everything Ceylexa can take off your plate.
+            From the first pixel of your website to the last influencer
+            partnership, here&apos;s everything Ceylexa can take off your plate.
           </p>
         </Reveal>
 

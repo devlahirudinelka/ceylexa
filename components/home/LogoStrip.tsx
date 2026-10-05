@@ -4,7 +4,7 @@ import { trustStrip } from "@/lib/home-content";
 export default function LogoStrip() {
   return (
     <section className="relative border-t border-border bg-background py-14">
-      <Reveal className="mx-auto max-w-6xl px-6 text-center lg:px-8">
+      <Reveal className="mx-auto  container px-6 text-center lg:px-8">
         <p className="text-[0.75rem] uppercase tracking-[0.2em]">
           {trustStrip.eyebrow}
         </p>

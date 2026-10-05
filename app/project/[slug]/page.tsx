@@ -22,7 +22,9 @@ export function generateStaticParams() {
   return PROJECTS.map((project) => ({ slug: project.slug }));
 }
 
-export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: ProjectPageProps): Promise<Metadata> {
   const { slug } = await params;
   const project = getProjectBySlug(slug);
   if (!project) return { title: "Project — Ceylexa" };
@@ -49,7 +51,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         {/* Hero */}
         <section className="relative overflow-hidden bg-background pt-32 pb-16 sm:pt-40 sm:pb-20">
           <CreamGradientBackground />
-          <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
+          <div className="relative mx-auto  container px-6 lg:px-8">
             <Reveal>
               <Link
                 href="/project"
@@ -61,7 +63,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </Reveal>
 
             <Reveal delay={80} className="mt-8">
-              <Badge tone="light" icon={<span className="h-1.5 w-1.5 rounded-full bg-accent-2" />}>
+              <Badge
+                tone="light"
+                icon={<span className="h-1.5 w-1.5 rounded-full bg-accent-2" />}
+              >
                 {project.category}
               </Badge>
             </Reveal>
@@ -89,7 +94,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </section>
 
         {/* Hero image */}
-        <Reveal className="mx-auto max-w-6xl px-6 lg:px-8">
+        <Reveal className="mx-auto  container px-6 lg:px-8">
           <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl border border-border shadow-[0_30px_80px_-40px_rgba(36,26,12,0.35)]">
             <Image
               src={project.image}
@@ -103,7 +108,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </Reveal>
 
         {/* Overview + challenge + quick facts */}
-        <section className="mx-auto max-w-6xl px-6 py-20 lg:px-8 sm:py-28">
+        <section className="mx-auto  container px-6 py-20 lg:px-8 sm:py-28">
           <div className="grid gap-12 lg:grid-cols-3 lg:gap-16">
             <div className="lg:col-span-2">
               <Reveal>
@@ -173,10 +178,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
         {/* Solution */}
         <section className="border-t border-border bg-surface-2/60 py-20 sm:py-28">
-          <div className="mx-auto max-w-6xl px-6 lg:px-8">
+          <div className="mx-auto  container px-6 lg:px-8">
             <Reveal>
               <span className="font-mono text-sm text-accent-2">{"// "}</span>
-              <span className="text-sm font-medium text-muted">Team Ceylexa&rsquo;s solution</span>
+              <span className="text-sm font-medium text-muted">
+                Team Ceylexa&rsquo;s solution
+              </span>
               <h2 className="max-w-xl tracking-tight text-foreground">
                 How we got there
               </h2>
@@ -200,13 +207,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </section>
 
         {/* Results */}
-        <section className="mx-auto max-w-6xl px-6 py-20 lg:px-8 sm:py-28">
+        <section className="mx-auto  container px-6 py-20 lg:px-8 sm:py-28">
           <Reveal>
             <span className="font-mono text-sm text-accent-2">{"// "}</span>
             <span className="text-sm font-medium text-muted">Results</span>
-            <h2 className="tracking-tight text-foreground">
-              The numbers
-            </h2>
+            <h2 className="tracking-tight text-foreground">The numbers</h2>
             <p className="max-w-3xl">{project.resultsIntro}</p>
           </Reveal>
 
@@ -216,7 +221,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 <div className="text-transparent bg-[linear-gradient(90deg,#92400e_0%,#b45309_45%,#ea580c_100%)] bg-clip-text text-3xl font-semibold tracking-tight sm:text-4xl">
                   {item.value}
                 </div>
-                <div className="mt-1.5 text-sm font-medium text-foreground">{item.label}</div>
+                <div className="mt-1.5 text-sm font-medium text-foreground">
+                  {item.label}
+                </div>
                 <p className="text-[0.875rem]">{item.description}</p>
               </Reveal>
             ))}
@@ -225,7 +232,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
         {/* Impact */}
         <section className="border-t border-border bg-surface-2/60 py-20 sm:py-28">
-          <div className="mx-auto max-w-4xl px-6 lg:px-8">
+          <div className="mx-auto  container px-6 lg:px-8">
             <Reveal>
               <span className="font-mono text-sm text-accent-2">{"// "}</span>
               <span className="text-sm font-medium text-muted">Impact</span>
@@ -247,11 +254,15 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         {/* More work */}
         {otherProjects.length > 0 && (
           <section className="border-t border-border py-20 sm:py-28">
-            <div className="mx-auto max-w-6xl px-6 lg:px-8">
+            <div className="mx-auto  container px-6 lg:px-8">
               <Reveal className="flex items-end justify-between gap-6">
                 <div>
-                  <span className="font-mono text-sm text-accent-2">{"// "}</span>
-                  <span className="text-sm font-medium text-muted">More work</span>
+                  <span className="font-mono text-sm text-accent-2">
+                    {"// "}
+                  </span>
+                  <span className="text-sm font-medium text-muted">
+                    More work
+                  </span>
                   <h2 className="tracking-tight text-foreground">
                     Other campaigns
                   </h2>
@@ -286,7 +297,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
 function ProjectTile({ project }: { project: (typeof PROJECTS)[number] }) {
   return (
-    <Link href={project.href} className="flex gap-2 flex-col bg-[linear-gradient(180deg,rgba(255,255,255,0.75),rgba(255,255,255,0.55))] border border-border backdrop-blur-[6px] max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-[0.3rem] group relative overflow-hidden rounded-2xl">
+    <Link
+      href={project.href}
+      className="flex gap-2 flex-col bg-[linear-gradient(180deg,rgba(255,255,255,0.75),rgba(255,255,255,0.55))] border border-border backdrop-blur-[6px] max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-[0.3rem] group relative overflow-hidden rounded-2xl"
+    >
       <div className="relative aspect-[4/3] w-full overflow-hidden">
         <Image
           src={project.image}
@@ -298,8 +312,12 @@ function ProjectTile({ project }: { project: (typeof PROJECTS)[number] }) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-6">
           <div>
-            <div className="text-xs font-medium text-white/70">{project.category}</div>
-            <div className="mt-1 text-xl font-semibold text-white">{project.title}</div>
+            <div className="text-xs font-medium text-white/70">
+              {project.category}
+            </div>
+            <div className="mt-1 text-xl font-semibold text-white">
+              {project.title}
+            </div>
           </div>
           <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/30 bg-black/25 text-white transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
             <ArrowUpRight size={18} />
@@ -313,7 +331,9 @@ function ProjectTile({ project }: { project: (typeof PROJECTS)[number] }) {
 function MetaItem({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <div className="text-xs font-semibold tracking-wider text-muted uppercase">{label}</div>
+      <div className="text-xs font-semibold tracking-wider text-muted uppercase">
+        {label}
+      </div>
       <div className="mt-1 text-sm font-medium text-foreground">{value}</div>
     </div>
   );

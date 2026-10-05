@@ -109,7 +109,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         {/* Hero */}
         <section className="relative overflow-hidden pt-28 pb-10 sm:pt-36">
           <CreamGradientBackground />
-          <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="relative mx-auto container px-6 lg:px-8">
             <Reveal>
               <Link
                 href="/blog"
@@ -127,9 +127,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   </span>
                   <span className="text-muted">{post.readingTime}</span>
                 </div>
-                <h1 className="tracking-tight text-foreground">
-                  {post.title}
-                </h1>
+                <h1 className="tracking-tight text-foreground">{post.title}</h1>
                 <p className="max-w-xl text-[1rem] sm:text-[1.125rem]">
                   {post.excerpt}
                 </p>
@@ -152,7 +150,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </section>
 
         {/* Body with sticky TOC */}
-        <section className="mx-auto max-w-7xl px-6 py-14 lg:px-8 sm:py-20">
+        <section className="mx-auto container px-6 py-14 lg:px-8 sm:py-20">
           <div className="grid gap-12 lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-16">
             <aside className="">
               <div className="sticky top-28">
@@ -173,10 +171,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   className="h-[72px] w-[72px] shrink-0 rounded-2xl bg-white object-contain p-3"
                 />
                 <div className="flex-1">
-                  <div className="text-lg font-semibold text-foreground">Team Ceylexa</div>
+                  <div className="text-lg font-semibold text-foreground">
+                    Team Ceylexa
+                  </div>
                   <p className="text-[0.875rem]">
-                    Ceylexa Digital brings strategy, branding, content, web design, paid media and
-                    influencer marketing together to help brands grow online.
+                    Ceylexa Digital brings strategy, branding, content, web
+                    design, paid media and influencer marketing together to help
+                    brands grow online.
                   </p>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {CEYLEXA_SOCIALS.slice(0, 4).map((s) => (
@@ -199,7 +200,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         {/* Latest blogs */}
         <section className="border-t border-border py-16 sm:py-24">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto container px-6 lg:px-8">
             <div className="flex items-end justify-between gap-6">
               <h2 className="tracking-tight text-foreground">
                 Read our Latest Blogs
@@ -221,14 +222,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         {/* Contact / CTA */}
         <section className="px-6 pb-20 lg:px-8">
-          <div className="mx-auto grid max-w-7xl gap-8 overflow-hidden rounded-[2rem] bg-[#111] p-8 text-white sm:p-12 lg:grid-cols-2">
+          <div className="mx-auto grid  container gap-8 overflow-hidden rounded-[2rem] bg-[#111] p-8 text-white sm:p-12 lg:grid-cols-2">
             <div>
               <h2 className="tracking-tight">
                 Ready to turn attention into growth?
               </h2>
               <p className="max-w-md">
-                Tell us about your brand and we&rsquo;ll show you how strategy, creativity and
-                technology can work together for you.
+                Tell us about your brand and we&rsquo;ll show you how strategy,
+                creativity and technology can work together for you.
               </p>
               <Link
                 href="/contact"
@@ -241,10 +242,16 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </Link>
             </div>
             <div className="flex flex-col justify-end gap-4 text-sm lg:items-end">
-              <a href="mailto:hello@ceylexa.com" className="inline-flex items-center gap-2 text-white/80 hover:text-white">
+              <a
+                href="mailto:hello@ceylexa.com"
+                className="inline-flex items-center gap-2 text-white/80 hover:text-white"
+              >
                 <Mail size={15} /> hello@ceylexa.com
               </a>
-              <a href={sri.phoneHref} className="inline-flex items-center gap-2 text-white/80 hover:text-white">
+              <a
+                href={sri.phoneHref}
+                className="inline-flex items-center gap-2 text-white/80 hover:text-white"
+              >
                 <Phone size={15} /> {sri.phone}
               </a>
             </div>

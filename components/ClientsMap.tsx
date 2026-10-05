@@ -352,13 +352,17 @@ export default function ClientsMap() {
 
   return (
     <section className="relative">
-      <div className="block mx-auto px-6 max-w-[84rem] w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
+      <div className="block mx-auto px-6 mx-auto container w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
         <div className="inner-wrappar">
           <div className="flex gap-4 flex-col justify-center items-center max-tablet:gap-[0.8rem] max-md:gap-[0.7rem] max-mobile:gap-[0.6rem]">
             <div className="flex gap-0.5 justify-start items-center">
-              <div className="z-999 font-sans text-[#d7ba5e] text-[0.875rem] leading-[1.5em]">{"//"}</div>
+              <div className="z-999 font-sans text-[#d7ba5e] text-[0.875rem] leading-[1.5em]">
+                {"//"}
+              </div>
 
-              <div className="font-sans text-dim-gray text-[0.875rem] leading-[1.5em]">Global Reach</div>
+              <div className="font-sans text-dim-gray text-[0.875rem] leading-[1.5em]">
+                Global Reach
+              </div>
             </div>
 
             <h2 className="font-sans text-[3.75rem] leading-[1.2em] font-medium text-left max-tablet:text-[3rem] max-md:text-[2.5rem] max-md:text-center max-mobile:text-[2.25rem]">
@@ -367,15 +371,15 @@ export default function ClientsMap() {
             <div className="pt-6 w-full max-tablet:pt-[1.2rem] max-md:pt-[1.0499rem] max-mobile:pt-[0.899rem]" />
             <div className="max-w-[34rem]">
               <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
-                Our clients and projects extend across Sri Lanka and 11+ international
-                markets, including Sri Lanka, Australia, New Zealand, Singapore, Malaysia,
-                United States of America, Japan, Maldives, UAE, India, West Indies, and the
-                United Kingdom.
+                Our clients and projects extend across Sri Lanka and 11+
+                international markets, including Sri Lanka, Australia, New
+                Zealand, Singapore, Malaysia, United States of America, Japan,
+                Maldives, UAE, India, West Indies, and the United Kingdom.
               </p>
               <div className="pt-4 w-full max-tablet:pt-[0.8rem] max-md:pt-[0.7rem] max-mobile:pt-[0.6rem]" />
               <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
-                Different industries. Different markets. One commitment to helping brands
-                grow.
+                Different industries. Different markets. One commitment to
+                helping brands grow.
               </p>
             </div>
           </div>
@@ -420,11 +424,16 @@ export default function ClientsMap() {
                   aria-pressed={isActive}
                   aria-label={`View ${region.name} client reach`}
                 >
-                  <span className="relative flex items-center justify-center w-4 h-4 text-black text-[0.95rem] leading-[1] bg-white border border-light-transparent-black rounded-full [transition:transform_0.25s_ease,background-color_0.25s_ease,color_0.25s_ease,box-shadow_0.25s_ease] before:absolute before:-inset-1.5 before:content-[''] before:border before:border-[#d7ba5e] before:rounded-full before:opacity-0 before:transform-[scale(0.8)] before:[transition:opacity_0.3s_ease,transform_0.3s_ease] max-md:w-[1.4rem] max-md:h-[1.4rem] max-md:text-[0.8rem] group-hover/pin:border-transparent group-focus-visible/pin:border-transparent group-aria-pressed/pin:border-transparent group-hover/pin:transform-[scale(1.15)] group-focus-visible/pin:transform-[scale(1.15)] group-aria-pressed/pin:transform-[scale(1.15)] group-hover/pin:bg-[linear-gradient(135deg,#c79d00,#e5d38e)] group-focus-visible/pin:bg-[linear-gradient(135deg,#c79d00,#e5d38e)] group-aria-pressed/pin:bg-[linear-gradient(135deg,#c79d00,#e5d38e)] group-hover/pin:text-white group-focus-visible/pin:text-white group-aria-pressed/pin:text-white group-hover/pin:shadow-[0_8px_20px_-6px_rgba(199,157,0,0.6)] group-focus-visible/pin:shadow-[0_8px_20px_-6px_rgba(199,157,0,0.6)] group-aria-pressed/pin:shadow-[0_8px_20px_-6px_rgba(199,157,0,0.6)] group-hover/pin:before:opacity-100 group-focus-visible/pin:before:opacity-100 group-aria-pressed/pin:before:opacity-100 group-hover/pin:before:transform-[scale(1.3)] group-focus-visible/pin:before:transform-[scale(1.3)] group-aria-pressed/pin:before:transform-[scale(1.3)]" aria-hidden="true">
+                  <span
+                    className="relative flex items-center justify-center w-4 h-4 text-black text-[0.95rem] leading-[1] bg-white border border-light-transparent-black rounded-full [transition:transform_0.25s_ease,background-color_0.25s_ease,color_0.25s_ease,box-shadow_0.25s_ease] before:absolute before:-inset-1.5 before:content-[''] before:border before:border-[#d7ba5e] before:rounded-full before:opacity-0 before:transform-[scale(0.8)] before:[transition:opacity_0.3s_ease,transform_0.3s_ease] max-md:w-[1.4rem] max-md:h-[1.4rem] max-md:text-[0.8rem] group-hover/pin:border-transparent group-focus-visible/pin:border-transparent group-aria-pressed/pin:border-transparent group-hover/pin:transform-[scale(1.15)] group-focus-visible/pin:transform-[scale(1.15)] group-aria-pressed/pin:transform-[scale(1.15)] group-hover/pin:bg-[linear-gradient(135deg,#c79d00,#e5d38e)] group-focus-visible/pin:bg-[linear-gradient(135deg,#c79d00,#e5d38e)] group-aria-pressed/pin:bg-[linear-gradient(135deg,#c79d00,#e5d38e)] group-hover/pin:text-white group-focus-visible/pin:text-white group-aria-pressed/pin:text-white group-hover/pin:shadow-[0_8px_20px_-6px_rgba(199,157,0,0.6)] group-focus-visible/pin:shadow-[0_8px_20px_-6px_rgba(199,157,0,0.6)] group-aria-pressed/pin:shadow-[0_8px_20px_-6px_rgba(199,157,0,0.6)] group-hover/pin:before:opacity-100 group-focus-visible/pin:before:opacity-100 group-aria-pressed/pin:before:opacity-100 group-hover/pin:before:transform-[scale(1.3)] group-focus-visible/pin:before:transform-[scale(1.3)] group-aria-pressed/pin:before:transform-[scale(1.3)]"
+                    aria-hidden="true"
+                  >
                     {/* <LocationIcon size={24} color="currentColor" /> */}
                   </span>
 
-                  <span className="font-sans text-[0.875rem] text-dim-gray whitespace-nowrap [transition:color_0.25s_ease] max-md:text-[0.6rem] max-mobile:hidden group-hover/pin:text-black group-focus-visible/pin:text-black group-aria-pressed/pin:text-black group-hover/pin:font-medium group-focus-visible/pin:font-medium group-aria-pressed/pin:font-medium">{region.name}</span>
+                  <span className="font-sans text-[0.875rem] text-dim-gray whitespace-nowrap [transition:color_0.25s_ease] max-md:text-[0.6rem] max-mobile:hidden group-hover/pin:text-black group-focus-visible/pin:text-black group-aria-pressed/pin:text-black group-hover/pin:font-medium group-focus-visible/pin:font-medium group-aria-pressed/pin:font-medium">
+                    {region.name}
+                  </span>
 
                   {/* <span className="map-pin-tooltip" role="tooltip">
                     {region.blurb}

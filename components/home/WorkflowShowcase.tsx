@@ -5,18 +5,21 @@ import { workflowSteps } from "@/lib/home-content";
 export default function WorkflowShowcase() {
   return (
     <section id="process" className="relative bg-surface py-28">
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+      <div className="mx-auto  container px-6 lg:px-8">
         <div className="grid gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <Reveal>
             <Badge>How we work</Badge>
             <h2 className="tracking-tight">
               One engagement. A full
-              <span className="text-transparent bg-[linear-gradient(90deg,#92400e_0%,#b45309_45%,#ea580c_100%)] bg-clip-text"> operational system.</span>
+              <span className="text-transparent bg-[linear-gradient(90deg,#92400e_0%,#b45309_45%,#ea580c_100%)] bg-clip-text">
+                {" "}
+                operational system.
+              </span>
             </h2>
             <p className="">
               Every project follows the same loop — we find the highest-leverage
-              automation, design the agent architecture with your team, ship
-              it into your stack, and keep tuning it as you grow.
+              automation, design the agent architecture with your team, ship it
+              into your stack, and keep tuning it as you grow.
             </p>
             <div className="mt-8 flex items-center gap-6 text-sm text-muted">
               <div>
@@ -45,12 +48,8 @@ export default function WorkflowShowcase() {
                       {step.step}
                     </div>
                     <div>
-                      <h3 className="text-foreground">
-                        {step.title}
-                      </h3>
-                      <p className="text-[0.875rem]">
-                        {step.description}
-                      </p>
+                      <h3 className="text-foreground">{step.title}</h3>
+                      <p className="text-[0.875rem]">{step.description}</p>
                     </div>
                   </div>
                 </Reveal>

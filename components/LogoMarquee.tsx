@@ -60,13 +60,13 @@ function MarqueeRow({ reverse = false }: { reverse?: boolean }) {
         {[0, 1].map((rep) => (
           <div key={rep} className="flex gap-3 max-tablet:gap-[0.6rem] max-md:gap-[0.5249rem] max-mobile:gap-[0.449rem]">
             {LOGOS.map((logo) => (
-              <div key={`${rep}-${logo}`} className="flex flex-col flex-none justify-center items-center py-12 px-20 h-50.5 border border-[#0000001a] rounded-xl max-tablet:py-8 max-tablet:px-12 max-tablet:h-40 max-md:py-7 max-md:px-[2.44rem] max-md:h-28 max-mobile:p-6 max-mobile:h-20">
+              <div key={`${rep}-${logo}`} className="flex flex-col flex-none justify-center items-center py-8 px-12 h-44 border border-[#0000001a] rounded-xl max-tablet:py-8 max-tablet:px-12 max-tablet:h-40 max-md:py-7 max-md:px-[2.44rem] max-md:h-28 max-mobile:p-6 max-mobile:h-20">
                 <Image
                   src={`/images/Clients/${logo}`}
                   alt={logo.replace(/\.webp$/, "")}
                   width={154}
                   height={80}
-                  className="w-82.5 max-tablet:w-34 max-md:w-32 max-mobile:w-28"
+                  className="w-40 max-tablet:w-34 max-md:w-32 max-mobile:w-28"
                   style={{ objectFit: "contain" }}
                 />
               </div>

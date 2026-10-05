@@ -24,14 +24,19 @@ export default function ProjectsPage() {
       <main className="bg-background">
         <section className="relative overflow-hidden bg-background pt-32 pb-16 sm:pt-40 sm:pb-20">
           <CreamGradientBackground />
-          <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
+          <div className="relative mx-auto  container px-6 lg:px-8">
             <Reveal>
               <span className="font-mono text-sm text-accent-2">{"// "}</span>
-              <span className="text-sm font-medium text-muted">{PROJECTS_INTRO.eyebrow}</span>
+              <span className="text-sm font-medium text-muted">
+                {PROJECTS_INTRO.eyebrow}
+              </span>
             </Reveal>
             <Reveal delay={80}>
               <h1 className="tracking-tight text-foreground">
-                {PROJECTS_INTRO.heading} <span className="text-transparent bg-[linear-gradient(90deg,#92400e_0%,#b45309_45%,#ea580c_100%)] bg-clip-text">{PROJECTS_INTRO.headingAccent}</span>
+                {PROJECTS_INTRO.heading}{" "}
+                <span className="text-transparent bg-[linear-gradient(90deg,#92400e_0%,#b45309_45%,#ea580c_100%)] bg-clip-text">
+                  {PROJECTS_INTRO.headingAccent}
+                </span>
               </h1>
             </Reveal>
             <Reveal delay={140}>
@@ -45,7 +50,7 @@ export default function ProjectsPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-6xl px-6 pb-20 lg:px-8 sm:pb-28">
+        <section className="mx-auto  container px-6 pb-20 lg:px-8 sm:pb-28">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {PROJECTS.map((project, i) => (
               <Reveal key={project.slug} delay={(i % 3) * 80}>

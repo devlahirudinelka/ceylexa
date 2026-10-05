@@ -17,19 +17,27 @@ const icons = [Workflow, Bot, Plug, Activity, ShieldCheck, UserCheck];
 
 // 12-col bento spans, cycling 8/4/4/8 so each pair of cards fills a row
 // with one "spotlight" tile and one supporting tile.
-const spanClasses = ["md:col-span-8", "md:col-span-4", "md:col-span-4", "md:col-span-8"];
+const spanClasses = [
+  "md:col-span-8",
+  "md:col-span-4",
+  "md:col-span-4",
+  "md:col-span-8",
+];
 
 export default function Features() {
   const onMouseMove = useMercuryGlow<HTMLDivElement>();
 
   return (
     <section id="services" className="relative bg-background py-28">
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+      <div className="mx-auto  container px-6 lg:px-8">
         <Reveal className="mx-auto max-w-2xl text-center">
           <Badge>Services</Badge>
           <h2 className="tracking-tight">
             Everything your team needs to
-            <span className="text-transparent bg-[linear-gradient(90deg,#92400e_0%,#b45309_45%,#ea580c_100%)] bg-clip-text"> ship automation.</span>
+            <span className="text-transparent bg-[linear-gradient(90deg,#92400e_0%,#b45309_45%,#ea580c_100%)] bg-clip-text">
+              {" "}
+              ship automation.
+            </span>
           </h2>
           <p className="">
             From the first workflow audit to a fully autonomous, multi-step
@@ -54,9 +62,7 @@ export default function Features() {
                   <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-accent/15 to-accent-2/15 text-accent-2">
                     <Icon size={20} />
                   </div>
-                  <h3 className="text-foreground">
-                    {feature.title}
-                  </h3>
+                  <h3 className="text-foreground">{feature.title}</h3>
                   <p className="max-w-md text-[0.875rem]">
                     {feature.description}
                   </p>
