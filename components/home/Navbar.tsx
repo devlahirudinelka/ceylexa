@@ -158,7 +158,7 @@ export default function Navbar() {
                             key={service.slug}
                             href={`/services/${service.slug}`}
                             onClick={() => setServicesOpen(false)}
-                            className="group/card flex min-h-[170px] flex-col justify-between rounded-2xl bg-surface-2/70 p-5 transition-colors hover:bg-surface-2"
+                            className="group/card flex min-h-[170px] flex-col justify-between rounded-2xl p-5 transition-colors"
                           >
                             <div className="flex items-start justify-between gap-4">
                               <div className="flex items-start gap-4">
@@ -228,7 +228,7 @@ export default function Navbar() {
         <button
           aria-label="Toggle menu"
           aria-expanded={open}
-          className="relative flex h-9 w-9 cursor-pointer items-center justify-center text-foreground lg:hidden"
+          className="relative flex h-9 w-9 items-center justify-center lg:hidden"
           onClick={() =>
             setOpen((v) => {
               const next = !v;
@@ -277,7 +277,7 @@ export default function Navbar() {
                   >
                     <Link
                       href={item.href}
-                      className="flex-1 rounded-lg px-2 py-2.5 text-sm text-muted transition-colors hover:bg-black/5 hover:text-foreground"
+                      className="flex-1 rounded-lg px-2 py-2.5 text-sm text-muted transition-colors hover:text-foreground"
                       onClick={() => {
                         setOpen(false);
                         setMobileServicesOpen(false);
@@ -290,7 +290,7 @@ export default function Navbar() {
                       aria-label="Toggle services list"
                       aria-expanded={mobileServicesOpen}
                       onClick={() => setMobileServicesOpen((v) => !v)}
-                      className="flex h-9 w-9 items-center justify-center text-muted transition-colors hover:text-foreground"
+                      className="flex h-9 w-9 items-center justify-center transition-colors"
                     >
                       <ChevronDown
                         size={16}
@@ -312,7 +312,7 @@ export default function Navbar() {
                           <Link
                             key={service.slug}
                             href={`/services/${service.slug}`}
-                            className="rounded-lg px-2 py-2 text-sm text-muted transition-colors hover:bg-black/5 hover:text-foreground"
+                            className="rounded-lg px-2 py-2 text-sm text-muted transition-colors hover:text-foreground"
                             onClick={() => {
                         setOpen(false);
                         setMobileServicesOpen(false);

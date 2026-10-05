@@ -23,11 +23,11 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="page-wrapper">
+    <div className="overflow-clip">
       <Navbar />
 
       <div className="main">
-        <div className="home-hero-area">
+        <div className="flex relative flex-col justify-center items-center">
           <LineRail />
           <Navbar />
           <Hero />
@@ -35,7 +35,7 @@ export default function AboutPage() {
         <AboutHero />
         <AboutStory />
         <MissionStats />
-        <div className="space-29xl" />
+        <div className="pt-27 w-full max-tablet:pt-24 max-md:pt-18 max-mobile:pt-[3.6rem]" />
         <WhyChoose />
         <ProcessSteps />
         <Team />

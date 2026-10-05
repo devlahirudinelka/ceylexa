@@ -19,12 +19,18 @@ const base =
   "relative inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-300 whitespace-nowrap cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/60";
 
 const primary =
-  "btn-mercury overflow-hidden bg-gradient-to-r from-[#c79d00] to-[#e5d38e] text-white shadow-[0_0_0_1px_rgba(255,255,255,0.18)_inset,0_10px_30px_-10px_rgba(199,157,0,0.55)] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.24)_inset,0_16px_40px_-10px_rgba(199,157,0,0.7)] hover:-translate-y-0.5";
+  "btn-mercury [--mx:50%] [--my:50%] before:absolute before:inset-0 before:content-[''] before:bg-[radial-gradient(circle_at_var(--mx)_var(--my),rgba(255,255,255,0.35),transparent_65%)] before:rounded-[inherit] before:opacity-0 before:[transition:opacity_0.4s_ease] before:pointer-events-none hover:before:opacity-100 overflow-hidden bg-gradient-to-r from-[#c79d00] to-[#e5d38e] text-white shadow-[0_0_0_1px_rgba(255,255,255,0.18)_inset,0_10px_30px_-10px_rgba(199,157,0,0.55)] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.24)_inset,0_16px_40px_-10px_rgba(199,157,0,0.7)] hover:-translate-y-0.5";
 
 const secondary: Record<string, string> = {
   light:
-    "bg-black/5 text-foreground border border-border hover:bg-black/10 hover:-translate-y-0.5",
-  dark: "bg-white/10 text-white border border-white/30 backdrop-blur-sm hover:bg-white/20 hover:-translate-y-0.5",
+    "text-foreground border border-border hover:-translate-y-0.5",
+  dark: "text-white border border-white/30 backdrop-blur-sm hover:-translate-y-0.5",
+};
+
+// Only the <button> element gets a tint; the <a> variant stays transparent.
+const buttonTint: Record<string, string> = {
+  light: "bg-black/5 hover:bg-black/10",
+  dark: "bg-white/10 hover:bg-white/20",
 };
 
 const ghost: Record<string, string> = {
@@ -69,7 +75,7 @@ export default function Button({
     <button
       type={type}
       onClick={onClick}
-      className={classes}
+      className={variant === "secondary" ? `${classes} ${buttonTint[tone]}` : classes}
       onMouseMove={variant === "primary" ? onMouseMove : undefined}
     >
       {content}

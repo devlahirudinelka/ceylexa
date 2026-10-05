@@ -6,7 +6,7 @@ import { gsap } from "@/lib/gsap";
 
 function SparkleIcon() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 32 23" fill="none" className="about-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 32 23" fill="none" className="w-8 text-[#d7ba5e] max-md:w-6">
       <g clipPath="url(#clip0_about_sparkle)">
         <path
           d="M10 3C10.3395 8.37596 14.624 12.6605 20 13C14.624 13.3395 10.3395 17.624 10 23C9.66052 17.624 5.37596 13.3395 0 13C5.37596 12.6605 9.66052 8.37596 10 3Z"
@@ -26,7 +26,7 @@ function SparkleIcon() {
   );
 }
 
-function ArrowIcon({ className = "button-arrow-main" }: { className?: string }) {
+function ArrowIcon({ className = "relative z-2 flex-none w-5 text-white" }: { className?: string }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 20" fill="none" className={className}>
       <path
@@ -72,72 +72,72 @@ export default function AboutHero() {
   }, []);
 
   return (
-    <section className="section">
-      <div className="space-28-xl" />
-      <div className="w-layout-blockcontainer container w-container">
-        <div className="about-header-main">
-          <div className="about-header">
-            <div className="hero-heading-wrap">
-              <h1 className="hero-heading" ref={headingRef}>
+    <section className="relative">
+      <div className="w-full h-20 max-tablet:h-16 max-md:h-14 max-mobile:h-12" />
+      <div className="block mx-auto px-6 max-w-[84rem] w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
+        <div className="flex gap-10 flex-col max-md:gap-8.75 max-mobile:gap-7.5">
+          <div className="flex flex-col justify-start items-center">
+            <div className="overflow-hidden">
+              <h1 className="text-[11.4rem] leading-[1em] font-semibold text-center max-tablet:text-[8rem] max-md:text-[5.8rem] max-mobile:text-[3.6rem]" ref={headingRef}>
                 About Us
               </h1>
             </div>
           </div>
 
-          <div className="about-header-bottom" ref={bottomRef}>
-            <div className="about-header-info-left">
+          <div className="grid gap-4 grid-rows-[auto] grid-cols-[1fr_1.5fr_1fr] auto-cols-[1fr] max-tablet:grid-cols-[repeat(1,1fr)] max-md:gap-[2.012rem] max-mobile:gap-[1.7249rem]" ref={bottomRef}>
+            <div className="flex justify-start items-start max-mobile:gap-[0.449rem] max-mobile:items-center max-mobile:flex-col">
               <SparkleIcon />
-              <div className="max-width-16">
-                <p className="font-size-sm align-center-mobile">
+              <div className="max-w-64 max-mobile:max-w-none">
+                <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal max-mobile:text-center">
                   A forward-thinking digital marketing company built on creativity, technology,
                   strategy, and measurable results.
                 </p>
               </div>
             </div>
 
-            <div className="about-button-wrap">
-              <Link href="/project" className="btn-primary w-inline-block">
-                <div className="btn-text-pill">
-                  <div className="button-text">Explore All Work</div>
-                  <div className="button-text">Explore All Work</div>
+            <div className="flex gap-2 justify-center items-center max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-3 max-mobile:flex-col">
+              <Link href="/project" className="flex relative overflow-hidden gap-2 justify-center items-center py-3 px-6 max-w-full text-white bg-[#d7ba5e] rounded-[6.25rem] max-tablet:gap-[0.4rem] max-tablet:py-[0.8rem] max-tablet:px-[1.2rem] max-md:gap-[0.35rem] max-md:py-[0.7875rem] max-md:px-[1.0499rem] max-mobile:gap-[0.3rem] max-mobile:py-[0.825rem] max-mobile:px-[0.899rem]">
+                <div className="overflow-hidden h-6">
+                  <div className="relative z-2 leading-[1.5em] font-semibold">Explore All Work</div>
+                  <div className="relative z-2 leading-[1.5em] font-semibold">Explore All Work</div>
                 </div>
-                <div className="btn-arrow-pill">
+                <div className="flex overflow-hidden justify-start items-center max-w-[1.2rem]">
                   <ArrowIcon />
                   <ArrowIcon />
                 </div>
-                <div className="hover-color-block" />
+                <div className="absolute top-auto -bottom-4 right-auto left-[0%] w-4 h-4 bg-black rounded-full" />
               </Link>
 
-              <Link href="/contact" className="btn-primary bg-normal-white w-inline-block">
-                <div className="btn-text-pill bg-normal-white-2">
-                  <div className="button-text">Get in Touch</div>
-                  <div className="button-text bg-normal-white-4">Get in Touch</div>
+              <Link href="/contact" className="flex relative overflow-hidden gap-2 justify-center items-center py-3 px-6 max-w-full text-black bg-alabaster rounded-[6.25rem] max-tablet:gap-[0.4rem] max-tablet:py-[0.8rem] max-tablet:px-[1.2rem] max-md:gap-[0.35rem] max-md:py-[0.7875rem] max-md:px-[1.0499rem] max-mobile:gap-[0.3rem] max-mobile:py-[0.825rem] max-mobile:px-[0.899rem]">
+                <div className="overflow-hidden h-6 bg-normal-white-2">
+                  <div className="relative z-2 leading-[1.5em] font-semibold">Get in Touch</div>
+                  <div className="relative z-2 leading-[1.5em] font-semibold bg-normal-white-4">Get in Touch</div>
                 </div>
-                <div className="btn-arrow-pill bg-normal-white-5">
-                  <ArrowIcon className="button-arrow-main black" />
-                  <ArrowIcon className="button-arrow-main black" />
+                <div className="flex overflow-hidden justify-start items-center max-w-[1.2rem] bg-normal-white-5">
+                  <ArrowIcon className="relative z-2 flex-none w-5 text-black" />
+                  <ArrowIcon className="relative z-2 flex-none w-5 text-black" />
                 </div>
               </Link>
             </div>
 
-            <div className="about-social-wrap">
+            <div className="flex gap-2 flex-wrap justify-end items-end w-44 max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-[0.6rem] max-mobile:justify-center max-mobile:w-auto">
               {CEYLEXA_SOCIALS.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="about-social-link w-inline-block"
+                  className="inline-block py-1.5 px-4 max-w-full text-dim-gray leading-[1.5em] border border-light-transparent-black rounded-full [transition:all_0.3s] hover:text-[#d7ba5e] hover:border-[#d7ba5e] max-tablet:py-[0.3rem] max-tablet:px-[0.8rem] max-md:py-[0.26rem] max-md:px-[0.7rem] max-mobile:py-[0.224rem] max-mobile:px-[0.6rem]"
                 >
-                  <div className="social-link-text">{social.label}</div>
+                  <div className="text-[0.75rem] max-mobile:text-[0.9rem]">{social.label}</div>
                 </a>
               ))}
             </div>
           </div>
         </div>
       </div>
-      <div className="space-28-xl" />
-      <div className="about-image-wrap" aria-hidden="true" />
+      <div className="w-full h-20 max-tablet:h-16 max-md:h-14 max-mobile:h-12" />
+      <div className="w-full h-[54.4375rem] bg-[url(https://cdn.prod.website-files.com/696b260b2c87366dbac9f403/696f70bf3dd51ab8bd323ac1_Frame%2079.webp)] bg-position-[0_0] bg-no-repeat bg-cover max-tablet:h-[30rem] max-md:h-96 max-md:bg-position-[100%_0] max-mobile:h-68" aria-hidden="true" />
     </section>
   );
 }

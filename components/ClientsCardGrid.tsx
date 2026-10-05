@@ -106,7 +106,7 @@ function ClientSocialRow({
   name: string;
 }) {
   return (
-    <div className="client-social-row">
+    <div className="flex gap-2 justify-center flex-wrap mt-[0.2rem]">
       {SOCIAL_PLATFORMS.map(({ key, label, icon }) => {
         const href = socials[key];
         if (!href) return null;
@@ -118,6 +118,7 @@ function ClientSocialRow({
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`${name} on ${label}`}
+            className="flex items-center justify-center w-[1.9rem] h-[1.9rem] rounded-[999px] bg-[rgba(36,26,12,0.06)] text-black [transition:background-color_0.2s_ease,transform_0.2s_ease,color_0.2s_ease] hover:bg-[rgba(199,157,0,0.18)] hover:text-[#b45309] hover:-translate-y-0.5"
           >
             {icon(15)}
           </a>
@@ -187,24 +188,25 @@ export default function ClientsCardGrid() {
   return (
     <div
       ref={gridRef}
-      className="clients-grid"
+      className="grid gap-3 grid-cols-[repeat(4,1fr)] max-tablet:gap-[0.6rem] max-tablet:grid-cols-[repeat(3,1fr)] max-md:gap-[0.35rem] max-md:grid-cols-[repeat(2,1fr)] max-mobile:gap-[0.224rem] max-mobile:grid-cols-[repeat(1,1fr)]"
     >
       {CLIENTS.map((client) => (
         <div
           key={client.file}
-          className="client-card-tilt"
+          className="block h-full client-card-tilt"
         >
-          <div className="client-card py-10 px-8 md:py-12 md:px-10">
+          <div className="flex gap-3 flex-col items-center h-full text-center bg-white border border-light-transparent-black rounded-[1.25rem] [transition:box-shadow_0.3s_ease] hover:shadow-[0_20px_45px_rgba(0,0,0,0.12)] focus-within:shadow-[0_20px_45px_rgba(0,0,0,0.12)] max-tablet:gap-[0.6rem] max-md:gap-[0.5249rem] max-mobile:gap-[0.449rem] py-10 px-8 md:py-12 md:px-10">
             {/* =========================
                 LOGO
             ========================= */}
-            <div className="client-card-logo-col">
-              <div className="client-logo-wrap">
+            <div className="flex gap-[0.6rem] flex-col items-center justify-center flex-[0_0_auto] w-full">
+              <div className="flex aspect-[2/1] items-center justify-center w-full">
                 <Image
                   src={`/images/Clients/${client.file}`}
                   alt={client.name}
                   width={140}
                   height={70}
+                  className="max-h-full max-w-full object-contain scale-170"
                 />
               </div>
             </div>
@@ -212,12 +214,12 @@ export default function ClientsCardGrid() {
             {/* =========================
                 CONTENT
             ========================= */}
-            <div className="client-card-content-col">
-              <div className="client-card-title">
+            <div className="flex gap-[0.4rem] flex-col items-center pt-3 w-full min-w-0 text-center max-tablet:pt-[0.6rem] max-md:pt-[0.5249rem] max-mobile:pt-[0.449rem]">
+              <div className="font-sans text-[0.875rem] font-medium uppercase tracking-[0.05em] text-[#b45309]">
                 {client.name}
               </div>
 
-              <p className="client-card-desc">
+              <p className="font-sans text-[0.875rem] leading-[1.4em] text-dim-gray">
                 {client.description}
               </p>
 

@@ -6,7 +6,7 @@ const REVIEWER_ICONS = [
   "/images/Work-3.webp",
 ];
 
-function ArrowIcon({ className = "button-arrow-main" }: { className?: string }) {
+function ArrowIcon({ className = "relative z-2 flex-none w-5 text-white" }: { className?: string }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 20" fill="none" className={className}>
       <path
@@ -19,118 +19,118 @@ function ArrowIcon({ className = "button-arrow-main" }: { className?: string }) 
 
 export default function MissionStats() {
   return (
-    <section className="section">
-      <div className="space-xxxl" />
-      <div className="w-layout-blockcontainer container w-container">
+    <section className="relative">
+      <div className="pt-30 w-full max-tablet:pt-20 max-md:pt-18 max-mobile:pt-16" />
+      <div className="block mx-auto px-6 max-w-[84rem] w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
         <div className="inner-wrappar">
-          <div className="misson-top-wrappar">
-            <div className="services-header-left">
-              <div className="font-size-xsm">
-                <span className="highlight-text orrenge">{"// "}</span>Our Results
+          <div className="grid gap-4 grid-rows-[auto] grid-cols-[1fr_0.75fr] auto-cols-[1fr] justify-between items-start max-tablet:grid-cols-[1fr_0.5fr] max-md:gap-7 max-md:grid-cols-[repeat(1,1fr)] max-md:justify-end max-md:flex-col max-mobile:gap-6">
+            <div className="gap-4 justify-start items-start max-tablet:gap-[0.8rem] max-md:gap-[0.7rem] max-mobile:flex max-mobile:gap-[0.224rem] max-mobile:flex-col">
+              <div className="font-sans text-dim-gray text-[0.875rem] leading-[1.5em]">
+                <span className="text-[#d7ba5e] orrenge">{"// "}</span>Our Results
               </div>
-              <div className="spacing-2xl" />
-              <h2 className="heading-style-h2">We Strive for Success</h2>
-              <div className="spacing-6xl" />
-              <div className="max-width-29">
-                <div className="spacing-md hide-mobile" />
-                <p className="font-size-sm">
+              <div className="pt-4 w-full max-tablet:pt-[0.8rem] max-md:pt-[0.7rem] max-mobile:pt-[0.6rem]" />
+              <h2 className="font-sans text-[3.75rem] leading-[1.2em] font-medium text-left max-tablet:text-[3rem] max-md:text-[2.5rem] max-mobile:text-[2.25rem]">We Strive for Success</h2>
+              <div className="pt-6 w-full max-tablet:pt-[1.2rem] max-md:pt-[1.0499rem] max-mobile:pt-[0.899rem]" />
+              <div className="max-w-[30rem] max-tablet:max-w-none">
+                <div className="pt-2 w-full max-tablet:hidden max-tablet:pt-[0.4rem] max-md:pt-[0.35rem] max-mobile:pt-[0.3rem]" />
+                <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
                   Ceylexa is a dynamic 
-                  <span className="text-span-2"> Digital Marketing Agency. </span> 
+                  <span className="text-[#d7ba5e]"> Digital Marketing Agency. </span> 
                   We are dedicated to helping businesses build stronger brands, connect with the right audiences.
                 </p>
               </div>
             </div>
-            <div className="misson-right">
+            <div className="flex justify-end items-center w-full h-full max-tablet:items-end max-md:justify-start max-md:items-center">
               <div className="services-p-block">
-                <a href="/contact" className="btn-primary w-inline-block">
-                  <div className="btn-text-pill">
-                    <div className="button-text">+ Become a Client</div>
-                    <div className="button-text">+ Become a Client</div>
+                <a href="/contact" className="flex relative overflow-hidden gap-2 justify-center items-center py-3 px-6 max-w-full text-white bg-[#d7ba5e] rounded-[6.25rem] max-tablet:gap-[0.4rem] max-tablet:py-[0.8rem] max-tablet:px-[1.2rem] max-md:gap-[0.35rem] max-md:py-[0.7875rem] max-md:px-[1.0499rem] max-mobile:gap-[0.3rem] max-mobile:py-[0.825rem] max-mobile:px-[0.899rem]">
+                  <div className="overflow-hidden h-6">
+                    <div className="relative z-2 leading-[1.5em] font-semibold">+ Become a Client</div>
+                    <div className="relative z-2 leading-[1.5em] font-semibold">+ Become a Client</div>
                   </div>
                   <ArrowIcon />
-                  <div className="hover-color-block" />
+                  <div className="absolute top-auto -bottom-4 right-auto left-[0%] w-4 h-4 bg-black rounded-full" />
                 </a>
               </div>
             </div>
           </div>
 
-          <div className="spacing-20xl" />
+          <div className="pt-15 w-full max-tablet:pt-12 max-md:pt-10.5 max-mobile:pt-9" />
 
-          <div className="w-layout-grid mission-grid">
-            <div className="mission-contain-card">
-              <div className="mission-top-card">
-                <div className="top-card-item">
-                  <div className="image-wrapper">
+          <div className="grid gap-3 grid-rows-[auto] grid-cols-[repeat(3,1fr)] auto-cols-[1fr] perspective-[1000px] max-tablet:gap-[0.6rem] max-tablet:grid-cols-[repeat(2,1fr)] max-md:gap-[1.0499rem] max-md:grid-cols-[repeat(1,1fr)] max-mobile:gap-[0.899rem]">
+            <div className="flex gap-3 flex-col justify-center items-start origin-[50%_100%] max-tablet:gap-[0.6rem] max-md:gap-[0.5249rem] max-mobile:gap-[0.449rem]">
+              <div className="py-4 px-5 w-full border border-light-transparent-black rounded-2xl max-tablet:py-[0.8rem] max-tablet:px-4 max-tablet:rounded-[0.8rem] max-md:py-[0.7rem] max-md:px-3.5 max-md:rounded-[0.7rem] max-mobile:flex max-mobile:justify-center max-mobile:items-center max-mobile:py-[0.6rem] max-mobile:px-3 max-mobile:rounded-[0.6rem]">
+                <div className="flex gap-4 grid-rows-[auto] grid-cols-[repeat(2,1fr)] auto-cols-[1fr] justify-between items-start max-mobile:items-center">
+                  <div className="flex overflow-visible justify-start items-start pl-4 max-tablet:pl-[0.8rem] max-md:pl-[0.7rem] max-mobile:pl-[0.6rem]">
                     {REVIEWER_ICONS.map((src) => (
                       // eslint-disable-next-line @next/next/no-img-element
-                      <img key={src} src={src} loading="lazy" alt="Ceylexa client" className="reviewer-img" />
+                      <img key={src} src={src} loading="lazy" alt="Ceylexa client" className="overflow-visible -ml-4 w-15 max-tablet:w-12 max-mobile:w-10" />
                     ))}
                   </div>
-                  <div className="top-content">
-                    <div className="font-size-xsm pure-black">250+ Brands Worldwide</div>
+                  <div className="">
+                    <div className="font-sans text-black text-[0.875rem] leading-[1.5em]">250+ Brands Worldwide</div>
                   </div>
                 </div>
               </div>
-              <div className="contain-bottom-card">
-                <div className="font-size-base">
+              <div className="flex gap-56 flex-col justify-center items-start py-6 pr-10 pl-6 h-full border border-light-transparent-black rounded-2xl max-tablet:gap-44 max-tablet:py-[1.2rem] max-tablet:pr-8 max-tablet:pl-[1.2rem] max-tablet:rounded-[0.8rem] max-md:gap-32 max-md:py-[1.0499rem] max-md:pr-7 max-md:pl-[1.0499rem] max-md:rounded-[0.7rem] max-mobile:gap-20 max-mobile:py-[0.899rem] max-mobile:pr-6 max-mobile:pl-[0.899rem] max-mobile:rounded-[0.6rem]">
+                <div className="font-sans text-black text-[1.25rem] leading-[1.2em] font-medium max-tablet:text-[1.125rem] max-md:text-[1rem] max-mobile:text-[0.875rem]">
                   Strategy, creativity, and technology working together — and results that speak louder than words.
                 </div>
               </div>
-              <div className="mission-top-card satisfication-percentise">
-                <div className="counter-item">
-                  <div className="counter-text">
-                    <CountUp to={250} suffix="+" className="counter-value" />
+              <div className="flex gap-3 flex-col justify-center items-start py-4 px-5 w-full border border-light-transparent-black rounded-2xl max-tablet:gap-[0.6rem] max-tablet:py-[0.8rem] max-tablet:px-4 max-tablet:rounded-[0.8rem] max-md:gap-[0.5249rem] max-md:py-[0.7rem] max-md:px-3.5 max-md:rounded-[0.7rem] max-mobile:gap-[0.449rem] max-mobile:items-center max-mobile:py-[0.6rem] max-mobile:px-3 max-mobile:rounded-[0.6rem]">
+                <div className="flex relative z-1 gap-2 flex-col justify-start items-start max-mobile:gap-[0.6rem]">
+                  <div className="flex justify-center items-center">
+                    <CountUp to={250} suffix="+" className="text-black text-[3.25rem] leading-[1.2em] font-semibold tracking-[-.135rem] max-tablet:text-[3rem] max-md:text-[2.5rem] max-mobile:text-[2rem]" />
                   </div>
                 </div>
-                <div className="font-size-sm lemon-grass">Brands Served</div>
+                <div className="mb-0 font-sans text-spanish-gray text-[1rem] leading-[1.5em] font-normal">Brands Served</div>
               </div>
             </div>
 
-            <div className="mission-contain-card">
-              <div className="robot-image-wrapper">
+            <div className="flex gap-3 flex-col justify-center items-start origin-[50%_100%] max-tablet:gap-[0.6rem] max-md:gap-[0.5249rem] max-mobile:gap-[0.449rem]">
+              <div className="h-full bg-ghost-white border border-light-transparent-black rounded-2xl max-tablet:w-full">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/images/featured.webp"
                   loading="lazy"
                   alt="Ceylexa creative campaign visual"
-                  className="robot-image"
+                  className="object-cover w-full h-full rounded-[15px] max-tablet:object-contain max-tablet:object-[50%_0%]"
                 />
               </div>
-              <div className="counter-main">
-                <div className="counter-wrapper-main">
-                  <div className="counter-item">
-                    <div className="counter-text">
-                      <CountUp to={11} suffix="+" className="counter-value is-white" />
+              <div className="flex justify-between items-center py-6 px-5 w-full bg-[#d7ba5e] border border-light-transparent-black rounded-2xl max-tablet:py-[1.2rem] max-tablet:px-4 max-md:py-[1.0499rem] max-md:px-3.5 max-mobile:py-[0.899rem] max-mobile:px-3">
+                <div className="block justify-between items-center">
+                  <div className="flex relative z-1 gap-2 flex-col justify-start items-start max-mobile:gap-[0.6rem]">
+                    <div className="flex justify-center items-center">
+                      <CountUp to={11} suffix="+" className="text-white text-[2.25rem] leading-[1.2em] font-semibold tracking-[-.135rem] max-tablet:text-[2rem] max-md:text-[1.75rem] max-mobile:text-[1.5rem]" />
                     </div>
                   </div>
-                  <div className="font-size-xsm white">International Markets</div>
+                  <div className="font-sans text-white text-[0.875rem] leading-[1.5em]">International Markets</div>
                 </div>
               </div>
             </div>
 
-            <div className="mission-contain-card">
-              <div className="contain-bottom-card">
-                <div className="bottom-top-contant">
-                  <div className="font-size-base">
-                    <span className="highlight-text">250+</span> brands across Sri Lanka and 11+ international markets.
+            <div className="flex gap-3 flex-col justify-center items-start origin-[50%_100%] max-tablet:gap-[0.6rem] max-md:gap-[0.5249rem] max-mobile:gap-[0.449rem]">
+              <div className="flex gap-56 flex-col justify-center items-start py-6 pr-10 pl-6 h-full border border-light-transparent-black rounded-2xl max-tablet:gap-44 max-tablet:py-[1.2rem] max-tablet:pr-8 max-tablet:pl-[1.2rem] max-tablet:rounded-[0.8rem] max-md:gap-32 max-md:py-[1.0499rem] max-md:pr-7 max-md:pl-[1.0499rem] max-md:rounded-[0.7rem] max-mobile:gap-20 max-mobile:py-[0.899rem] max-mobile:pr-6 max-mobile:pl-[0.899rem] max-mobile:rounded-[0.6rem]">
+                <div className="flex gap-2 flex-col max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-[0.3rem]">
+                  <div className="font-sans text-black text-[1.25rem] leading-[1.2em] font-medium max-tablet:text-[1.125rem] max-md:text-[1rem] max-mobile:text-[0.875rem]">
+                    <span className="text-[#d7ba5e]">250+</span> brands across Sri Lanka and 11+ international markets.
                   </div>
                 </div>
-                <div className="satisfication-percentise">
-                  <div className="counter-item">
-                    <div className="counter-text">
-                      <CountUp to={6} className="counter-value" />
+                <div className="flex gap-3 flex-col justify-center items-start max-tablet:gap-[0.6rem] max-md:gap-[0.5249rem] max-mobile:gap-[0.449rem]">
+                  <div className="flex relative z-1 gap-2 flex-col justify-start items-start max-mobile:gap-[0.6rem]">
+                    <div className="flex justify-center items-center">
+                      <CountUp to={6} className="text-black text-[3.25rem] leading-[1.2em] font-semibold tracking-[-.135rem] max-tablet:text-[3rem] max-md:text-[2.5rem] max-mobile:text-[2rem]" />
                     </div>
                   </div>
-                  <div className="font-size-sm lemon-grass">Core Services</div>
+                  <div className="mb-0 font-sans text-spanish-gray text-[1rem] leading-[1.5em] font-normal">Core Services</div>
                 </div>
               </div>
-              <a href="/contact" className="mission-top-card aroww-button-stye w-inline-block">
-                <div className="top-content nest">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 29 29" fill="none" className="svg-3">
+              <a href="/contact" className="inline-block py-6 px-5 max-w-full w-full border border-light-transparent-black rounded-2xl [transition:all_0.2s] hover:transform-[scale(0.9)] max-tablet:py-[1.2rem] max-tablet:px-4 max-tablet:rounded-[0.8rem] max-md:py-[1.0499rem] max-md:px-3.5 max-md:rounded-[0.7rem] max-mobile:flex max-mobile:justify-center max-mobile:items-center max-mobile:py-[0.899rem] max-mobile:px-3 max-mobile:rounded-[0.6rem]">
+                <div className="flex gap-2 justify-start items-center max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-[0.3rem]">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 29 29" fill="none" className="w-[1.8rem] h-[1.8rem] text-[#d7ba5e]">
                     <circle opacity="0.1" cx="14.4492" cy="14.4492" r="14.4492" fill="currentColor" />
                     <circle cx="14.4492" cy="14.4492" r="6.55078" fill="currentColor" />
                   </svg>
-                  <div className="font-size-xsm black">Let&rsquo;s Work Together</div>
+                  <div className="font-sans text-black text-[0.875rem] leading-[1.5em]">Let&rsquo;s Work Together</div>
                 </div>
               </a>
             </div>

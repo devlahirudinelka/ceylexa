@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <div className="page-wrapper">
+    <div className="overflow-clip">
       <Navbar />
 
       <main className="bg-background">
@@ -30,16 +30,16 @@ export default function ProjectsPage() {
               <span className="text-sm font-medium text-muted">{PROJECTS_INTRO.eyebrow}</span>
             </Reveal>
             <Reveal delay={80}>
-              <h1 className="mt-6 text-4xl font-semibold leading-[1.08] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
-                {PROJECTS_INTRO.heading} <span className="text-gradient">{PROJECTS_INTRO.headingAccent}</span>
+              <h1 className="tracking-tight text-foreground">
+                {PROJECTS_INTRO.heading} <span className="text-transparent bg-[linear-gradient(90deg,#92400e_0%,#b45309_45%,#ea580c_100%)] bg-clip-text">{PROJECTS_INTRO.headingAccent}</span>
               </h1>
             </Reveal>
             <Reveal delay={140}>
-              <div className="mt-8 max-w-3xl space-y-4 leading-relaxed text-muted">
+              <div className="mt-8 max-w-3xl leading-relaxed text-muted">
                 {PROJECTS_INTRO.paragraphs.map((text) => (
                   <p key={text}>{text}</p>
                 ))}
-                <p className="font-medium text-foreground">{PROJECTS_INTRO.closing}</p>
+                <p className="font-medium">{PROJECTS_INTRO.closing}</p>
               </div>
             </Reveal>
           </div>
@@ -51,7 +51,7 @@ export default function ProjectsPage() {
               <Reveal key={project.slug} delay={(i % 3) * 80}>
                 <Link
                   href={project.href}
-                  className="group card-border relative block h-full overflow-hidden rounded-2xl"
+                  className="flex gap-2 flex-col bg-[linear-gradient(180deg,rgba(255,255,255,0.75),rgba(255,255,255,0.55))] border border-border backdrop-blur-[6px] max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-[0.3rem] group relative h-full overflow-hidden rounded-2xl"
                 >
                   <div className="relative aspect-[4/3] w-full overflow-hidden">
                     <Image
@@ -76,7 +76,7 @@ export default function ProjectsPage() {
                       </span>
                     </div>
                   </div>
-                  <p className="p-5 text-sm leading-relaxed text-muted">{project.summary}</p>
+                  <p className="p-5 text-[0.875rem]">{project.summary}</p>
                 </Link>
               </Reveal>
             ))}

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   return (
-    <div className="page-wrapper">
+    <div className="overflow-clip">
       <Navbar />
 
       <div className="main">
@@ -25,12 +25,12 @@ export default function ServicesPage() {
           <div className="mx-auto max-w-4xl px-6 text-center lg:px-8">
             <Reveal>
               <Badge>Services</Badge>
-              <h1 className="mt-6 text-4xl font-semibold tracking-tight sm:text-5xl">
+              <h1 className="tracking-tight">
                 {SERVICES_INTRO.heading}
-                <span className="text-gradient"> {SERVICES_INTRO.headingAccent}</span>
+                <span className="text-transparent bg-[linear-gradient(90deg,#92400e_0%,#b45309_45%,#ea580c_100%)] bg-clip-text"> {SERVICES_INTRO.headingAccent}</span>
               </h1>
               {SERVICES_INTRO.paragraphs.map((paragraph) => (
-                <p key={paragraph} className="mx-auto mt-5 max-w-2xl text-muted">
+                <p key={paragraph} className="mx-auto max-w-2xl">
                   {paragraph}
                 </p>
               ))}
@@ -44,15 +44,15 @@ export default function ServicesPage() {
         <section className="relative bg-background py-24">
           <div className="mx-auto max-w-6xl px-6 text-center lg:px-8">
             <Reveal>
-              <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+              <h2 className="tracking-tight">
                 {PLATFORM_PARTNERS.heading}
               </h2>
-              <p className="mx-auto mt-5 max-w-3xl text-muted">{PLATFORM_PARTNERS.body}</p>
-              <ul className="mt-8 flex flex-wrap items-center justify-center gap-3">
+              <p className="mx-auto max-w-3xl">{PLATFORM_PARTNERS.body}</p>
+              <ul className="items-center justify-center">
                 {PLATFORM_PARTNERS.partners.map((partner) => (
                   <li
                     key={partner}
-                    className="bento-card rounded-full px-5 py-2 text-sm font-medium text-foreground/80"
+                    className="relative overflow-hidden bg-[linear-gradient(180deg,rgba(255,255,255,0.8),rgba(255,255,255,0.6))] border border-border backdrop-blur-[6px] [--mx:50%] [--my:50%] [&>*]:relative [&>*]:z-1 after:absolute after:-inset-0.25 after:z-0 after:content-[''] after:bg-[radial-gradient(480px_circle_at_var(--mx)_var(--my),rgba(234,88,12,0.14),transparent_45%)] after:rounded-[inherit] after:opacity-0 after:[transition:opacity_0.4s_ease] after:pointer-events-none hover:after:opacity-100 bento-card rounded-full px-5 py-2 text-[0.875rem] font-medium"
                   >
                     {partner}
                   </li>

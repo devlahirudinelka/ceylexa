@@ -12,7 +12,7 @@ const icons: Record<string, React.ReactNode> = {
 
 export default function Hero() {
   return (
-    <section className="relative  overflow-hidden bg-background">
+    <section className="relative overflow-hidden bg-background">
       <CreamGradientBackground />
       {/* <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-background" /> */}
       <div className="flex h-screen flex-col items-center justify-center">
@@ -27,16 +27,16 @@ export default function Hero() {
           </div>
 
           <h1
-            className="animate-fade-up mt-8 text-4xl font-semibold leading-[1.08] tracking-tight text-foreground sm:text-6xl lg:text-7xl"
+            className="animate-fade-up tracking-tight text-foreground"
             style={{ animationDelay: "0.08s" }}
           >
             Your Partner in 
             <br /> 
-            <span className="text-gradient">Digital Excellence.</span>
+            <span className="text-transparent bg-[linear-gradient(90deg,#92400e_0%,#b45309_45%,#ea580c_100%)] bg-clip-text">Digital Excellence.</span>
           </h1>
 
           <p
-            className="animate-fade-up mt-10 max-w-2xl text-balance text-base text-muted sm:text-lg"
+            className="animate-fade-up max-w-2xl text-balance text-[1rem] sm:text-[1.125rem]"
             style={{ animationDelay: "0.16s" }}
           >
             <br />

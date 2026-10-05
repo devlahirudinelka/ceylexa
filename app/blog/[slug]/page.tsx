@@ -41,20 +41,20 @@ function renderBlock(block: Block, key: number) {
         <h2
           key={key}
           id={slugifyHeading(block.text)}
-          className="mt-14 scroll-mt-28 text-2xl font-semibold tracking-tight text-foreground sm:text-[1.75rem]"
+          className="scroll-mt-28 tracking-tight text-foreground"
         >
           {block.text}
         </h2>
       );
     case "h3":
       return (
-        <h3 key={key} className="mt-9 text-xl font-semibold tracking-tight text-foreground">
+        <h3 key={key} className="tracking-tight text-foreground">
           {block.text}
         </h3>
       );
     case "ul":
       return (
-        <ul key={key} className="mt-5 space-y-2.5 text-[17px] leading-relaxed text-foreground/80">
+        <ul key={key} className="space-y-2.5 text-[17px] leading-relaxed text-foreground/80">
           {block.items.map((item) => (
             <li key={item} className="flex gap-3">
               <span className="mt-[11px] h-1.5 w-1.5 shrink-0 rounded-full bg-accent-2" />
@@ -76,14 +76,14 @@ function renderBlock(block: Block, key: number) {
       return (
         <blockquote
           key={key}
-          className="mt-6 rounded-2xl border-l-4 border-accent-2 bg-surface-2/70 px-6 py-5 text-lg font-medium leading-relaxed text-foreground"
+          className="rounded-2xl border-accent-2 bg-surface-2/70 font-medium text-foreground"
         >
           {block.text}
         </blockquote>
       );
     default:
       return (
-        <p key={key} className="mt-5 text-[17px] leading-[1.8] text-foreground/80">
+        <p key={key} className="text-[17px]">
           {block.text}
         </p>
       );
@@ -102,7 +102,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const sri = OFFICES[1];
 
   return (
-    <div className="page-wrapper">
+    <div className="overflow-clip">
       <Navbar />
 
       <main className="bg-background">
@@ -127,10 +127,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   </span>
                   <span className="text-muted">{post.readingTime}</span>
                 </div>
-                <h1 className="mt-5 text-3xl font-semibold leading-[1.08] tracking-tight text-foreground sm:text-5xl">
+                <h1 className="tracking-tight text-foreground">
                   {post.title}
                 </h1>
-                <p className="mt-5 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
+                <p className="max-w-xl text-[1rem] sm:text-[1.125rem]">
                   {post.excerpt}
                 </p>
               </Reveal>
@@ -154,7 +154,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         {/* Body with sticky TOC */}
         <section className="mx-auto max-w-7xl px-6 py-14 lg:px-8 sm:py-20">
           <div className="grid gap-12 lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-16">
-            <aside className="hidden lg:block">
+            <aside className="">
               <div className="sticky top-28">
                 <TableOfContents items={toc} />
               </div>
@@ -174,7 +174,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 />
                 <div className="flex-1">
                   <div className="text-lg font-semibold text-foreground">Team Ceylexa</div>
-                  <p className="mt-1 text-sm leading-relaxed text-muted">
+                  <p className="text-[0.875rem]">
                     Ceylexa Digital brings strategy, branding, content, web design, paid media and
                     influencer marketing together to help brands grow online.
                   </p>
@@ -185,7 +185,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                         href={s.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="rounded-full bg-white px-3 py-1 text-xs font-medium text-foreground hover:text-accent-2"
+                        className="rounded-full px-3 py-1 text-xs font-medium text-foreground hover:text-accent-2"
                       >
                         {s.label}
                       </a>
@@ -201,7 +201,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <section className="border-t border-border py-16 sm:py-24">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="flex items-end justify-between gap-6">
-              <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-4xl">
+              <h2 className="tracking-tight text-foreground">
                 Read our Latest Blogs
               </h2>
               <Link
@@ -223,16 +223,16 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <section className="px-6 pb-20 lg:px-8">
           <div className="mx-auto grid max-w-7xl gap-8 overflow-hidden rounded-[2rem] bg-[#111] p-8 text-white sm:p-12 lg:grid-cols-2">
             <div>
-              <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
+              <h2 className="tracking-tight">
                 Ready to turn attention into growth?
               </h2>
-              <p className="mt-4 max-w-md text-white/70">
+              <p className="max-w-md">
                 Tell us about your brand and we&rsquo;ll show you how strategy, creativity and
                 technology can work together for you.
               </p>
               <Link
                 href="/contact"
-                className="mt-8 inline-flex items-center gap-3 rounded-full bg-white py-2 pr-6 pl-2 text-sm font-medium text-black transition-transform hover:-translate-y-0.5"
+                className="mt-8 inline-flex items-center gap-3 rounded-full py-2 pr-6 pl-2 text-sm font-medium text-black transition-transform hover:-translate-y-0.5"
               >
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-black text-white">
                   <ArrowUpRight size={18} />

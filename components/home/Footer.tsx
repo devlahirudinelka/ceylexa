@@ -39,7 +39,7 @@ export default function Footer() {
                 Let&apos;s build something meaningful
               </span>
 
-              <h2 className="mt-6 text-4xl font-semibold leading-[1.05] tracking-[-0.04em] text-foreground sm:text-6xl lg:text-7xl">
+              <h2 className="tracking-[-0.04em] text-foreground">
                 Ready to engineer your <br className="hidden sm:inline" />
                 <span className="relative inline-block text-accent-2 font-bold italic">
                   digital edge?
@@ -51,7 +51,7 @@ export default function Footer() {
             <div className="lg:col-span-4 lg:justify-self-end">
               <Link
                 href="/contact"
-                className="group relative inline-flex items-center gap-5 overflow-hidden rounded-full bg-[#111] py-4 pl-8 pr-4 text-sm font-semibold text-white shadow-2xl transition-all duration-300 hover:bg-[#1f1f1f] hover:shadow-accent-2/10"
+                className="flex gap-2 flex-col max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-[0.3rem] group relative items-center overflow-hidden rounded-full py-4 pl-8 pr-4 text-sm font-semibold text-white shadow-2xl transition-all duration-300 hover:shadow-accent-2/10"
               >
                 <span>Book a Consultation</span>
                 <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-black transition-transform duration-500 group-hover:rotate-45">
@@ -83,7 +83,7 @@ export default function Footer() {
                   />
                 </Link>
 
-                <p className="mt-6 max-w-sm text-sm leading-7 text-muted">
+                <p className="max-w-sm text-[0.875rem]">
                   A modern digital marketing agency intersecting strategy, bold
                   design, and next-generation technologies to deliver
                   conversion-focused results.
@@ -94,7 +94,7 @@ export default function Footer() {
               <div className="mt-8 space-y-3.5">
                 <a
                   href="mailto:hello@ceylexa.com"
-                  className="group flex w-fit items-center gap-3 rounded-xl border border-border/60 bg-white/40 p-1.5 pr-4 text-xs font-semibold text-foreground transition-all duration-300 hover:border-accent-2/40 hover:bg-white"
+                  className="flex gap-2 flex-col max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-[0.3rem] group w-fit items-center rounded-xl border border-border/60 p-1.5 pr-4 text-xs font-semibold text-foreground transition-all duration-300 hover:border-accent-2/40"
                 >
                   <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-background text-foreground transition-colors group-hover:bg-[#111] group-hover:text-white">
                     <Mail size={13} />
@@ -104,7 +104,7 @@ export default function Footer() {
 
                 <a
                   href={OFFICES[1].phoneHref}
-                  className="group flex w-fit items-center gap-3 rounded-xl border border-border/60 bg-white/40 p-1.5 pr-4 text-xs font-semibold text-foreground transition-all duration-300 hover:border-accent-2/40 hover:bg-white"
+                  className="flex gap-2 flex-col max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-[0.3rem] group w-fit items-center rounded-xl border border-border/60 p-1.5 pr-4 text-xs font-semibold text-foreground transition-all duration-300 hover:border-accent-2/40"
                 >
                   <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-background text-foreground transition-colors group-hover:bg-[#111] group-hover:text-white">
                     <Phone size={13} />
@@ -124,7 +124,7 @@ export default function Footer() {
                     <li key={service.slug}>
                       <Link
                         href={`/services/${service.slug}`}
-                        className="group flex items-center gap-1.5 text-[14px] font-medium text-muted transition-colors hover:text-foreground"
+                        className="flex gap-2 flex-col max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-[0.3rem] group items-center text-[14px] font-medium text-muted transition-colors hover:text-foreground"
                       >
                         <span className="h-[1px] w-0 bg-accent-2 transition-all duration-300 group-hover:w-3" />
                         <span className="transform transition-transform duration-300 group-hover:translate-x-1">
@@ -144,7 +144,7 @@ export default function Footer() {
                     <li key={link.label}>
                       <Link
                         href={link.href}
-                        className="group flex items-center gap-1.5 text-[14px] font-medium text-muted transition-colors hover:text-foreground"
+                        className="flex gap-2 flex-col max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-[0.3rem] group items-center text-[14px] font-medium text-muted transition-colors hover:text-foreground"
                       >
                         <span className="h-[1px] w-0 bg-accent-2 transition-all duration-300 group-hover:w-3" />
                         <span className="transform transition-transform duration-300 group-hover:translate-x-1">
@@ -166,7 +166,7 @@ export default function Footer() {
                         href={social.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group flex items-center gap-1.5 text-[14px] font-medium text-muted transition-colors hover:text-foreground"
+                        className="flex gap-2 flex-col max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-[0.3rem] group items-center text-[14px] font-medium text-muted transition-colors hover:text-foreground"
                       >
                         <span className="h-[1px] w-0 bg-accent-2 transition-all duration-300 group-hover:w-3" />
                         <span className="transform transition-transform duration-300 group-hover:translate-x-1">
@@ -189,7 +189,7 @@ export default function Footer() {
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
               <div>
                 <FooterHeading>Our Creative Labs</FooterHeading>
-                <p className="text-xs text-muted mt-1">
+                <p className="text-[0.75rem]">
                   Pop by or connect with our teams worldwide.
                 </p>
               </div>
@@ -199,7 +199,7 @@ export default function Footer() {
               {OFFICES.map((office) => (
                 <div
                   key={office.name}
-                  className="group relative overflow-hidden rounded-2xl border border-border/60 bg-white/20 p-6 backdrop-blur-md transition-all duration-300 hover:border-accent-2/30 hover:bg-white/50 hover:shadow-xl"
+                  className="flex gap-2 flex-col max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-[0.3rem] group relative overflow-hidden rounded-2xl border border-border/60 bg-white/20 p-6 backdrop-blur-md transition-all duration-300 hover:border-accent-2/30 hover:bg-white/50 hover:shadow-xl"
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
@@ -218,7 +218,7 @@ export default function Footer() {
                   </div>
 
                   <div className="mt-5 pl-11 text-xs leading-6 text-muted">
-                    <p className="font-medium text-foreground">{office.name}</p>
+                    <p className="font-medium">{office.name}</p>
 
                     <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1">
                       <a
@@ -259,7 +259,7 @@ export default function Footer() {
       {/* Bottom Legal & Compliance Strip */}
       <section className="relative border-t border-border/40 bg-foreground text-background">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-6 lg:px-8 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-[11px] font-medium text-muted/80">
+          <p className="text-[11px] font-medium">
             © {new Date().getFullYear()} Ceylexa Digital. Devised with
             precision.
           </p>
@@ -283,7 +283,7 @@ export default function Footer() {
 
 function FooterHeading({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="text-[10px] font-bold uppercase tracking-[0.25em] text-accent-2/90">
+    <h3 className="mb-0 uppercase tracking-[0.25em] text-accent-2/90">
       {children}
     </h3>
   );

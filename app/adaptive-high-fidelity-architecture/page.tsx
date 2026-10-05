@@ -246,14 +246,14 @@ export default function Page() {
             </a>
           </div>
 
-          <button className="btn-mercury rounded-full border border-white/10 px-6 py-2 text-[11px] font-bold uppercase tracking-widest">
+          <button className="[--mx:50%] [--my:50%] before:absolute before:inset-0 before:content-[''] before:bg-[radial-gradient(circle_at_var(--mx)_var(--my),rgba(255,255,255,0.35),transparent_65%)] before:rounded-[inherit] before:opacity-0 before:[transition:opacity_0.4s_ease] before:pointer-events-none hover:before:opacity-100 btn-mercury rounded-full px-6 py-2 tracking-widest">
             Inquire
           </button>
         </nav>
 
         <section
           id="hero"
-          className="relative flex h-screen w-full items-center justify-center overflow-hidden px-6"
+          className="relative h-screen w-full items-center justify-center overflow-hidden px-6"
         >
           <div className="video-portal absolute inset-0 z-0 scale-110 opacity-50">
             <video
@@ -267,19 +267,19 @@ export default function Page() {
             </video>
           </div>
 
-          <div className="relative z-10 container max-w-5xl text-center">
+          <div className="relative z-10 px-6 w-full max-w-[84rem] max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem] text-center">
             <span className="mb-8 block animate-[revealAnim_1s_ease_forwards] font-mono text-sm uppercase tracking-[0.5em] text-yellow-300 opacity-0">
               High Fidelity 2026
             </span>
 
-            <h1 className="kinetic-title text-[clamp(4rem,15vw,12rem)] font-black">
+            <h1 className="kinetic-title">
               FLUID
               <br />
               MOTION
             </h1>
 
-            <div className="glass-layer-2 scroll-reveal mt-12 flex flex-col items-center justify-center gap-12 rounded-[3rem] border border-white/5 p-12 md:flex-row">
-              <p className="max-w-xs text-left text-sm leading-relaxed text-white/40">
+            <div className="glass-layer-2 opacity-0 blur-[6px] transform-[translateY(28px)] [transition:opacity_0.8s_cubic-bezier(0.16,1,0.3,1),transform_0.8s_cubic-bezier(0.16,1,0.3,1),filter_0.8s_cubic-bezier(0.16,1,0.3,1)] [&.is-visible]:opacity-100 [&.is-visible]:blur-[0] [&.is-visible]:transform-[translateY(0)] motion-reduce:opacity-100 motion-reduce:filter-none motion-reduce:transform-none motion-reduce:transition-none scroll-reveal mt-12 flex flex-col items-center justify-center gap-12 rounded-[3rem] border border-white/5 p-12 md:flex-row">
+              <p className="max-w-xs text-left text-[0.875rem]">
                 Defining the next generation of visual interaction through{" "}
                 <span className="text-white">
                   perceptual color spaces
@@ -289,7 +289,7 @@ export default function Page() {
 
               <div className="hidden h-px w-24 bg-white/10 md:block"></div>
 
-              <button className="group flex items-center gap-4 text-yellow-300">
+              <button className="flex gap-2 flex-col max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-[0.3rem] group items-center">
                 <span className="text-xs font-bold uppercase tracking-widest">
                   Explore System
                 </span>
@@ -305,9 +305,9 @@ export default function Page() {
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-[oklch(10%_0.01_250)] to-transparent"></div>
         </section>
 
-        <section className="container mx-auto max-w-7xl px-6 py-32">
+        <section className="px-6 w-full max-w-[84rem] max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem] mx-auto py-32">
           <div className="grid h-auto grid-cols-1 gap-6 md:h-[800px] md:grid-cols-12">
-            <div className="bento-card scroll-reveal group relative col-span-1 flex flex-col justify-end overflow-hidden rounded-[2.5rem] p-12 md:col-span-8">
+            <div className="relative flex overflow-hidden gap-2 flex-col bg-[linear-gradient(180deg,rgba(255,255,255,0.8),rgba(255,255,255,0.6))] border border-border backdrop-blur-[6px] opacity-0 blur-[6px] [--mx:50%] [--my:50%] transform-[translateY(28px)] [transition:opacity_0.8s_cubic-bezier(0.16,1,0.3,1),transform_0.8s_cubic-bezier(0.16,1,0.3,1),filter_0.8s_cubic-bezier(0.16,1,0.3,1)] [&.is-visible]:opacity-100 [&.is-visible]:blur-[0] [&.is-visible]:transform-[translateY(0)] [&>*]:relative [&>*]:z-1 after:absolute after:-inset-0.25 after:z-0 after:content-[''] after:bg-[radial-gradient(480px_circle_at_var(--mx)_var(--my),rgba(234,88,12,0.14),transparent_45%)] after:rounded-[inherit] after:opacity-0 after:[transition:opacity_0.4s_ease] after:pointer-events-none hover:after:opacity-100 max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-[0.3rem] motion-reduce:opacity-100 motion-reduce:filter-none motion-reduce:transform-none motion-reduce:transition-none bento-card scroll-reveal group col-span-1 justify-end rounded-[2.5rem] p-12 md:col-span-8">
               <div className="absolute right-0 top-0 p-8">
                 <Icon
                   icon="si:ai-duotone"
@@ -315,11 +315,11 @@ export default function Page() {
                 />
               </div>
 
-              <h3 className="mb-4 text-4xl font-bold tracking-tighter">
+              <h3 className="tracking-tighter">
                 Perceptual OKLCH
               </h3>
 
-              <p className="max-w-md text-white/50">
+              <p className="max-w-md">
                 Our hybrid system ensures consistent lightness across all
                 gamuts, maintaining high-fidelity contrast in both light and
                 dark modes.
@@ -327,7 +327,7 @@ export default function Page() {
             </div>
 
             <div
-              className="bento-card scroll-reveal col-span-1 flex flex-col items-center justify-center rounded-[2.5rem] p-12 text-center md:col-span-4"
+              className="relative overflow-hidden bg-[linear-gradient(180deg,rgba(255,255,255,0.8),rgba(255,255,255,0.6))] border border-border backdrop-blur-[6px] opacity-0 blur-[6px] [--mx:50%] [--my:50%] transform-[translateY(28px)] [transition:opacity_0.8s_cubic-bezier(0.16,1,0.3,1),transform_0.8s_cubic-bezier(0.16,1,0.3,1),filter_0.8s_cubic-bezier(0.16,1,0.3,1)] [&.is-visible]:opacity-100 [&.is-visible]:blur-[0] [&.is-visible]:transform-[translateY(0)] [&>*]:relative [&>*]:z-1 after:absolute after:-inset-0.25 after:z-0 after:content-[''] after:bg-[radial-gradient(480px_circle_at_var(--mx)_var(--my),rgba(234,88,12,0.14),transparent_45%)] after:rounded-[inherit] after:opacity-0 after:[transition:opacity_0.4s_ease] after:pointer-events-none hover:after:opacity-100 motion-reduce:opacity-100 motion-reduce:filter-none motion-reduce:transform-none motion-reduce:transition-none bento-card scroll-reveal col-span-1 flex flex-col items-center justify-center rounded-[2.5rem] p-12 text-center md:col-span-4"
               style={{ animationDelay: "0.1s" }}
             >
               <div className="mb-6 flex h-24 w-24 items-center justify-center rounded-full border-2 border-yellow-300">
@@ -337,17 +337,17 @@ export default function Page() {
                 />
               </div>
 
-              <h3 className="text-2xl font-bold tracking-tighter">
+              <h3 className="tracking-tighter">
                 120FPS Motion
               </h3>
 
-              <p className="mt-2 text-sm text-white/50">
+              <p className="text-[0.875rem]">
                 Native Scroll-Timeline APIs.
               </p>
             </div>
 
             <div
-              className="bento-card scroll-reveal col-span-1 rounded-[2.5rem] p-12 md:col-span-4"
+              className="relative overflow-hidden bg-[linear-gradient(180deg,rgba(255,255,255,0.8),rgba(255,255,255,0.6))] border border-border backdrop-blur-[6px] opacity-0 blur-[6px] [--mx:50%] [--my:50%] transform-[translateY(28px)] [transition:opacity_0.8s_cubic-bezier(0.16,1,0.3,1),transform_0.8s_cubic-bezier(0.16,1,0.3,1),filter_0.8s_cubic-bezier(0.16,1,0.3,1)] [&.is-visible]:opacity-100 [&.is-visible]:blur-[0] [&.is-visible]:transform-[translateY(0)] [&>*]:relative [&>*]:z-1 after:absolute after:-inset-0.25 after:z-0 after:content-[''] after:bg-[radial-gradient(480px_circle_at_var(--mx)_var(--my),rgba(234,88,12,0.14),transparent_45%)] after:rounded-[inherit] after:opacity-0 after:[transition:opacity_0.4s_ease] after:pointer-events-none hover:after:opacity-100 motion-reduce:opacity-100 motion-reduce:filter-none motion-reduce:transform-none motion-reduce:transition-none bento-card scroll-reveal col-span-1 rounded-[2.5rem] p-12 md:col-span-4"
               style={{ animationDelay: "0.2s" }}
             >
               <Icon
@@ -355,25 +355,25 @@ export default function Page() {
                 className="mb-6 text-3xl text-yellow-300"
               />
 
-              <h3 className="mb-2 text-xl font-bold tracking-tighter">
+              <h3 className="tracking-tighter">
                 Z-Axis Layering
               </h3>
 
-              <p className="text-sm text-white/50">
+              <p className="text-[0.875rem]">
                 Complex depth hierarchies without performance overhead.
               </p>
             </div>
 
             <div
-              className="bento-card scroll-reveal col-span-1 flex flex-col items-end gap-8 overflow-hidden rounded-[2.5rem] p-12 md:col-span-8 md:flex-row"
+              className="relative overflow-hidden bg-[linear-gradient(180deg,rgba(255,255,255,0.8),rgba(255,255,255,0.6))] border border-border backdrop-blur-[6px] opacity-0 blur-[6px] [--mx:50%] [--my:50%] transform-[translateY(28px)] [transition:opacity_0.8s_cubic-bezier(0.16,1,0.3,1),transform_0.8s_cubic-bezier(0.16,1,0.3,1),filter_0.8s_cubic-bezier(0.16,1,0.3,1)] [&.is-visible]:opacity-100 [&.is-visible]:blur-[0] [&.is-visible]:transform-[translateY(0)] [&>*]:relative [&>*]:z-1 after:absolute after:-inset-0.25 after:z-0 after:content-[''] after:bg-[radial-gradient(480px_circle_at_var(--mx)_var(--my),rgba(234,88,12,0.14),transparent_45%)] after:rounded-[inherit] after:opacity-0 after:[transition:opacity_0.4s_ease] after:pointer-events-none hover:after:opacity-100 motion-reduce:opacity-100 motion-reduce:filter-none motion-reduce:transform-none motion-reduce:transition-none bento-card scroll-reveal col-span-1 flex flex-col items-end gap-8 rounded-[2.5rem] p-12 md:col-span-8 md:flex-row"
               style={{ animationDelay: "0.3s" }}
             >
               <div className="flex-1">
-                <h3 className="mb-4 text-4xl font-bold tracking-tighter">
+                <h3 className="tracking-tighter">
                   Liquid Metal UI
                 </h3>
 
-                <p className="text-white/50">
+                <p className="">
                   Simulating physical tension on every interaction.
                 </p>
               </div>
@@ -388,9 +388,9 @@ export default function Page() {
         <section className="relative overflow-hidden py-64">
           <div className="pointer-events-none absolute left-1/2 top-1/2 h-[40vh] w-[120vw] -translate-x-1/2 -translate-y-1/2 -rotate-6 bg-yellow-300/5 blur-[120px]"></div>
 
-          <div className="container mx-auto max-w-5xl px-6 text-center">
-            <div className="scroll-reveal">
-              <h2 className="mb-16 text-5xl font-bold tracking-tighter md:text-7xl">
+          <div className="px-6 w-full max-w-[84rem] max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem] mx-auto text-center">
+            <div className="opacity-0 blur-[6px] transform-[translateY(28px)] [transition:opacity_0.8s_cubic-bezier(0.16,1,0.3,1),transform_0.8s_cubic-bezier(0.16,1,0.3,1),filter_0.8s_cubic-bezier(0.16,1,0.3,1)] [&.is-visible]:opacity-100 [&.is-visible]:blur-[0] [&.is-visible]:transform-[translateY(0)] motion-reduce:opacity-100 motion-reduce:filter-none motion-reduce:transform-none motion-reduce:transition-none scroll-reveal">
+              <h2 className="tracking-tighter">
                 Designed for
                 <br />
                 <span className="text-yellow-300/50">Sensations.</span>
@@ -398,13 +398,13 @@ export default function Page() {
             </div>
 
             <div className="relative mt-24 h-[500px] w-full">
-              <div className="glass-layer-1 scroll-reveal absolute left-1/2 top-0 z-10 h-80 w-full max-w-2xl -translate-x-1/2 rounded-[3rem] border border-white/5"></div>
+              <div className="glass-layer-1 opacity-0 blur-[6px] transform-[translateY(28px)] [transition:opacity_0.8s_cubic-bezier(0.16,1,0.3,1),transform_0.8s_cubic-bezier(0.16,1,0.3,1),filter_0.8s_cubic-bezier(0.16,1,0.3,1)] [&.is-visible]:opacity-100 [&.is-visible]:blur-[0] [&.is-visible]:transform-[translateY(0)] motion-reduce:opacity-100 motion-reduce:filter-none motion-reduce:transform-none motion-reduce:transition-none scroll-reveal absolute left-1/2 top-0 z-10 h-80 w-full max-w-2xl -translate-x-1/2 rounded-[3rem] border border-white/5"></div>
 
               <div
-                className="glass-layer-2 scroll-reveal absolute left-1/2 top-20 z-20 flex h-80 w-[90%] max-w-xl -translate-x-1/2 items-center justify-center rounded-[3rem] border border-white/10 shadow-2xl"
+                className="glass-layer-2 opacity-0 blur-[6px] transform-[translateY(28px)] [transition:opacity_0.8s_cubic-bezier(0.16,1,0.3,1),transform_0.8s_cubic-bezier(0.16,1,0.3,1),filter_0.8s_cubic-bezier(0.16,1,0.3,1)] [&.is-visible]:opacity-100 [&.is-visible]:blur-[0] [&.is-visible]:transform-[translateY(0)] motion-reduce:opacity-100 motion-reduce:filter-none motion-reduce:transform-none motion-reduce:transition-none scroll-reveal absolute left-1/2 top-20 z-20 flex h-80 w-[90%] max-w-xl -translate-x-1/2 items-center justify-center rounded-[3rem] border border-white/10 shadow-2xl"
                 style={{ animationDelay: "0.2s" }}
               >
-                <p className="font-mono text-sm tracking-widest text-yellow-300">
+                <p className="font-mono text-[0.875rem] tracking-widest">
                   LAYERED DEPTH
                 </p>
               </div>
@@ -413,14 +413,14 @@ export default function Page() {
         </section>
 
         <footer className="border-t border-white/5 bg-[oklch(15%_0.02_250/.3)] px-6 pb-16 pt-32">
-          <div className="container mx-auto max-w-7xl">
+          <div className="px-6 w-full max-w-[84rem] max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem] mx-auto">
             <div className="mb-32 grid gap-16 md:grid-cols-4">
               <div className="col-span-2">
-                <h4 className="mb-8 text-3xl font-bold tracking-tighter">
+                <h4 className="tracking-tighter">
                   Ready to evolve?
                 </h4>
 
-                <p className="mb-12 max-w-xs text-white/40">
+                <p className="max-w-xs">
                   Building the future of high-fidelity digital experiences since
                   2026.
                 </p>
@@ -437,7 +437,7 @@ export default function Page() {
               </div>
 
               <div>
-                <h5 className="mb-8 text-xs font-bold uppercase tracking-[0.3em] text-yellow-300">
+                <h5 className="uppercase tracking-[0.3em] text-yellow-300">
                   Studio
                 </h5>
 
@@ -463,15 +463,15 @@ export default function Page() {
               </div>
 
               <div>
-                <h5 className="mb-8 text-xs font-bold uppercase tracking-[0.3em] text-yellow-300">
+                <h5 className="uppercase tracking-[0.3em] text-yellow-300">
                   Contact
                 </h5>
 
-                <p className="mb-4 text-sm text-white/50">
+                <p className="text-[0.875rem]">
                   hello@lumina.studio
                 </p>
 
-                <p className="text-sm text-white/50">
+                <p className="text-[0.875rem]">
                   +1 (555) 000-0000
                 </p>
               </div>

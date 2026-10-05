@@ -163,7 +163,11 @@ export default function PageLoader({ children }: { children: ReactNode }) {
           </div>
         </div>
       )}
-      <div id="page-content" ref={contentRef}>
+      <div
+        id="page-content"
+        ref={contentRef}
+        className="[html.pl-loading_&]:opacity-0 motion-reduce:[html.pl-loading_&]:opacity-100"
+      >
         {children}
       </div>
     </>

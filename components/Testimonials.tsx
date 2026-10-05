@@ -64,24 +64,24 @@ const TESTIMONIALS = [
 
 function TestimonialCard({ t }: { t: (typeof TESTIMONIALS)[number] }) {
   return (
-    <div className="testiomonial-card">
-      <div className="testiomoniul-card-info-block">
-        <div className="max-width-25-2">
-          <p className="font-size-base normal line-clamp-8 sm:line-clamp-10">
+    <div className="flex overflow-hidden flex-row justify-start items-stretch p-3 w-full h-[28.0625rem] max-w-[53rem] bg-ghost-white rounded-4xl max-tablet:flex-none max-tablet:p-[0.6rem] max-tablet:h-92 max-tablet:max-w-[40rem] max-md:p-[0.5249rem] max-md:h-76 max-md:max-w-[34.3rem] max-mobile:p-[0.449rem] max-mobile:h-64 max-mobile:max-w-[27rem] max-mobile:rounded-2xl">
+      <div className="flex gap-6 flex-1 flex-col justify-between items-start p-12 max-tablet:gap-[1.2rem] max-tablet:py-8 max-tablet:pr-6 max-tablet:pl-8 max-md:gap-[1.0499rem] max-md:p-[1.4rem] max-mobile:gap-[0.899rem] max-mobile:p-3">
+        <div className="max-w-[25.2rem]">
+          <p className="font-sans text-black text-[1.25rem] leading-[1.2em] font-normal max-tablet:text-[1.125rem] max-md:text-[1rem] max-mobile:text-[0.875rem] line-clamp-8 sm:line-clamp-10">
             &ldquo;{t.quote}&rdquo;
           </p>
         </div>
-        <div className="testiomoniul-bottm-title">
-          <div className="font-size-lg">{t.name}</div>
-          <div className="user-info-block">
-            <div className="font-size-xsm ironside-grey">{t.role}</div>
-            <div className="font-size-xsm">{t.location}</div>
+        <div className="flex gap-2 flex-col max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-[0.3rem]">
+          <div className="font-sans text-[1.5rem] leading-[1.2em] font-medium max-tablet:text-[1.4rem] max-md:text-[1.3rem]">{t.name}</div>
+          <div className="flex gap-0.5 flex-col justify-start items-start max-tablet:gap-[0.1rem] max-md:gap-[0.0875rem] max-mobile:gap-[0.075rem]">
+            <div className="font-sans text-dim-gray text-[0.875rem] leading-[1.5em]">{t.role}</div>
+            <div className="font-sans text-dim-gray text-[0.875rem] leading-[1.5em]">{t.location}</div>
           </div>
         </div>
       </div>
-      <div className="card-image-wrapper">
+      <div className="overflow-hidden rounded-[1.25rem]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={t.image} loading="lazy" alt={`${t.name} portrait.`} className="user-image" />
+        <img src={t.image} loading="lazy" alt={`${t.name} portrait.`} className="object-cover w-full max-w-87.75 h-[28.0625rem] rounded-[1.25rem] max-tablet:h-92 max-md:h-76 max-mobile:h-64" />
       </div>
     </div>
   );
@@ -104,8 +104,8 @@ function MarqueeRow({ reverse = false }: { reverse?: boolean }) {
   }, [reverse]);
 
   return (
-    <div className="marque-card-main">
-      <div ref={trackRef} className="marque-list" style={{ width: "max-content" }}>
+    <div className="flex overflow-hidden gap-6 justify-start items-center max-tablet:gap-[1.2rem] max-md:gap-[1.0499rem] max-mobile:gap-[0.899rem]">
+      <div ref={trackRef} className="flex gap-6 flex-none justify-start items-center max-tablet:gap-[1.2rem] max-md:gap-[1.0499rem] max-mobile:gap-[0.899rem]" style={{ width: "max-content" }}>
         {[0, 1].map((rep) =>
           TESTIMONIALS.map((t) => <TestimonialCard key={`${rep}-${t.name}`} t={t} />)
         )}
@@ -117,21 +117,21 @@ function MarqueeRow({ reverse = false }: { reverse?: boolean }) {
 export default function Testimonials() {
   return (
     <section>
-      <div className="space-xxxl" />
-      <div className="w-layout-blockcontainer container regular w-container">
+      <div className="pt-30 w-full max-tablet:pt-20 max-md:pt-18 max-mobile:pt-16" />
+      <div className="block mx-auto px-6 max-w-[84rem] w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
         <div className="inner-wrappar">
           <div className="testiomonial-header">
-            <div className="testiomonial-top-contant">
-              <div className="testimonial-header-left align-left">
-                <div className="title-wrapar">
-                  <div className="font-size-xsm brand">{"//"}</div>
-                  <div className="font-size-xsm">TESTIMONIALS</div>
+            <div className="flex grid-rows-[auto] grid-cols-[1.5fr_1fr] auto-cols-[1fr] justify-between items-center max-tablet:gap-4 max-tablet:justify-start max-tablet:items-start max-tablet:flex-col max-md:gap-[0.7875rem] max-mobile:gap-[0.674rem]">
+              <div className="inline-flex gap-4 flex-col flex-1 justify-center items-start text-left max-tablet:gap-[0.8rem] max-md:gap-[0.7rem] max-mobile:gap-[0.6rem]">
+                <div className="flex gap-0.5 justify-start items-center">
+                  <div className="z-999 font-sans text-[#d7ba5e] text-[0.875rem] leading-[1.5em]">{"//"}</div>
+                  <div className="font-sans text-dim-gray text-[0.875rem] leading-[1.5em]">TESTIMONIALS</div>
                 </div>
-                <h2 className="heading-style-h2">Trusted Brands Worldwide</h2>
+                <h2 className="font-sans text-[3.75rem] leading-[1.2em] font-medium text-left max-tablet:text-[3rem] max-md:text-[2.5rem] max-mobile:text-[2.25rem]">Trusted Brands Worldwide</h2>
               </div>
-              <div className="tm-top-right">
-                <div className="max-width-25-6">
-                  <p className="font-size-sm">
+              <div className="self-center max-tablet:self-auto max-tablet:justify-start max-tablet:items-center max-tablet:mr-auto">
+                <div className="flex justify-center items-center max-w-[25.8rem] max-tablet:max-w-[40rem] max-md:justify-start max-md:max-w-none">
+                  <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
                     We build the next in commerce on Shopify. From strategy to design,
                     development to retention, we&rsquo;ve got you covered. 9+ years of
                     experience, 200+ stores launched,
@@ -143,11 +143,11 @@ export default function Testimonials() {
         </div>
       </div>
 
-      <div className="spacing-17xl" />
+      <div className="pt-12.5 w-full max-tablet:pt-10 max-md:pt-8.75 max-mobile:pt-7.5" />
 
       <MarqueeRow />
 
-      <div className="space-xxxl" />
+      <div className="pt-30 w-full max-tablet:pt-20 max-md:pt-18 max-mobile:pt-16" />
     </section>
   );
 }

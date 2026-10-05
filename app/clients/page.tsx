@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function ClientsPage() {
   return (
-    <div className="page-wrapper">
+    <div className="overflow-clip">
       <Navbar />
 
       <div className="main">

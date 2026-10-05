@@ -17,7 +17,7 @@ const CARD_WINDOW_HEIGHT = "25.625rem";
 
 function CaretIcon() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 20" fill="none" className="button-arrow">
+    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 20" fill="none" className="w-4 text-[#d7ba5e]">
       <path d="M7 4l6 6-6 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
@@ -115,21 +115,21 @@ export default function Services() {
   }, [active]);
 
   return (
-    <section className="section">
-      <div className="space-10-75" />
-      <div className="w-layout-blockcontainer container w-container">
+    <section className="relative">
+      <div className="pt-43 w-full max-tablet:pt-24 max-mobile:pt-18" />
+      <div className="block mx-auto px-6 max-w-[84rem] w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
         <div className="inner-wrappar">
-          <div className="services-header">
-            <div className="services-header-left">
-              <div className="font-size-xsm">
-                <span className="highlight-text orrenge">{"// "}</span>Solutions
+          <div className="grid gap-4 grid-rows-[auto] grid-cols-[1fr_0.75fr] auto-cols-[1fr] justify-between items-start max-tablet:gap-6 max-tablet:grid-cols-[repeat(1,1fr)] max-md:gap-5.25 max-md:justify-end max-md:flex-col max-mobile:gap-4.5">
+            <div className="gap-4 justify-start items-start max-tablet:gap-[0.8rem] max-md:gap-[0.7rem] max-mobile:flex max-mobile:gap-[0.224rem] max-mobile:flex-col">
+              <div className="font-sans text-dim-gray text-[0.875rem] leading-[1.5em]">
+                <span className="text-[#d7ba5e] orrenge">{"// "}</span>Solutions
               </div>
-              <div className="spacing-2xl" />
-              <h2 className="heading-style-h2">Creative Services</h2>
+              <div className="pt-4 w-full max-tablet:pt-[0.8rem] max-md:pt-[0.7rem] max-mobile:pt-[0.6rem]" />
+              <h2 className="font-sans text-[3.75rem] leading-[1.2em] font-medium text-left max-tablet:text-[3rem] max-md:text-[2.5rem] max-mobile:text-[2.25rem]">Creative Services</h2>
             </div>
-            <div className="services-header-right">
+            <div className="flex justify-end items-center w-full h-full max-tablet:justify-start">
               <div className="services-p-block">
-                <div className="max-width-29">
+                <div className="max-w-[30rem] max-tablet:max-w-none">
                   {/* <p className="font-size-sm">
                     We build the next in commerce on Shopify. From strategy to design,
                     development to retention, we&rsquo;ve got you covered. 9+ years of
@@ -141,18 +141,18 @@ export default function Services() {
             </div>
           </div>
 
-          <div className="spacing-20xl" />
+          <div className="pt-15 w-full max-tablet:pt-12 max-md:pt-10.5 max-mobile:pt-9" />
 
-          <div className="sticky-wrapper" ref={wrapperRef}>
-            <div className="w-layout-grid services-grid">
+          <div className="h-[300vh] max-tablet:h-auto" ref={wrapperRef}>
+            <div className="grid sticky top-48 gap-4 grid-rows-[auto] grid-cols-[repeat(2,1fr)] auto-cols-[1fr] max-tablet:hidden max-tablet:static max-md:gap-[2.44rem] max-md:grid-cols-[repeat(1,1fr)] max-mobile:gap-[2.1rem]">
               <div className="services-left-item-wrap">
-                <div className="services-left">
+                <div className="flex gap-11 flex-col max-tablet:gap-[2.2rem] max-md:gap-[1.924rem] max-mobile:gap-[1.65rem]">
                   {SERVICES.map((s, i) => {
                     const isActive = active === i;
                     return (
                       <div
                         key={s.number}
-                        className={`services-left-item _0${i + 1}`}
+                        className={i === 0 ? "flex gap-6 flex-row justify-start items-start max-tablet:gap-[1.2rem] max-md:gap-[1.0499rem] max-mobile:gap-[0.899rem]" : "flex gap-6 flex-row justify-start items-start opacity-30 max-tablet:gap-[1.2rem] max-md:gap-[1.0499rem] max-mobile:gap-[0.899rem]"}
                         style={{
                           opacity: isActive ? 1 : 0.3,
                           cursor: "pointer",
@@ -162,15 +162,15 @@ export default function Services() {
                         role="button"
                         tabIndex={0}
                       >
-                        <div className="font-size-xsm">{s.number}</div>
-                        <div className="services-title">{s.title}</div>
+                        <div className="font-sans text-dim-gray text-[0.875rem] leading-[1.5em]">{s.number}</div>
+                        <div className="text-[2.5rem] leading-[1.2em] font-medium max-tablet:text-[2.25rem] max-md:text-[2rem] max-mobile:text-[1.75rem]">{s.title}</div>
                       </div>
                     );
                   })}
                 </div>
               </div>
-              <div className="services-right" ref={windowRef} style={{ height: CARD_WINDOW_HEIGHT }}>
-                <div className="services-list" ref={listRef}>
+              <div className="flex relative overflow-hidden flex-col max-h-[25.625rem]" ref={windowRef} style={{ height: CARD_WINDOW_HEIGHT }}>
+                <div className="flex gap-6 flex-col flex-none max-tablet:gap-[1.2rem] max-md:gap-[1.0499rem] max-mobile:gap-[0.899rem]" ref={listRef}>
                   {SERVICES.map((s, i) => {
                     const isActive = active === i;
                     return (
@@ -179,7 +179,7 @@ export default function Services() {
                         ref={(el) => {
                           cardRefs.current[i] = el;
                         }}
-                        className="services-right-item-card"
+                        className="flex flex-col flex-none justify-between h-full max-h-[25.625rem] max-tablet:gap-[1.2rem] max-md:gap-[1.0499rem] max-mobile:gap-[0.899rem]"
                         style={{ height: CARD_WINDOW_HEIGHT, flexShrink: 0, overflow: "hidden" }}
                         // The slide only moves the whole column into place —
                         // it doesn't remove the other four cards from the
@@ -192,25 +192,25 @@ export default function Services() {
                         aria-hidden={!isActive}
                         inert={!isActive || undefined}
                       >
-                        <div className="services-pill-wrap">
+                        <div className="flex gap-2 flex-wrap max-w-[31.3rem] max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-[0.3rem]">
                           {s.pills.map((pill) => (
-                            <div key={pill} className="services-pill">
-                              <div className="font-size-sm pure-black">{pill}</div>
+                            <div key={pill} className="py-2 px-4 bg-white-smoke rounded-full max-tablet:py-[0.4rem] max-tablet:px-[0.8rem] max-md:py-[0.35rem] max-md:px-[0.7rem] max-mobile:py-[0.3rem] max-mobile:px-[0.6rem]">
+                              <div className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">{pill}</div>
                             </div>
                           ))}
                         </div>
                         <p>{s.description}</p>
-                        <div className="services-btn-wrap">
+                        <div className="flex flex-col justify-start items-start pb-6 border-b border-b-[#0000001a] max-tablet:pb-[1.2rem] max-md:pb-[1.0499rem] max-mobile:pb-[0.899rem]">
                           <a
                             href={`/services/${s.slug}`}
-                            className="services-button w-inline-block"
+                            className="flex gap-2 justify-start items-center max-w-full max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-[0.3rem]"
                             tabIndex={isActive ? 0 : -1}
                           >
-                            <div className="btn-text-pil">
-                              <div className="font-size-sm brand-color">Learn More</div>
-                              <div className="font-size-sm brand-color">Learn More</div>
+                            <div className="overflow-hidden h-[1.4rem]">
+                              <div className="mb-0 font-sans text-[#d7ba5e] text-[1rem] leading-[1.5em] font-normal">Learn More</div>
+                              <div className="mb-0 font-sans text-[#d7ba5e] text-[1rem] leading-[1.5em] font-normal">Learn More</div>
                             </div>
-                            <div className="btn-arrow-pill">
+                            <div className="flex overflow-hidden justify-start items-center max-w-[1.2rem]">
                               <CaretIcon />
                               <CaretIcon />
                             </div>
@@ -223,8 +223,8 @@ export default function Services() {
               </div>
             </div>
 
-            <div className="services-tab w-tabs">
-              <div className="services-tab-menu w-tab-menu">
+            <div className="relative hidden before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:block">
+              <div className="relative max-tablet:flex max-tablet:gap-4 max-tablet:flex-col max-tablet:justify-start max-tablet:items-start max-md:gap-3.5 max-mobile:gap-3">
                 {SERVICES.map((s, i) => (
                   <a
                     key={s.number}
@@ -233,32 +233,32 @@ export default function Services() {
                       setActive(i);
                     }}
                     aria-current={active === i ? "true" : undefined}
-                    className={`services-tab-link w-inline-block w-tab-link${active === i ? " w--current" : ""}`}
+                    className="inline-block relative py-2.25 px-7.5 max-w-full align-top text-left text-[#222] no-underline bg-[#ddd] cursor-pointer focus:outline-0 max-tablet:p-0 max-tablet:bg-[#ddd0] max-tablet:opacity-35 max-tablet:[transition:opacity_0.3s_ease] max-tablet:aria-[current=true]:bg-[#ddd0] max-tablet:aria-[current=true]:opacity-100 max-mobile:block"
                   >
-                    <div className={`services-left-item _0${i + 1}`}>
-                      <div className="font-size-xsm">{s.number}</div>
-                      <div className="services-title">{s.title}</div>
+                    <div className={i === 0 ? "flex gap-6 flex-row justify-start items-start max-tablet:gap-[1.2rem] max-md:gap-[1.0499rem] max-mobile:gap-[0.899rem]" : "flex gap-6 flex-row justify-start items-start opacity-30 max-tablet:gap-[1.2rem] max-md:gap-[1.0499rem] max-mobile:gap-[0.899rem]"}>
+                      <div className="font-sans text-dim-gray text-[0.875rem] leading-[1.5em]">{s.number}</div>
+                      <div className="text-[2.5rem] leading-[1.2em] font-medium max-tablet:text-[2.25rem] max-md:text-[2rem] max-mobile:text-[1.75rem]">{s.title}</div>
                     </div>
                   </a>
                 ))}
               </div>
 
-              <div className="services-tab-content" ref={mobileContentRef}>
-                <div className="services-pill-wrap">
+              <div className="max-tablet:mt-10 max-md:mt-8.75 max-mobile:mt-7.5" ref={mobileContentRef}>
+                <div className="flex gap-2 flex-wrap max-w-[31.3rem] max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-[0.3rem]">
                   {SERVICES[active].pills.map((pill) => (
-                    <div key={pill} className="services-pill">
-                      <div className="font-size-sm pure-black">{pill}</div>
+                    <div key={pill} className="py-2 px-4 bg-white-smoke rounded-full max-tablet:py-[0.4rem] max-tablet:px-[0.8rem] max-md:py-[0.35rem] max-md:px-[0.7rem] max-mobile:py-[0.3rem] max-mobile:px-[0.6rem]">
+                      <div className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">{pill}</div>
                     </div>
                   ))}
                 </div>
                 <p>{SERVICES[active].description}</p>
-                <div className="services-btn-wrap">
-                  <a href={`/services/${SERVICES[active].slug}`} className="services-button w-inline-block">
-                    <div className="btn-text-pil">
-                      <div className="font-size-sm brand-color">Learn More</div>
-                      <div className="font-size-sm brand-color">Learn More</div>
+                <div className="flex flex-col justify-start items-start pb-6 border-b border-b-[#0000001a] max-tablet:pb-[1.2rem] max-md:pb-[1.0499rem] max-mobile:pb-[0.899rem]">
+                  <a href={`/services/${SERVICES[active].slug}`} className="flex gap-2 justify-start items-center max-w-full max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-[0.3rem]">
+                    <div className="overflow-hidden h-[1.4rem]">
+                      <div className="mb-0 font-sans text-[#d7ba5e] text-[1rem] leading-[1.5em] font-normal">Learn More</div>
+                      <div className="mb-0 font-sans text-[#d7ba5e] text-[1rem] leading-[1.5em] font-normal">Learn More</div>
                     </div>
-                    <div className="btn-arrow-pill">
+                    <div className="flex overflow-hidden justify-start items-center max-w-[1.2rem]">
                       <CaretIcon />
                       <CaretIcon />
                     </div>
@@ -269,7 +269,7 @@ export default function Services() {
           </div>
         </div>
       </div>
-      <div className="speachng-28xl" />
+      <div className="pt-20 max-tablet:pt-16 max-md:pt-14 max-mobile:pt-12" />
     </section>
   );
 }
