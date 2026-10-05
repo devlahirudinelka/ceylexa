@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import Navbar from "@/components/home/Navbar";
 import Footer from "@/components/home/Footer";
 import CTASection from "@/components/home/CTASection";
-import Badge from "@/components/ui/Badge";
-import Button from "@/components/ui/Button";
+import { ArrowButton, Eyebrow, GoldWord, H2_CLASS } from "@/components/ui/brand";
 import Reveal from "@/components/ui/Reveal";
 import { SERVICES, getServiceBySlug } from "@/lib/services-data";
 
@@ -50,85 +49,82 @@ export default async function ServiceDetailPage({ params }: PageProps) {
       <Navbar />
 
       <div className="main">
-        <section className="relative overflow-hidden bg-background pb-16 pt-40 lg:pt-44">
-          <div className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[720px] -translate-x-1/2 -translate-y-1/3 rounded-full bg-gradient-to-br from-accent/20 via-accent-2/10 to-transparent blur-3xl" />
-
-          <div className="mx-auto container px-6 lg:px-8">
+        <section className="relative overflow-hidden">
+          <div aria-hidden className="pointer-events-none absolute -right-4 top-20 -z-1 select-none text-[24rem] font-bold leading-[0.9em] text-cultured max-tablet:text-[14rem] max-md:text-[9rem]">
+            {service.number}
+          </div>
+          <div className="mx-auto container px-6 lg:px-8 pb-20 pt-40 max-md:pb-14 max-md:pt-32">
             <Reveal>
               <Link
                 href="/services"
-                className="inline-flex items-center gap-1.5 text-sm text-muted transition-colors hover:text-foreground"
+                className="inline-flex items-center gap-1.5 font-sans text-[0.875rem] text-dim-gray transition-colors hover:text-[#d7ba5e]"
               >
                 <ArrowLeft size={14} />
                 All services
               </Link>
 
-              <div className="mt-6 flex items-center gap-3">
-                <Badge>{service.number}</Badge>
-                <Badge>Service</Badge>
-              </div>
-
-              <h1 className="tracking-tight">{service.title}</h1>
-              <p className=" text-[1.125rem]">{service.description}</p>
-              {service.extra && (
-                <p className=" text-[1.125rem]">{service.extra}</p>
-              )}
-
-              <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-                <Button href="/contact" size="lg">
-                  Start a Project
-                  <ArrowRight size={16} />
-                </Button>
-                <Button href="/services" variant="secondary" size="lg">
-                  View all packages
-                </Button>
+              <div className="mt-8 grid gap-10 lg:grid-cols-12 lg:items-end">
+                <div className="lg:col-span-7">
+                  <Eyebrow>Service {service.number}</Eyebrow>
+                  <h1 className="mt-5 font-sans text-[5.5rem] font-semibold leading-[1.02em] tracking-tight max-tablet:text-[4.25rem] max-md:text-[3.25rem] max-mobile:text-[2.5rem]">{service.title}</h1>
+                </div>
+                <div className="flex flex-col gap-4 lg:col-span-5">
+                  <p className="mb-0 font-sans text-[1.125rem] leading-[1.6em] text-black">{service.description}</p>
+                  {service.extra && (
+                    <p className="mb-0 font-sans text-[1rem] leading-[1.6em] text-dim-gray">{service.extra}</p>
+                  )}
+                  <div className="mt-2 flex flex-wrap gap-3">
+                    <ArrowButton href="/contact">Start a Project</ArrowButton>
+                    <ArrowButton href="/services#packages" variant="light">
+                      View all packages
+                    </ArrowButton>
+                  </div>
+                </div>
               </div>
             </Reveal>
           </div>
         </section>
 
-        <section className="relative bg-surface-2 py-24 max-md:py-16">
+        <section className="relative bg-ghost-white py-24 max-md:py-16">
           <div className="mx-auto container px-6 lg:px-8">
             <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
               <Reveal className="lg:col-span-4 lg:sticky lg:top-28 lg:self-start">
                 <div>
-                  <span className="text-[0.75rem] font-semibold uppercase tracking-[0.2em] text-accent-2">
-                    {"// "}Scope
-                  </span>
-                  <h2 className="mt-3 tracking-tight">What&apos;s included</h2>
-                  <p className="mt-4 max-w-xs text-[0.9375rem] leading-relaxed text-muted">
+                  <Eyebrow>Scope</Eyebrow>
+                  <h2 className={`mt-4 ${H2_CLASS}`}>What&apos;s <GoldWord>included</GoldWord></h2>
+                  <p className="mt-4 max-w-xs text-[0.9375rem] leading-relaxed text-dim-gray">
                     Everything that comes with {service.title}, from the first
                     conversation to the final delivery.
                   </p>
                   <div className="mt-8 flex items-baseline gap-2">
-                    <span className="text-[3.5rem] font-medium leading-none text-foreground">
+                    <span className="text-[3.5rem] font-medium leading-none text-black">
                       {String(service.items.length).padStart(2, "0")}
                     </span>
-                    <span className="text-[0.875rem] text-muted">deliverables</span>
+                    <span className="text-[0.875rem] text-dim-gray">deliverables</span>
                   </div>
                 </div>
               </Reveal>
 
               <Reveal className="lg:col-span-8">
-                <ul className="border-t border-border">
+                <ul className="border-t border-light-transparent-black">
                   {service.items.map((item, i) => (
                     <li
                       key={item.title}
-                      className="group relative grid grid-cols-[auto_1fr_auto] items-start gap-x-6 border-b border-border py-7 transition-[padding] duration-500 hover:pl-3 max-md:gap-x-4 max-md:py-5"
+                      className="group relative grid grid-cols-[auto_1fr_auto] items-start gap-x-6 border-b border-light-transparent-black py-7 transition-[padding] duration-500 hover:pl-3 max-md:gap-x-4 max-md:py-5"
                     >
-                      <span className="absolute inset-x-0 bottom-[-1px] h-px origin-left scale-x-0 bg-accent-2 transition-transform duration-500 group-hover:scale-x-100" />
-                      <span className="pt-1 text-[0.8125rem] font-medium tabular-nums text-muted transition-colors duration-300 group-hover:text-accent-2">
+                      <span className="absolute inset-x-0 bottom-[-1px] h-px origin-left scale-x-0 bg-[#d7ba5e] transition-transform duration-500 group-hover:scale-x-100" />
+                      <span className="pt-1 text-[0.8125rem] font-medium tabular-nums text-dim-gray transition-colors duration-300 group-hover:text-[#d7ba5e]">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <div>
-                        <h3 className="text-[1.375rem] font-medium leading-tight text-foreground max-md:text-[1.125rem]">
+                        <h3 className="text-[1.375rem] font-medium leading-tight text-black max-md:text-[1.125rem]">
                           {item.title}
                         </h3>
-                        <p className="mt-2 max-w-xl text-[0.9375rem] leading-relaxed text-muted">
+                        <p className="mt-2 max-w-xl text-[0.9375rem] leading-relaxed text-dim-gray">
                           {item.description}
                         </p>
                       </div>
-                      <span className="mt-1 flex h-9 w-9 items-center justify-center rounded-full border border-border text-foreground transition-all duration-500 group-hover:rotate-45 group-hover:border-accent-2 group-hover:bg-accent-2 group-hover:text-white max-md:hidden">
+                      <span className="mt-1 flex h-9 w-9 items-center justify-center rounded-full border border-light-transparent-black text-black transition-all duration-500 group-hover:rotate-45 group-hover:border-[#d7ba5e] group-hover:bg-[#d7ba5e] group-hover:text-white max-md:hidden">
                         <ArrowUpRight size={15} />
                       </span>
                     </li>
@@ -139,31 +135,38 @@ export default async function ServiceDetailPage({ params }: PageProps) {
           </div>
         </section>
 
-        <section className="relative bg-background py-20">
-          <div className="mx-auto  container px-6 lg:px-8">
-            <Reveal className="mx-auto max-w-2xl text-center">
-              <h2 className="tracking-tight">Explore other services</h2>
+        <section className="relative">
+          <div className="mx-auto container px-6 lg:px-8 py-24 max-md:py-16">
+            <Reveal>
+              <div className="flex items-end justify-between gap-6 max-md:flex-col max-md:items-start">
+                <div>
+                  <Eyebrow>More</Eyebrow>
+                  <h2 className={`mt-4 ${H2_CLASS}`}>
+                    Explore other <GoldWord>services</GoldWord>
+                  </h2>
+                </div>
+                <ArrowButton href="/services" variant="outline">
+                  All services
+                </ArrowButton>
+              </div>
             </Reveal>
 
-            <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-3">
+            <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-3">
               {otherServices.map((other, i) => (
                 <Reveal key={other.slug} delay={i * 90} className="h-full">
                   <a
                     href={`/services/${other.slug}`}
-                    className="relative flex overflow-hidden gap-2 flex-col bg-[linear-gradient(180deg,rgba(255,255,255,0.8),rgba(255,255,255,0.6))] border border-border backdrop-blur-[6px] [--mx:50%] [--my:50%] [&>*]:relative [&>*]:z-1 after:absolute after:-inset-0.25 after:z-0 after:content-[''] after:bg-[radial-gradient(480px_circle_at_var(--mx)_var(--my),rgba(234,88,12,0.14),transparent_45%)] after:rounded-[inherit] after:opacity-0 after:[transition:opacity_0.4s_ease] after:pointer-events-none hover:after:opacity-100 max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-[0.3rem] bento-card group h-full rounded-2xl p-6 transition-colors hover:border-accent/40"
+                    className="group relative flex h-full flex-col overflow-hidden rounded-[1.875rem] border border-light-transparent-black bg-white p-8 transition-[border-color,box-shadow] duration-300 hover:border-[#d7ba5e] hover:shadow-[0_30px_60px_-35px_rgba(0,0,0,0.35)] max-md:p-6 max-mobile:rounded-2xl"
                   >
-                    <span className="text-xs font-medium tracking-wider text-muted">
+                    <span aria-hidden className="absolute -right-2 -top-5 select-none text-[8rem] font-medium leading-none tracking-tighter text-black/[0.05] transition-colors duration-300 group-hover:text-[#d7ba5e]/20">
                       {other.number}
                     </span>
-                    <h3 className="text-foreground">{other.title}</h3>
-                    <p className="text-[0.875rem]">{other.summary}</p>
-                    <div className="mt-auto flex items-center gap-1.5 pt-5 text-sm font-medium text-accent-2">
-                      Learn more
-                      <ArrowRight
-                        size={15}
-                        className="transition-transform duration-300 group-hover:translate-x-1"
-                      />
-                    </div>
+                    <span className="relative text-[0.8125rem] font-medium tabular-nums text-[#d7ba5e]">{other.number}</span>
+                    <h3 className="relative mt-4 font-sans text-[1.75rem] font-medium leading-[1.2em] text-black max-md:text-[1.375rem]">{other.title}</h3>
+                    <p className="relative mb-0 mt-3 font-sans text-[0.9375rem] leading-[1.6em] text-dim-gray">{other.summary}</p>
+                    <span className="relative mt-auto flex h-10 w-10 items-center justify-center self-end rounded-full bg-black text-white transition-all duration-500 group-hover:rotate-45 group-hover:bg-[#d7ba5e] group-hover:text-black">
+                      <ArrowUpRight size={16} />
+                    </span>
                   </a>
                 </Reveal>
               ))}

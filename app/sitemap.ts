@@ -6,7 +6,7 @@ import { SERVICES } from "@/lib/services-data";
 const BASE = "https://www.ceylexa.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ["", "/services", "/project", "/about", "/clients", "/blog", "/contact"];
+  const staticRoutes = ["", "/services", "/project", "/about", "/clients", "/blog", "/careers", "/contact"];
   return [
     ...staticRoutes.map((path) => ({ url: `${BASE}${path}` })),
     ...SERVICES.map((s) => ({ url: `${BASE}/services/${s.slug}` })),

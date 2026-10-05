@@ -118,7 +118,7 @@ function ClientSocialRow({
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`${name} on ${label}`}
-            className="flex items-center justify-center w-[1.9rem] h-[1.9rem] rounded-[999px] bg-[rgba(36,26,12,0.06)] text-black [transition:background-color_0.2s_ease,transform_0.2s_ease,color_0.2s_ease] hover:bg-[rgba(199,157,0,0.18)] hover:text-[#b45309] hover:-translate-y-0.5"
+            className="flex items-center justify-center w-[1.9rem] h-[1.9rem] rounded-[999px] border border-light-transparent-black text-black [transition:background-color_0.2s_ease,transform_0.2s_ease,color_0.2s_ease] hover:bg-[#d7ba5e] hover:border-[#d7ba5e] hover:text-[#b45309] hover:-translate-y-0.5"
           >
             {icon(15)}
           </a>
@@ -195,7 +195,7 @@ export default function ClientsCardGrid() {
           key={client.file}
           className="block h-full client-card-tilt"
         >
-          <div className="flex gap-3 flex-col items-center h-full text-center bg-white border border-light-transparent-black rounded-[1.25rem] [transition:box-shadow_0.3s_ease] hover:shadow-[0_20px_45px_rgba(0,0,0,0.12)] focus-within:shadow-[0_20px_45px_rgba(0,0,0,0.12)] max-tablet:gap-[0.6rem] max-md:gap-[0.5249rem] max-mobile:gap-[0.449rem] py-10 px-8 md:py-12 md:px-10">
+          <div className="flex gap-3 flex-col items-center h-full text-center bg-white border border-light-transparent-black rounded-[1.875rem] max-mobile:rounded-2xl [transition:box-shadow_0.3s_ease,border-color_0.3s_ease] hover:border-[#d7ba5e] hover:shadow-[0_30px_60px_-35px_rgba(0,0,0,0.35)] focus-within:shadow-[0_20px_45px_rgba(0,0,0,0.12)] max-tablet:gap-[0.6rem] max-md:gap-[0.5249rem] max-mobile:gap-[0.449rem] py-10 px-8 md:py-12 md:px-10">
             {/* =========================
                 LOGO
             ========================= */}
@@ -215,7 +215,7 @@ export default function ClientsCardGrid() {
                 CONTENT
             ========================= */}
             <div className="flex gap-[0.4rem] flex-col items-center pt-3 w-full min-w-0 text-center max-tablet:pt-[0.6rem] max-md:pt-[0.5249rem] max-mobile:pt-[0.449rem]">
-              <div className="font-sans text-[0.875rem] font-medium uppercase tracking-[0.05em] text-[#b45309]">
+              <div className="font-sans text-[1.125rem] font-medium leading-[1.2em] text-black">
                 {client.name}
               </div>
 

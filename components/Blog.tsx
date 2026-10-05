@@ -1,3 +1,4 @@
+import { ArrowButton, Eyebrow, GoldWord, H2_CLASS } from "@/components/ui/brand";
 import { BLOG_POSTS } from "@/lib/blog";
 
 export default function Blog() {
@@ -6,18 +7,16 @@ export default function Blog() {
       <div className="pt-30 w-full max-tablet:pt-20 max-md:pt-18 max-mobile:pt-16" />
       <div className="block mx-auto px-6 mx-auto container w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
         <div className="inner-wrappar">
-          <div className="flex gap-4 flex-col justify-center items-center max-tablet:gap-[0.8rem] max-md:gap-[0.7rem] max-mobile:gap-[0.6rem]">
-            <div className="flex gap-0.5 justify-start items-center">
-              <div className="z-999 font-sans text-[#d7ba5e] text-[0.875rem] leading-[1.5em]">
-                {"//"}
-              </div>
-              <div className="font-sans text-dim-gray text-[0.875rem] leading-[1.5em]">
-                Blog &amp; articles
-              </div>
+          <div className="flex items-end justify-between gap-6 max-md:flex-col max-md:items-start">
+            <div>
+              <Eyebrow>Blog &amp; articles</Eyebrow>
+              <h2 className={`mt-4 ${H2_CLASS}`}>
+                Ideas, Stories &amp; <GoldWord>Creative Insight</GoldWord>
+              </h2>
             </div>
-            <h2 className="font-sans text-[3.75rem] leading-[1.2em] font-medium text-left max-tablet:text-[3rem] max-md:text-[2.5rem] max-md:text-center max-mobile:text-[2.25rem]">
-              Ideas, Stories &amp; Creative Insight
-            </h2>
+            <ArrowButton href="/blog" variant="outline">
+              All articles
+            </ArrowButton>
           </div>
           <div className="pt-15 max-tablet:pt-12 max-md:pt-10.5 max-mobile:pt-9" />
           <div className="w-dyn-list">

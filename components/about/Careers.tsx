@@ -1,6 +1,7 @@
 import { CONTACT_EMAIL } from "@/lib/site";
+import { Eyebrow, GoldWord, H2_CLASS, Sparkle } from "@/components/ui/brand";
 
-const ROLES = [
+export const ROLES = [
   {
     title: "Digital Marketing Manager",
     location: "Colombo / Sri Lanka",
@@ -53,25 +54,17 @@ const ROLES = [
 
 export default function Careers() {
   return (
-    <section id="careers" className="relative">
-      <div className="block mx-auto px-6 mx-auto container w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
-        <div className="inner-wrappar">
-          <div className="flex gap-0.5 justify-start items-center">
-            <div className="z-999 font-sans text-[#d7ba5e] text-[0.875rem] leading-[1.5em]">
-              {"//"}
-            </div>
-            <div className="font-sans text-dim-gray text-[0.875rem] leading-[1.5em]">
-              Careers
-            </div>
+    <section id="careers" className="relative scroll-mt-24 bg-ghost-white">
+      <div className="mx-auto container px-6 py-30 max-tablet:py-20 max-md:py-18 max-mobile:py-16 lg:px-8">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-5 lg:sticky lg:top-28 lg:self-start">
+            <Eyebrow>Careers</Eyebrow>
+            <h2 className={`mt-4 ${H2_CLASS}`}>
+              Enriching people in a <GoldWord>culture of belonging</GoldWord>
+            </h2>
           </div>
-          <div className="pt-4 w-full max-tablet:pt-[0.8rem] max-md:pt-[0.7rem] max-mobile:pt-[0.6rem]" />
-          <h2 className="font-sans text-[3.75rem] leading-[1.2em] font-medium text-left max-tablet:text-[3rem] max-md:text-[2.5rem] max-mobile:text-[2.25rem]">
-            Enriching people in a culture of belonging
-          </h2>
-          <div className="pt-6 w-full max-tablet:pt-[1.2rem] max-md:pt-[1.0499rem] max-mobile:pt-[0.899rem]" />
-
-          <div className="flex  container flex-col gap-5">
-            <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
+          <div className="flex flex-col gap-5 lg:col-span-7">
+            <p className="mb-0 font-sans text-[1.375rem] font-medium leading-[1.4em] text-black max-md:text-[1.125rem]">
               We are a people-first company &amp; are committed to providing
               best-in-class learning and development. At Ceylexa, your career is
               more than just a job. It&rsquo;s a journey filled with learning,
@@ -80,7 +73,7 @@ export default function Careers() {
               thinkers, creative problem-solvers, and passionate individuals who
               are eager to make an impact in the ever-evolving digital world.
             </p>
-            <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
+            <p className="mb-0 font-sans text-[1rem] leading-[1.6em] text-black">
               We believe in building a culture where your ideas matter, where
               diversity is celebrated, and where collaboration drives success.
               Whether you are just starting your professional career or looking
@@ -90,7 +83,7 @@ export default function Careers() {
               gain the expertise needed to excel in today&rsquo;s competitive
               digital landscape.
             </p>
-            <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
+<p className="mb-0 font-sans text-[1rem] leading-[1.6em] text-black">
               Our career opportunities span across multiple areas, including
               digital marketing jobs in Sri Lanka, web developer vacancies, and
               web design positions. Each role is designed to challenge you,
@@ -99,7 +92,7 @@ export default function Careers() {
               values innovation, teamwork, and a strong drive to lead the future
               of digital solutions.
             </p>
-            <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
+<p className="mb-0 font-sans text-[1rem] leading-[1.6em] text-black">
               If you are passionate about shaping the future of online marketing
               and want to work with one of the most recognized digital marketing
               companies in the region, Ceylexa is the place to begin or advance
@@ -108,19 +101,14 @@ export default function Careers() {
               an email &amp; we will get in touch with you.
             </p>
           </div>
+        </div>
 
-          <div className="pt-15 w-full max-tablet:pt-12 max-md:pt-10.5 max-mobile:pt-9" />
-
-          <h3
-            className="font-sans text-[3.75rem] leading-[1.2em] font-medium text-left max-tablet:text-[3rem] max-md:text-[2.5rem] max-mobile:text-[2.25rem]"
-            style={{ fontSize: "clamp(1.75rem, 3vw, 2.5rem)" }}
-          >
-            Become <span className="text-[#d7ba5e]">a Proud Member</span> of
-            #TeamCeylexa
+        <div className="mt-20 flex items-end justify-between gap-8 border-t border-light-transparent-black pt-12 max-md:mt-14 max-md:flex-col max-md:items-start">
+          <h3 className="font-sans text-[2.25rem] font-medium leading-[1.15em] tracking-tight max-md:text-[1.75rem] max-w-[26rem]">
+            Become <GoldWord>a Proud Member</GoldWord> of #TeamCeylexa
           </h3>
-          <div className="pt-4 w-full max-tablet:pt-[0.8rem] max-md:pt-[0.7rem] max-mobile:pt-[0.6rem]" />
-          <div className="flex  container flex-col gap-5">
-            <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
+          <div className="flex max-w-[34rem] flex-col gap-4">
+            <p className="mb-0 font-sans text-[1rem] leading-[1.6em] text-black">
               Discover the latest career opportunities and professional roles
               available across digital marketing, creative, technology, and
               business. From digital marketing and web development to design,
@@ -128,42 +116,43 @@ export default function Careers() {
               your skills, work with inspiring teams, and take the next step in
               your career.
             </p>
-            <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
+<p className="mb-0 font-sans text-[1rem] leading-[1.6em] text-black">
               Stay up to date with new roles and find an opportunity that
               matches your experience, talents, and career goals.
             </p>
           </div>
+        </div>
 
-          <div className="pt-6 w-full max-tablet:pt-[1.2rem] max-md:pt-[1.0499rem] max-mobile:pt-[0.899rem]" />
-          <div className="grid gap-5 md:grid-cols-2">
-            {ROLES.map((role) => (
-              <div
-                key={`${role.title}-${role.location}`}
-                className="relative overflow-hidden bg-[linear-gradient(180deg,rgba(255,255,255,0.8),rgba(255,255,255,0.6))] border border-border backdrop-blur-[6px] [--mx:50%] [--my:50%] [&>*]:relative [&>*]:z-1 after:absolute after:-inset-0.25 after:z-0 after:content-[''] after:bg-[radial-gradient(480px_circle_at_var(--mx)_var(--my),rgba(234,88,12,0.14),transparent_45%)] after:rounded-[inherit] after:opacity-0 after:[transition:opacity_0.4s_ease] after:pointer-events-none hover:after:opacity-100 bento-card flex flex-col rounded-2xl p-7"
-              >
-                <h4 className="text-foreground">{role.title}</h4>
-                <div className="mt-1 text-xs font-medium tracking-wider text-muted uppercase">
-                  Full time | {role.location}
-                </div>
-                <ul className="list-disc text-sm leading-relaxed text-muted">
-                  {role.points.map((point) => (
-                    <li key={point}>{point}</li>
-                  ))}
-                </ul>
-                <a
-                  href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-                    `Application: ${role.title} (${role.location})`,
-                  )}`}
-                  className="mt-auto pt-6 text-sm font-medium text-accent-2 underline-offset-4"
-                >
-                  Apply via email
-                </a>
+        <div className="mt-12 border-t border-light-transparent-black">
+          {ROLES.map((role, i) => (
+            <div key={`${role.title}-${role.location}`} className="group relative grid grid-cols-[auto_1fr] gap-x-6 border-b border-light-transparent-black py-8 max-md:gap-x-4 max-md:py-6 md:!grid-cols-[auto_1fr_1.4fr_auto] md:items-start">
+              <span className="absolute inset-x-0 bottom-[-1px] h-px origin-left scale-x-0 bg-[#d7ba5e] transition-transform duration-500 group-hover:scale-x-100" />
+              <span className="pt-1.5 text-[0.8125rem] font-medium tabular-nums text-dim-gray transition-colors duration-300 group-hover:text-[#d7ba5e]">{String(i + 1).padStart(2, "0")}</span>
+              <div>
+                <h4 className="font-sans text-[1.5rem] font-medium leading-[1.2em] text-black max-md:text-[1.25rem]">{role.title}</h4>
+                <div className="mt-2 font-sans text-[0.75rem] font-medium uppercase tracking-wider text-dim-gray">Full time | {role.location}</div>
               </div>
-            ))}
-          </div>
+              <ul className="flex flex-col gap-2 max-md:col-start-2 max-md:mt-4">
+                {role.points.map((point) => (
+                  <li key={point} className="flex items-start gap-2 font-sans text-[0.9375rem] leading-[1.5em] text-dim-gray">
+                    <Sparkle className="mt-1.5 w-3 shrink-0 text-[#d7ba5e]" />
+                    {point}
+                  </li>
+                ))}
+              </ul>
+              <a
+                href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
+                  `Application: ${role.title} (${role.location})`,
+                )}`}
+                className="inline-flex items-center gap-2 self-start rounded-full border border-light-transparent-black py-2 pl-5 pr-2 text-[0.875rem] font-semibold text-black transition-colors duration-300 hover:border-[#d7ba5e] max-md:col-start-2 max-md:mt-5 max-md:justify-self-start"
+              >
+                Apply via email
+                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-black text-white transition-all duration-500 group-hover:rotate-45 group-hover:bg-[#d7ba5e] group-hover:text-black">↗</span>
+              </a>
+            </div>
+          ))}
         </div>
       </div>
-      <div className="pt-30 w-full max-tablet:pt-20 max-md:pt-18 max-mobile:pt-16" />
     </section>
   );
 }

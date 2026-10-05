@@ -1,3 +1,5 @@
+import { Eyebrow, GoldWord, H2_CLASS } from "@/components/ui/brand";
+
 // Recognition copy is from the "About Us" document (Awards section). The
 // only named award in the source material is the Popular Awards 2024 win
 // (see about/NewsEvents.tsx), so that's the one list entry — add more here
@@ -12,24 +14,20 @@ const AWARDS = [
 
 export default function Awards() {
   return (
-    <section className="relative">
-      <div className="block mx-auto px-6 mx-auto container w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
-        <div className="grid gap-32 grid-rows-[auto] grid-cols-[1fr_3fr] auto-cols-[1fr] max-tablet:gap-12 max-md:gap-10 max-md:grid-cols-[repeat(1,1fr)]">
-          <div className="flex gap-4 flex-col max-tablet:gap-[0.8rem] max-md:gap-[0.7rem] max-md:justify-start max-md:items-start max-mobile:gap-[0.6rem] max-mobile:items-center">
-            <div className="font-sans text-dim-gray text-[0.875rem] leading-[1.5em] process">
-              <span className="text-[#d7ba5e] orrenge">{"//"}</span>
-              <span> AWARDS</span>
-            </div>
-            <h2 className="text-[3.25rem] leading-[1.2em] max-tablet:text-[2.9rem] max-tablet:text-left max-md:text-[2.75rem] max-mobile:text-[2.25rem] max-mobile:text-center">
-              Awards
+    <section className="relative bg-ghost-white">
+      <div className="mx-auto container px-6 py-30 max-tablet:py-20 max-md:py-18 max-mobile:py-16 lg:px-8">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-5">
+            <Eyebrow>Awards</Eyebrow>
+            <h2 className={`mt-4 ${H2_CLASS}`}>
+              <GoldWord>Awards</GoldWord>
             </h2>
-            <div className="pt-4 w-full max-tablet:pt-[0.8rem] max-md:pt-[0.7rem] max-mobile:pt-[0.6rem]" />
-            <div className="flex flex-col gap-4">
-              <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
+            <div className="mt-6 flex flex-col gap-4">
+              <p className="mb-0 font-sans text-[1rem] leading-[1.6em] text-black">
                 Our legacy is built on a foundation of creativity, innovation,
                 and unwavering commitment to design excellence.
               </p>
-              <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
+<p className="mb-0 font-sans text-[1rem] leading-[1.6em] text-black">
                 As a premier creative design agency, our passion lies in
                 sculpting profound brand narratives through innovative design
                 and crystal-clear communication. Our dedicated team masterfully
@@ -39,32 +37,21 @@ export default function Awards() {
               </p>
             </div>
           </div>
-
-          <div className="flex gap-4 flex-col max-tablet:gap-[0.8rem] max-md:gap-[0.7rem] max-mobile:gap-3">
-            {AWARDS.map((award) => (
-              <div
-                key={`${award.org}-${award.date}`}
-                className="flex justify-between items-center pb-4 border-b border-b-light-transparent-black max-tablet:pb-[0.8rem] max-md:pb-[0.7rem] max-mobile:items-start max-mobile:pb-3"
-              >
-                <div className="award-left-item">
-                  <div className="font-sans text-[1.5rem] leading-[1.2em] font-normal max-tablet:text-[1.4rem] max-md:text-[1.3rem]">
-                    {award.org}
-                  </div>
+          <div className="border-t border-light-transparent-black lg:col-span-7">
+            {AWARDS.map((award, i) => (
+              <div key={`${award.org}-${award.date}`} className="group relative grid grid-cols-[auto_1fr] gap-x-6 border-b border-light-transparent-black py-8 max-md:gap-x-4 max-md:py-6 !grid-cols-[auto_1fr_auto] items-center">
+                <span className="absolute inset-x-0 bottom-[-1px] h-px origin-left scale-x-0 bg-[#d7ba5e] transition-transform duration-500 group-hover:scale-x-100" />
+                <span className="pt-1.5 text-[0.8125rem] font-medium tabular-nums text-dim-gray transition-colors duration-300 group-hover:text-[#d7ba5e] !pt-0">{String(i + 1).padStart(2, "0")}</span>
+                <div>
+                  <div className="font-sans text-[1.75rem] font-medium leading-[1.2em] text-black max-md:text-[1.25rem]">{award.org}</div>
+                  <div className="mt-1 font-sans text-[0.9375rem] leading-[1.5em] text-dim-gray">{award.category}</div>
                 </div>
-                <div className="flex gap-10 justify-end items-center max-tablet:gap-8 max-md:gap-7 max-mobile:gap-[0.899rem] max-mobile:items-end max-mobile:flex-col">
-                  <div className="font-sans text-dim-gray text-[0.875rem] leading-[1.5em]">
-                    {award.category}
-                  </div>
-                  <div className="font-sans text-dim-gray text-[0.875rem] leading-[1.5em]">
-                    {award.date}
-                  </div>
-                </div>
+                <span className="rounded-full bg-[#d7ba5e] px-4 py-1.5 text-[0.875rem] font-semibold text-black">{award.date}</span>
               </div>
             ))}
           </div>
         </div>
       </div>
-      <div className="pt-30 w-full max-tablet:pt-20 max-md:pt-18 max-mobile:pt-16" />
     </section>
   );
 }

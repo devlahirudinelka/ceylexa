@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { gsap } from "@/lib/gsap";
@@ -17,12 +17,26 @@ const STATS = [
   { value: String(SERVICES.length).padStart(2, "0"), label: "Services under one roof" },
 ];
 
-// Portrait cards fanned out on the right side of the hero.
+// Portrait cards fanned out on the right side of the hero. They slide one
+// place to the left every few seconds: right -> centre -> left -> out.
 const PHOTOS = [
-  { src: "/images/hero-2.webp", className: "left-0 top-10 -rotate-[8deg] z-1", depth: 14 },
-  { src: "/images/hero-3.webp", className: "left-1/2 top-0 -translate-x-1/2 z-3", depth: 0 },
-  { src: "/images/hero-4.webp", className: "right-0 top-10 rotate-[8deg] z-2", depth: -14 },
+  "/images/hero-3.webp",
+  "/images/hero-4.webp",
+  "/images/hero-5.webp",
+  "/images/hero-1.webp",
+  "/images/hero-2.webp",
 ];
+
+// Slot of a card by its distance from the centre card (x is % of card width).
+const SLOTS = [
+  { x: -50, y: 0, rotate: 0, scale: 1, opacity: 1, z: 3, drift: 0 }, // centre
+  { x: -4, y: 2.5, rotate: 8, scale: 1, opacity: 1, z: 2, drift: -14 }, // right
+  { x: 28, y: 4, rotate: 14, scale: 0.86, opacity: 0, z: 1, drift: 0 }, // waiting, right
+  { x: -128, y: 4, rotate: -14, scale: 0.86, opacity: 0, z: 0, drift: 0 }, // gone, left
+  { x: -96, y: 2.5, rotate: -8, scale: 1, opacity: 1, z: 1, drift: 14 }, // left
+];
+
+const SLIDE_INTERVAL_MS = 3000;
 
 function Sparkle({ className = "" }: { className?: string }) {
   return (
@@ -38,6 +52,17 @@ function Sparkle({ className = "" }: { className?: string }) {
 export default function AboutHero() {
   const rootRef = useRef<HTMLElement>(null);
   const photosRef = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (paused) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const id = window.setInterval(() => {
+      if (!document.hidden) setActive((value) => (value + 1) % PHOTOS.length);
+    }, SLIDE_INTERVAL_MS);
+    return () => window.clearInterval(id);
+  }, [paused]);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -160,20 +185,34 @@ export default function AboutHero() {
           <div className="lg:col-span-5">
             <div
               ref={photosRef}
+              onMouseEnter={() => setPaused(true)}
+              onMouseLeave={() => setPaused(false)}
               className="relative mx-auto h-[26rem] w-full max-w-[30rem] max-md:h-[21rem] max-md:max-w-[24rem] max-mobile:h-[17rem] max-mobile:max-w-[19rem]"
             >
-              {PHOTOS.map((photo) => (
-                <div key={photo.src} data-photo className={`absolute w-[52%] ${photo.className}`}>
-                  <div data-drift={photo.depth}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={photo.src}
-                      alt=""
-                      className="aspect-[4/5] w-full rounded-[1.875rem] object-cover shadow-[0_30px_60px_-30px_rgba(0,0,0,0.45)] max-mobile:rounded-2xl"
-                    />
+              {PHOTOS.map((src, i) => {
+                const slot = SLOTS[(i - active + PHOTOS.length) % PHOTOS.length];
+                return (
+                  <div key={src} data-photo className="pointer-events-none absolute inset-0" style={{ zIndex: slot.z }}>
+                    <div
+                      className="absolute left-1/2 top-0 w-[52%] transition-[transform,opacity] duration-[900ms] ease-[cubic-bezier(0.65,0,0.35,1)] will-change-transform"
+                      style={{
+                        transform: `translate(${slot.x}%, ${slot.y}rem) rotate(${slot.rotate}deg) scale(${slot.scale})`,
+                        opacity: slot.opacity,
+                      }}
+                    >
+                      <div data-drift={slot.drift}>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={src}
+                          alt=""
+                          draggable={false}
+                          className="aspect-[4/5] w-full rounded-[1.875rem] object-cover shadow-[0_30px_60px_-30px_rgba(0,0,0,0.45)] max-mobile:rounded-2xl"
+                        />
+                      </div>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
 
               {/* Rotating badge */}
               <div data-photo className="absolute -bottom-2 right-2 z-4 max-mobile:right-0">

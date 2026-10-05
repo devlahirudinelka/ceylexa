@@ -1,3 +1,5 @@
+import { Eyebrow, GoldWord, H2_CLASS, Sparkle } from "@/components/ui/brand";
+
 const NEWS = [
   {
     title: "Ceylexa Digital Expands to Wellington, New Zealand",
@@ -57,26 +59,16 @@ const NEWS = [
 export default function NewsEvents() {
   return (
     <section className="relative">
-      <div className="block mx-auto px-6 mx-auto container w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
-        <div className="inner-wrappar">
-          <div className="flex gap-0.5 justify-start items-center">
-            <div className="z-999 font-sans text-[#d7ba5e] text-[0.875rem] leading-[1.5em]">
-              {"//"}
-            </div>
-            <div className="font-sans text-dim-gray text-[0.875rem] leading-[1.5em]">
-              Latest News &amp; Events
-            </div>
-          </div>
-          <div className="pt-4 w-full max-tablet:pt-[0.8rem] max-md:pt-[0.7rem] max-mobile:pt-[0.6rem]" />
-          <h2 className="font-sans text-[3.75rem] leading-[1.2em] font-medium text-left max-tablet:text-[3rem] max-md:text-[2.5rem] max-mobile:text-[2.25rem]">
-            Latest News &amp; <span className="text-[#d7ba5e]">Events</span>
-          </h2>
-          <div className="pt-4 w-full max-tablet:pt-[0.8rem] max-md:pt-[0.7rem] max-mobile:pt-[0.6rem]" />
-          <div className="flex  container flex-col gap-5">
-            <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
-              <strong>Stay connected with Ceylexa journey.</strong>
-            </p>
-            <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
+      <div className="mx-auto container px-6 py-30 max-tablet:py-20 max-md:py-18 max-mobile:py-16 lg:px-8">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-5 lg:sticky lg:top-28 lg:self-start">
+            <Eyebrow>Latest News &amp; Events</Eyebrow>
+            <h2 className={`mt-4 ${H2_CLASS}`}>
+              Latest News &amp; <GoldWord>Events</GoldWord>
+            </h2>
+            <div className="mt-6 flex flex-col gap-5">
+              <p className="mb-0 font-sans text-[1.25rem] font-medium leading-[1.4em] text-black">Stay connected with Ceylexa journey.</p>
+              <p className="mb-0 font-sans text-[1rem] leading-[1.6em] text-black">
               At Ceylexa, we take pride in our journey of excellence, having
               participated in and won multiple industry awards while
               representing Sri Lanka on prestigious international stages. Our
@@ -84,38 +76,38 @@ export default function NewsEvents() {
               measurable impact earning us accolades across Digital Marketing,
               Web Design and Technology Innovation.
             </p>
-            <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
+<p className="mb-0 font-sans text-[1rem] leading-[1.6em] text-black">
               Beyond awards, our projects have been showcased in global forums,
               positioning Ceylexa as a trusted name in delivering world-class
               digital solutions. These achievements reflect our commitment to
               pushing boundaries, setting benchmarks, and making Sri Lanka proud
               in the international digital arena.
             </p>
+            </div>
           </div>
-
-          <div className="pt-15 w-full max-tablet:pt-12 max-md:pt-10.5 max-mobile:pt-9" />
-
-          <div className="grid gap-5 md:grid-cols-2">
-            {NEWS.map((item) => (
-              <article
-                key={item.title}
-                className="relative overflow-hidden bg-[linear-gradient(180deg,rgba(255,255,255,0.8),rgba(255,255,255,0.6))] border border-border backdrop-blur-[6px] [--mx:50%] [--my:50%] [&>*]:relative [&>*]:z-1 after:absolute after:-inset-0.25 after:z-0 after:content-[''] after:bg-[radial-gradient(480px_circle_at_var(--mx)_var(--my),rgba(234,88,12,0.14),transparent_45%)] after:rounded-[inherit] after:opacity-0 after:[transition:opacity_0.4s_ease] after:pointer-events-none hover:after:opacity-100 bento-card flex-col rounded-2xl p-8"
-              >
-                <h3 className="text-foreground">{item.title}</h3>
-                {item.paragraphs.map((paragraph) => (
-                  <p key={paragraph} className="text-[0.875rem]">
-                    {paragraph}
+          <div className="border-t border-light-transparent-black lg:col-span-7">
+            {NEWS.map((item, i) => (
+              <details key={item.title} className="group relative border-b border-light-transparent-black" open={i === 0}>
+                <span className="absolute inset-x-0 bottom-[-1px] h-px origin-left scale-x-0 bg-[#d7ba5e] transition-transform duration-500 group-hover:scale-x-100 group-open:scale-x-100" />
+                <summary className="grid cursor-pointer list-none grid-cols-[auto_1fr_auto] items-start gap-x-6 py-7 max-md:gap-x-4 max-md:py-5 [&::-webkit-details-marker]:hidden">
+                  <span className="pt-1.5 text-[0.8125rem] font-medium tabular-nums text-dim-gray group-open:text-[#d7ba5e]">{String(i + 1).padStart(2, "0")}</span>
+                  <h3 className="font-sans text-[1.375rem] font-medium leading-[1.3em] text-black max-md:text-[1.0625rem]">{item.title}</h3>
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full border border-light-transparent-black text-[1.25rem] leading-none text-black transition-all duration-300 group-open:rotate-45 group-open:border-[#d7ba5e] group-open:bg-[#d7ba5e] group-open:text-white">+</span>
+                </summary>
+                <div className="flex flex-col gap-4 pb-7 pl-[2.6rem] max-md:pl-[2.1rem]">
+                  {item.paragraphs.map((paragraph) => (
+                    <p key={paragraph} className="mb-0 max-w-xl font-sans text-[1rem] leading-[1.6em] text-dim-gray">{paragraph}</p>
+                  ))}
+                  <p className="mb-0 flex max-w-xl items-start gap-2 font-sans text-[1rem] font-medium leading-[1.5em] text-black">
+                    <Sparkle className="mt-1.5 w-3.5 shrink-0 text-[#d7ba5e]" />
+                    {item.tagline}
                   </p>
-                ))}
-                <p className="pt-5 text-[0.875rem] font-semibold">
-                  {item.tagline}
-                </p>
-              </article>
+                </div>
+              </details>
             ))}
           </div>
         </div>
       </div>
-      <div className="pt-30 w-full max-tablet:pt-20 max-md:pt-18 max-mobile:pt-16" />
     </section>
   );
 }

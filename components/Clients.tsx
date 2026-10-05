@@ -1,59 +1,84 @@
 import ClientsCardGrid from "@/components/ClientsCardGrid";
 import { CLIENTS } from "@/lib/clients-data";
+import { ArrowButton, Eyebrow, GoldWord, H2_CLASS, PillarStrip } from "@/components/ui/brand";
+
+const STATS = [
+  { value: "250+", label: "Brands across Sri Lanka & beyond" },
+  { value: "11+", label: "International markets" },
+  { value: String(CLIENTS.length).padStart(2, "0"), label: "Featured clients below" },
+];
 
 export default function Clients() {
   return (
     <section className="relative">
-      <div className="pt-27 w-full max-tablet:pt-24 max-md:pt-18 max-mobile:pt-[3.6rem]" />
-      <div className="block mx-auto px-6 mx-auto container w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
-        <h1 className="text-[11.4rem] leading-[1em] font-semibold text-center max-tablet:text-[8rem] max-md:text-[5.8rem] max-mobile:text-[3.6rem]">
-          Brands That <span className="text-[#d7ba5e]">Trust</span> Ceylexa
-        </h1>
-      </div>
-
-      <div className="pt-30 w-full max-tablet:pt-20 max-md:pt-18 max-mobile:pt-16" />
-
-      <div className="block mx-auto px-6 mx-auto container w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
-        <div className="inner-wrappar">
-          <div className="flex gap-4 flex-col justify-center items-center max-tablet:gap-[0.8rem] max-md:gap-[0.7rem] max-mobile:gap-[0.6rem]">
-            <div className="flex gap-0.5 justify-start items-center">
-              <div className="z-999 font-sans text-[#d7ba5e] text-[0.875rem] leading-[1.5em]">
-                {"//"}
-              </div>
-              <div className="font-sans text-dim-gray text-[0.875rem] leading-[1.5em]">
-                Our Clients
-              </div>
+      <div className="relative overflow-hidden">
+        <div aria-hidden className="pointer-events-none absolute inset-x-0 top-24 -z-1 select-none text-center text-[20rem] font-bold leading-[0.9em] text-cultured max-tablet:text-[10rem] max-md:text-[7rem] max-mobile:text-[4.5rem]">
+          CLIENTS
+        </div>
+        <div className="mx-auto container px-6 lg:px-8 pt-40 max-md:pt-32">
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
+            <div className="lg:col-span-8">
+              <Eyebrow>Our Clients</Eyebrow>
+              <h1 className="mt-5 font-sans text-[5.5rem] font-semibold leading-[1.02em] tracking-tight max-tablet:text-[4.25rem] max-md:text-[3.25rem] max-mobile:text-[2.5rem]">
+                Brands That <GoldWord>Trust</GoldWord> Ceylexa
+              </h1>
             </div>
-            <h2 className="font-sans text-[3.75rem] leading-[1.2em] font-medium text-left max-tablet:text-[3rem] max-md:text-[2.5rem] max-md:text-center max-mobile:text-[2.25rem]">
-              250+ Brands Across Sri Lanka &amp; Beyond
-            </h2>
-            <div className="pt-6 w-full max-tablet:pt-[1.2rem] max-md:pt-[1.0499rem] max-mobile:pt-[0.899rem]" />
-            <div className="max-w-[34rem]">
-              <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
-                At Ceylexa Digital, we are proud to work with 250+ brands across
-                Sri Lanka and international markets, helping businesses from
-                different industries build stronger brands, connect with their
-                audiences, and grow in the digital world.
-              </p>
-              <div className="pt-4 w-full max-tablet:pt-[0.8rem] max-md:pt-[0.7rem] max-mobile:pt-[0.6rem]" />
-              <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
-                Our client portfolio spans a diverse range of industries,
-                allowing us to bring fresh perspectives, creative strategies,
-                and tailored digital solutions to every project. From emerging
-                businesses and established brands to personal brands and
-                international clients, we work closely with each client to
-                understand their goals and deliver strategies that create
-                meaningful impact.
-              </p>
+            <div className="flex flex-wrap gap-3 lg:col-span-4 lg:justify-end">
+              <ArrowButton href="/contact">Become a Client</ArrowButton>
+              <ArrowButton href="/project" variant="light">
+                See our work
+              </ArrowButton>
             </div>
           </div>
 
-          <div className="pt-15 max-tablet:pt-12 max-md:pt-10.5 max-mobile:pt-9" />
+          <div className="mt-14 grid grid-cols-3 border-t border-light-transparent-black max-mobile:grid-cols-1">
+            {STATS.map((stat, i) => (
+              <div
+                key={stat.label}
+                className={`py-8 max-mobile:py-5 ${
+                  i > 0 ? "border-l border-light-transparent-black pl-8 max-md:pl-5 max-mobile:border-l-0 max-mobile:border-t max-mobile:pl-0" : ""
+                }`}
+              >
+                <div className="text-[3.75rem] font-medium leading-none text-black max-tablet:text-[3rem] max-md:text-[2.25rem]">{stat.value}</div>
+                <div className="mt-2 font-sans text-[0.875rem] leading-[1.5em] text-dim-gray">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <PillarStrip items={["Emerging businesses", "Established brands", "Personal brands", "International clients"]} />
+      </div>
 
+      <div className="mx-auto container px-6 lg:px-8 py-28 max-md:py-18">
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-5">
+            <Eyebrow>Our Clients</Eyebrow>
+            <h2 className={`mt-4 ${H2_CLASS}`}>
+              250+ Brands Across <GoldWord>Sri Lanka &amp; Beyond</GoldWord>
+            </h2>
+          </div>
+          <div className="flex flex-col gap-5 lg:col-span-7">
+            <p className="mb-0 font-sans text-[1.375rem] font-medium leading-[1.4em] text-black max-md:text-[1.125rem]">
+              At Ceylexa Digital, we are proud to work with 250+ brands across
+              Sri Lanka and international markets, helping businesses from
+              different industries build stronger brands, connect with their
+              audiences, and grow in the digital world.
+            </p>
+            <p className="mb-0 font-sans text-[1rem] leading-[1.6em] text-black">
+              Our client portfolio spans a diverse range of industries,
+              allowing us to bring fresh perspectives, creative strategies,
+              and tailored digital solutions to every project. From emerging
+              businesses and established brands to personal brands and
+              international clients, we work closely with each client to
+              understand their goals and deliver strategies that create
+              meaningful impact.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-14 max-md:mt-10">
           <ClientsCardGrid />
         </div>
       </div>
-      <div className="pt-30 w-full max-tablet:pt-20 max-md:pt-18 max-mobile:pt-16" />
     </section>
   );
 }

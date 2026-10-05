@@ -6,7 +6,7 @@ import { ArrowUpRight } from "lucide-react";
 import Navbar from "@/components/home/Navbar";
 import Footer from "@/components/home/Footer";
 import CTASection from "@/components/home/CTASection";
-import CreamGradientBackground from "@/components/home/CreamGradientBackground";
+import { Eyebrow, GoldWord, Sparkle } from "@/components/ui/brand";
 import Reveal from "@/components/ui/Reveal";
 import { PROJECTS, PROJECTS_INTRO } from "@/lib/projects";
 
@@ -21,68 +21,43 @@ export default function ProjectsPage() {
     <div className="overflow-clip">
       <Navbar />
 
-      <main className="bg-background">
-        <section className="relative overflow-hidden bg-background pt-32 pb-16 sm:pt-40 sm:pb-20">
-          <CreamGradientBackground />
-          <div className="relative mx-auto  container px-6 lg:px-8">
+      <main>
+        <section className="relative overflow-hidden">
+          <div aria-hidden className="pointer-events-none absolute inset-x-0 top-24 -z-1 select-none text-center text-[20rem] font-bold leading-[0.9em] text-cultured max-tablet:text-[10rem] max-md:text-[7rem] max-mobile:text-[4.5rem]">
+            WORK
+          </div>
+          <div className="mx-auto container px-6 lg:px-8 pb-16 pt-40 max-md:pt-32">
             <Reveal>
-              <span className="font-mono text-sm text-accent-2">{"// "}</span>
-              <span className="text-sm font-medium text-muted">
-                {PROJECTS_INTRO.eyebrow}
-              </span>
-            </Reveal>
-            <Reveal delay={80}>
-              <h1 className="tracking-tight text-foreground">
-                {PROJECTS_INTRO.heading}{" "}
-                <span className="text-transparent bg-[linear-gradient(90deg,#92400e_0%,#b45309_45%,#ea580c_100%)] bg-clip-text">
-                  {PROJECTS_INTRO.headingAccent}
-                </span>
-              </h1>
-            </Reveal>
-            <Reveal delay={140}>
-              <div className="mt-8 max-w-3xl leading-relaxed text-muted">
-                {PROJECTS_INTRO.paragraphs.map((text) => (
-                  <p key={text}>{text}</p>
-                ))}
-                <p className="font-medium">{PROJECTS_INTRO.closing}</p>
+              <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
+                <div className="lg:col-span-7">
+                  <Eyebrow>{PROJECTS_INTRO.eyebrow}</Eyebrow>
+                  <h1 className="mt-5 font-sans text-[5.5rem] font-semibold leading-[1.02em] tracking-tight max-tablet:text-[4.25rem] max-md:text-[3.25rem] max-mobile:text-[2.5rem]">
+                    {PROJECTS_INTRO.heading} <GoldWord>{PROJECTS_INTRO.headingAccent}</GoldWord>
+                  </h1>
+                </div>
+                <div className="flex flex-col gap-4 lg:col-span-5">
+                  {PROJECTS_INTRO.paragraphs.map((text) => (
+                    <p key={text} className="mb-0 font-sans text-[1rem] leading-[1.6em] text-black">{text}</p>
+                  ))}
+                  <p className="mb-0 flex items-start gap-2 font-sans text-[1rem] font-medium leading-[1.5em] text-black">
+                    <Sparkle className="mt-1.5 w-3.5 shrink-0 text-[#d7ba5e]" />
+                    {PROJECTS_INTRO.closing}
+                  </p>
+                </div>
               </div>
             </Reveal>
+            <div className="mt-14 flex items-baseline gap-3 border-t border-light-transparent-black pt-6">
+              <span className="text-[3.75rem] font-medium leading-none text-black max-md:text-[2.5rem]">{String(PROJECTS.length).padStart(2, "0")}</span>
+              <span className="font-sans text-[0.875rem] text-dim-gray">projects &amp; campaigns</span>
+            </div>
           </div>
         </section>
 
-        <section className="mx-auto  container px-6 pb-20 lg:px-8 sm:pb-28">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <section className="mx-auto container px-6 lg:px-8 pb-28 max-md:pb-18">
+          <div className="grid gap-x-6 gap-y-12 md:grid-cols-2">
             {PROJECTS.map((project, i) => (
-              <Reveal key={project.slug} delay={(i % 3) * 80}>
-                <Link
-                  href={project.href}
-                  className="flex gap-2 flex-col bg-[linear-gradient(180deg,rgba(255,255,255,0.75),rgba(255,255,255,0.55))] border border-border backdrop-blur-[6px] max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-[0.3rem] group relative h-full overflow-hidden rounded-2xl"
-                >
-                  <div className="relative aspect-[4/3] w-full overflow-hidden">
-                    <Image
-                      src={project.image}
-                      alt={`${project.title} — ${project.category} by Ceylexa`}
-                      fill
-                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
-                    <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5">
-                      <div>
-                        <div className="text-xs font-medium text-white/70">
-                          {project.date} · {project.category}
-                        </div>
-                        <div className="mt-1 text-lg font-semibold leading-snug text-white">
-                          {project.title}
-                        </div>
-                      </div>
-                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/30 bg-black/25 text-white transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
-                        <ArrowUpRight size={16} />
-                      </span>
-                    </div>
-                  </div>
-                  <p className="p-5 text-[0.875rem]">{project.summary}</p>
-                </Link>
+              <Reveal key={project.slug} delay={(i % 2) * 80} className={i % 2 === 1 ? "md:mt-16" : ""}>
+                <ProjectTile project={project} index={i} />
               </Reveal>
             ))}
           </div>
@@ -93,5 +68,39 @@ export default function ProjectsPage() {
 
       <Footer />
     </div>
+  );
+}
+
+function ProjectTile({ project, index }: { project: (typeof PROJECTS)[number]; index: number }) {
+  return (
+    <Link href={project.href} className="group block">
+      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.875rem] bg-ghost-white max-mobile:rounded-2xl">
+        <Image
+          src={project.image}
+          alt={`${project.title} — ${project.category} by Ceylexa`}
+          fill
+          sizes="(min-width: 768px) 50vw, 100vw"
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/15 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-7 max-md:p-5">
+          <div>
+            <div className="flex flex-wrap items-center gap-x-3 font-sans text-[0.8125rem] uppercase leading-[1.5em] text-white/80">
+              <span className="text-[#d7ba5e]">{String(index + 1).padStart(2, "0")}</span>
+              <span>{project.category}</span>
+              <span className="opacity-50">/</span>
+              <span>{project.date}</span>
+            </div>
+            <div className="mt-2 font-sans text-[2rem] font-medium leading-[1.1em] tracking-tight text-white max-md:text-[1.375rem]">
+              {project.title}
+            </div>
+          </div>
+          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#d7ba5e] text-black transition-transform duration-500 group-hover:rotate-45 max-md:h-10 max-md:w-10">
+            <ArrowUpRight size={18} />
+          </span>
+        </div>
+      </div>
+      <p className="mb-0 mt-4 font-sans text-[0.9375rem] leading-[1.6em] text-dim-gray">{project.summary}</p>
+    </Link>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { Eyebrow, GoldWord, H2_CLASS, Sparkle } from "@/components/ui/brand";
 
 const REGIONS = [
   {
@@ -351,41 +352,31 @@ export default function ClientsMap() {
   };
 
   return (
-    <section className="relative">
-      <div className="block mx-auto px-6 mx-auto container w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
-        <div className="inner-wrappar">
-          <div className="flex gap-4 flex-col justify-center items-center max-tablet:gap-[0.8rem] max-md:gap-[0.7rem] max-mobile:gap-[0.6rem]">
-            <div className="flex gap-0.5 justify-start items-center">
-              <div className="z-999 font-sans text-[#d7ba5e] text-[0.875rem] leading-[1.5em]">
-                {"//"}
-              </div>
-
-              <div className="font-sans text-dim-gray text-[0.875rem] leading-[1.5em]">
-                Global Reach
-              </div>
-            </div>
-
-            <h2 className="font-sans text-[3.75rem] leading-[1.2em] font-medium text-left max-tablet:text-[3rem] max-md:text-[2.5rem] max-md:text-center max-mobile:text-[2.25rem]">
-              Sri Lanka at Our Core, Clients Worldwide
+    <section className="relative bg-ghost-white">
+      <div className="mx-auto container px-6 lg:px-8 py-28 max-md:py-18">
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-6">
+            <Eyebrow>Global Reach</Eyebrow>
+            <h2 className={`mt-4 ${H2_CLASS}`}>
+              Sri Lanka at Our Core, <GoldWord>Clients Worldwide</GoldWord>
             </h2>
-            <div className="pt-6 w-full max-tablet:pt-[1.2rem] max-md:pt-[1.0499rem] max-mobile:pt-[0.899rem]" />
-            <div className="max-w-[34rem]">
-              <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
-                Our clients and projects extend across Sri Lanka and 11+
-                international markets, including Sri Lanka, Australia, New
-                Zealand, Singapore, Malaysia, United States of America, Japan,
-                Maldives, UAE, India, West Indies, and the United Kingdom.
-              </p>
-              <div className="pt-4 w-full max-tablet:pt-[0.8rem] max-md:pt-[0.7rem] max-mobile:pt-[0.6rem]" />
-              <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
-                Different industries. Different markets. One commitment to
-                helping brands grow.
-              </p>
-            </div>
           </div>
-
-          <div className="pt-15 max-tablet:pt-12 max-md:pt-10.5 max-mobile:pt-9" />
+          <div className="flex flex-col gap-5 lg:col-span-6">
+            <p className="mb-0 font-sans text-[1rem] leading-[1.6em] text-black">
+              Our clients and projects extend across Sri Lanka and 11+
+              international markets, including Sri Lanka, Australia, New
+              Zealand, Singapore, Malaysia, United States of America, Japan,
+              Maldives, UAE, India, West Indies, and the United Kingdom.
+            </p>
+            <p className="mb-0 flex items-start gap-2 font-sans text-[1.25rem] font-medium leading-[1.4em] text-black">
+              <Sparkle className="mt-1.5 w-4 shrink-0 text-[#d7ba5e]" />
+              Different industries. Different markets. One commitment to
+              helping brands grow.
+            </p>
+          </div>
         </div>
+
+        <div className="mt-14 max-md:mt-10" />
 
         <div className="relative w-full" onMouseLeave={() => setActive(null)}>
           <div className="relative aspect-[2000/857] w-full">
@@ -445,7 +436,6 @@ export default function ClientsMap() {
         </div>
       </div>
 
-      <div className="pt-30 w-full max-tablet:pt-20 max-md:pt-18 max-mobile:pt-16" />
     </section>
   );
 }

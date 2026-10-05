@@ -1,7 +1,7 @@
 "use client";
 
 import { Check, Plus, Sparkles } from "lucide-react";
-import Badge from "@/components/ui/Badge";
+import { Eyebrow, GoldWord, H2_CLASS } from "@/components/ui/brand";
 import Button from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
 import { useMercuryGlow } from "@/lib/useMercuryGlow";
@@ -66,17 +66,17 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
   return (
     <div
       onMouseMove={dark ? undefined : onMouseMove}
-      className={`group relative flex h-full flex-col overflow-hidden rounded-3xl border p-8 transition-all duration-500 max-md:p-6 [--mx:50%] [--my:50%] [&>*]:relative [&>*]:z-1 after:pointer-events-none after:absolute after:inset-0 after:z-0 after:rounded-[inherit] after:opacity-0 after:content-[''] after:[transition:opacity_0.4s_ease] hover:after:opacity-100 ${
+      className={`group relative flex h-full flex-col overflow-hidden rounded-[1.875rem] border p-8 transition-all duration-500 max-md:p-6 [--mx:50%] [--my:50%] [&>*]:relative [&>*]:z-1 after:pointer-events-none after:absolute after:inset-0 after:z-0 after:rounded-[inherit] after:opacity-0 after:content-[''] after:[transition:opacity_0.4s_ease] hover:after:opacity-100 ${
         dark
-          ? "border-transparent bg-foreground text-white shadow-[0_30px_80px_-30px_rgba(199,157,0,0.55)] md:-translate-y-4 after:bg-[radial-gradient(420px_circle_at_50%_0%,rgba(229,211,142,0.22),transparent_60%)] after:opacity-100"
-          : "border-border bg-white/70 backdrop-blur-[6px] hover:-translate-y-1 hover:border-accent/40 after:bg-[radial-gradient(480px_circle_at_var(--mx)_var(--my),rgba(199,157,0,0.14),transparent_45%)]"
+          ? "border-transparent bg-black text-white shadow-[0_30px_80px_-30px_rgba(199,157,0,0.55)] md:-translate-y-4 after:bg-[radial-gradient(420px_circle_at_50%_0%,rgba(229,211,142,0.22),transparent_60%)] after:opacity-100"
+          : "border-light-transparent-black bg-white hover:-translate-y-1 hover:border-[#d7ba5e] after:bg-[radial-gradient(480px_circle_at_var(--mx)_var(--my),rgba(199,157,0,0.14),transparent_45%)]"
       }`}
     >
       {/* Oversized tier number in the corner */}
       <span
         aria-hidden
         className={`!absolute -right-2 -top-6 select-none text-[9rem] font-medium leading-none tracking-tighter ${
-          dark ? "text-white/[0.06]" : "text-foreground/[0.05]"
+          dark ? "text-white/[0.06]" : "text-black/[0.05]"
         }`}
       >
         {String(index + 1).padStart(2, "0")}
@@ -85,23 +85,23 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
       <div className="flex items-center justify-between">
         <span
           className={`text-[0.75rem] font-semibold uppercase tracking-[0.2em] ${
-            dark ? "text-[#e5d38e]" : "text-accent-2"
+            dark ? "text-[#e5d38e]" : "text-[#d7ba5e]"
           }`}
         >
           {"// "}Tier {String(index + 1).padStart(2, "0")}
         </span>
         {dark && (
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[#c79d00] to-[#e5d38e] px-3 py-1 text-[0.6875rem] font-semibold uppercase tracking-wider text-black">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[#d7ba5e] to-[#e5d38e] px-3 py-1 text-[0.6875rem] font-semibold uppercase tracking-wider text-black">
             <Sparkles size={11} />
             Most Popular
           </span>
         )}
       </div>
 
-      <h3 className={`mt-6 text-[2.25rem] font-medium leading-none ${dark ? "text-white" : "text-foreground"}`}>
+      <h3 className={`mt-6 text-[2.25rem] font-medium leading-none ${dark ? "text-white" : "text-black"}`}>
         {plan.name}
       </h3>
-      <p className={`mt-3 min-h-[2.75rem] text-[0.9375rem] leading-snug ${dark ? "text-white/70" : "text-muted"}`}>
+      <p className={`mt-3 min-h-[2.75rem] text-[0.9375rem] leading-snug ${dark ? "text-white/70" : "text-dim-gray"}`}>
         {plan.tagline}
       </p>
 
@@ -113,15 +113,15 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
               key={i}
               className={`h-1 flex-1 rounded-full ${
                 i <= index
-                  ? "bg-gradient-to-r from-[#c79d00] to-[#e5d38e]"
+                  ? "bg-gradient-to-r from-[#d7ba5e] to-[#e5d38e]"
                   : dark
                     ? "bg-white/15"
-                    : "bg-foreground/10"
+                    : "bg-black/10"
               }`}
             />
           ))}
         </div>
-        <span className={`text-[0.75rem] tabular-nums ${dark ? "text-white/60" : "text-muted"}`}>
+        <span className={`text-[0.75rem] tabular-nums ${dark ? "text-white/60" : "text-dim-gray"}`}>
           {total} services
         </span>
       </div>
@@ -129,16 +129,16 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
       {plan.extras.length > 0 && (
         <div
           className={`mt-7 rounded-2xl p-4 ${
-            dark ? "bg-white/[0.07]" : "bg-accent/[0.07]"
+            dark ? "bg-white/[0.07]" : "bg-[#d7ba5e]/10"
           }`}
         >
-          <p className={`text-[0.6875rem] font-semibold uppercase tracking-[0.18em] ${dark ? "text-[#e5d38e]" : "text-accent-2"}`}>
+          <p className={`text-[0.6875rem] font-semibold uppercase tracking-[0.18em] ${dark ? "text-[#e5d38e]" : "text-[#d7ba5e]"}`}>
             Everything in {plan.buildsOn}, plus
           </p>
           <ul className="mt-3 flex flex-col gap-2.5">
             {plan.extras.map((feature) => (
               <li key={feature} className="flex items-start gap-2.5 text-[0.9375rem] font-medium leading-snug">
-                <Plus size={16} strokeWidth={2.5} className={`mt-0.5 shrink-0 ${dark ? "text-[#e5d38e]" : "text-accent-2"}`} />
+                <Plus size={16} strokeWidth={2.5} className={`mt-0.5 shrink-0 ${dark ? "text-[#e5d38e]" : "text-[#d7ba5e]"}`} />
                 {feature}
               </li>
             ))}
@@ -146,15 +146,15 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
         </div>
       )}
 
-      <ul className={`mt-7 flex flex-col gap-3 border-t pt-7 ${dark ? "border-white/10" : "border-border"}`}>
+      <ul className={`mt-7 flex flex-col gap-3 border-t pt-7 ${dark ? "border-white/10" : "border-light-transparent-black"}`}>
         {plan.included.map((feature) => (
           <li
             key={feature}
             className={`flex items-start gap-2.5 text-[0.875rem] leading-snug ${
-              dark ? "text-white/75" : plan.extras.length ? "text-muted" : "text-foreground"
+              dark ? "text-white/75" : plan.extras.length ? "text-dim-gray" : "text-black"
             }`}
           >
-            <Check size={15} strokeWidth={2.5} className={`mt-0.5 shrink-0 ${dark ? "text-[#e5d38e]" : "text-accent-2"}`} />
+            <Check size={15} strokeWidth={2.5} className={`mt-0.5 shrink-0 ${dark ? "text-[#e5d38e]" : "text-[#d7ba5e]"}`} />
             {feature}
           </li>
         ))}
@@ -176,21 +176,21 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
 
 export default function ServicePackages() {
   return (
-    <section id="packages" className="relative bg-surface-2 py-28 max-md:py-20">
+    <section id="packages" className="relative scroll-mt-24 bg-ghost-white py-28 max-md:py-20">
       <div className="mx-auto container px-6 lg:px-8">
-        <Reveal className="mx-auto max-w-2xl text-center">
-          <Badge>Packages</Badge>
-          <h2 className="mt-4 tracking-tight">
-            Social media packages built
-            <span className="text-transparent bg-[linear-gradient(90deg,#92400e_0%,#b45309_45%,#ea580c_100%)] bg-clip-text">
-              {" "}
-              to grow with you.
-            </span>
-          </h2>
-          <p className="mt-4 text-muted">
-            Each tier builds on the one before it, so upgrading later is
-            seamless.
-          </p>
+        <Reveal>
+          <div className="flex items-end justify-between gap-8 max-md:flex-col max-md:items-start">
+            <div>
+              <Eyebrow>Packages</Eyebrow>
+              <h2 className={`mt-4 ${H2_CLASS}`}>
+                Social media packages built <GoldWord>to grow with you.</GoldWord>
+              </h2>
+            </div>
+            <p className="mb-0 max-w-[24rem] font-sans text-[1rem] leading-[1.6em] text-black">
+              Each tier builds on the one before it, so upgrading later is
+              seamless.
+            </p>
+          </div>
         </Reveal>
 
         <div className="mt-20 grid grid-cols-1 items-stretch gap-6 md:grid-cols-3 md:gap-5 max-md:mt-12">
@@ -201,11 +201,11 @@ export default function ServicePackages() {
           ))}
         </div>
 
-        <p className="mt-14 text-center text-[0.875rem] text-muted">
+        <p className="mt-14 text-center text-[0.875rem] text-dim-gray">
           Not sure which package fits?{" "}
           <a
             href="/contact"
-            className="font-medium text-accent-2 underline underline-offset-4"
+            className="font-medium text-[#d7ba5e] underline underline-offset-4"
           >
             Talk to us
           </a>{" "}
