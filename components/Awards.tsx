@@ -1,7 +1,10 @@
-// Recognition copy is from the "About Us" document (Awards section). The
-// only named award in the source material is the Popular Awards 2024 win
-// (see about/NewsEvents.tsx), so that's the one list entry — add more here
-// as they're confirmed.
+"use client";
+
+import { useEffect, useRef } from "react";
+import { gsap } from "@/lib/gsap";
+
+// Recognition copy is from the About Us document.
+// Add more awards here when confirmed.
 const AWARDS = [
   {
     org: "Popular Awards",
@@ -11,36 +14,80 @@ const AWARDS = [
 ];
 
 export default function Awards() {
+  const headingRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    const heading = headingRef.current;
+
+    if (!heading) return;
+
+    const ctx = gsap.context(() => {
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+
+      if (prefersReducedMotion) return;
+
+      gsap.fromTo(
+        heading,
+        {
+          opacity: 0,
+          y: 30,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          clearProps: "transform",
+        },
+      );
+    }, heading);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section className="relative">
-      <div className="block mx-auto px-6 mx-auto container w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
-        <div className="">
-          <div className="flex gap-4 flex-col max-tablet:gap-[0.8rem] max-md:gap-[0.7rem] max-md:justify-start max-md:items-start max-mobile:gap-[0.6rem] max-mobile:items-center">
-            <div className="font-sans text-dim-gray text-[0.875rem] leading-[1.5em] process">
-              <span className="text-[#d7ba5e] orrenge">{"//"}</span>
-              <span> AWARDS</span>
-            </div>
-            <h2 className="text-[3.25rem] leading-[1.2em] max-tablet:text-[2.9rem] max-tablet:text-left max-md:text-[2.75rem] max-mobile:text-[2.25rem] max-mobile:text-center">
+      <div className="pt-30 w-full max-tablet:pt-20 max-md:pt-18 max-mobile:pt-16" />
+
+      <div className="block mx-auto px-6 container w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
+        <div className="inner-wrappar">
+          {/* Section heading — same layout as Team */}
+          <div className="flex flex-col items-start justify-start gap-4 max-tablet:gap-[0.8rem] max-md:gap-[0.7rem] max-mobile:gap-[0.6rem]">
+           
+
+            <h1 ref={headingRef} className="text-left">
               Awards
-            </h2>
-            <div className="pt-4 w-full max-tablet:pt-[0.8rem] max-md:pt-[0.7rem] max-mobile:pt-[0.6rem]" />
-            <div className="flex flex-col gap-4">
-              <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
-                Our legacy is built on a foundation of creativity, innovation,
-                and unwavering commitment to design excellence.
-              </p>
-              <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
-                As a premier creative design agency, our passion lies in
-                sculpting profound brand narratives through innovative design
-                and crystal-clear communication. Our dedicated team masterfully
-                integrates artistic flair with strategic business acumen,
-                ensuring every design is both visually captivating and
-                remarkably effective.
-              </p>
-            </div>
+            </h1>
+
+            <h3 className="text-left">
+              Celebrating the recognition behind our creative journey.
+            </h3>
           </div>
 
-          {/* <div className="flex gap-4 flex-col max-tablet:gap-[0.8rem] max-md:gap-[0.7rem] max-mobile:gap-3">
+          {/* Description — same spacing as Team */}
+          <div className="pt-6 w-full max-tablet:pt-[1.2rem] max-md:pt-[1.0499rem] max-mobile:pt-[0.899rem]" />
+
+          <div className="flex flex-col gap-5">
+            <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
+              Our journey is built on creativity, innovation, and a commitment
+              to delivering meaningful digital experiences. Recognition
+              motivates us to keep raising our standards and creating work that
+              makes a difference.
+            </p>
+
+            <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">
+              We value the trust of our clients and the dedication of our team.
+              Every project is an opportunity to combine creative thinking with
+              strategic execution and deliver results that matter.
+            </p>
+          </div>
+
+          {/* Awards list */}
+          <div className="pt-15 w-full max-tablet:pt-12 max-md:pt-10.5 max-mobile:pt-9" />
+
+          {/* <div className="flex flex-col gap-4 max-tablet:gap-[0.8rem] max-md:gap-[0.7rem] max-mobile:gap-3">
             {AWARDS.map((award) => (
               <div
                 key={`${award.org}-${award.date}`}
@@ -51,10 +98,12 @@ export default function Awards() {
                     {award.org}
                   </div>
                 </div>
+
                 <div className="flex gap-10 justify-end items-center max-tablet:gap-8 max-md:gap-7 max-mobile:gap-[0.899rem] max-mobile:items-end max-mobile:flex-col">
                   <div className="font-sans text-dim-gray text-[0.875rem] leading-[1.5em]">
                     {award.category}
                   </div>
+
                   <div className="font-sans text-dim-gray text-[0.875rem] leading-[1.5em]">
                     {award.date}
                   </div>
@@ -64,6 +113,7 @@ export default function Awards() {
           </div> */}
         </div>
       </div>
+
       <div className="pt-30 w-full max-tablet:pt-20 max-md:pt-18 max-mobile:pt-16" />
     </section>
   );

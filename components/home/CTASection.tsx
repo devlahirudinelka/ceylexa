@@ -6,12 +6,12 @@ export default function CTASection() {
   return (
     <section
       id="cta"
-      className="relative overflow-hidden bg-background py-28 bg-[linear-gradient(180deg,rgba(255,255,255,0.75),rgba(255,255,255,0.55))]"
+      className="relative overflow-hidden bg-background  bg-[linear-gradient(180deg,rgba(255,255,255,0.75),rgba(255,255,255,0.55))]"
     >
-   
+   {/* py-28 */}
 
       <Reveal className="mx-auto  container">
-        <div className="bg-[linear-gradient(180deg,rgba(255,255,255,0.75),rgba(255,255,255,0.55))] relative rounded-3xl px-8 py-16 text-center">
+        <div className="bg-[linear-gradient(180deg,rgba(255,255,255,0.75),rgba(255,255,255,0.55))] relative rounded-3xl px-8 py-28 text-center">
           <h2 className="tracking-tight">
             Your competition is already investing in digital.
             {" "}Are you?

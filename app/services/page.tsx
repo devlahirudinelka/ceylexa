@@ -45,11 +45,11 @@ export default function ServicesPage() {
         <ServicePackages />
 
         <section className="relative bg-background py-24">
-          <div className="mx-auto  container px-6 text-center lg:px-8">
+          <div className="mx-auto  container px-6 text-left lg:px-8">
             <Reveal>
               <h2 className="tracking-tight">{PLATFORM_PARTNERS.heading}</h2>
-              <p className="mx-auto max-w-3xl">{PLATFORM_PARTNERS.body}</p>
-              <ul className="flex flex-row items-center justify-center mt-5">
+              <p className="mx-auto  mt-5">{PLATFORM_PARTNERS.body}</p>
+              <ul className="flex flex-row items-start justify-start mt-10">
                 {PLATFORM_PARTNERS.partners.map((partner) => (
                   <li
                     key={partner}

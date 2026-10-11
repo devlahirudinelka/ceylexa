@@ -24,13 +24,13 @@ export default function ProjectsPage() {
       <main className="bg-background">
         <section className="relative overflow-hidden bg-background pt-32 pb-16 sm:pt-40 sm:pb-20">
           <CreamGradientBackground />
-          <div className="relative mx-auto  container px-6 lg:px-8">
-            <Reveal>
+          <div className="relative mx-auto  container px-6 lg:px-8 ">
+            {/* <Reveal>
               <span className="font-mono text-sm text-accent-2">{"// "}</span>
               <span className="text-sm font-medium text-muted">
                 {PROJECTS_INTRO.eyebrow}
               </span>
-            </Reveal>
+            </Reveal> */}
             <Reveal delay={80}>
               <h1 className="tracking-tight text-foreground">
                 {PROJECTS_INTRO.heading}{" "}
@@ -40,9 +40,9 @@ export default function ProjectsPage() {
             <Reveal delay={140}>
               <div className="mt-8  leading-relaxed text-muted">
                 {PROJECTS_INTRO.paragraphs.map((text) => (
-                  <p key={text}>{text}</p>
+                  <p key={text} className="mt-5">{text}</p>
                 ))}
-                <p className="font-medium">{PROJECTS_INTRO.closing}</p>
+                <p className="font-medium mt-5">{PROJECTS_INTRO.closing}</p>
               </div>
             </Reveal>
           </div>

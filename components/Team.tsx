@@ -1,4 +1,7 @@
-import type { ReactNode } from "react";
+"use client";
+
+import { useEffect, useRef, type ReactNode } from "react";
+import { gsap } from "@/lib/gsap";
 import { SocialIcon } from "@/components/ui/SocialIcons";
 import { CEYLEXA_SOCIALS, OFFICES } from "@/lib/site";
 
@@ -13,7 +16,18 @@ type Member = {
   /** Only the links that are filled in are shown. */
   /** Marks a card that still needs real details. */
   placeholder?: boolean;
-  socials?: Partial<Record<"facebook" | "instagram" | "linkedin" | "x" | "youtube" | "tiktok" | "whatsapp", string>>;
+  socials?: Partial<
+    Record<
+      | "facebook"
+      | "instagram"
+      | "linkedin"
+      | "x"
+      | "youtube"
+      | "tiktok"
+      | "whatsapp",
+      string
+    >
+  >;
 };
 
 // Add more people here; the grid lays itself out.
@@ -25,7 +39,8 @@ const TEAM: Member[] = [
     bio: "In the role of Senior Digital Marketing Manager, Thilanka leads digital marketing initiatives, manages campaign performance, identifies growth opportunities, and works closely with creative and marketing teams to deliver measurable results.",
     // Temporary: hot-linked Google thumbnail. Save the photo into
     // /public/images/team/ and point this at the local file before launch.
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQlErO809DYaWjpzzeT2JrTIyheqoFQ2qnJYbKhcTPrxGN2qO5sHHaDFo&s=10",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQlErO809DYaWjpzzeT2JrTIyheqoFQ2qnJYbKhcTPrxGN2qO5sHHaDFo&s=10",
     socials: {},
   },
   // PLACEHOLDERS: replace each with a real team member (name, role, bio,
@@ -42,14 +57,50 @@ const TEAM: Member[] = [
 
 // Order follows the card design. `fallback` is the company account, used
 // when a member has no personal link of their own for that platform.
-const company = (label: string) => CEYLEXA_SOCIALS.find((social) => social.label === label)?.href;
-const SOCIALS: { key: keyof NonNullable<Member["socials"]>; label: string; icon: ReactNode; fallback?: string }[] = [
-  { key: "facebook", label: "Facebook", icon: <SocialIcon name="Facebook" size={17} />, fallback: company("Facebook") },
-  { key: "instagram", label: "Instagram", icon: <SocialIcon name="Instagram" size={17} />, fallback: company("Instagram") },
-  { key: "linkedin", label: "LinkedIn", icon: <SocialIcon name="LinkedIn" size={17} />, fallback: company("LinkedIn") },
-  { key: "x", label: "X", icon: <SocialIcon name="X" size={16} />, fallback: company("X") },
-  { key: "youtube", label: "YouTube", icon: <SocialIcon name="YouTube" size={19} />, fallback: company("YouTube") },
-  { key: "tiktok", label: "TikTok", icon: <SocialIcon name="TikTok" size={17} />, fallback: company("TikTok") },
+const company = (label: string) =>
+  CEYLEXA_SOCIALS.find((social) => social.label === label)?.href;
+const SOCIALS: {
+  key: keyof NonNullable<Member["socials"]>;
+  label: string;
+  icon: ReactNode;
+  fallback?: string;
+}[] = [
+  {
+    key: "facebook",
+    label: "Facebook",
+    icon: <SocialIcon name="Facebook" size={17} />,
+    fallback: company("Facebook"),
+  },
+  {
+    key: "instagram",
+    label: "Instagram",
+    icon: <SocialIcon name="Instagram" size={17} />,
+    fallback: company("Instagram"),
+  },
+  {
+    key: "linkedin",
+    label: "LinkedIn",
+    icon: <SocialIcon name="LinkedIn" size={17} />,
+    fallback: company("LinkedIn"),
+  },
+  {
+    key: "x",
+    label: "X",
+    icon: <SocialIcon name="X" size={16} />,
+    fallback: company("X"),
+  },
+  {
+    key: "youtube",
+    label: "YouTube",
+    icon: <SocialIcon name="YouTube" size={19} />,
+    fallback: company("YouTube"),
+  },
+  {
+    key: "tiktok",
+    label: "TikTok",
+    icon: <SocialIcon name="TikTok" size={17} />,
+    fallback: company("TikTok"),
+  },
   {
     key: "whatsapp",
     label: "WhatsApp",
@@ -59,7 +110,8 @@ const SOCIALS: { key: keyof NonNullable<Member["socials"]>; label: string; icon:
 ];
 
 function bioWithHighlight(member: Member): ReactNode {
-  if (!member.highlight || !member.bio.includes(member.highlight)) return member.bio;
+  if (!member.highlight || !member.bio.includes(member.highlight))
+    return member.bio;
   const [before, ...rest] = member.bio.split(member.highlight);
   return (
     <>
@@ -76,9 +128,10 @@ function MemberCard({ member, index }: { member: Member; index: number }) {
     .map((part) => part[0])
     .slice(0, 2)
     .join("");
-  const socials = SOCIALS.map((social) => ({ ...social, href: member.socials?.[social.key] || social.fallback })).filter(
-    (social) => social.href,
-  );
+  const socials = SOCIALS.map((social) => ({
+    ...social,
+    href: member.socials?.[social.key] || social.fallback,
+  })).filter((social) => social.href);
 
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-[1.875rem] border border-light-transparent-black bg-white transition-[border-color,box-shadow] duration-300 hover:border-[#d7ba5e] hover:shadow-[0_30px_60px_-35px_rgba(0,0,0,0.35)] max-mobile:rounded-2xl">
@@ -107,9 +160,15 @@ function MemberCard({ member, index }: { member: Member; index: number }) {
       </div>
 
       <div className="flex flex-1 flex-col items-center px-7 pb-7 pt-6 text-center max-md:px-5">
-        <h3 className="font-sans text-[1.5rem] font-semibold leading-[1.2em] text-black">{member.name}</h3>
-        <div className="mt-1 font-sans text-[0.9375rem] leading-[1.5em] text-[#d7ba5e]">{member.role}</div>
-        <p className="mb-0 mt-4 font-sans text-[0.9375rem] leading-[1.55em] text-dim-gray">{bioWithHighlight(member)}</p>
+        <h3 className="font-sans text-[1.5rem] font-semibold leading-[1.2em] text-black">
+          {member.name}
+        </h3>
+        <div className="mt-1 font-sans text-[0.9375rem] leading-[1.5em] text-[#d7ba5e]">
+          {member.role}
+        </div>
+        <p className="mb-0 mt-4 font-sans text-[0.9375rem] leading-[1.55em] text-dim-gray">
+          {bioWithHighlight(member)}
+        </p>
         {socials.length > 0 && (
           <div className="mt-auto flex flex-wrap justify-center gap-1 pt-6">
             {socials.map((social) => (
@@ -132,22 +191,47 @@ function MemberCard({ member, index }: { member: Member; index: number }) {
 }
 
 export default function Team() {
+  const headingRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    const heading = headingRef.current;
+
+    if (!heading) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        heading,
+        {
+          opacity: 0,
+          y: 30,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          clearProps: "transform",
+        },
+      );
+    }, heading);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section className="relative">
       <div className="pt-30 w-full max-tablet:pt-20 max-md:pt-18 max-mobile:pt-16" />
       <div className="block mx-auto px-6  container w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
-        <div
-          className="inner-wrappar"
-          
-        >
+        <div className="inner-wrappar">
           <div className="flex gap-4 flex-col justify-start items-start max-tablet:gap-[0.8rem] max-md:gap-[0.7rem] max-mobile:gap-[0.6rem]">
             <div className="font-sans text-dim-gray text-[0.875rem] leading-[1.5em] process">
-              <span className="text-[#d7ba5e] orrenge">{"//"}</span>
-              <span> TEAM</span>
+              <h1 className="text-left" ref={headingRef}>
+                Team
+              </h1>
             </div>
-            <h2 className="text-[3.25rem] leading-[1.2em] max-tablet:text-[2.9rem] max-tablet:text-center max-md:text-[2.75rem] max-mobile:text-[2.25rem]">
+            <h3 className="text-left">
               Get to know the masterminds that make the magic happen.
-            </h2>
+            </h3>
           </div>
 
           <div className="pt-6 w-full max-tablet:pt-[1.2rem] max-md:pt-[1.0499rem] max-mobile:pt-[0.899rem]" />

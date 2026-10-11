@@ -163,9 +163,9 @@ export default function Navbar() {
                           >
                             <div className="flex items-start justify-between gap-4">
                               <div className="flex items-start gap-4">
-                                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-foreground shadow-sm">
+                                {/* <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-foreground shadow-sm">
                                   <Icon size={18} />
-                                </span>
+                                </span> */}
                                 <div>
                                   <span className="block text-base font-semibold text-foreground">
                                     {service.title}
