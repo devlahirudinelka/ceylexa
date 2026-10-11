@@ -7,6 +7,7 @@ import { ArrowUpRight } from "lucide-react";
 import { SERVICES } from "@/lib/services-data";
 import { CEYLEXA_SOCIALS, OFFICES } from "@/lib/site";
 import CreamGradientBackground from "./CreamGradientBackground";
+import { SocialIcon } from "../ui/SocialIcons";
 
 const EXPLORE = [
   { label: "Projects", href: "/project" },
@@ -68,14 +69,21 @@ function FooterContent() {
               className="group mt-6 inline-flex items-center gap-1.5 border-b border-foreground pb-0.5 text-sm font-medium text-foreground transition-colors hover:border-accent-2 hover:text-accent-2"
             >
               Start a project
-              <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <ArrowUpRight
+                size={14}
+                className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
             </Link>
           </div>
 
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-7">
             <Column title="Services">
               {SERVICES.map((s) => (
-                <Link key={s.slug} href={`/services/${s.slug}`} className={linkClass}>
+                <Link
+                  key={s.slug}
+                  href={`/services/${s.slug}`}
+                  className={linkClass}
+                >
                   {s.title}
                 </Link>
               ))}
@@ -101,15 +109,17 @@ function FooterContent() {
         <div className="mt-12 flex flex-col gap-3 border-t border-border pt-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Ceylexa</p>
           <div className="flex flex-wrap gap-x-5 gap-y-1">
-            {CEYLEXA_SOCIALS.slice(0, 4).map((s) => (
+            {CEYLEXA_SOCIALS.map((social) => (
               <a
-                key={s.label}
-                href={s.href}
+                key={social.label}
+                href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-colors hover:text-foreground"
+                aria-label={social.label}
+                title={social.label}
+                className="inline-flex h-9 w-9 items-center justify-center text-[#a8915a] transition-all duration-300 hover:-translate-y-0.5 hover:text-black"
               >
-                {s.label}
+                <SocialIcon name={social.label} size={16} />
               </a>
             ))}
           </div>
@@ -119,7 +129,13 @@ function FooterContent() {
   );
 }
 
-function Column({ title, children }: { title: string; children: React.ReactNode }) {
+function Column({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
   return (
     <div>
       <h3 className="mb-4 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-foreground">
