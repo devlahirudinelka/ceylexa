@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
@@ -55,6 +56,21 @@ export default async function NewsItemPage({ params }: Props) {
           </div>
         </section>
 
+        <section className="mx-auto container px-6 pb-12 lg:px-8">
+          <Reveal>
+            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl border border-border bg-black/5">
+              <Image
+                src={item.image}
+                alt={item.title}
+                fill
+                priority
+                sizes="(min-width: 1024px) 1200px, 100vw"
+                className="object-cover"
+              />
+            </div>
+          </Reveal>
+        </section>
+
         <section className="mx-auto container px-6 pb-16 lg:px-8">
           <Reveal>
             <article className="max-w-3xl space-y-5">
@@ -69,6 +85,24 @@ export default async function NewsItemPage({ params }: Props) {
             </article>
           </Reveal>
         </section>
+
+        {item.gallery && item.gallery.length > 0 && (
+          <section className="mx-auto container px-6 pb-16 lg:px-8">
+            <div className="grid gap-5 sm:grid-cols-2">
+              {item.gallery.map((src, i) => (
+                <div key={src} className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl border border-border bg-black/5">
+                  <Image
+                    src={src}
+                    alt={`${item.title} — photo ${i + 1}`}
+                    fill
+                    sizes="(min-width: 640px) 50vw, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         <section className="mx-auto container px-6 pb-20 lg:px-8">
           <h2 className="text-left">More news</h2>

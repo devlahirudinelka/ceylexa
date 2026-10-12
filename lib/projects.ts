@@ -1,8 +1,5 @@
 // Case studies from "Ceylexa Web Document - Projects".
 //
-// NOTE: the source document has no images, so every case study reuses one
-// of the three template project images (see `image`). Swap in real
-// campaign artwork per project in /public/images before launch.
 
 export type ApproachStep = {
   title: string;
@@ -41,7 +38,6 @@ export type Project = {
   tagline: string;
 };
 
-const IMG = ["/images/project-1.webp", "/images/project-2.webp", "/images/project-3.webp"];
 
 export const PROJECTS_INTRO = {
   eyebrow: "Projects & Campaigns",
@@ -65,7 +61,7 @@ export const PROJECTS: Project[] = [
     title: "Queen of the World Sri Lanka 2023",
     tags: "Social Media Management, Campaign Content, Influencer Reach",
     platforms: "Facebook | Instagram | TikTok",
-    image: IMG[0],
+    image: "/images/Projects/queen-of-the-world-sri-lanka-2023.webp",
     client: "Queen of the World Sri Lanka",
     summary:
       "A social media and digital campaign built around content, consistency, engagement and audience connection — creating conversations around women’s empowerment and community participation.",
@@ -118,7 +114,7 @@ export const PROJECTS: Project[] = [
     title: "Mrs Sri Lanka 2023",
     tags: "Social Media Management, Creative Content Strategy, Reach & Traffic",
     platforms: "Facebook | Instagram | TikTok",
-    image: IMG[1],
+    image: "/images/Projects/mrs-sri-lanka-2023.webp",
     client: "Mrs Sri Lanka",
     summary:
       "A strategy designed to maximise reach, traffic, engagement, and online visibility — turning social platforms into an active space where audiences could follow the competition.",
@@ -178,7 +174,7 @@ export const PROJECTS: Project[] = [
     title: "Seed Movie 2022",
     tags: "Trilingual Content Strategy, Launch Campaign, Social Media Management",
     platforms: "Facebook | Instagram | TikTok",
-    image: IMG[2],
+    image: "/images/Projects/seed-movie-2022.webp",
     client: "Seed Movie",
     summary:
       "A trilingual digital marketing strategy in Sinhala, English, and Tamil to launch a landmark Sri Lankan cinematic project.",
@@ -236,7 +232,7 @@ export const PROJECTS: Project[] = [
     title: "Darling Music Video – DOCTOR Band",
     tags: "Social Media Campaign, Influencer Marketing, Video Promotion",
     platforms: "YouTube | Facebook | TikTok",
-    image: IMG[0],
+    image: "/images/Projects/darling-music-video-doctor-band.webp",
     client: "DOCTOR Band",
     summary:
       "A social media launch strategy focused on reach, video consumption, audience engagement, and influencer amplification for the Doctor Darling music video.",
@@ -287,7 +283,7 @@ export const PROJECTS: Project[] = [
     title: "Ayale Music Video – Tehan Perera",
     tags: "Social Media Launch, Content Creation, Video Promotion",
     platforms: "YouTube | Facebook | TikTok",
-    image: IMG[1],
+    image: "/images/Projects/ayale-music-video-tehan-perera.webp",
     client: "Tehan Perera",
     summary:
       "A coordinated launch strategy and creative content production that generated more than 7 million video views across YouTube, Facebook, and TikTok.",
@@ -337,7 +333,7 @@ export const PROJECTS: Project[] = [
     title: "Gajaman Nona Music Video – Tehan Perera",
     tags: "Social Media Launch, Content Creation, Collaboration Promotion",
     platforms: "YouTube | Facebook | TikTok",
-    image: IMG[2],
+    image: "/images/Projects/gajaman-nona-music-video-tehan-perera.webp",
     client: "Tehan Perera & Yohani Perera",
     summary:
       "A collaboration-focused launch strategy that brought two artists' audiences together and delivered 8.8M+ combined views.",
@@ -388,7 +384,7 @@ export const PROJECTS: Project[] = [
     title: "Natural Affection – Brand Launch & Content Creation",
     tags: "Brand Launch Strategy, Content Creation, Social Media Management",
     platforms: "YouTube | Facebook | TikTok",
-    image: IMG[0],
+    image: "/images/Projects/natural-affection-brand-launch.webp",
     client: "Natural Affection",
     summary:
       "The launch of a premium flower shop in Colombo 7 — establishing a digital presence and a strong visual identity across social media.",
@@ -438,7 +434,7 @@ export const PROJECTS: Project[] = [
     title: "DB Ceylon – Branch Launch",
     tags: "Influencer Marketing, Paid Media, Content Creation",
     platforms: "Facebook | Instagram | TikTok",
-    image: IMG[1],
+    image: "/images/Projects/db-ceylon-branch-launch.webp",
     client: "DB Ceylon",
     summary:
       "An integrated social media, content, influencer, and paid media launch with 100+ influencers, 9.3M+ views and 12M+ people reached.",
@@ -492,7 +488,7 @@ export const PROJECTS: Project[] = [
     title: "LOVI Ceylon – Official Ceremonial Attire for Team Sri Lanka at the Commonwealth Games 2026",
     tags: "TikTok Campaign, Social Media Marketing, Cultural Storytelling",
     platforms: "TikTok",
-    image: IMG[2],
+    image: "/images/Projects/lovi-ceylon-commonwealth-games-2026.webp",
     client: "LOVI Ceylon",
     summary:
       "A dedicated TikTok campaign celebrating the launch of the official ceremonial attire for Team Sri Lanka, telling the story of heritage, symbolism, craftsmanship and contemporary design.",

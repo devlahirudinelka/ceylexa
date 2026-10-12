@@ -32,8 +32,7 @@ const TEAM: Member[] = [
     role: "Senior Digital Marketing Manager",
     highlight: "Thilanka",
     bio: "In the role of Senior Digital Marketing Manager, Thilanka leads digital marketing initiatives, manages campaign performance, identifies growth opportunities, and works closely with creative and marketing teams to deliver measurable results.",
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQlErO809DYaWjpzzeT2JrTIyheqoFQ2qnJYbKhcTPrxGN2qO5sHHaDFo&s=10",
+    image: "/images/team/thilanka-rathnayake.webp",
     socials: { linkedin: "https://www.linkedin.com/in/iamthilanka/" },
   },
   {
