@@ -149,7 +149,7 @@ function PlanCard({ plan }: { plan: Plan }) {
 export default function ServicePackages() {
   return (
     <section id="packages" className="relative bg-surface-2 py-28">
-      <div className="mx-auto container px-6 lg:px-8">
+      <div className="mx-auto w-full max-w-6xl px-6 lg:px-8">
         
         <Reveal className="mx-auto  text-left">
           <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl lg:text-5xl">

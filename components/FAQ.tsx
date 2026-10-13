@@ -52,7 +52,7 @@ export default function FAQ() {
   return (
     <section className="relative bg-ghost-white">
       <div className="pt-30 w-full max-tablet:pt-20 max-md:pt-18 max-mobile:pt-16" />
-      <div className="block mx-auto px-6 mx-auto container w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
+      <div className="block mx-auto px-6 mx-auto max-w-6xl w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
         <div className="inner-wrappar">
           <div className="grid gap-4 grid-rows-[auto] grid-cols-[repeat(2,1fr)] auto-cols-[1fr] max-tablet:gap-10 max-tablet:grid-cols-[repeat(1,1fr)] max-md:gap-8.75 max-mobile:gap-6">
             <div className="block gap-6 flex-col justify-start items-start max-tablet:gap-[1.2rem] max-md:gap-[1.0499rem] max-mobile:gap-[0.899rem]">

@@ -59,7 +59,7 @@ function ServiceCard({ service }: { service: ServiceItem }) {
 export default function ServicesGrid() {
   return (
     <section id="all-services" className="relative bg-background py-28">
-      <div className="mx-auto  container px-6 lg:px-8">
+      <div className="mx-auto  w-full max-w-6xl px-6 lg:px-8">
         <Reveal className="mx-auto text-left">
           {/* <Badge>What we do</Badge> */}
           <h2 className="tracking-tight">

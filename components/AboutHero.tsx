@@ -74,7 +74,7 @@ export default function AboutHero() {
   return (
     <section className="relative">
       <div className="w-full h-20 max-tablet:h-16 max-md:h-14 max-mobile:h-12" />
-      <div className="block mx-auto px-6 container w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
+      <div className="block mx-auto px-6 max-w-6xl w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
         <div className="flex gap-10 flex-col max-md:gap-8.75 max-mobile:gap-7.5">
           <div className="flex flex-col ">
             <div className="overflow-hidden">

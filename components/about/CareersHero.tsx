@@ -45,7 +45,7 @@ export default function CareersHero() {
     <section className="relative">
       <div className="pt-30 w-full max-tablet:pt-24 max-md:pt-18 max-mobile:pt-[3.6rem]" />
 
-      <div className="container mx-auto px-6 max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
+      <div className="w-full max-w-6xl mx-auto px-6 max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
         <h1
           ref={headingRef}
           className=""

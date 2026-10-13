@@ -53,7 +53,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         <section className="relative overflow-hidden bg-background pb-16 pt-40 lg:pt-44">
           <div className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[720px] -translate-x-1/2 -translate-y-1/3 rounded-full bg-gradient-to-br from-accent/20 via-accent-2/10 to-transparent blur-3xl" />
 
-          <div className="mx-auto container px-6 lg:px-8">
+          <div className="mx-auto w-full max-w-6xl px-6 lg:px-8">
             <Reveal>
               <Link
                 href="/services"
@@ -88,7 +88,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         </section>
 
         <section className="relative bg-surface-2 py-24 max-md:py-16">
-          <div className="mx-auto container px-6 lg:px-8">
+          <div className="mx-auto w-full max-w-6xl px-6 lg:px-8">
             <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
               <Reveal className="lg:col-span-4 lg:sticky lg:top-28 lg:self-start">
                 <div>
@@ -140,7 +140,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         </section>
 
         <section className="relative bg-background py-20">
-          <div className="mx-auto  container px-6 lg:px-8">
+          <div className="mx-auto  w-full max-w-6xl px-6 lg:px-8">
             <Reveal className="mx-auto max-w-2xl text-center">
               <h2 className="tracking-tight">Explore other services</h2>
             </Reveal>

@@ -104,7 +104,7 @@ export default function Navbar() {
           : "border-b border-transparent bg-transparent"
       }`}
     >
-      <div className=" flex mx-auto container items-center justify-between px-6 py-4 lg:px-8">
+      <div className=" flex mx-auto max-w-6xl items-center justify-between px-6 py-4 lg:px-8">
         <Link href="/" className="flex items-center">
           <Image
             src="/images/logo/text_with_logo.png"
@@ -150,7 +150,7 @@ export default function Navbar() {
                       : "invisible -translate-y-2 opacity-0"
                   }`}
                 >
-                  <div className="mx-auto container rounded-3xl border border-border bg-background p-3 shadow-[0_30px_80px_-30px_rgba(36,26,12,0.3)]">
+                  <div className="mx-auto w-full max-w-6xl rounded-3xl border border-border bg-background p-3 shadow-[0_30px_80px_-30px_rgba(36,26,12,0.3)]">
                     <div className="grid gap-3 lg:grid-cols-3">
                       {SERVICES.map((service) => {
                         const Icon = SERVICE_ICONS[service.icon];

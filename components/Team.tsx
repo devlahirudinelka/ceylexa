@@ -261,7 +261,7 @@ export default function Team() {
     <section className="relative">
       <div className="pt-30 w-full max-tablet:pt-20 max-md:pt-18 max-mobile:pt-16" />
 
-      <div className="container mx-auto block w-full px-6 max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
+      <div className="max-w-6xl mx-auto block w-full px-6 max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
         <div className="inner-wrappar">
           <div className="flex flex-col items-start justify-start gap-4 max-tablet:gap-[0.8rem] max-md:gap-[0.7rem] max-mobile:gap-[0.6rem]">
             <div className="process font-sans text-[0.875rem] leading-[1.5em] text-dim-gray">

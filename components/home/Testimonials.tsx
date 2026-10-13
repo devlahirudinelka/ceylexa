@@ -6,7 +6,7 @@ import { testimonials } from "@/lib/home-content";
 export default function Testimonials() {
   return (
     <section className="relative bg-surface py-28">
-      <div className="mx-auto  container px-6 lg:px-8">
+      <div className="mx-auto  w-full max-w-6xl px-6 lg:px-8">
         <Reveal className="mx-auto max-w-2xl text-center">
           <Badge>What clients say</Badge>
           <h2 className="tracking-tight">

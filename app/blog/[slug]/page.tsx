@@ -109,7 +109,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         {/* Hero */}
         <section className="relative overflow-hidden pt-28 pb-10 sm:pt-36">
           <CreamGradientBackground />
-          <div className="relative mx-auto container px-6 lg:px-8">
+          <div className="relative mx-auto w-full max-w-6xl px-6 lg:px-8">
             <Reveal>
               <Link
                 href="/blog"
@@ -150,7 +150,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </section>
 
         {/* Body with sticky TOC */}
-        <section className="mx-auto container px-6 py-14 lg:px-8 sm:py-20">
+        <section className="mx-auto w-full max-w-6xl px-6 py-14 lg:px-8 sm:py-20">
           <div className="grid gap-12 lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-16">
             <aside className="">
               <div className="sticky top-28">
@@ -200,7 +200,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         {/* Latest blogs */}
         <section className="border-t border-border py-16 sm:py-24">
-          <div className="mx-auto container px-6 lg:px-8">
+          <div className="mx-auto w-full max-w-6xl px-6 lg:px-8">
             <div className="flex items-end justify-between gap-6">
               <h2 className="tracking-tight text-foreground">
                 Read our Latest Blogs
@@ -222,7 +222,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         {/* Contact / CTA */}
         <section className="px-6 pb-20 lg:px-8">
-          <div className="mx-auto grid  container gap-8 overflow-hidden rounded-[2rem] bg-[#111] p-8 text-white sm:p-12 lg:grid-cols-2">
+          <div className="mx-auto grid  w-full max-w-6xl gap-8 overflow-hidden rounded-[2rem] bg-[#111] p-8 text-white sm:p-12 lg:grid-cols-2">
             <div>
               <h2 className="tracking-tight">
                 Ready to turn attention into growth?

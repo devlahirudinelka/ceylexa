@@ -270,7 +270,7 @@ export default function Page() {
             </video>
           </div>
 
-          <div className="relative z-10 px-6 w-full mx-auto container max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem] text-center">
+          <div className="relative z-10 px-6 w-full mx-auto max-w-6xl max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem] text-center">
             <span className="mb-8 block animate-[revealAnim_1s_ease_forwards] font-mono text-sm uppercase tracking-[0.5em] text-yellow-300 opacity-0">
               High Fidelity 2026
             </span>
@@ -306,7 +306,7 @@ export default function Page() {
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-[oklch(10%_0.01_250)] to-transparent"></div>
         </section>
 
-        <section className="px-6 w-full mx-auto container max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem] mx-auto py-32">
+        <section className="px-6 w-full mx-auto max-w-6xl max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem] mx-auto py-32">
           <div className="grid h-auto grid-cols-1 gap-6 md:h-[800px] md:grid-cols-12">
             <div className="relative flex overflow-hidden gap-2 flex-col bg-[linear-gradient(180deg,rgba(255,255,255,0.8),rgba(255,255,255,0.6))] border border-border backdrop-blur-[6px] opacity-0 blur-[6px] [--mx:50%] [--my:50%] transform-[translateY(28px)] [transition:opacity_0.8s_cubic-bezier(0.16,1,0.3,1),transform_0.8s_cubic-bezier(0.16,1,0.3,1),filter_0.8s_cubic-bezier(0.16,1,0.3,1)] [&.is-visible]:opacity-100 [&.is-visible]:blur-[0] [&.is-visible]:transform-[translateY(0)] [&>*]:relative [&>*]:z-1 after:absolute after:-inset-0.25 after:z-0 after:content-[''] after:bg-[radial-gradient(480px_circle_at_var(--mx)_var(--my),rgba(215,186,94,0.14),transparent_45%)] after:rounded-[inherit] after:opacity-0 after:[transition:opacity_0.4s_ease] after:pointer-events-none hover:after:opacity-100 max-tablet:gap-[0.4rem] max-md:gap-[0.35rem] max-mobile:gap-[0.3rem] motion-reduce:opacity-100 motion-reduce:filter-none motion-reduce:transform-none motion-reduce:transition-none bento-card scroll-reveal group col-span-1 justify-end rounded-[2.5rem] p-12 md:col-span-8">
               <div className="absolute right-0 top-0 p-8">
@@ -379,7 +379,7 @@ export default function Page() {
         <section className="relative overflow-hidden py-64">
           <div className="pointer-events-none absolute left-1/2 top-1/2 h-[40vh] w-[120vw] -translate-x-1/2 -translate-y-1/2 -rotate-6 bg-yellow-300/5 blur-[120px]"></div>
 
-          <div className="px-6 w-full mx-auto container max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem] mx-auto text-center">
+          <div className="px-6 w-full mx-auto max-w-6xl max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem] mx-auto text-center">
             <div className="opacity-0 blur-[6px] transform-[translateY(28px)] [transition:opacity_0.8s_cubic-bezier(0.16,1,0.3,1),transform_0.8s_cubic-bezier(0.16,1,0.3,1),filter_0.8s_cubic-bezier(0.16,1,0.3,1)] [&.is-visible]:opacity-100 [&.is-visible]:blur-[0] [&.is-visible]:transform-[translateY(0)] motion-reduce:opacity-100 motion-reduce:filter-none motion-reduce:transform-none motion-reduce:transition-none scroll-reveal">
               <h2 className="tracking-tighter">
                 Designed for
@@ -404,7 +404,7 @@ export default function Page() {
         </section>
 
         <footer className="border-t border-white/5 bg-[oklch(15%_0.02_250/.3)] px-6 pb-16 pt-32">
-          <div className="px-6 w-full mx-auto container max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem] mx-auto">
+          <div className="px-6 w-full mx-auto max-w-6xl max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem] mx-auto">
             <div className="mb-32 grid gap-16 md:grid-cols-4">
               <div className="col-span-2">
                 <h4 className="tracking-tighter">Ready to evolve?</h4>

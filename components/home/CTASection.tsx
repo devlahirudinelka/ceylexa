@@ -10,7 +10,7 @@ export default function CTASection() {
     >
    {/* py-28 */}
 
-      <Reveal className="mx-auto  container">
+      <Reveal className="mx-auto  w-full max-w-6xl">
         <div className="bg-[linear-gradient(180deg,rgba(255,255,255,0.75),rgba(255,255,255,0.55))] relative rounded-3xl px-8 py-28 text-center">
           <h2 className="tracking-tight">
             Your competition is already investing in digital.

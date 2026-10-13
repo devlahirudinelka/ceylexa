@@ -5,7 +5,7 @@ import { workflowSteps } from "@/lib/home-content";
 export default function WorkflowShowcase() {
   return (
     <section id="process" className="relative bg-surface py-28">
-      <div className="mx-auto  container px-6 lg:px-8">
+      <div className="mx-auto  w-full max-w-6xl px-6 lg:px-8">
         <div className="grid gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <Reveal>
             <Badge>How we work</Badge>

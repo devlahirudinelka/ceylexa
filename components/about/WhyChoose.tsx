@@ -66,7 +66,7 @@ export default function WhyChoose() {
 
   return (
     <section className="relative">
-      <div className="container mx-auto w-full px-6 max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
+      <div className="max-w-6xl mx-auto w-full px-6 max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
         <div className="inner-wrappar">
           <div className="grid grid-cols-1 gap-16">
             {/* Why Choose Us */}

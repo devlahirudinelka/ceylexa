@@ -71,7 +71,7 @@ export function ArrowButton({
 export function PillarStrip({ items }: { items: string[] }) {
   return (
     <div className="bg-black py-5 text-white max-mobile:py-4">
-      <div className="mx-auto container flex flex-wrap items-center justify-between gap-x-8 gap-y-3 px-6 lg:px-8 max-md:justify-center">
+      <div className="mx-auto w-full max-w-6xl flex flex-wrap items-center justify-between gap-x-8 gap-y-3 px-6 lg:px-8 max-md:justify-center">
         {items.map((item) => (
           <div key={item} className="flex items-center gap-3 text-[1.25rem] font-medium max-tablet:text-[1rem]">
             <Sparkle className="w-4 text-[#d7ba5e]" />
