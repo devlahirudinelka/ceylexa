@@ -8,13 +8,12 @@ export default function CTASection() {
       id="cta"
       className="relative overflow-hidden bg-background  bg-[linear-gradient(180deg,rgba(255,255,255,0.75),rgba(255,255,255,0.55))]"
     >
-   {/* py-28 */}
+      {/* py-28 */}
 
-      <Reveal className="mx-auto  w-full max-w-6xl">
+      <Reveal className="mx-auto  w-full max-w-7xl">
         <div className="bg-[linear-gradient(180deg,rgba(255,255,255,0.75),rgba(255,255,255,0.55))] relative rounded-3xl px-8 py-28 text-center">
           <h2 className="tracking-tight">
-            Your competition is already investing in digital.
-            {" "}Are you?
+            Your competition is already investing in digital. Are you?
           </h2>
           <p className="mx-auto max-w-xl">
             Book your consultation today. We&apos;ll show you exactly

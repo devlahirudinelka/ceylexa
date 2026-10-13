@@ -135,7 +135,11 @@ function MarqueeRow({ reverse = false }: { reverse?: boolean }) {
       <div
         ref={trackRef}
         className="flex gap-6 flex-none justify-start items-center max-tablet:gap-[1.2rem] max-md:gap-[1.0499rem] max-mobile:gap-[0.899rem]"
-        style={{ width: "max-content", willChange: "transform", backfaceVisibility: "hidden" }}
+        style={{
+          width: "max-content",
+          willChange: "transform",
+          backfaceVisibility: "hidden",
+        }}
       >
         {[0, 1].map((rep) =>
           TESTIMONIALS.map((t) => (
@@ -151,7 +155,7 @@ export default function Testimonials() {
   return (
     <section>
       <div className="pt-30 w-full max-tablet:pt-20 max-md:pt-18 max-mobile:pt-16" />
-      <div className="block mx-auto px-6 mx-auto max-w-6xl w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
+      <div className="block mx-auto px-6 mx-auto max-w-7xl w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
         <div className="inner-wrappar">
           <div className="testiomonial-header">
             <div className="flex grid-rows-[auto] grid-cols-[1.5fr_1fr] auto-cols-[1fr] justify-between items-center max-tablet:gap-4 max-tablet:justify-start max-tablet:items-start max-tablet:flex-col max-md:gap-[0.7875rem] max-mobile:gap-[0.674rem]">

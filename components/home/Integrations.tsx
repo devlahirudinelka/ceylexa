@@ -6,7 +6,7 @@ import { integrations } from "@/lib/home-content";
 export default function Integrations() {
   return (
     <section id="stack" className="relative bg-background py-28">
-      <div className="mx-auto  w-full max-w-6xl px-6 text-center lg:px-8">
+      <div className="mx-auto  w-full max-w-7xl px-6 text-center lg:px-8">
         <Reveal>
           <Badge>Our stack</Badge>
           <h2 className="mx-auto max-w-2xl tracking-tight">
@@ -22,7 +22,7 @@ export default function Integrations() {
           </p>
         </Reveal>
 
-        <div className="mx-auto mt-14 grid  w-full max-w-6xl grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
+        <div className="mx-auto mt-14 grid  w-full max-w-7xl grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
           {integrations.map((name, i) => (
             <Reveal key={name} delay={(i % 4) * 60}>
               <div className="bg-[linear-gradient(180deg,rgba(255,255,255,0.75),rgba(255,255,255,0.55))] border border-border backdrop-blur-[6px] flex items-center justify-center gap-2 rounded-xl px-4 py-5 text-sm font-medium text-foreground/80 transition-colors hover:border-accent-2/50 hover:text-foreground">

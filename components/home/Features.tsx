@@ -29,7 +29,7 @@ export default function Features() {
 
   return (
     <section id="services" className="relative bg-background py-28">
-      <div className="mx-auto  w-full max-w-6xl px-6 lg:px-8">
+      <div className="mx-auto  w-full max-w-7xl px-6 lg:px-8">
         <Reveal className="mx-auto max-w-2xl text-center">
           <Badge>Services</Badge>
           <h2 className="tracking-tight">

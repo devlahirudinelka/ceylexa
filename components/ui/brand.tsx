@@ -9,9 +9,17 @@ export const H2_CLASS =
   "font-sans text-[3.75rem] leading-[1.08em] font-medium tracking-tight max-tablet:text-[3rem] max-md:text-[2.5rem] max-mobile:text-[2.25rem]";
 
 /** Small "// LABEL" line that opens every section. */
-export function Eyebrow({ children, className = "" }: { children: ReactNode; className?: string }) {
+export function Eyebrow({
+  children,
+  className = "",
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   return (
-    <div className={`flex items-center gap-1 font-sans text-[0.875rem] uppercase leading-[1.5em] ${className}`}>
+    <div
+      className={`flex items-center gap-1 font-sans text-[0.875rem] uppercase leading-[1.5em] ${className}`}
+    >
       <span className="text-[#d7ba5e]">{"//"}</span>
       <span className="text-dim-gray">{children}</span>
     </div>
@@ -38,7 +46,10 @@ const VARIANTS = {
   gold: { wrap: "bg-[#d7ba5e] text-white", dot: "bg-black text-white" },
   light: { wrap: "bg-alabaster text-black", dot: "bg-white text-black" },
   dark: { wrap: "bg-black text-white", dot: "bg-[#d7ba5e] text-black" },
-  outline: { wrap: "border border-light-transparent-black text-black", dot: "bg-black text-white" },
+  outline: {
+    wrap: "border border-light-transparent-black text-black",
+    dot: "bg-black text-white",
+  },
 };
 
 /** Pill button with a circular arrow that turns on hover. */
@@ -60,7 +71,9 @@ export function ArrowButton({
       className={`group inline-flex items-center gap-2 rounded-full py-2.5 pl-6 pr-2.5 font-semibold leading-[1.5em] transition-transform duration-300 hover:-translate-y-0.5 ${v.wrap} ${className}`}
     >
       {children}
-      <span className={`flex h-8 w-8 items-center justify-center rounded-full transition-transform duration-500 group-hover:rotate-45 ${v.dot}`}>
+      <span
+        className={`flex h-8 w-8 items-center justify-center rounded-full transition-transform duration-500 group-hover:rotate-45 ${v.dot}`}
+      >
         <ArrowUpRight size={16} />
       </span>
     </Link>
@@ -71,9 +84,12 @@ export function ArrowButton({
 export function PillarStrip({ items }: { items: string[] }) {
   return (
     <div className="bg-black py-5 text-white max-mobile:py-4">
-      <div className="mx-auto w-full max-w-6xl flex flex-wrap items-center justify-between gap-x-8 gap-y-3 px-6 lg:px-8 max-md:justify-center">
+      <div className="mx-auto w-full max-w-7xl flex flex-wrap items-center justify-between gap-x-8 gap-y-3 px-6 lg:px-8 max-md:justify-center">
         {items.map((item) => (
-          <div key={item} className="flex items-center gap-3 text-[1.25rem] font-medium max-tablet:text-[1rem]">
+          <div
+            key={item}
+            className="flex items-center gap-3 text-[1.25rem] font-medium max-tablet:text-[1rem]"
+          >
             <Sparkle className="w-4 text-[#d7ba5e]" />
             {item}
           </div>

@@ -50,7 +50,7 @@ export default function Contact() {
     <section className="relative w-full">
       <div className="w-full h-27 max-tablet:h-24 max-md:h-18 max-mobile:h-[3.6rem]" />
 
-      <div className="mx-auto w-full max-w-6xl px-6 max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
+      <div className="mx-auto w-full max-w-7xl px-6 max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
         <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-16">
           {/* Left: intro + offices */}
           <div className="flex flex-col gap-10 lg:col-span-7">

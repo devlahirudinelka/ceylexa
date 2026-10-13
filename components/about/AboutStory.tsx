@@ -1,11 +1,8 @@
 export default function AboutStory() {
   return (
     <section className="relative">
-      <div className="block mx-auto px-6 max-w-6xl w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
-        <div
-          className="inner-wrapper"
-         
-        >
+      <div className="block mx-auto px-6 max-w-7xl w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
+        <div className="inner-wrapper">
           <div className="pt-4 w-full max-tablet:pt-[0.8rem] max-md:pt-[0.7rem] max-mobile:pt-[0.6rem]" />
           <h3 className="text-left">
             A forward-thinking digital marketing company.
@@ -50,12 +47,7 @@ export default function AboutStory() {
 
           <div className="pt-15 w-full max-tablet:pt-12 max-md:pt-10.5 max-mobile:pt-9" />
 
-          <h3
-            className="text-left"
-          
-          >
-            More Than a Digital Marketing Company
-          </h3>
+          <h3 className="text-left">More Than a Digital Marketing Company</h3>
           <div className="pt-4 w-full max-tablet:pt-[0.8rem] max-md:pt-[0.7rem] max-mobile:pt-[0.6rem]" />
           <div className="flex flex-col gap-5">
             <p className="mb-0 font-sans text-black text-[1rem] leading-[1.5em] font-normal">

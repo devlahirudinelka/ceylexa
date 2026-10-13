@@ -38,7 +38,7 @@ export default async function NewsItemPage({ params }: Props) {
       <main className="bg-background">
         <section className="relative overflow-hidden pt-28 pb-10 sm:pt-36">
           <CreamGradientBackground />
-          <div className="relative mx-auto w-full max-w-6xl px-6 lg:px-8">
+          <div className="relative mx-auto w-full max-w-7xl px-6 lg:px-8">
             <Reveal>
               <Link
                 href="/news"
@@ -51,12 +51,14 @@ export default async function NewsItemPage({ params }: Props) {
               <span className="mt-8 inline-block rounded-full border border-border bg-white/70 px-3 py-1 text-xs font-medium text-foreground">
                 {item.category}
               </span>
-              <h1 className="mt-4 max-w-4xl tracking-tight text-foreground">{item.title}</h1>
+              <h1 className="mt-4 max-w-4xl tracking-tight text-foreground">
+                {item.title}
+              </h1>
             </Reveal>
           </div>
         </section>
 
-        <section className="mx-auto w-full max-w-6xl px-6 pb-12 lg:px-8">
+        <section className="mx-auto w-full max-w-7xl px-6 pb-12 lg:px-8">
           <Reveal>
             <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl border border-border bg-black/5">
               <Image
@@ -71,7 +73,7 @@ export default async function NewsItemPage({ params }: Props) {
           </Reveal>
         </section>
 
-        <section className="mx-auto w-full max-w-6xl px-6 pb-16 lg:px-8">
+        <section className="mx-auto w-full max-w-7xl px-6 pb-16 lg:px-8">
           <Reveal>
             <article className="max-w-3xl space-y-5">
               {item.paragraphs.map((paragraph) => (
@@ -87,10 +89,13 @@ export default async function NewsItemPage({ params }: Props) {
         </section>
 
         {item.gallery && item.gallery.length > 0 && (
-          <section className="mx-auto w-full max-w-6xl px-6 pb-16 lg:px-8">
+          <section className="mx-auto w-full max-w-7xl px-6 pb-16 lg:px-8">
             <div className="grid gap-5 sm:grid-cols-2">
               {item.gallery.map((src, i) => (
-                <div key={src} className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl border border-border bg-black/5">
+                <div
+                  key={src}
+                  className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl border border-border bg-black/5"
+                >
                   <Image
                     src={src}
                     alt={`${item.title} — photo ${i + 1}`}
@@ -104,7 +109,7 @@ export default async function NewsItemPage({ params }: Props) {
           </section>
         )}
 
-        <section className="mx-auto w-full max-w-6xl px-6 pb-20 lg:px-8">
+        <section className="mx-auto w-full max-w-7xl px-6 pb-20 lg:px-8">
           <h2 className="text-left">More news</h2>
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {more.map((n) => (

@@ -49,7 +49,7 @@ function FooterContent() {
   return (
     <footer className="relative overflow-hidden border-t border-border bg-background">
       <CreamGradientBackground />
-      <div className="relative mx-auto w-full max-w-6xl px-6 py-14 lg:px-8">
+      <div className="relative mx-auto w-full max-w-7xl px-6 py-14 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <Link href="/" className="inline-flex">

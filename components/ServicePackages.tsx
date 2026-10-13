@@ -65,7 +65,6 @@ const PLANS: Plan[] = [
   },
 ];
 
-
 function PlanCard({ plan }: { plan: Plan }) {
   const onMouseMove = useMercuryGlow<HTMLDivElement>();
 
@@ -97,13 +96,9 @@ function PlanCard({ plan }: { plan: Plan }) {
 
       {/* Plan heading: consistent height */}
       <div className="min-h-[6.5rem]">
-        <h3 className="text-xl font-semibold text-foreground">
-          {plan.name}
-        </h3>
+        <h3 className="text-xl font-semibold text-foreground">{plan.name}</h3>
 
-        <p className="mt-2 text-sm leading-6 text-muted">
-          {plan.tagline}
-        </p>
+        <p className="mt-2 text-sm leading-6 text-muted">{plan.tagline}</p>
       </div>
 
       {/* Features */}
@@ -145,12 +140,10 @@ function PlanCard({ plan }: { plan: Plan }) {
   );
 }
 
-
 export default function ServicePackages() {
   return (
     <section id="packages" className="relative bg-surface-2 py-28">
-      <div className="mx-auto w-full max-w-6xl px-6 lg:px-8">
-        
+      <div className="mx-auto w-full max-w-7xl px-6 lg:px-8">
         <Reveal className="mx-auto  text-left">
           <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
             Social media packages built
@@ -174,7 +167,7 @@ export default function ServicePackages() {
             </Reveal>
           ))}
         </div>
-        
+
         <div className="space-29xl" />
         <p className="mt-10 text-center text-sm text-muted">
           Not sure which package fits?{" "}

@@ -59,16 +59,10 @@ function ServiceCard({ service }: { service: ServiceItem }) {
 export default function ServicesGrid() {
   return (
     <section id="all-services" className="relative bg-background py-28">
-      <div className="mx-auto  w-full max-w-6xl px-6 lg:px-8">
+      <div className="mx-auto  w-full max-w-7xl px-6 lg:px-8">
         <Reveal className="mx-auto text-left">
           {/* <Badge>What we do</Badge> */}
-          <h2 className="tracking-tight">
-            Every service, under
-            
-              {" "}
-              one roof.
-            
-          </h2>
+          <h2 className="tracking-tight">Every service, under one roof.</h2>
           <p className="">
             From the first pixel of your website to the last influencer
             partnership, here&apos;s everything Ceylexa can take off your plate.

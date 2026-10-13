@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useRef, useState } from "react";
@@ -13,9 +12,35 @@ const REGIONS = [
   {
     name: "West Indies",
     ids: [
-      "AI", "AW", "BB", "BL", "BS", "CU", "CW", "DM", "DO", "GD",
-      "GP", "HT", "JM", "KN", "KY", "LC", "MF", "MQ", "MS", "PR",
-      "SX", "TC", "TT", "VC", "VG", "VI", "BQBO", "BQSA", "BQSE",
+      "AI",
+      "AW",
+      "BB",
+      "BL",
+      "BS",
+      "CU",
+      "CW",
+      "DM",
+      "DO",
+      "GD",
+      "GP",
+      "HT",
+      "JM",
+      "KN",
+      "KY",
+      "LC",
+      "MF",
+      "MQ",
+      "MS",
+      "PR",
+      "SX",
+      "TC",
+      "TT",
+      "VC",
+      "VG",
+      "VI",
+      "BQBO",
+      "BQSA",
+      "BQSE",
     ],
     classes: [
       "Antigua and Barbuda",
@@ -132,12 +157,8 @@ function getRegionFromElement(
 ): (typeof REGIONS)[number] | undefined {
   let current: Element | null = el;
 
-  while (
-    current &&
-    current.tagName.toLowerCase() !== "svg"
-  ) {
-    const isClientCountry =
-      current.classList.contains("is-client-country");
+  while (current && current.tagName.toLowerCase() !== "svg") {
+    const isClientCountry = current.classList.contains("is-client-country");
 
     if (isClientCountry) {
       const cls = (current.getAttribute("class") ?? "")
@@ -147,9 +168,7 @@ function getRegionFromElement(
       const id = current.id;
 
       const region = REGIONS.find(
-        (item) =>
-          item.classes.includes(cls) ||
-          item.ids.includes(id),
+        (item) => item.classes.includes(cls) || item.ids.includes(id),
       );
 
       if (region) return region;
@@ -163,9 +182,7 @@ function getRegionFromElement(
 
 export default function ClientsMap() {
   const [mapSvg, setMapSvg] = useState("");
-  const [hoveredCountry, setHoveredCountry] = useState<string | null>(
-    null,
-  );
+  const [hoveredCountry, setHoveredCountry] = useState<string | null>(null);
   const [tooltipPosition, setTooltipPosition] = useState({
     x: 0,
     y: 0,
@@ -180,9 +197,7 @@ export default function ClientsMap() {
     fetch("/images/world.svg")
       .then((res) => {
         if (!res.ok) {
-          throw new Error(
-            `Failed to load world map: ${res.status}`,
-          );
+          throw new Error(`Failed to load world map: ${res.status}`);
         }
 
         return res.text();
@@ -259,7 +274,7 @@ export default function ClientsMap() {
 
   return (
     <section className="relative">
-      <div className="max-w-6xl mx-auto block w-full px-6 before:table before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] after:clear-both after:table after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
+      <div className="max-w-7xl mx-auto block w-full px-6 before:table before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] after:clear-both after:table after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
         <div className="inner-wrappar">
           <div className="flex flex-col items-start justify-start gap-4 max-tablet:gap-[0.8rem] max-md:gap-[0.7rem] max-mobile:gap-[0.6rem]">
             <div className="flex items-center justify-start gap-0.5">
@@ -280,18 +295,17 @@ export default function ClientsMap() {
 
             <div>
               <p className="mb-0 font-sans text-[1rem] font-normal leading-[1.5em] text-black">
-                Our clients and projects extend across Sri Lanka and
-                11+ international markets, including Sri Lanka,
-                Australia, New Zealand, Singapore, Malaysia, United
-                States of America, Japan, Maldives, UAE, India, West
-                Indies, and the United Kingdom.
+                Our clients and projects extend across Sri Lanka and 11+
+                international markets, including Sri Lanka, Australia, New
+                Zealand, Singapore, Malaysia, United States of America, Japan,
+                Maldives, UAE, India, West Indies, and the United Kingdom.
               </p>
 
               <div className="w-full pt-4 max-tablet:pt-[0.8rem] max-md:pt-[0.7rem] max-mobile:pt-[0.6rem]" />
 
               <p className="mb-0 font-sans text-[1rem] font-normal leading-[1.5em] text-black">
-                Different industries. Different markets. One
-                commitment to helping brands grow.
+                Different industries. Different markets. One commitment to
+                helping brands grow.
               </p>
             </div>
           </div>

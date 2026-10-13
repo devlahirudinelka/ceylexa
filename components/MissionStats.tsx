@@ -31,7 +31,7 @@ export default function MissionStats() {
   return (
     <section className="relative">
       <div className="pt-30 w-full max-tablet:pt-20 max-md:pt-18 max-mobile:pt-16" />
-      <div className="block mx-auto px-6 mx-auto max-w-6xl w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
+      <div className="block mx-auto px-6 mx-auto max-w-7xl w-full before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] before:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] after:table max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
         <div className="inner-wrappar">
           <div className="grid gap-4 grid-rows-[auto] grid-cols-[1fr_0.75fr] auto-cols-[1fr] justify-between items-start max-tablet:grid-cols-[1fr_0.5fr] max-md:gap-7 max-md:grid-cols-[repeat(1,1fr)] max-md:justify-end max-md:flex-col max-mobile:gap-6">
             <div className="gap-4 justify-start items-start max-tablet:gap-[0.8rem] max-md:gap-[0.7rem] max-mobile:flex max-mobile:gap-[0.224rem] max-mobile:flex-col">
@@ -40,9 +40,7 @@ export default function MissionStats() {
                 Results
               </div>
               <div className="pt-4 w-full max-tablet:pt-[0.8rem] max-md:pt-[0.7rem] max-mobile:pt-[0.6rem]" />
-              <h2 className="text-left">
-                We Strive for Success
-              </h2>
+              <h2 className="text-left">We Strive for Success</h2>
               <div className="pt-6 w-full max-tablet:pt-[1.2rem] max-md:pt-[1.0499rem] max-mobile:pt-[0.899rem]" />
               <div className="max-w-[30rem] max-tablet:max-w-none">
                 <div className="pt-2 w-full max-tablet:hidden max-tablet:pt-[0.4rem] max-md:pt-[0.35rem] max-mobile:pt-[0.3rem]" />

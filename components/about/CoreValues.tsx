@@ -79,10 +79,9 @@ export default function CoreValues() {
 
   return (
     <section className="relative">
-      <div className="max-w-6xl mx-auto block w-full px-6 before:table before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] after:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
+      <div className="max-w-7xl mx-auto block w-full px-6 before:table before:content-['_'] before:[grid-area:1_/_1_/_2_/_2] after:table after:clear-both after:content-['_'] after:[grid-area:1_/_1_/_2_/_2] max-tablet:px-[1.2rem] max-md:px-[1.0499rem] max-mobile:px-[0.899rem]">
         <div className="inner-wrappar">
           {/* Section label */}
-       
 
           <div className="w-full pt-4 max-tablet:pt-[0.8rem] max-md:pt-[0.7rem] max-mobile:pt-[0.6rem]" />
 

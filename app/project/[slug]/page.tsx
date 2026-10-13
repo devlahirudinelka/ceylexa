@@ -51,7 +51,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         {/* Hero */}
         <section className="relative overflow-hidden bg-background pt-32 pb-16 sm:pt-40 sm:pb-20">
           <CreamGradientBackground />
-          <div className="relative mx-auto  w-full max-w-6xl px-6 lg:px-8">
+          <div className="relative mx-auto  w-full max-w-7xl px-6 lg:px-8">
             <Reveal>
               <Link
                 href="/project"
@@ -94,7 +94,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </section>
 
         {/* Hero image */}
-        <Reveal className="mx-auto  w-full max-w-6xl px-6 lg:px-8">
+        <Reveal className="mx-auto  w-full max-w-7xl px-6 lg:px-8">
           <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl border border-border shadow-[0_30px_80px_-40px_rgba(36,26,12,0.35)]">
             <Image
               src={project.image}
@@ -108,7 +108,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </Reveal>
 
         {/* Overview + challenge + quick facts */}
-        <section className="mx-auto  w-full max-w-6xl px-6 py-20 lg:px-8 sm:py-28">
+        <section className="mx-auto  w-full max-w-7xl px-6 py-20 lg:px-8 sm:py-28">
           <div className="grid gap-12 lg:grid-cols-3 lg:gap-16">
             <div className="lg:col-span-2">
               <Reveal>
@@ -178,7 +178,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
         {/* Solution */}
         <section className="border-t border-border bg-surface-2/60 py-20 sm:py-28">
-          <div className="mx-auto  w-full max-w-6xl px-6 lg:px-8">
+          <div className="mx-auto  w-full max-w-7xl px-6 lg:px-8">
             <Reveal>
               <span className="font-mono text-sm text-accent-2">{"// "}</span>
               <span className="text-sm font-medium text-muted">
@@ -207,7 +207,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </section>
 
         {/* Results */}
-        <section className="mx-auto  w-full max-w-6xl px-6 py-20 lg:px-8 sm:py-28">
+        <section className="mx-auto  w-full max-w-7xl px-6 py-20 lg:px-8 sm:py-28">
           <Reveal>
             <span className="font-mono text-sm text-accent-2">{"// "}</span>
             <span className="text-sm font-medium text-muted">Results</span>
@@ -232,7 +232,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
         {/* Impact */}
         <section className="border-t border-border bg-surface-2/60 py-20 sm:py-28">
-          <div className="mx-auto  w-full max-w-6xl px-6 lg:px-8">
+          <div className="mx-auto  w-full max-w-7xl px-6 lg:px-8">
             <Reveal>
               <span className="font-mono text-sm text-accent-2">{"// "}</span>
               <span className="text-sm font-medium text-muted">Impact</span>
@@ -254,7 +254,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         {/* More work */}
         {otherProjects.length > 0 && (
           <section className="border-t border-border py-20 sm:py-28">
-            <div className="mx-auto  w-full max-w-6xl px-6 lg:px-8">
+            <div className="mx-auto  w-full max-w-7xl px-6 lg:px-8">
               <Reveal className="flex items-end justify-between gap-6">
                 <div>
                   <span className="font-mono text-sm text-accent-2">
